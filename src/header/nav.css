@@ -1,12 +1,10 @@
 ul {
+  
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
 }
 
 li {
@@ -17,10 +15,23 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 30px 16px;
+  padding: 12px 14px;
   text-decoration: none;
 }
 
-li a:hover {
+li a:hover:not(.active) {
   background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+#logoLink {
+  margin-left: 50px;
+}
+
+#logoImage {
+  width: 50%;
+  height: 50%;
 }
