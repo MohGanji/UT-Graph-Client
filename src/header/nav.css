@@ -1,14 +1,11 @@
 ul {
-  
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
-}
-
-li {
-  float: left;
+  display: flex;
+  align-items: center;
 }
 
 li a {
@@ -19,11 +16,12 @@ li a {
   text-decoration: none;
 }
 
-li a:hover:not(.active) {
-  background-color: #111;
+li a:hover:not(.active):not(#logoLink) {
+  text-decoration: underline;
 }
 
 .active {
+  margin-right: 20px;
   background-color: #4CAF50;
 }
 
@@ -32,6 +30,15 @@ li a:hover:not(.active) {
 }
 
 #logoImage {
-  width: 50%;
-  height: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+#searchBar {
+  margin-left: 200px;
+}
+
+.rightElement {
+  margin-right: 20px;
+  margin-left: auto;
 }
