@@ -3,7 +3,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #003366;
   display: flex;
   align-items: center;
 }
@@ -19,23 +19,27 @@ li a {
 li a:hover:not(.active):not(#logoLink) {
   text-decoration: underline;
 }
-
 .active {
   margin-right: 20px;
-  background-color: #4CAF50;
+  background-color: #0095ff;
+  border: 1px solid #07c;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 #66bfff;
 }
 
 #logoLink {
+  padding: 3px;
+  margin: 0;
   margin-left: 50px;
 }
 
 #logoImage {
-  width: 30px;
-  height: 30px;
+  width: 43px;
+  height: 43px;
 }
 
 #searchBar {
-  margin-left: 200px;
+  margin-left: 300px;
 }
 
 .rightElement {
