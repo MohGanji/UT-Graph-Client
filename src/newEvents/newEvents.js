@@ -7,22 +7,29 @@ export class NewEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        { title: "ICPC class" },
-        { title: "DM Class" },
-        { title: "AP Class" },
-        { title: "Node class" }]
+      events: []
     }
   }
 
   componentDidMount() {
-    //fetch all events
+    let that = this;
+
+    fetch('/api/v1/event', {
+      method: 'GET',
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      }).then(function (events) {
+        that.setState({ events: events });
+      });
   }
 
   render() {
     return (
       <section>
-
       </section>
     );
   }
