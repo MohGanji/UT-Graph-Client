@@ -21,11 +21,9 @@ export class SearchBar extends React.Component {
 
   render() {
     return (
-      <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?" />
-        {/* <button type="submit" class="searchButton">
-        </button> */}
-      </div>
+      < div class="search" >
+        <input type="text" class="searchTerm" placeholder=" نام کاربر یا رویداد را جستجو کنید... " />
+      </div >
     );
   }
 }
