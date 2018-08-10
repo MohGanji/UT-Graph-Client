@@ -1,5 +1,6 @@
-import React from '../../../../../.cache/typescript/2.9/node_modules/@types/react';
+import React from 'react';
 import './Login.css';
+import { handleErrors } from '../function/handleErrors';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -30,13 +31,12 @@ export class Login extends React.Component {
     fetch('/api/v1/login', {
       method: "POST",
       body: JSON.stringify({ data: data })
-    }).then(function (response) {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-    }).catch(function (error) {
-      console.log(error);
-    });
+    }).then(handleErrors)
+      .then(function (response) {
+        //token
+      }).catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
