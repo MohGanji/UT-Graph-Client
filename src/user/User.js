@@ -1,27 +1,30 @@
 import React from 'react';
-import './newEvents.css';
-import { Link } from 'react-router-dom';
-import EventImage from '../images/event.png';
+import './User.css';
+import { handleErrors } from '../functions/handleErrors.js';
 
-export class NewEvents extends React.Component {
+export class User extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      events: []
+      info: {}
     }
   }
 
   componentDidMount() {
-    fetch('/api/v1/event', {
-      method: 'GET',
-    })
+    let that = this;
+    const id = this.props.match.params.id;
+
+    fetch(`/api/v1/user/${id}`)
+      .then(handleErrors)
       .then(function (response) {
         return response.json();
       })
       .then(function (responseJson) {
         return responseJson.data;
-      }).then(function (events) {
-        this.setState({ events: events });
+      })
+      .then(function (info) {
+        that.setState({ info: info })
       })
       .catch(function (error) {
         console.log(error);
@@ -30,8 +33,8 @@ export class NewEvents extends React.Component {
 
   render() {
     return (
-      <section>
-      </section>
+      <div>
+      </div>
     );
   }
 }
