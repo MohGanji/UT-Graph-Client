@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../../../../../.cache/typescript/2.9/node_modules/@types/react';
 import './Login.css';
 
 export class Login extends React.Component {
@@ -25,7 +25,18 @@ export class Login extends React.Component {
   }
 
   handleSubmit() {
+    const data = this.state;
 
+    fetch('/api/v1/login', {
+      method: "POST",
+      body: JSON.stringify({ data: data })
+    }).then(function (response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
