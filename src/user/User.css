@@ -1,0 +1,36 @@
+.profile_photo_container {
+  height: 35vh;
+  width: 35vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -17vh;
+  border: 1px solid black;
+}
+
+.profile_photo {
+  width: 100%;
+  height: 100%;
+}
+
+.user_info {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.user_about {
+  direction: rtl;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-top: 5%;
+  height: 10vw;
+}
+
+.user_about_text {
+  font-size: 16pt;
+  margin-right: 10%;
+}
+
+#user_name {
+  font-weight: bold
+}

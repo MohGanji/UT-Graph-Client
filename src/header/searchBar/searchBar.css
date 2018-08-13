@@ -39,6 +39,6 @@ body{
 }
 
 .search_input:focus{
-  color: red; 
+  color: black; 
   /* color: rgb(29, 28, 28); */
 }

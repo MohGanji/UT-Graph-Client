@@ -1,7 +1,7 @@
 import React from 'react';
 import './newEvents.css';
 import { Link } from 'react-router-dom';
-import EventImage from '../images/event.png';
+import EventImage from '../images/event.jpg';
 
 
 export class NewEvents extends React.Component {

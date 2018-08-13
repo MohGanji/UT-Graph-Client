@@ -3,6 +3,8 @@ import './User.css';
 import { handleErrors } from '../functions/handleErrors';
 import { Header } from '../header/header';
 import { BackgroundCover } from '../background_cover/Background_cover'
+import ProfilePhoto from '../images/deafault-background.jpeg';
+import { NewEvents } from '../newEvents/newEvents.js'
 
 export class User extends React.Component {
   constructor(props) {
@@ -38,7 +40,18 @@ export class User extends React.Component {
       <div>
         <Header />
         <BackgroundCover />
-      </div>
+        <div class="user_info">
+          <div class="profile_photo_container">
+            <img class="profile_photo" src={ProfilePhoto} />
+          </div>
+          <div class="user_about">
+            <p id="user_name" class="user_about_text"> آرمان رستمی </p>
+            <p class="user_about_text"> دانشجوی مهندسی کامپیوتر دانشگاه تهران </p>
+          </div>
+        </div>
+        <br />
+        <NewEvents />
+      </div >
     );
   }
 }
