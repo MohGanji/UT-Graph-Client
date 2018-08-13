@@ -1,0 +1,15 @@
+.background_cover {
+  width: 100%;
+  height: 60vh;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.background_image {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
