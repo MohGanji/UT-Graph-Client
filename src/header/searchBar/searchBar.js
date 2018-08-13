@@ -1,6 +1,7 @@
 import React from 'react';
 import './searchBar.css';
 import 'font-awesome/css/font-awesome.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class SearchBar extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ export class SearchBar extends React.Component {
           {/* 12 */}
           {/* <FontAwesomeIcon icon="faSearch" /> */}
           {/* <FontAwesomeIcon icon="faSearchPlus" /> */}
-          <i className="fa-search"></i>
+          <i class="fa fa-search"></i>
         </div>
         <input type="text" class="search_input" placeholder=" نام کاربر یا رویداد را جستجو کنید... " />
       </div >
