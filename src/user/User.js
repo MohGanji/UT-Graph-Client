@@ -1,6 +1,8 @@
 import React from 'react';
 import './User.css';
-import { handleErrors } from '../functions/handleErrors.js';
+import { handleErrors } from '../functions/handleErrors';
+import { Header } from '../header/header';
+import { BackgroundCover } from '../background_cover/Background_cover'
 
 export class User extends React.Component {
   constructor(props) {
@@ -34,6 +36,8 @@ export class User extends React.Component {
   render() {
     return (
       <div>
+        <Header />
+        <BackgroundCover />
       </div>
     );
   }
