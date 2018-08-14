@@ -1,23 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-body{
+search.body{
   background: #f2f2f2;
   font-family: 'Open Sans', sans-serif;
 }
 
 .search {
-  width: 80%;
-  height: 70%;
-  margin-left: auto;
-  margin-right: auto;
   border: 1px solid #666;
   border-radius: 15px;
-  outline: none;
   color: #9DBFAF;
-  display: grid;
-  background: #9DBFAF;
+  background: white;
   overflow: hidden;
-  grid-template-columns: 5% 95%;
 }
 
 .search_logo{
@@ -32,7 +25,8 @@ body{
 }
 
 .search_input{
-  /* height: 100%; */
+  width: 80vh;
+  height: 5vh;
   margin-right: 1%;
   border: 0px;
   direction: rtl;

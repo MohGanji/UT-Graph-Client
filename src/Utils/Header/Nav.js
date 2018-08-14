@@ -8,16 +8,13 @@ export default class Nav extends React.Component {
   render() {
     return (
       <div class="navbar">
-        <div class="navbar_logo">
-          <a id="logoLink" href={'/'}> <img id="logoImage" class="logo_img" src={logo} /></a>
-        </div>
-        <div class="navbar_search">
-          <SearchBar />
-        </div>
-        <div class="navbar_menu">
-          <div class="login_button"><a href={'/login'}>  ورود </a></div>
-          <div class="register_button"><a href={'/register'}>  ثبت نام </a></div>
-        </div>
+        <ul>
+          <li><a id="logoLink" href={'/'}> <img id="logoImage" src={logo} /></a></li>
+          <li class="navbar_search"> <SearchBar /></li>
+          <li class="rightElement"><a href={'/login'}>ورود</a></li>
+          <li id="signup" class="active"><a href={'/signup'}>ثبت نام</a></li>
+
+        </ul>
       </div>
     );
   }
