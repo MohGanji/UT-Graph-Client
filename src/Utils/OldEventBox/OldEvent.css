@@ -1,7 +1,8 @@
 .new_event{
-  width: 100px;
+  /* width: 100px; */
   /* background: blue; */
   color: #BA4B02;
+  /* background: red; */
   /* border: 1px solid orange; */
   margin: 5px;
 }

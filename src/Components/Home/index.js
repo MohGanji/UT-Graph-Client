@@ -13,7 +13,11 @@ export default class Home extends React.Component {
       { title: 1233 }, { title: 1233 }, { title: "1233" }
       ],
       old_events: [
-        { title: "old" }, { title: "ld" }, { title: "old" }, { title: "old" }, { title: "old" }
+        { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
+        { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
+        { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
+        { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
+        { title: "همایشی که حجت سال ۹۶ برگزار کرد" }
       ]
     }
   }
