@@ -3,7 +3,7 @@ import './searchBar.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export class SearchBar extends React.Component {
+export default class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
