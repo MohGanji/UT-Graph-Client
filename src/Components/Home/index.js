@@ -1,15 +1,20 @@
 import React from 'react';
 import { Header } from '../../Utils/Header';
-import NewEvents from './NewEvents'
 import { Slider } from './Slider'
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
+import OldEventBox from '../../Utils/OldEventBox';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [{ title: 1233 }, { title: 12434 }, { title: 12332123 },
+      { title: 1233 }, { title: 1233 }, { title: "1233" }
+      ],
+      old_events: [
+        { title: "old" }, { title: "ld" }, { title: "old" }, { title: "old" }, { title: "old" }
+      ]
     }
   }
 
@@ -34,16 +39,17 @@ export default class Home extends React.Component {
 
 
   render() {
-    const newEvents = this.state.events.map((event) =>
-      <EventBox event={event} />
-    );
-
+    const newEvents = this.state.events.map((event) => <EventBox event={event} />);
+    const oldEvents = this.state.old_events.map((old_event) => <OldEventBox event={old_event} />);
     return (
       <div className="container">
         <Header />
         <Slider />
         <div class="event_container">
           {newEvents}
+        </div>
+        <div class="old_events">
+          {oldEvents}
         </div>
       </div>
     );

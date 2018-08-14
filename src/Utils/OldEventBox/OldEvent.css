@@ -1,0 +1,10 @@
+.new_event{
+  width: 100px;
+  /* background: blue; */
+  color: #BA4B02;
+  /* border: 1px solid orange; */
+  margin: 5px;
+}
+.new_event:hover{
+ color: rgb(228, 94, 4);
+}

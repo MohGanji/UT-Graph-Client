@@ -24,12 +24,12 @@ export default class SearchBar extends React.Component {
   render() {
     return (
       <div class="search">
-        {/* <div class="search_logo"> */}
-        {/* 12 */}
-        {/* <FontAwesomeIcon icon="faSearch" /> */}
-        {/* <FontAwesomeIcon icon="faSearchPlus" /> */}
-        {/* <i class="fa fa-search"></i> */}
-        {/* </div> */}
+        <div class="search_logo">
+          {/* 12 */}
+          {/* <FontAwesomeIcon icon="faSearch" /> */}
+          {/* <FontAwesomeIcon icon="faSearchPlus" /> */}
+          <i class="fa fa-search"></i>
+        </div>
         <input type="text" class="search_input" placeholder=" نام کاربر یا رویداد را جستجو کنید... " />
       </div >
     );
