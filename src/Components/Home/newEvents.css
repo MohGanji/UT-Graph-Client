@@ -1,14 +1,26 @@
-.events_container{
+.events{
   width: 90%;
-  /* height: 40px; */
   margin-left:auto;
   margin-right: auto;
+}
+.old_events{
+  width: 100%;
+  height: 40vh;
+  background: blue;
+}
+
+.events_container{
+  width: 100%;
+  /* height: 40px; */
+  box-sizing: border-box;
+
   margin-top: 5vh;
   /* background: yellow; */
   padding: 10px;
   display: flex;
   /* flex-direction: row; */
   justify-content: center;
+  background: cyan;
   flex-wrap: wrap;
 }
 
@@ -23,7 +35,8 @@
 
 .event{
   cursor: pointer;
-  width: 300px;
+  /* min-width: 400px; */
+  width: 23%;
   height: 300px;
   /* background: red; */
   background: white;

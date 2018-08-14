@@ -9,13 +9,14 @@
 }
 .navbar{
   position: fixed;
-  height: 50px;
+  height: 55px;
   top: 0px;
   z-index: 1;
   width: 100%;
+  /* border-bottom: 5px solid white; */
 }
 .container{
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 .navbar li a {
