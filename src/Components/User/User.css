@@ -34,3 +34,17 @@
 #user_name {
   font-weight: bold
 }
+
+.event_container{
+  width: 90%;
+  /* height: 40px; */
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  /* background: yellow; */
+  padding: 10px;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  flex-wrap: wrap;
+}
