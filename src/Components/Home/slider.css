@@ -33,6 +33,7 @@
 }
 
 .slider div{
+  position: relative;
   height: 100%;
   width: 100%;
   outline: none;
@@ -43,3 +44,10 @@
   height: 100%;
 }
 
+.slider_text {
+  position: absolute;
+  z-index: 1;
+  top: 80%;
+  right: 10%;
+  font-size: 30pt;
+}

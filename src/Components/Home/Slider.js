@@ -26,11 +26,19 @@ export class MySlider extends React.Component {
       fade: true
     };
 
+    const sliderEvents = this.props.events.map(
+      (event) =>
+        <div>
+          <img src={event.poster_path == null ? BackgroundImage2 : event.poster_path} />
+          <p class="slider_text">{event.title}</p>
+        </div>
+    );
 
     return (
       <div class="slider">
         <Slider {...settings}>
-          <div>
+          {sliderEvents}
+          {/* <div>
             <img src={BackgroundImage2} />
           </div>
           <div>
@@ -47,7 +55,7 @@ export class MySlider extends React.Component {
           </div>
           <div>
             <img src={BackgroundImage4} />
-          </div>
+          </div> */}
         </Slider>
       </div>
     );

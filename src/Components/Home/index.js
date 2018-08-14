@@ -52,7 +52,7 @@ export default class Home extends React.Component {
     return (
       <div className="container">
         <Header />
-        <MySlider />
+        <MySlider events={this.state.events} />
 
         <div class="event_container">
           {newEvents}
