@@ -1,11 +1,18 @@
 .login_container {
-  margin-top: 30px; 
+  /* margin-top: 30px;  */
   direction: rtl;
   border: 1px solid black;
-  width: 40%;
+  /* width: 500px; */
+  width: 600px;
   height: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  /* background: #000000; */
+
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* position: absolute; */
+  /* top: 20%; */
+  /* left: auto; */
+  /* right: auto; */
   background-color: white;
   text-align:center;
 }

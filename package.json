@@ -18,8 +18,9 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-slick": "^0.23.1",
-    "slick-carousel": "^1.8.1",
-    "semantic-ui-react": "^0.82.2"
+    "reactjs-popup": "^1.1.4",
+    "semantic-ui-react": "^0.82.2",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

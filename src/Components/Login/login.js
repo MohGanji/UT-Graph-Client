@@ -2,6 +2,7 @@ import React from 'react';
 import './login.css';
 import { handleErrors } from '../../Utils/handleErrors';
 
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -41,13 +42,13 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div class="login_container">
+      < div class="login_container" >
         <p class="login_text">ورود</p>
         <input class="login_input" type="text" placeholder="username" name="username" onChange={this.handleChange} required />
         <input class="login_input" type="password" placeholder="password" name=" password" onChange={this.handleChange} required />
         <br />
         <input class="login_button" type="submit" value="ورود"></input>
-      </div>
+      </div >
     );
   }
 }

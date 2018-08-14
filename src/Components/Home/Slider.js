@@ -22,7 +22,8 @@ export class MySlider extends React.Component {
       autoplay: true,
       arrows: true,
       focusOnSelect: true,
-      classsName: 'slides'
+      classsName: 'slides',
+      fade: true
     };
 
 
