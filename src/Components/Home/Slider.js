@@ -1,26 +1,48 @@
 import React from 'react';
-import EventImage from '../../images/event.png';
 import './slider.css';
-// var Carousel = require('nuka-carousel');
 import 'nuka-carousel'
+import Slider from "react-slick";
+import BackgroundImage from '../../images/event.jpg'
 
-export class Slider extends React.Component {
+export class MySlider extends React.Component {
   render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      arrows: true,
+      focusOnSelect: true,
+      classsName: 'slides'
+    };
+
+
     return (
-      // <Carousel
-      //   renderTopCenterControls={({ currentSlide }) => (
-      //     <div>Slide: {currentSlide}</div>
-      //   )}
-      //   renderCenterLeftControls={({ previousSlide }) => (
-      //     <button onClick={previousSlide}>Previous</button>
-      //   )}
-      //   renderCenterRightControls={({ nextSlide }) => (
-      //     <button onClick={nextSlide}>Next</button>
-      //   )}
-      // >
-      // </Carousel>
       <div class="slider">
+        <Slider {...settings}>
+          <div>
+            <img src={BackgroundImage} />
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
       </div>
     );
   }
 }
+

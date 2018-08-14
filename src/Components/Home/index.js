@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../../Utils/Header';
 import NewEvents from './NewEvents'
-import { Slider } from './Slider'
+import { MySlider } from './Slider'
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
 
@@ -41,7 +41,7 @@ export default class Home extends React.Component {
     return (
       <div className="container">
         <Header />
-        <Slider />
+        <MySlider />
         <div class="event_container">
           {newEvents}
         </div>

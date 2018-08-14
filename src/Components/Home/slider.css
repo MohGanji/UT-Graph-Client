@@ -1,14 +1,15 @@
 .slider{
   width: 80%;
-  height: 45vh;
-  background: blue;
   margin-top: 3vh;
   margin-left: auto;
   margin-right: auto;
-  color: aliceblue;
-  white-space: nowrap;
-  font-size: 0;
-  transform: translateX(0);
+  height: 50vh;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px #888888be;
+  /* color: aliceblue; */
+  /* white-space: nowrap; */
+  /* font-size: 0; */
+  /* transform: translateX(0); */
 }
 
 .slide {
@@ -30,3 +31,15 @@
 .animate {
   transition: all .5s ease-out;
 }
+
+.slider div{
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+
+.slider div img {
+  width: 100%;
+  height: 100%;
+}
+
