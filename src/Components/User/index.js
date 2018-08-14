@@ -5,6 +5,7 @@ import { Header } from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover'
 import ProfilePhoto from '../../images/deafault-background.jpeg';
 import NewEvents from '../Home/NewEvents'
+// import EventContainer from '../../Utils/EventContainer';
 
 export default class User extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class User extends React.Component {
   }
 
   render() {
+    let userInfo = this.state.info.info == null ? 'دانشجو' : this.state.info.info;
     return (
       <div>
         <Header />
@@ -45,12 +47,12 @@ export default class User extends React.Component {
             <img class="profile_photo" src={ProfilePhoto} />
           </div>
           <div class="user_about">
-            <p id="user_name" class="user_about_text"> آرمان رستمی </p>
-            <p class="user_about_text"> دانشجوی مهندسی کامپیوتر دانشگاه تهران </p>
+            <p id="user_name" class="user_about_text"> {this.state.info.lastName} {this.state.info.firstName}</p>
+            <p class="user_about_text"> {userInfo} </p>
           </div>
         </div>
         <br />
-        <NewEvents />
+        {/* <EventContainer /> */}
       </div >
     );
   }
