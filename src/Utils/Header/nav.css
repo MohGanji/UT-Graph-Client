@@ -7,6 +7,16 @@
   display: flex;
   align-items: center;
 }
+.navbar{
+  position: fixed;
+  height: 50px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+}
+.container{
+  padding-top: 50px;
+}
 
 .navbar li a {
   display: block;
