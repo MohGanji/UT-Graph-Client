@@ -17,6 +17,8 @@
 }
 .container{
   padding-top: 60px;
+  background: #dfe3ec;
+  padding-bottom: 10px;
 }
 
 .navbar li a {

@@ -17,8 +17,12 @@
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+<<<<<<< HEAD
     "react-slick": "^0.23.1",
     "slick-carousel": "^1.8.1"
+=======
+    "semantic-ui-react": "^0.82.2"
+>>>>>>> 2783a483d907555799cc66c28287f581559034a6
   },
   "scripts": {
     "start": "react-scripts start",

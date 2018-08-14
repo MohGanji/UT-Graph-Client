@@ -93,6 +93,11 @@ export default class NewEvents extends React.Component {
 
         </div>
         <div class="old_events">
+          123234234
+          <ul>
+            <li>1</li>
+            <li>1</li>
+          </ul>
         </div>
       </div>
     );
