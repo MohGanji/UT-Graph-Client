@@ -2,7 +2,9 @@ import React from 'react';
 import './slider.css';
 import 'nuka-carousel'
 import Slider from "react-slick";
-import BackgroundImage from '../../images/event.jpg'
+import BackgroundImage from '../../images/hojjat.jpg'
+import BackgroundImage2 from '../../images/hojjat2.jpg'
+
 
 export class MySlider extends React.Component {
   render() {
@@ -26,19 +28,19 @@ export class MySlider extends React.Component {
             <img src={BackgroundImage} />
           </div>
           <div>
-            <h3>2</h3>
+            <img src={BackgroundImage2} />
           </div>
           <div>
-            <h3>3</h3>
+            <img src={BackgroundImage} />
           </div>
           <div>
-            <h3>4</h3>
+            <img src={BackgroundImage2} />
           </div>
           <div>
-            <h3>5</h3>
+            <img src={BackgroundImage} />
           </div>
           <div>
-            <h3>6</h3>
+            <img src={BackgroundImage2} />
           </div>
         </Slider>
       </div>
