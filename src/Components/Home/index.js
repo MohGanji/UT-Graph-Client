@@ -5,6 +5,7 @@ import { MySlider } from './Slider'
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
+import Login from '../Login/login';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -50,6 +51,7 @@ export default class Home extends React.Component {
       <div className="container">
         <Header />
         <MySlider />
+        {/* <Login /> */}
         <div class="event_container">
           {newEvents}
         </div>

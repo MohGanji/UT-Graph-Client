@@ -1,8 +1,8 @@
 import React from 'react';
 import './login.css';
-import { handleErrors } from '../functions/handleErrors';
+import { handleErrors } from '../../Utils/handleErrors';
 
-export class Login extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
 

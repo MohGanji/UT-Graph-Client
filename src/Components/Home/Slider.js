@@ -5,6 +5,10 @@ import Slider from "react-slick";
 import BackgroundImage from '../../images/hojjat.jpg'
 import BackgroundImage2 from '../../images/hojjat2.jpg'
 import BackgroundImage3 from '../../images/hojjat4.jpg'
+import BackgroundImage4 from '../../images/hojjat5.jpg'
+import BackgroundImage5 from '../../images/hojjat6.jpg'
+import BackgroundImage6 from '../../images/hojjat7.jpg'
+
 
 
 export class MySlider extends React.Component {
@@ -26,22 +30,22 @@ export class MySlider extends React.Component {
       <div class="slider">
         <Slider {...settings}>
           <div>
-            <img src={BackgroundImage3} />
-          </div>
-          <div>
             <img src={BackgroundImage2} />
           </div>
           <div>
             <img src={BackgroundImage3} />
           </div>
           <div>
-            <img src={BackgroundImage2} />
+            <img src={BackgroundImage4} />
           </div>
           <div>
-            <img src={BackgroundImage3} />
+            <img src={BackgroundImage5} />
           </div>
           <div>
-            <img src={BackgroundImage2} />
+            <img src={BackgroundImage6} />
+          </div>
+          <div>
+            <img src={BackgroundImage4} />
           </div>
         </Slider>
       </div>
