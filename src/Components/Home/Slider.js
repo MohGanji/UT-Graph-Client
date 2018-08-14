@@ -1,5 +1,5 @@
 import React from 'react';
-import EventImage from '../images/event.png';
+import EventImage from '../../images/event.png';
 import './slider.css';
 // var Carousel = require('nuka-carousel');
 import 'nuka-carousel'

@@ -13,7 +13,7 @@
 
 .events_row{
   width: 100%;
-  margin-top: 20px;
+  margin-top: 2vw;
   /* background: cyan; */
   display: flex;
   flex-direction: row;
@@ -23,14 +23,15 @@
 .event{
   cursor: pointer;
   width: 24%;
-  height: 50vh;
+  height: 40vh;
   /* background: red; */
   background: white;
-  border: 1px solid black;
-  border-radius: 15px;
+  /* border: 1px solid black; */
+  border-radius: 5px;
   overflow: hidden;
   display: grid;
   grid-template-rows: 70% 30%;
+  box-shadow: 2px 2px 2px 2px #88888888;
 }
 .event_img{
   width: 100%;

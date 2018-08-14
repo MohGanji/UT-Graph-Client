@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Helmet from 'react-helmet';
-import { Home } from './home';
-import { User } from './user/User.js';
-import { Event } from './event/Event.js';
+import Home from './Components/Home';
+import User from './Components/User'
+import Event from './Components/Event';
 
 class App extends Component {
   render() {

@@ -1,10 +1,10 @@
 import React from 'react';
 import './newEvents.css';
 import { Link } from 'react-router-dom';
-import EventImage from '../images/event.jpg';
+import EventImage from '../../images/event.jpg';
 
 
-export class NewEvents extends React.Component {
+export default class NewEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

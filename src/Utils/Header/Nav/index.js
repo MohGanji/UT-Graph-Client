@@ -1,8 +1,8 @@
 import React from 'react';
 import './nav.css';
-import logo from '../images/logo.png';
-import background from '../images/background.jpg'
-import { SearchBar } from './searchBar/searchBar';
+import logo from '../../../images/logo.png';
+import background from '../../../images/background.jpg'
+import { SearchBar } from '../SearchBar';
 
 export class Nav extends React.Component {
   render() {

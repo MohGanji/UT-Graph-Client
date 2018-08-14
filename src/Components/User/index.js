@@ -1,12 +1,12 @@
 import React from 'react';
 import './User.css';
-import { handleErrors } from '../functions/handleErrors';
-import { Header } from '../header/header';
-import { BackgroundCover } from '../background_cover/Background_cover'
-import ProfilePhoto from '../images/deafault-background.jpeg';
-import { NewEvents } from '../newEvents/newEvents.js'
+import { handleErrors } from '../../Utils/handleErrors';
+import { Header } from '../../Utils/Header';
+import { BackgroundCover } from './Background_Cover'
+import ProfilePhoto from '../../images/deafault-background.jpeg';
+import NewEvents from '../Home/NewEvents'
 
-export class User extends React.Component {
+export default class User extends React.Component {
   constructor(props) {
     super(props);
 

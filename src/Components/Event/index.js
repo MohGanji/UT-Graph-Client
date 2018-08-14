@@ -1,11 +1,11 @@
 import React from 'react';
 import './Event.css';
-import { handleErrors } from '../functions/handleErrors';
-import { Header } from '../header/header.js'
-import EventImage from '../images/background.jpg'
+import { handleErrors } from '../../Utils/handleErrors';
+import { Header } from '../../Utils/Header'
+import EventImage from '../../images/background.jpg'
 
 
-export class Event extends React.Component {
+export default class Event extends React.Component {
   constructor(props) {
     super(props);
 
