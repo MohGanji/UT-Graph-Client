@@ -1,6 +1,7 @@
 import React from 'react';
 import './Register.css';
 import { handleErrors } from '../../Utils/handleErrors.js';
+import Login from '../Login/login'
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -56,11 +57,12 @@ export default class Register extends React.Component {
   render() {
     if (this.state.is_registered) {
       return (
-        <div class="signup_page" >
-          <div class="message">
-            <p> شما با موفقیت ثبت نام شدید! </p>
-          </div>
-        </div>
+        // <div class="signup_page" >
+        //   <div class="message">
+        //     <p> شما با موفقیت ثبت نام شدید! </p>
+        //   </div>
+        // </div>
+        <Login />
       );
     } else {
       return (
