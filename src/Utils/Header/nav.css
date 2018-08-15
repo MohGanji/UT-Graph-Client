@@ -23,7 +23,7 @@
 
 .navbar li a {
   display: block;
-  color: white;
+  /* color: white; */
   text-align: center;
   padding: 12px 14px;
   text-decoration: none;

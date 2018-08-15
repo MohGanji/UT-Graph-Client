@@ -6,11 +6,14 @@ import SearchBar from './SearchBar';
 
 import Popup from "reactjs-popup";
 import Login from '../../Components/Login/login'
+import Register from '../../Components/Register/Register'
+
 
 const contentStyle = {
   height: "innerHeight",
   width: "innerWidth",
-  "z-index": "1"
+  "z-index": "1",
+  padding: "0px",
   // ,
   // display: flex
 };
@@ -19,7 +22,7 @@ const contentStyle = {
 const inner_div = {
   // opacity: "0.2",
   background: "#000000cc",
-  "z-index": "0"
+  "z-index": "0",
 };
 
 export default class Nav extends React.Component {
@@ -45,8 +48,18 @@ export default class Nav extends React.Component {
               <Login />
             </Popup>
           </li>
-          <li id="signup" class="active"><a href={'/signup'}>ثبت نام</a></li>
-
+          <li class="active">
+            <Popup trigger={
+              <a href="#">
+                ثبت نام
+              </a>}
+              modal
+              contentStyle={contentStyle}
+              overlayStyle={inner_div}
+            >
+              <Register />
+            </Popup>
+          </li>
         </ul>
       </div>
     );

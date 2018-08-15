@@ -42,13 +42,19 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      < div class="login_container" >
-        <p class="login_text">ورود</p>
-        <input class="login_input" type="text" placeholder="username" name="username" onChange={this.handleChange} required />
-        <input class="login_input" type="password" placeholder="password" name=" password" onChange={this.handleChange} required />
-        <br />
-        <input class="login_button" type="submit" value="ورود"></input>
-      </div >
+      <div class="login_page">
+        <h1 class="login-title">Ut Graph</h1>
+        <div class="login_form">
+          <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
+          <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
+          <input type="submit" value="Login" class="login-button" />
+          <p class="login-lost">
+            <a href="">Forgot Password? </a>
+            /
+            <a href=""> Don't have an account? Signup</a>
+          </p>
+        </div>
+      </div>
     );
   }
 }

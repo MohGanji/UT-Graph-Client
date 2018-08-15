@@ -1,25 +1,25 @@
 import React from 'react';
 import './Register.css';
-import { handleErrors } from '../functions/handleErrors.js';
+import { handleErrors } from '../../Utils/handleErrors.js';
 
-export class Register extends React.Component {
+export default class Register extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username,
-      password,
-      fistName,
-      lastName,
-      email,
-      sid
+      username: "",
+      password: "",
+      fistName: "",
+      lastName: "",
+      email: "",
+      sid: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
+  handleChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -48,7 +48,20 @@ export class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="signup_page">
+        <h1 class="login-title">Ut Graph</h1>
+        <div class="login_form">
+          <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
+          <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
+          <input type="text" class="login-input" placeholder="First name" name="firstname" onChange={this.handleChange} required />
+          <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
+          <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} required />
+
+          <input type="submit" value="Signup" class="login-button" />
+          <p class="login-lost">
+            <a href=""> Already have an account? Signup</a>
+          </p>
+        </div>
       </div>
     );
   }
