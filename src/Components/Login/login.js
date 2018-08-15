@@ -47,11 +47,11 @@ export default class Login extends React.Component {
         <div class="login_form">
           <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
           <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
-          <input type="submit" value="Login" class="login-button" />
+          <input type="submit" value="ورود" class="login-button" />
           <p class="login-lost">
-            <a href="">Forgot Password? </a>
+            <a href=""> کلمه عبور خود را فراموش کرده اید؟ </a>
             /
-            <a href=""> Don't have an account? Signup</a>
+            <a href=""> حساب کاربری ندارید؟ </a>
           </p>
         </div>
       </div>
