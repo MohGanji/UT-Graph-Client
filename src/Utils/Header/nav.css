@@ -22,15 +22,12 @@
 
 .navbar_a {
   display: block;
-  /* color: white; */
+  color: white;
   text-align: center;
   padding: 12px 14px;
   text-decoration: none;
 }
 
-.navbar li a:hover:not(.active):not(#logoLink) {
-  text-decoration: underline;
-}
 .navbar .active {
   margin-right: 20px;
   background-color: #0095ff;
