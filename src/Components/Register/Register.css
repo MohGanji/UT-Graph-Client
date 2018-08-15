@@ -1,5 +1,6 @@
 .signup_page{
   background: white;
+  color: white;
 }
 .login_form{
   margin: 5% 5%;
@@ -8,7 +9,16 @@
   background: white;
   border: 1px solid #c4c4c4;
 }
-
+.message{
+  font-size: 4em;
+  font-weight: 500;
+  color: greenyellow;
+  margin: 20px;
+  height: 40vh;
+  width: 40vw;
+  text-align: right;
+  direction: rtl;
+}
 h1.login-title {
   /* margin: -28px -25px 25px; */
   padding: 15px 25px;
@@ -65,5 +75,3 @@ h1.login-title {
   text-decoration:none;
   font-size:13px;
 }
-
-
