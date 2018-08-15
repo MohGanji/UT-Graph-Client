@@ -7,12 +7,13 @@ export default class Register extends React.Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: "",
-      fistName: "",
-      lastName: "",
-      email: "",
-      sid: ""
+      username: "11",
+      password: "22",
+      fistName: "33",
+      lastName: "44",
+      email: "55",
+      sid: "66",
+      is_registered: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,14 +32,18 @@ export default class Register extends React.Component {
 
   handleSubmit() {
     const data = this.state;
-
+    let that = this;
     fetch('/api/v1/user/register', {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     })
       .then(handleErrors)
       .then(function (response) {
-        //TODO: link to homepage
+        alert("signup sucsesfull");
+        that.setState({
+          is_registered: true
+        });
         console.log(response);
       })
       .catch(function (error) {
@@ -49,23 +54,33 @@ export default class Register extends React.Component {
   }
 
   render() {
-    return (
-      <div class="signup_page">
-        <h1 class="login-title">Ut Graph</h1>
-        <div class="login_form">
-          <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
-          <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
-          <input type="text" class="login-input" placeholder="First name" name="firstname" onChange={this.handleChange} required />
-          <input type="text" class="login-input" placeholder="Last name" name="last" onChange={this.handleChange} required />
-          <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
-          <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} required />
-
-          <input type="submit" value="Signup" class="login-button" onClick={this.handleSubmit} />
-          <p class="login-lost">
-            <a href=""> Already have an account? Signup</a>
-          </p>
+    if (this.state.is_registered) {
+      return (
+        <div class="signup_page" >
+          <div class="message">
+            <p> شما با موفقیت ثبت نام شدید! </p>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div class="signup_page" >
+          <h1 class="login-title">Ut Graph</h1>
+          <div class="login_form">
+            <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
+            <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
+            <input type="text" class="login-input" placeholder="First name" name="firstname" onChange={this.handleChange} required />
+            <input type="text" class="login-input" placeholder="Last name" name="last" onChange={this.handleChange} required />
+            <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
+            <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} required />
+
+            <input type="submit" value="Signup" class="login-button" onClick={this.handleSubmit} />
+            <p class="login-lost">
+              <a href=""> Already have an account? Signup</a>
+            </p>
+          </div>
+        </div>
+      );
+    }
   }
 }

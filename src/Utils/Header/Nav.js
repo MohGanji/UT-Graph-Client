@@ -45,7 +45,14 @@ export default class Nav extends React.Component {
               contentStyle={contentStyle}
               overlayStyle={inner_div}
             >
-              <Login />
+              {close => (
+                <div>
+                  <span class="close" onClick={close}>
+                    &times;
+                  </span>
+                  <Login />
+                </div>
+              )}
             </Popup>
           </li>
           <li class="active">
@@ -57,7 +64,14 @@ export default class Nav extends React.Component {
               contentStyle={contentStyle}
               overlayStyle={inner_div}
             >
-              <Register />
+              {close => (
+                <div>
+                  <span class="close" onClick={close}>
+                    &times;
+                  </span>
+                  <Register />
+                </div>
+              )}
             </Popup>
           </li>
         </ul>
