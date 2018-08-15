@@ -3,7 +3,7 @@ import './User.css';
 import { handleErrors } from '../../Utils/handleErrors';
 import { Header } from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover';
-import ProfilePhoto from '../../images/deafault-background.jpeg';
+import ProfilePhoto from '../../images/profilePic.jpg';
 import NewEvents from '../Home/NewEvents';
 import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
@@ -60,7 +60,7 @@ export default class User extends React.Component {
     );
 
     return (
-      <div>
+      <div class="user">
         <Header />
         <BackgroundCover />
         <div class="user_info">
@@ -72,7 +72,11 @@ export default class User extends React.Component {
             <p class="user_about_text"> {userInfo} </p>
           </div>
         </div>
+        <hr />
         <div class="event_container">
+          <UserEventBox />
+          <UserEventBox />
+          <UserEventBox />
           <UserEventBox />
           {/* {userEvents} */}
         </div>
