@@ -11,8 +11,8 @@ export class UserEventBox extends React.Component {
     return (
       <div class="user_event_container">
         <div class="user_event_title">
-          <p>همایشی که حجت برگزار کرد</p>
-        </div>z
+          <a href="#"><p>همایشی که حجت برگزار کرد</p></a>
+        </div>
 
         <div class="user_event_rest">
           <div class="user_event_poster">
