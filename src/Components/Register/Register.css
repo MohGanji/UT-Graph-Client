@@ -19,6 +19,7 @@ h1.login-title {
   color: #ADADAD;
   text-align:center;
   background: #f7f7f7;
+  background: #003366;
   /* background: purple; */
 }
 
@@ -49,6 +50,7 @@ h1.login-title {
   border-radius: 5px;
   cursor: pointer; 
   outline:0;
+  background-color: #0095ff;
 }
 
 .login-lost
