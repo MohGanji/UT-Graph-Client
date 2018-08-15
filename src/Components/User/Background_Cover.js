@@ -1,7 +1,7 @@
 import React from 'react';
 import './Background_Cover.css';
 import { handleErrors } from '../../Utils/handleErrors';
-import Background from '../../images/cover.jpg';
+import Background from '../../images/coverpic.svg';
 
 export class BackgroundCover extends React.Component {
   render() {
