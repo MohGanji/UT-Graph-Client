@@ -1,0 +1,89 @@
+.user_event_container {
+  overflow: hidden;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 70%;
+  height: 55vh;
+  display: grid;
+  grid-template-rows: 11% 89%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px #888888be;
+}
+
+.user_event_title {
+  display: flex;
+  align-items: center;
+  color: rgb(233, 229, 229);
+  direction: rtl;
+  font-size: 2.8vh;
+  background-color: #352649;
+}
+
+.user_event_title p {
+  padding: 5px;
+  margin-right: 2vh;
+}
+
+.user_event_rest {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 100%;
+}
+
+.user_event_poster {
+  height: 100%;
+}
+
+.user_event_poster img {
+  width: 100%;
+  height: 100%;
+}
+
+.user_event_info {
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #ffffff;
+  /* margin-right: 3vh; */
+  direction: rtl;
+}
+
+/* .user_event_info img {
+  width: 8vh;
+  height: 8vh;
+} */
+
+.user_event_info_container{
+  width: 85%;
+  height: 20%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .user_event_info_container p{
+  font-size: 2vh;
+}
+
+.user_event_info_container img {
+  float: right;
+} */
+
+.user_event_info_container_name {
+  display: flex;
+  align-items: center;
+  font-size: 2.6vh;
+}
+
+.user_event_info_container_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}

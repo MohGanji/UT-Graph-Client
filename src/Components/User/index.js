@@ -6,6 +6,7 @@ import { BackgroundCover } from './Background_Cover';
 import ProfilePhoto from '../../images/deafault-background.jpeg';
 import NewEvents from '../Home/NewEvents';
 import EventBox from '../../Utils/EventBox';
+import { UserEventBox } from './UserEventBox';
 
 export default class User extends React.Component {
   constructor(props) {
@@ -72,7 +73,8 @@ export default class User extends React.Component {
           </div>
         </div>
         <div class="event_container">
-          {userEvents}
+          <UserEventBox />
+          {/* {userEvents} */}
         </div>
       </div >
     );
