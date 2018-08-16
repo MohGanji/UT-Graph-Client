@@ -24,7 +24,7 @@ export default class SearchBar extends React.Component {
   render() {
     return (
       <div class="search">
-        <a href="">
+        <a class="navbar_a" href="">
           <div class="search_logo">
             {/* 12 */}
             {/* <FontAwesomeIcon icon="faSearch" /> */}

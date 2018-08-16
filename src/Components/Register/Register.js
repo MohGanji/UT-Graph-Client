@@ -76,9 +76,9 @@ export default class Register extends React.Component {
             <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
             <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} required />
 
-            <input type="submit" value="Signup" class="login-button" onClick={this.handleSubmit} />
+            <input type="submit" value="ثبت نام" class="login-button" onClick={this.handleSubmit} />
             <p class="login-lost">
-              <a href=""> Already have an account? Signup</a>
+              <a href=""> آیا حساب کاربری دارید؟ کلیک کنید</a>
             </p>
           </div>
         </div>

@@ -30,15 +30,12 @@ export default class Nav extends React.Component {
     return (
       <div class="navbar">
         <ul>
-          <li><a id="logoLink" href={'/'}> <img id="logoImage" src={logo} /></a></li>
+          <li><a class="navbar_a" id="logoLink" href={'/'}> <img id="logoImage" src={logo} /></a></li>
           <li class="navbar_search"> <SearchBar /></li>
-
-
-
 
           <li class="rightElement">
             <Popup trigger={
-              <a href="#">
+              <a class="navbar_a" href="#">
                 ورود
               </a>}
               modal
@@ -57,7 +54,7 @@ export default class Nav extends React.Component {
           </li>
           <li class="active">
             <Popup trigger={
-              <a href="#">
+              <a class="navbar_a" href="#">
                 ثبت نام
               </a>}
               modal
