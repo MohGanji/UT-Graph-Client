@@ -9,6 +9,54 @@ import BackgroundImage4 from '../../images/hojjat5.jpg'
 import BackgroundImage5 from '../../images/hojjat6.jpg'
 import BackgroundImage6 from '../../images/hojjat7.jpg'
 
+// function SampleNextArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "inline", background: "red" }}
+//       onClick={onClick}
+//     >salam</div>
+//   );
+// }
+
+// function SamplePrevArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "inline", background: "green", color: "red" }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <button {...props} style={{ fontSize: "40px", display: 'block', left: "10px", zIndex: "15", height: "40px", width: "innerWidth", opacity: "1", color: "blue!important" }} >
+      <span> </span>
+    </button>
+  );
+}
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <button {...props} style={{ fontSize: "40px", display: 'block', right: "10px", zIndex: "15", height: "40px", width: "innerWidth", opacity: "1", color: "blue" }} >
+      <span> </span>
+    </button>
+  );
+}
+
+// var NextArrow = React.createClass({
+//   render: function () {
+//     return <button {...this.props} style={{ fontSize: "40px", display: 'block', right: "100px", zIndex: "15", height: "40px", width: "40px", opacity: "1", color: "White" }} >
+//       <span className="icon icon-chevron-with-circle-right"></span>
+//     </button>;
+//   }
+// });
+
 
 
 export class MySlider extends React.Component {
@@ -23,7 +71,8 @@ export class MySlider extends React.Component {
       arrows: true,
       focusOnSelect: true,
       classsName: 'slides',
-      fade: true
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
     };
 
     const sliderEvents = this.props.events.map(
