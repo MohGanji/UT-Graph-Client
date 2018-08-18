@@ -1,4 +1,5 @@
 .title_holder_container{
+  direction: rtl;
   width: 400px;
   max-width: 85%;
   height: 100px;
@@ -6,14 +7,14 @@
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .title_holder_container_name {
   display: flex;
   align-items: center;
-  font-size: 2.6vh;
+  font-size: 20pt;
 }
 
 .title_holder_container_image {

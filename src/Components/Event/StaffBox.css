@@ -1,0 +1,38 @@
+.staff_box {
+  width: 250px;
+  height: 330px;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px #888888be;
+  background: #ffffff;
+  margin: 15px;
+}
+
+.staff_box_image {
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.staff_box_image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.staff_box_role {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.staff_box_name {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18pt;
+}

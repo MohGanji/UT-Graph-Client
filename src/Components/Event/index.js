@@ -1,8 +1,18 @@
 import React from 'react';
 import './Event.css';
 import { handleErrors } from '../../Utils/handleErrors';
-import { Header } from '../../Utils/Header'
-import EventImage from '../../images/background.jpg'
+import { Header } from '../../Utils/Header';
+import BackgroundImage from '../../images/userEvent.jpg';
+import pencilImage from '../../images/pencil.svg';
+import beginTimeImage from '../../images/beginTime.svg';
+import endTimeImage from '../../images/endTime2.svg';
+import mapImage from '../../images/eventMap.svg';
+import capacityImage from '../../images/capacity.svg';
+import TitleHolder from '../../Utils/TitleHolder';
+import OrganizerImage from '../../images/eventPageOrganizer.jpg';
+import GoogleMapImage from '../../images/eventPageMap.png';
+import StaffBox from './StaffBox';
+import staffAvatar from '../../images/staffAvatar.png';
 
 
 export default class Event extends React.Component {
@@ -37,58 +47,78 @@ export default class Event extends React.Component {
   render() {
     return (
       <div>
+
         <Header />
-
-        <div class="event_page">
-          <div class="event_header">
-            <div class="event_img">
-              <img src={EventImage} class="img_fill_div" />
-            </div>
-            <div class="grid_white_space">
-            </div>
-            <div class="event_short_info">
-              <p>
-                رویداد بزرگ ای سی ام
-            </p>
-              <p>
-                این رویداد مخصوص کسانی است که مورد تایید حجت باشند
-            </p>
-              <p> یه سری چیزای دیگه... </p>
-            </div>
+        100
+        <div class="event_page_info_1">
+          <div class="event_page_photo_container">
+            <img src={BackgroundImage} />
           </div>
-          <div class="event_long_info">
-            ما باید یاد بگیریم به دشمن هایمان هم فحش ندهیم چه برسد به اینکه در ورزش برابر تیم رقیب مان این اتفاق بیفتد. ما که ادعای فرهنگ و اخلاق داریم باید احترام به حریف را سرلوحه کارهایمان کنیم، حتی در حوزه های سیاسی و اجتماعی هم باید به رقیبمان احترام بگذاریم. امروز هم در استادیوم ها نباید به رقبا فحش بدهیم چرا که این صرفا یک رقابت ورزشی است و می توانیم در کمال احترام از تیم مان حمایت کنیم.
-              فکر می کنید ریشه این رفتارهای عجیب در فوتبال ایران در چیست؟
-              م خود حمایت کند که این موضوع هیچ توجیهی ندارد.   قطعا اگر بخواهد این روند ادامه داشته باشد ما بازیکنان و باشگاه ها تصمیم دیگری خواهیم گرفت چون این وضعیتی است که به این ورزش پرهواداران آسیب می زند.
-              ولی خیلی ها می گویند مشکلات اقتصادی و معیشتی به این خشونت ها دامن می زند.
-              ما باید یاد بگیریم از فضاهای شادمان استفاده بهینه کنیم و  می توانیم محیط استادیوم را به یک فضای شاد تبدیل کنیم که همه از آن لذت ببرند.  به هر دلیلی اینگونه رفتارها توجیه ندارد که بخواهیم در استادیوم ها که محیط فرهنگی است مشکلات مان را با ناهنجاری توجیه کنیم. من هم به عنوان یک بازیکن در زندگی ام هزار مشکل دارم و همه بازیکنان هم با همین مساله روبرو هستند ولی قرار نیست به استادیوم بیایم و بخواهیم با سنگ سر کسی را بشکنیم. سنگ پراکنی و بی احترامی هیچ توجیهی ندارد و این روش حمایت از یک تیم نیست.
+          <div class="event_page_info_container">
+            <div class="event_page_info_container_up">
+              <TitleHolder image={pencilImage} title="رویداد استاد حجت" />
             </div>
-          <div class="register">
-            <div class="register_check">
-              <div class="event_register_button">
-                <a href="#"> ثبت نام </a>
-              </div>
-              <div><input type="checkbox" /> با قوانین سایت موافقم </div>
-            </div>
-            <div></div>
-            <div class="rules">
-              سلام این صفحه ی قانوناس. باید زیاد حرف نزنید. اگه زیاد حرف بزنید، حجت عصبانی میشه.
-                  اوکی؟ اعصابمو خورد نکنیدا. نباید وارد صفحه ی کس دیگه ای بشیدا.
-                </div>
-          </div>
-
-          <div class="event_place">
-            <div class="event_map">
-              اینجا محل نقشه خواهد بود
-            </div>
-            <div class="event_address">
-              <p> آدرس  : تهران</p>
-              <p> شماره : ۰۹۰۳۳۰۸۸۶۰۰ </p>
-              <p> moasd@ad.com : ایمیل</p>
-              <p></p>
+            <div class="event_page_info_container_bottom">
+              <TitleHolder image={beginTimeImage} title="۲۵ مرداد ۱۳۹۷" />
+              <TitleHolder image={endTimeImage} title="۲۵ شهریور ۱۳۹۷" />
+              <TitleHolder image={mapImage} title="دانشگاه تهران" />
+              {/* <TitleHolder image={capacityImage} title="۶۰" /> */}
             </div>
           </div>
         </div>
+
+        <div class="event_page_info_2">
+          <div class="event_page_about_left">
+            <button class="event_page_signup_button"> درخواست عضویت </button>
+          </div>
+          <div class="event_page_about_right">
+            <div class="event_page_about_right_up">
+              <div class="event_page_about_right_up_map">
+                <img src={GoogleMapImage} />
+              </div>
+              <div class="event_page_about_right_up_title_container">
+                <p class="event_page_about_right_up_title"> دانشگاه تهران </p>
+                <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
+              </div>
+            </div>
+            <div class="event_page_about_right_bottom" >
+              <div class="event_page_about_right_bottom_title">
+                <p> حامیان </p>
+              </div>
+              <div class="event_page_about_right_bottom_description">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event_page_info_3">
+          <div class="event_page_users_left">
+            <div class="event_page_users_left_organizer">
+              <div class="event_page_users_left_organizer_image">
+                <img src={OrganizerImage} />
+              </div>
+              <div class="event_page_users_left_organizer_info">
+                <p class="event_page_users_left_organizer_info_title">  مسئول برگزاری </p>
+                <p class="event_page_users_left_organizer_info_name"> آرمان رستمی </p>
+              </div>
+            </div>
+          </div>
+          <div class="event_page_users_staff_container">
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+          </div>
+        </div>
+
       </div >
     );
   }
