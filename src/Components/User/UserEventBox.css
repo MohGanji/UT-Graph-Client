@@ -1,8 +1,8 @@
 .user_event_container {
   overflow: hidden;
-  margin-top: 5vh;
-  width: 70%;
-  height: 55vh;
+  margin-top: 50px;
+  width: 1000px;
+  height: 550px;
   display: grid;
   grid-template-rows: 11% 89%;
   border-radius: 5px;
@@ -14,7 +14,7 @@
   align-items: center;
   color: rgb(233, 229, 229);
   direction: rtl;
-  font-size: 2.8vh;
+  font-size: 20pt;
   background-color: #352649;
 }
 
@@ -44,6 +44,5 @@
   flex-direction: column;
   justify-content: space-around;
   background-color: #ffffff;
-  /* margin-right: 3vh; */
   direction: rtl;
 }

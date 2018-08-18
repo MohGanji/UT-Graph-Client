@@ -68,7 +68,7 @@ export default class User extends React.Component {
             <img class="profile_photo" src={ProfilePhoto} />
           </div>
           <div class="user_about">
-            <p id="user_name" class="user_about_text"> {this.state.info.lastName} {this.state.info.firstName}</p>
+            <p id="user_name" class="user_about_text"> {this.state.info.firstName} {this.state.info.lastName}</p>
             <p class="user_about_text"> {userInfo} </p>
           </div>
         </div>
