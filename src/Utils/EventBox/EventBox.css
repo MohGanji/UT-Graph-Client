@@ -1,12 +1,12 @@
 .event{
   cursor: pointer;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   /* background: red; */
   background: white;
   /* border: 1px solid black; */
   border-radius: 5px;
-  margin: 10px;
+  margin: 15px;
   overflow: hidden;
   display: grid;
   grid-template-rows: 70% 30%;

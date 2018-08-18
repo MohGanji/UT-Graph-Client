@@ -7,8 +7,6 @@ import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
 import Login from '../Login/login';
 
-
-
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -50,16 +48,22 @@ export default class Home extends React.Component {
     const newEvents = this.state.events.map((event) => <EventBox event={event} />);
     const oldEvents = this.state.old_events.map((old_event) => <OldEventBox event={old_event} />);
     return (
-      <div className="container">
+      <div>
         <Header />
-        <MySlider events={this.state.events} />
+        <div class="home_slider">
+          <MySlider events={this.state.events} />
+        </div>
 
-        <div class="event_container">
+        <div class="home_new_events_title">
+          <p> رویداد های تازه: </p>
+        </div>
+        <div class="home_new_events_container">
           {newEvents}
         </div>
-        <div class="old_events">
-          {oldEvents}
+        {/* {newEvents}
         </div>
+        <div class="old_events">
+          {oldEvents} */}
       </div>
     );
   }

@@ -3,11 +3,12 @@ import './slider.css';
 import 'nuka-carousel'
 import Slider from "react-slick";
 import BackgroundImage from '../../images/hojjat.jpg'
-import BackgroundImage2 from '../../images/hojjat2.jpg'
+import BackgroundImage2 from '../../images/event3.jpg'
 import BackgroundImage3 from '../../images/hojjat4.jpg'
 import BackgroundImage4 from '../../images/hojjat5.jpg'
 import BackgroundImage5 from '../../images/hojjat6.jpg'
 import BackgroundImage6 from '../../images/hojjat7.jpg'
+import sliderImage from '../../images/eventSlider.jpg';
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -78,8 +79,8 @@ export class MySlider extends React.Component {
     const sliderEvents = this.props.events.map(
       (event) =>
         <div>
-          <img src={event.poster_path == null ? BackgroundImage2 : event.poster_path} />
-          <p class="slider_text">{event.title}</p>
+          <a href="#"><img src={event.poster_path == null ? sliderImage : event.poster_path} /></a>
+          {/* <p class="slider_text">{event.title}</p> */}
         </div>
     );
 

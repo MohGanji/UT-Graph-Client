@@ -1,5 +1,5 @@
 import React from 'react';
-import EventImage from '../../images/event.jpg'
+import EventImage from '../../images/event3.jpg'
 import './EventBox.css'
 
 export default class EventBox extends React.Component {
