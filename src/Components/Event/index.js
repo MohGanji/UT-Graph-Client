@@ -49,14 +49,13 @@ export default class Event extends React.Component {
       <div>
 
         <Header />
-        100
         <div class="event_page_info_1">
           <div class="event_page_photo_container">
-            <img src={BackgroundImage} />
+            <img src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} />
           </div>
           <div class="event_page_info_container">
             <div class="event_page_info_container_up">
-              <TitleHolder image={pencilImage} title="رویداد استاد حجت" />
+              <TitleHolder image={pencilImage} title={this.state.info.title} />
             </div>
             <div class="event_page_info_container_bottom">
               <TitleHolder image={beginTimeImage} title="۲۵ مرداد ۱۳۹۷" />
