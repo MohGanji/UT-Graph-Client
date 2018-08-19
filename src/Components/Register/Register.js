@@ -3,6 +3,9 @@ import './Register.css';
 import { handleErrors } from '../../Utils/handleErrors.js';
 import Login from '../Login/login'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +25,7 @@ export default class Register extends React.Component {
   }
 
   handleChange(event) {
+    // toast("change!");
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -34,6 +38,7 @@ export default class Register extends React.Component {
   handleSubmit() {
     const data = this.state;
     let that = this;
+    // toast("Wow so easy 123!");
     fetch('/api/v1/user/register', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +46,7 @@ export default class Register extends React.Component {
     })
       .then(handleErrors)
       .then(function (response) {
-        alert("signup sucsesfull");
+        // alert("signup sucsesfull");
         that.setState({
           is_registered: true
         });
@@ -49,20 +54,23 @@ export default class Register extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
-        alert(error);
+        // alert(error);
         //TODO: handle linking
       });
   }
 
   render() {
     if (this.state.is_registered) {
+      toast("شما با موفقیت ثبت نام شدید");
       return (
         // <div class="signup_page" >
         //   <div class="message">
         //     <p> شما با موفقیت ثبت نام شدید! </p>
         //   </div>
         // </div>
-        <Login />
+        <div>
+          < Login />
+        </div>
       );
     } else {
       return (

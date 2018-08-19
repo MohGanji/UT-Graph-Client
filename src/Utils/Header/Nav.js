@@ -8,6 +8,9 @@ import Popup from "reactjs-popup";
 import Login from '../../Components/Login/login'
 import Register from '../../Components/Register/Register'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const contentStyle = {
   height: "innerHeight",
@@ -72,6 +75,7 @@ export default class Nav extends React.Component {
             </Popup>
           </li>
         </ul>
+        <ToastContainer />
       </div>
     );
   }
