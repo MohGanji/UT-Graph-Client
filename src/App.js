@@ -10,9 +10,8 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path={'/'} component={Home} />
-          <Route exact path={'/event'} component={Event} />
-          <Route path={'/user/:id'} component={User} />
-          <Route path={'/event/:id'} component={User} />
+          <Route exact path={'/user/:id'} component={User} />
+          <Route exact path={'/event/:id'} component={Event} />
         </Switch>
       </BrowserRouter>
     )
