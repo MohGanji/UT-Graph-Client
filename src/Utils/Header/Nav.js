@@ -11,6 +11,13 @@ import Register from '../../Components/Register/Register'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { connect } from 'react-redux';
+
+function mapStateToProps(state) {
+  return {
+    authenticated: state.authenticated
+  };
+}
 
 const contentStyle = {
   height: "innerHeight",
@@ -28,7 +35,8 @@ const inner_div = {
   "z-index": "0",
 };
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
+
   render() {
     return (
       <div class="navbar">
@@ -80,3 +88,5 @@ export default class Nav extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Nav);

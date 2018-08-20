@@ -1,9 +1,15 @@
 import React from 'react';
 import './login.css';
 import { handleErrors } from '../../Utils/handleErrors';
+import { connect } from 'react-redux';
 
+function mapStateToProps(state) {
+  return {
+    authenticated: state.authenticated
+  };
+}
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,6 +34,7 @@ export default class Login extends React.Component {
 
   handleSubmit() {
     const data = this.state;
+    let that = this;
 
     fetch('/api/v1/user/login', {
       method: "POST",
@@ -38,9 +45,9 @@ export default class Login extends React.Component {
         return response.json();
       }).then(function (responseJson) {
         localStorage.setItem('token', responseJson.data.token)
+        that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
       }).catch(function (error) {
-        alert(error);
-        //TODO: toast
+        //TODO: toast 
       });
   }
 
@@ -62,3 +69,5 @@ export default class Login extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Login);
