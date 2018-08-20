@@ -29,14 +29,18 @@ export default class Login extends React.Component {
   handleSubmit() {
     const data = this.state;
 
-    fetch('/api/v1/login', {
+    fetch('/api/v1/user/login', {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     }).then(handleErrors)
       .then(function (response) {
-        //token
+        return response.json();
+      }).then(function (responseJson) {
+        localStorage.setItem('token', responseJson.data.token)
       }).catch(function (error) {
-        console.log(error);
+        alert(error);
+        //TODO: toast
       });
   }
 
@@ -46,8 +50,8 @@ export default class Login extends React.Component {
         <h1 class="login-title">Ut Graph</h1>
         <div class="login_form">
           <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
-          <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
-          <input type="submit" value="ورود" class="login-button" />
+          <input type="password" class="login-input" placeholder="Password" name="password" onChange={this.handleChange} required />
+          <input type="submit" value="ورود" class="login-button" onClick={this.handleSubmit} />
           <p class="login-lost">
             <a href=""> کلمه عبور خود را فراموش کرده اید؟ </a>
             /
