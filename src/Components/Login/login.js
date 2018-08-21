@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.authenticated
+    authenticated: state.authenticated,
+    user: state.user
   };
 }
 
@@ -46,6 +47,11 @@ class Login extends React.Component {
       }).then(function (responseJson) {
         localStorage.setItem('token', responseJson.data.token)
         that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
+        return fetch(`/api/v1/user/${data.username}`);
+      }).then(function (response) {
+        return response.json();
+      }).then(function (responseJson) {
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).catch(function (error) {
         //TODO: toast 
       });

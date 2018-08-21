@@ -1,6 +1,6 @@
 const initialState = {
   authenticated: false,
-  user: ''
+  user: {}
 };
 
 export default function reducer(state = initialState, action) {
