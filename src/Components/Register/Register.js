@@ -44,13 +44,17 @@ export default class Register extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     })
+      .then(res => res.json())
       .then(handleErrors)
       .then(function (response) {
-        // alert("signup sucsesfull");
-        that.setState({
-          is_registered: true
-        });
-        console.log(response);
+        alert("1");
+        if (response.status == 200)
+          that.setState({
+            is_registered: true
+          });
+        else {
+          alert("wtf");
+        }
       })
       .catch(function (error) {
         console.log(error);
