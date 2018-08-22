@@ -1,48 +1,88 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-search.body{
-  background: #f2f2f2;
-  font-family: 'Open Sans', sans-serif;
+
+
+
+.search_bar {
+  width: 36%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .search {
-  border: 1px solid #666;
-  border-radius: 15px;
-  color: #9DBFAF;
-  background: white;
-  overflow: hidden;
-  height: 5vh;
-  display: flex;
-  flex-direction: row;
-}
-
-.search_logo{
-  margin-top: auto;
-  margin-bottom: auto;
-  cursor: pointer;
-  height: 60%;
-  /* width: 100%; */
-  /* background: cyan; */
-  color: black;
-  /* font-size: 40px; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  /* background: red; */
-  color: black;
-  margin-left: 1%;
-}
-
-.search_input{
-  width: 80vh;
-  height: 100%;
-  margin-right: 1%;
-  border: 0px;
+  outline: none;
   direction: rtl;
-  background: inherit;
 }
 
-.search_input:focus{
-  color: black; 
-  /* color: rgb(29, 28, 28); */
+.search[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+.search::-webkit-search-decoration,
+.search::-webkit-search-cancel-button {
+	display: none; 
+}
+
+.search[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 18px 14px 18px 38px;
+  width: 60px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+
+/* focus here */
+.search[type=search] {
+  width: 200px;
+	background-color: #fff;
+	border-color: #5f4385;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+.search:-moz-placeholder {
+	color: #999;
+}
+.search::-webkit-input-placeholder {
+	color: #999;
+}
+
+#search_form input[type=search] {
+	width: 15px;
+	padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
+}
+#search_form input[type=search]:hover {
+	background-color: #fff;
+}
+
+/* focus here */
+#search_form input[type=search] {
+  width: 700px;
+
+	padding-right: 20px;
+	color: rgb(102, 102, 102);
+	background-color: #fff;
+	cursor: auto;
+}
+
+#search_form input[type=search]:focus {
+	color: black;
+}
+#search_form input:-moz-placeholder {
+	color: transparent;
+}
+#search_form input::-webkit-input-placeholder {
+	color: transparent;
 }
