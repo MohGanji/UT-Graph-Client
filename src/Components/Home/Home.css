@@ -1,3 +1,30 @@
+.test {
+  /* margin-top: 80px; */
+  /* width: 100%; */
+  position: relative;
+  direction: rtl;
+  color: white;
+  font-size: 48pt; 
+  background-image: url("../../images/sky.jpg");
+
+  min-height: 900px; 
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.test img {
+  width: 100%;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .home_slider {
   width: 1600px;
   max-width: 95%;
@@ -12,7 +39,8 @@
   max-width: 95%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 120px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   direction: rtl;
 }
 
