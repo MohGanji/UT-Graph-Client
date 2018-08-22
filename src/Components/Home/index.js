@@ -7,6 +7,8 @@ import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
 import Login from '../Login/login';
 import skyImage from '../../images/sky.jpg'
+import { handleErrors } from '../../Utils/handleErrors.js';
+
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -34,6 +36,7 @@ export default class Home extends React.Component {
       .then(function (response) {
         return response.json();
       })
+      .then(handleErrors)
       .then(function (responseJson) {
         return responseJson.data;
       }).then(function (events) {
