@@ -1,24 +1,24 @@
-import React from 'react';
-import './searchBar.css';
-import 'font-awesome/css/font-awesome.min.css';
+import React from 'react'
+import './searchBar.css'
+import 'font-awesome/css/font-awesome.min.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class SearchBar extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { value: '' };
+    super(props)
+    this.state = { value: '' }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ value: event.target.value })
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+    alert('A name was submitted: ' + this.state.value)
+    event.preventDefault()
   }
 
   render() {
@@ -32,4 +32,3 @@ export default class SearchBar extends React.Component {
     );
   }
 }
-
