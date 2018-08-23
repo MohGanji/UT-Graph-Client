@@ -4,10 +4,10 @@
   position: relative;
   direction: rtl;
   color: white;
-  font-size: 48pt; 
+  font-size: 36pt; 
   background-image: url("../../images/sky.jpg");
 
-  min-height: 900px; 
+  min-height: 650px; 
 
   background-attachment: fixed;
   background-position: center;
@@ -26,7 +26,7 @@
   transform: translate(-50%, -50%);
 }
 .home_slider {
-  width: 1600px;
+  width: 1200px;
   max-width: 95%;
   height: 650px;
   margin-top: 100px;
@@ -35,7 +35,7 @@
 }
 
 .home_new_events_title {
-  width: 1600px;
+  width: 1200px;
   max-width: 95%;
   margin-left: auto;
   margin-right: auto;
@@ -48,13 +48,13 @@
   background-color: #352649;
   color: rgb(233, 229, 229);
   display: inline;
-  font-size: 20pt;
+  font-size: 18pt;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
 }
 .home_new_events_container {
-  width: 1600px;
+  width: 1200px;
   max-width: 95%;
   min-height: 600px;
   margin-left: auto;
@@ -68,4 +68,36 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.load_more_events {
+  width: 1200px;
+  max-width: 95%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin-top: 30px;
+  margin-bottom: 30px;
+  direction: rtl;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+.load_more_events a {
+  display: block;
+  color: #352649;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 11pt;
+  padding: 15px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 5px;
+  color: rgb(102, 102, 102);
+  display: inline;
+}
+
+.load_more_events a:hover {
+  border: 1px solid black;
+  color: black;
 }

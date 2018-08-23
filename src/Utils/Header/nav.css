@@ -45,11 +45,10 @@
 }
 
 .login_logout_buttons {
-  width: 18%;
+  width: 25%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
-  /* margin-right: -12%;  */
-  /* fix toast propblem */
 }
 
 .close{
@@ -66,4 +65,8 @@
 }
 .close:hover{
   background: #0095ff;
+}
+
+.not_logged_in {
+  height: 60%;
 }

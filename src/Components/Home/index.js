@@ -23,14 +23,15 @@ export default class Home extends React.Component {
         { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
         { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
         { title: "همایشی که حجت سال ۹۶ برگزار کرد" }
-      ]
+      ],
+      pageToken: ''
     }
+    this.handlePaginationSubmit = this.handlePaginationSubmit.bind(this);
   }
 
   componentDidMount() {
     let that = this;
-
-    fetch('/api/v1/event', {
+    fetch(`/api/v1/event/`, {
       method: 'GET',
     })
       .then(function (response) {
@@ -38,15 +39,36 @@ export default class Home extends React.Component {
       })
       .then(handleErrors)
       .then(function (responseJson) {
-        return responseJson.data;
-      }).then(function (events) {
-        that.setState({ events: events });
+        that.setState({ events: responseJson.data, pageToken: responseJson.pageToken })
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
+  handlePaginationSubmit() {
+    let that = this;
+    let pageToken = this.state.pageToken;
+    fetch(`/api/v1/event/?pageToken="${pageToken}"`, {
+      method: 'GET',
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(handleErrors)
+      .then(function (responseJson) {
+        let previousEvents = that.state.events; //async okay?
+        let newEvents = responseJson.data;
+        let events = previousEvents.concat(newEvents);
+        that.setState({
+          events: events,
+          pageToken: responseJson.pageToken
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   render() {
     const newEvents = this.state.events.map((event) => <EventBox event={event} />);
@@ -65,8 +87,10 @@ export default class Home extends React.Component {
           <div class="home_new_events_title">
             <p> رویداد های تازه: </p>
           </div>
-
           {newEvents}
+          <div class="load_more_events">
+            <a onClick={this.handlePaginationSubmit}>رویداد های بیشتر</a>
+          </div>
         </div>
 
 

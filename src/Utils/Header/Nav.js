@@ -49,16 +49,13 @@ class Nav extends React.Component {
   render() {
     let rightElementOption
     if (this.props.authenticated) {
-      // rightElementOption = <LoggedInOption />
       rightElementOption =
-        <div>
-          <button onClick={this.handleSubmit} > logout</button>
+        <div class="login_logout_buttons">
+          <LoggedInOption />
         </div>
-      // 12
-
     } else {
       rightElementOption = (
-        <div class="login_logout_buttons">
+        <div class="login_logout_buttons not_logged_in">
           <Popup trigger={
             <a class="button" href="#">
               ورود

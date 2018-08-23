@@ -1,6 +1,6 @@
 .create_event_container1 {
   direction: rtl;
-  width: 1600px;
+  width: 1200px;
   background:white;
   /* border: 1px solid black; */
   margin-left: auto;
@@ -29,12 +29,12 @@
 
 .create_event_title p {
   color: rgb(233, 229, 229);
-  font-size: 22pt;
+  font-size: 20pt;
 }
 
 .create_event_rest p{
   /* margin-top: 50px; */
-  font-size: 18pt;
+  font-size: 16pt;
   font-weight: bold;
 }
 
