@@ -57,10 +57,13 @@ export default class Home extends React.Component {
       })
       .then(handleErrors)
       .then(function (responseJson) {
-        that.setState(prevState => ({
-          events: [...prevState.events, responseJson.data],
+        let previousEvents = that.state.events; //async okay?
+        let newEvents = responseJson.data;
+        let events = previousEvents.concat(newEvents);
+        that.setState({
+          events: events,
           pageToken: responseJson.pageToken
-        }))
+        })
       })
       .catch(function (error) {
         console.log(error);
