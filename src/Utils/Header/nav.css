@@ -46,10 +46,9 @@
 
 .login_logout_buttons {
   width: 25%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
-  /* margin-right: -12%;  */
-  /* fix toast propblem */
 }
 
 .close{
