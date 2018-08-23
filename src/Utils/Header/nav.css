@@ -66,3 +66,7 @@
 .close:hover{
   background: #0095ff;
 }
+
+.not_logged_in {
+  height: 60%;
+}

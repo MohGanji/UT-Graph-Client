@@ -56,6 +56,7 @@
 }
 
 .drop_btn {
+  width: 100%;
   border: none; 
   cursor: pointer;
 }
@@ -89,6 +90,7 @@
   padding: 20px 20px 30px;
   direction: rtl;
   width: 100%;
+  cursor: pointer;
 }
 
 .drop_down_content a:hover {
