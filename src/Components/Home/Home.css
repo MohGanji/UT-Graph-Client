@@ -69,3 +69,34 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.load_more_events {
+  width: 1600px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  direction: rtl;
+  display:flex;
+  justify-content: center;
+}
+
+.load_more_events a {
+  display: block;
+  color: #352649;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 12pt;
+  padding: 15px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 5px;
+  color: rgb(102, 102, 102);
+  /* box-shadow: 2px 2px 15px #888888be; */
+}
+
+.load_more_events a:hover {
+  border: 1px solid black;
+  color: black;
+}
