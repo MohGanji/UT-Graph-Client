@@ -65,8 +65,10 @@ export default class Home extends React.Component {
           <div class="home_new_events_title">
             <p> رویداد های تازه: </p>
           </div>
-
           {newEvents}
+          <div class="load_more_events">
+            <a>رویداد های بیشتر</a>
+          </div>
         </div>
 
 

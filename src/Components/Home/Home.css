@@ -69,3 +69,15 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.load_more_events {
+  width: 1600px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  direction: rtl;
+  display:flex;
+  justify-content: center;
+}
