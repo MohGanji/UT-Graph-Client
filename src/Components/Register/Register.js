@@ -38,28 +38,22 @@ export default class Register extends React.Component {
   handleSubmit() {
     const data = this.state;
     let that = this;
-    // toast("Wow so easy 123!");
     fetch('/api/v1/user/register', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     })
-      .then(res => res.json())
-      .then(handleErrors)
-      .then(function (response) {
-        alert("1");
-        if (response.status == 200)
+      .then((res) => {
+        if (res.status == 200)
           that.setState({
             is_registered: true
           });
-        else {
-          alert("wtf");
-        }
+        return res.json()
       })
+      .then(handleErrors)
       .catch(function (error) {
         console.log(error);
-        // alert(error);
-        //TODO: handle linking
+        // alert('err');
       });
   }
 
@@ -67,11 +61,6 @@ export default class Register extends React.Component {
     if (this.state.is_registered) {
       toast("شما با موفقیت ثبت نام شدید");
       return (
-        // <div class="signup_page" >
-        //   <div class="message">
-        //     <p> شما با موفقیت ثبت نام شدید! </p>
-        //   </div>
-        // </div>
         <div>
           < Login />
         </div>
@@ -82,7 +71,7 @@ export default class Register extends React.Component {
           <h1 class="login-title">Ut Graph</h1>
           <div class="login_form">
             <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
-            <input type="password" class="login-input" placeholder="Password" name=" password" onChange={this.handleChange} required />
+            <input type="password" class="login-input" placeholder="Password" name="password" onChange={this.handleChange} required />
             <input type="text" class="login-input" placeholder="First name" name="firstname" onChange={this.handleChange} required />
             <input type="text" class="login-input" placeholder="Last name" name="last" onChange={this.handleChange} required />
             <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
