@@ -50,159 +50,56 @@ class Nav extends React.Component {
     let loggedInOption;
     let rightElementOption
     if (!this.props.authenticated) {
-      rightElementOption = <LoggedInOption />
+      rightElementOption =
+        <div class="login_logout_buttons">
+          <LoggedInOption />
+        </div>
     } else {
       rightElementOption = (
-        <ul>
-          <li class="rightElement">
-            <Popup
-              trigger={
-                <a class="navbar_a" href="#">
-                  ورود
-                </a>
-              }
-              modal
-              contentStyle={contentStyle}
-              overlayStyle={inner_div}
-            >
-              {close => (
-                <div>
-                  <span class="close" onClick={close}>
-                    &times;
+        <div class="login_logout_buttons">
+          <Popup trigger={
+            <a class="button" href="#">
+              ورود
+              </a>}
+            modal
+            contentStyle={contentStyle}
+            overlayStyle={inner_div}
+          >
+            {close => (
+              <div>
+                <span class="close" onClick={close}>
+                  &times;
                   </span>
-                  <Login />
-                </div>
-              )}
-            </Popup>
-          </li>
-          <li class="active">
-            <Popup
-              trigger={
-                <a class="navbar_a" href="#">
-                  ثبت نام
-                </a>
-              }
-              modal
-              contentStyle={contentStyle}
-              overlayStyle={inner_div}
-            >
-              {close => (
-                <div>
-                  <span class="close" onClick={close}>
-                    &times;
+                <Login />
+              </div>
+            )}
+          </Popup>
+          <Popup trigger={
+            <a class="button active" href="#">
+              ثبت نام
+              </a>}
+            modal
+            contentStyle={contentStyle}
+            overlayStyle={inner_div}
+          >
+            {close => (
+              <div>
+                <span class="close" onClick={close}>
+                  &times;
                   </span>
-                  <Register />
-                </div>
-              )}
-            </Popup>
-          </li>
-        </ul>
+                <Register />
+              </div>
+            )}
+          </Popup>
+        </div>
       )
-    }
-    return (
-      <div class="navbar">
-        <ul>
-          <li>
-            <a class="navbar_a" id="logoLink" href={'/'}>
-              {' '}
-              <img id="logoImage" src={logo} />
-            </a>
-          </li>
-          <li class="navbar_search">
-            {' '}
-            <SearchBar />
-          </li>
-
-          {rightElementOption}
-        </ul>
-        <ToastContainer />
-      </div>
-    )
-    if (this.props.authenticated) {
-      loggedInOption = <div>
-        <button onClick={this.handleSubmit}>Logout</button>
-        hello {this.props.user.username}
-      </div>
-    }
-    else {
-      loggedInOption = <div class="login_logout_buttons">
-        <Popup trigger={
-          <a class="button" href="#">
-            ورود
-          </a>}
-          modal
-          contentStyle={contentStyle}
-          overlayStyle={inner_div}
-        >
-          {close => (
-            <div>
-              <span class="close" onClick={close}>
-                &times;
-              </span>
-              <Login />
-            </div>
-          )}
-        </Popup>
-        <Popup trigger={
-          <a class="button active" href="#">
-            ثبت نام
-          </a>}
-          modal
-          contentStyle={contentStyle}
-          overlayStyle={inner_div}
-        >
-          {close => (
-            <div>
-              <span class="close" onClick={close}>
-                &times;
-              </span>
-              <Register />
-            </div>
-          )}
-        </Popup>
-      </div>
     }
     return (
       <div>
         <div class="navbar">
           <a href={'/'}> <div class="logo_container"><img id="logoImage" src={logo} /></div> </a>
           <SearchBar />
-          <div class="login_logout_buttons">
-            <Popup trigger={
-              <a class="button" href="#">
-                ورود
-              </a>}
-              modal
-              contentStyle={contentStyle}
-              overlayStyle={inner_div}
-            >
-              {close => (
-                <div>
-                  <span class="close" onClick={close}>
-                    &times;
-                  </span>
-                  <Login />
-                </div>
-              )}
-            </Popup>
-            <Popup trigger={
-              <a class="button active" href="#">
-                ثبت نام
-              </a>}
-              modal
-              contentStyle={contentStyle}
-              overlayStyle={inner_div}
-            >
-              {close => (
-                <div>
-                  <span class="close" onClick={close}>
-                    &times;
-                  </span>
-                  <Register />
-                </div>
-              )}
-            </Popup>
-          </div>
+          {rightElementOption}
         </div >
         <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} rtl />
       </div>

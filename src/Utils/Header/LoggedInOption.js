@@ -11,8 +11,8 @@ export default class LoggedInOption extends React.Component {
         <div class="logged_in_option_notification">
           <i class="fa fa-bell notification_icon"></i>
         </div>
-        <div class="dropdawn">
-          <div class="logged_in_option_info dropdaw">
+        <div class="drop_down">
+          <div class="logged_in_option_info drop_btn">
             <div class="logged_in_option_name">
               <p><b> محمد هادی حجت </b></p>
             </div>
@@ -20,14 +20,15 @@ export default class LoggedInOption extends React.Component {
               <img src={profilePic} />
             </div>
           </div>
-          <div class="dropdown_content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+          <div class="drop_down_content">
+            <a href="#">پروفایل</a>
+            <a href="#">رویداد های من</a>
+            <a href="#">ساخت رویداد</a>
+            <a href="#">خروج</a>
           </div>
         </div>
       </div>
-
+      // <div> 123 </div>
     )
   }
 }

@@ -67,8 +67,3 @@
 .close:hover{
   background: #0095ff;
 }
-
-.my_toast{
-  background: red;
-  position: toast.POSITION.BOTTOM_LEFT;
-}
