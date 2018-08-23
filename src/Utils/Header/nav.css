@@ -67,3 +67,7 @@
 .close:hover{
   background: #0095ff;
 }
+
+.my_toast{
+  background: red;
+}

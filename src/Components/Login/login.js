@@ -41,19 +41,26 @@ class Login extends React.Component {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
-    }).then(handleErrors)
+    })
+      .then(handleErrors)
       .then(function (response) {
         return response.json();
-      }).then(function (responseJson) {
+      })
+      .then(function (responseJson) {
         localStorage.setItem('token', responseJson.data.token)
         that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
+        alert(2);
         return fetch(`/api/v1/user/${data.username}`);
       }).then(function (response) {
+        alert(3)
         return response.json();
       }).then(function (responseJson) {
+        alert(4)
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).catch(function (error) {
-        //TODO: toast 
+        //TODO: toast
+        console.log(error);
+        alert(5);
       });
   }
 

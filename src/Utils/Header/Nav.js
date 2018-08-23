@@ -57,47 +57,49 @@ class Nav extends React.Component {
       )
     }
     return (
-      <div class="navbar">
-        <a href={'/'}> <div class="logo_container"><img id="logoImage" src={logo} /></div> </a>
-        <SearchBar />
-        <div class="login_logout_buttons">
-          <Popup trigger={
-            <a class="button" href="#">
-              ورود
+      <div>
+        <div class="navbar">
+          <a href={'/'}> <div class="logo_container"><img id="logoImage" src={logo} /></div> </a>
+          <SearchBar />
+          <div class="login_logout_buttons">
+            <Popup trigger={
+              <a class="button" href="#">
+                ورود
               </a>}
-            modal
-            contentStyle={contentStyle}
-            overlayStyle={inner_div}
-          >
-            {close => (
-              <div>
-                <span class="close" onClick={close}>
-                  &times;
+              modal
+              contentStyle={contentStyle}
+              overlayStyle={inner_div}
+            >
+              {close => (
+                <div>
+                  <span class="close" onClick={close}>
+                    &times;
                   </span>
-                <Login />
-              </div>
-            )}
-          </Popup>
-          <Popup trigger={
-            <a class="button active" href="#">
-              ثبت نام
+                  <Login />
+                </div>
+              )}
+            </Popup>
+            <Popup trigger={
+              <a class="button active" href="#">
+                ثبت نام
               </a>}
-            modal
-            contentStyle={contentStyle}
-            overlayStyle={inner_div}
-          >
-            {close => (
-              <div>
-                <span class="close" onClick={close}>
-                  &times;
+              modal
+              contentStyle={contentStyle}
+              overlayStyle={inner_div}
+            >
+              {close => (
+                <div>
+                  <span class="close" onClick={close}>
+                    &times;
                   </span>
-                <Register />
-              </div>
-            )}
-          </Popup>
-        </div>
-        {/* <ToastContainer /> */}
-      </div >
+                  <Register />
+                </div>
+              )}
+            </Popup>
+          </div>
+        </div >
+        <ToastContainer class="my_toast" />
+      </div>
     );
   }
 }
