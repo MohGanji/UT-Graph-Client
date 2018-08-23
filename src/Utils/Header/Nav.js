@@ -163,14 +163,6 @@ class Nav extends React.Component {
       </div>
     }
     return (
-<<<<<<< HEAD
-      <div class="navbar">
-        <a href={'/'}> <div class="logo_container"><img id="logoImage" src={logo} /></div> </a>
-        <SearchBar />
-        {loggedInOption}
-        {/* <ToastContainer /> */}
-      </div >
-=======
       <div>
         <div class="navbar">
           <a href={'/'}> <div class="logo_container"><img id="logoImage" src={logo} /></div> </a>
@@ -214,7 +206,6 @@ class Nav extends React.Component {
         </div >
         <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} rtl />
       </div>
->>>>>>> d90e926cd7a2ff138cf8d17337be5f6719dc27a7
     );
   }
 }
