@@ -1,73 +1,56 @@
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #352649;
-  display: flex;
-  align-items: center;
-}
 .navbar{
   position: fixed;
-  height: 55px;
+  height: 80px;
+  width: 100%;
   top: 0px;
   z-index: 1;
-  width: 100%;
-  /* border-bottom: 5px solid white; */
-}
-.container{
-  padding-top: 60px;
-  padding-bottom: 10px;
+  background-color: #352649;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar_a {
+.logo_container {
+  height: 60px;
+  width: 60px;
+  margin-left: 80px;
+}
+
+#logoImage {
+  width: 100%;
+  height: 100%;
+}
+
+.button {
   display: block;
   color: white;
   text-align: center;
-  padding: 12px 14px;
+  padding: 14px 16px;
   text-decoration: none;
+  font-size: 12pt;
 }
 
-.navbar .active {
+.active {
   margin-right: 20px;
   background-color: #0095ff;
   border: 1px solid #07c;
   border-radius: 3px;
   box-shadow: inset 0 1px 0 #66bfff;
-}
-
-#logoLink {
-  padding: 3px;
-  margin: 0;
-  margin-left: 50px;
-}
-
-#logoImage {
-  width: 43px;
-  height: 43px;
-}
-
-.rightElement {
-  margin-right: 20px;
-  margin-left: auto;
-}
-
-.navbar_search{
-  margin-left: auto;
-  margin-right: auto;
-  /* padding-left: 20%; */
-  /* padding-right: 10%; */
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  margin-left: 20px;
 }
 
 :focus {
   outline: 0;
 }
 
+.login_logout_buttons {
+  width: 18%;
+  display: flex;
+  justify-content: flex-end;
+  /* margin-right: -12%;  */
+  /* fix toast propblem */
+}
 
 .close{
   float: right;

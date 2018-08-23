@@ -6,6 +6,7 @@ import './Home.css';
 import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
 import Login from '../Login/login';
+import skyImage from '../../images/sky.jpg'
 import { handleErrors } from '../../Utils/handleErrors.js';
 
 
@@ -53,15 +54,22 @@ export default class Home extends React.Component {
     return (
       <div>
         <Header />
-        <div class="home_slider">
+        <div class="test">
+          {/* <img src={skyImage} /> */}
+          <div class="centered">به UT Graph خوش آمدید!</div>
+        </div>
+        {/* <div class="home_slider">
           <MySlider events={this.state.events} />
-        </div>
-        <div class="home_new_events_title">
-          <p> رویداد های تازه: </p>
-        </div>
+        </div> */}
         <div class="home_new_events_container">
+          <div class="home_new_events_title">
+            <p> رویداد های تازه: </p>
+          </div>
+
           {newEvents}
         </div>
+
+
         {/* {newEvents}
         </div>
         <div class="old_events">

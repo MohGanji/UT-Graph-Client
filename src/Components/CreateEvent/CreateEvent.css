@@ -1,0 +1,81 @@
+.create_event_container1 {
+  direction: rtl;
+  width: 1600px;
+  background:white;
+  /* border: 1px solid black; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  display: grid;
+  grid-template-rows: 8% 92%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px #888888be;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.create_event_container2 {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create_event_title {
+  background-color: #352649;
+  /* border-radius: 5px; */
+  display: flex;
+  align-items: center;
+}
+
+.create_event_title p {
+  color: rgb(233, 229, 229);
+  font-size: 22pt;
+}
+
+.create_event_rest p{
+  /* margin-top: 50px; */
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.create_event_rest input {
+  margin-bottom: 25px;
+  padding-right:10px;
+  font-size: 14pt;
+  font-family: sahel;
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 60px;
+}
+
+.event_time_input_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_text {
+  width: 100%;
+}
+
+.create_event_input {
+  margin-top: 50px;
+}
+
+.event_text_area {
+  resize: none;
+  margin-bottom: 50px;
+  font-family: sahel;
+  font-size: 14pt;
+  width: 100%;
+  height: 300px;
+}
+
+.create_event_input input:focus {
+  border: 1px solid #353535;
+}
+
+.event_text_area:focus {
+  border: 1px solid #353535;
+}
