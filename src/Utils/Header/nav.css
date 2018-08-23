@@ -45,7 +45,7 @@
 }
 
 .login_logout_buttons {
-  width: 18%;
+  width: 25%;
   display: flex;
   justify-content: flex-end;
   /* margin-right: -12%;  */

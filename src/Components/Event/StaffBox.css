@@ -1,6 +1,6 @@
 .staff_box {
-  width: 250px;
-  height: 330px;
+  width: 190px;
+  height: 275px;
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
@@ -14,8 +14,8 @@
 
 .staff_box_image {
   margin-top: 20px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
 .staff_box_image img {
@@ -27,12 +27,12 @@
 .staff_box_role {
   margin-top: 15px;
   text-align: center;
-  font-size: 24pt;
+  font-size: 18pt;
   font-weight: bold;
 }
 
 .staff_box_name {
   margin-top: 10px;
   text-align: center;
-  font-size: 18pt;
+  font-size: 16pt;
 }
