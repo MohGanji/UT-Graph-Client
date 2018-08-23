@@ -98,7 +98,7 @@ class Nav extends React.Component {
             </Popup>
           </div>
         </div >
-        <ToastContainer class="my_toast" />
+        <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} rtl />
       </div>
     );
   }
