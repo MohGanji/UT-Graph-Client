@@ -4,10 +4,11 @@ import NewEvents from './NewEvents'
 import { MySlider } from './Slider'
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
-import OldEventBox from '../../Utils/OldEventBox';
+import OldEventBox from './OldEventBox';
 import Login from '../Login/login';
 import skyImage from '../../images/sky.jpg'
 import { handleErrors } from '../../Utils/handleErrors.js';
+import OldEventSlider from './OldEventSlider';
 
 
 export default class Home extends React.Component {
@@ -72,7 +73,7 @@ export default class Home extends React.Component {
 
   render() {
     const newEvents = this.state.events.map((event) => <EventBox event={event} />);
-    const oldEvents = this.state.old_events.map((old_event) => <OldEventBox event={old_event} />);
+    const oldEvents = this.state.events.map((old_event) => <OldEventBox event={old_event} />);
     return (
       <div>
         <Header />
@@ -85,19 +86,21 @@ export default class Home extends React.Component {
         </div> */}
         <div class="home_new_events_container">
           <div class="home_new_events_title">
-            <p> رویداد های تازه: </p>
+            <p> رویداد های در حال برگزاری: </p>
           </div>
           {newEvents}
           <div class="load_more_events">
-            <a onClick={this.handlePaginationSubmit}>رویداد های بیشتر</a>
+            <a class="load_more_button" onClick={this.handlePaginationSubmit}>رویداد های بیشتر</a>
           </div>
         </div>
 
-
+        {/* <OldEventBox /> */}
         {/* {newEvents}
         </div>
         <div class="old_events">
           {oldEvents} */}
+        {/* <OldEventBox events={newEvents} /> */}
+        <OldEventSlider events={oldEvents} />
       </div>
     );
   }

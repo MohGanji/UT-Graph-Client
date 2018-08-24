@@ -69,6 +69,7 @@
   position: relative;
 }
 
+
 .event_page_about_right {
   margin: 10px;
   display: grid;
@@ -223,7 +224,7 @@
   margin: auto;
 }
 
-.event_page_signup_button {
+/* .event_page_signup_button {
   background-color: #352649;
   color: rgb(233, 229, 229);
   font-family: sahel;
@@ -239,4 +240,37 @@
   cursor: pointer;
   position: absolute;
   bottom: 0;
+} */
+
+.event_page_button_container { 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  border: 1px solid red; 
+  display: flex;
+  align-items: center;
 }
+
+.event_page_signup_button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 25px;
+  margin-left: 20px;
+  font-size: 14pt;
+  cursor: pointer;
+  background-color: #352649;
+  font-family: sahel;
+  display: inline;
+}
+
+/* 
+.event_page_signup_attendent {
+  background: cyan;
+} 
+
+.event_page_signup_staff {
+  background: orangered;
+}  */
+

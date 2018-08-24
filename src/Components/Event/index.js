@@ -68,7 +68,10 @@ export default class Event extends React.Component {
 
         <div class="event_page_info_2">
           <div class="event_page_about_left">
-            <button class="event_page_signup_button"> درخواست عضویت </button>
+            <div class="event_page_button_container">
+              <button class="event_page_signup_button event_page_signup_attendent"> اضافه شدن به عنوان شرکت کننده </button>
+              <button class="event_page_signup_button event_page_signup_staff"> اضافه شدن به عنوان کمک کننده </button>
+            </div>
           </div>
           <div class="event_page_about_right">
             <div class="event_page_about_right_up">

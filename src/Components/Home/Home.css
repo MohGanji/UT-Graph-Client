@@ -24,6 +24,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
 }
 .home_slider {
   width: 1200px;
@@ -36,10 +38,10 @@
 
 .home_new_events_title {
   width: 1200px;
-  max-width: 95%;
+  /* max-width: 95%; */
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 35px;
   margin-bottom: 30px;
   direction: rtl;
 }
@@ -48,10 +50,11 @@
   background-color: #352649;
   color: rgb(233, 229, 229);
   display: inline;
-  font-size: 18pt;
-  padding: 15px;
+  font-size: 16pt;
+  padding: 14px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
+  margin-right: 25px;
 }
 .home_new_events_container {
   width: 1200px;
@@ -60,7 +63,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  padding: 10px;
+  /* padding: 10px; */
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
@@ -74,16 +77,16 @@
   width: 1200px;
   max-width: 95%;
   /* margin-left: auto;
-  margin-right: auto; */
+  margin-rightload: auto; */
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   direction: rtl;
   cursor: pointer;
   position: relative;
   text-align: center;
 }
 
-.load_more_events a {
+.load_more_button {
   display: block;
   color: #352649;
   text-align: center;
@@ -97,7 +100,7 @@
   display: inline;
 }
 
-.load_more_events a:hover {
+.load_more_button:hover {
   border: 1px solid black;
   color: black;
 }

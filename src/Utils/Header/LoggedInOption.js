@@ -3,6 +3,7 @@ import './LoggedInOption.css'
 import 'font-awesome/css/font-awesome.min.css'
 import profilePic from '../../images/staffAvatar.png'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -19,6 +20,7 @@ class LoggedInOption extends React.Component {
 
   handleExit() {
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
+    toast('شما با موفقیت خارج شدید')
   }
 
   render() {
