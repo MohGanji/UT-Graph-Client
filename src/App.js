@@ -5,6 +5,8 @@ import Home from './Components/Home';
 import User from './Components/User'
 import Event from './Components/Event';
 import CreateEvent from './Components/CreateEvent';
+import EditProfile from './Components/EditProfile';
+
 
 class App extends Component {
   render() {
@@ -15,6 +17,7 @@ class App extends Component {
           <Route exact path={'/user/:id'} component={User} />
           <Route exact path={'/event/:id'} component={Event} />
           <Route exact path={'/create-event'} component={CreateEvent} />
+          <Route exact path={'/edit-profile'} component={EditProfile} />
         </Switch>
       </BrowserRouter>
     )
