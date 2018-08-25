@@ -92,10 +92,12 @@ export default class EditProfile extends React.Component {
         <Header />
         <div class="create_event_container1">
           <div class="create_event_title">
-            <TitleHolder title="ویرایش پروفایل" image={pencilImage} />
+            <div class="create_event_title_container" >
+              <TitleHolder title="ویرایش پروفایل" image={pencilImage} />
+            </div>
           </div>
           <div class="create_event_container2">
-            <div class="change_image">
+            <div class="change_image">z
               <div class="create_event_input" >
                 <p class="edit_header_font"> تصویر کاربر </p>
                 <div class="change_image_2">
@@ -112,13 +114,13 @@ export default class EditProfile extends React.Component {
               <div class="create_event_rest">
                 <div class="create_event_input" >
                   <p> نام : </p>
-                  <input class="input_text" type="text" ></input>
+                  <input class="create_event_rest_input" type="text" ></input>
                 </div>
               </div>
               <div class="create_event_rest">
                 <div class="create_event_input" >
                   <p> نام خانوادگی : </p>
-                  <input class="input_text" type="text" ></input>
+                  <input class="create_event_rest_input" type="text" ></input>
                 </div>
               </div>
             </div>
@@ -126,13 +128,13 @@ export default class EditProfile extends React.Component {
               <div class="create_event_rest">
                 <div class="create_event_input" >
                   <p> ایمیل : </p>
-                  <input class="input_text" type="text" ></input>
+                  <input class="create_event_rest_input" type="text" ></input>
                 </div>
               </div>
               <div class="create_event_rest">
                 <div class="create_event_input" >
                   <p> شماره دانشجویی : </p>
-                  <input class="input_text" type="text" ></input>
+                  <input class="create_event_rest_input" type="text" ></input>
                 </div>
               </div>
             </div>
@@ -141,13 +143,13 @@ export default class EditProfile extends React.Component {
               <div class="create_event_rest">
                 <div class="create_event_input" >
                   <p> رمزعبور جدید : </p>
-                  <input class="input_text" type="text" name="new_password" onChange={this.password_change} ></input>
+                  <input class="create_event_rest_input" type="password" name="new_password" onChange={this.password_change} ></input>
                 </div>
               </div>
               <div class="create_event_rest tekrar">
                 <div class="create_event_input" >
                   <p> تکرار : </p>
-                  <input class="input_text" type="text" name="new_password_repeat" onChange={this.password_change} ></input>
+                  <input class="create_event_rest_input" type="password" name="new_password_repeat" onChange={this.password_change} ></input>
                 </div>
               </div>
               <div class="ok_sign">

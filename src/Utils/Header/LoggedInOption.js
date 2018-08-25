@@ -19,8 +19,9 @@ class LoggedInOption extends React.Component {
   }
 
   handleExit() {
-    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
-    toast('شما با موفقیت خارج شدید')
+    localStorage.removeItem('token');
+    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
+    toast('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
   }
 
   render() {
@@ -46,7 +47,6 @@ class LoggedInOption extends React.Component {
           </div>
         </div>
       </div>
-      // <div> 123 </div>
     )
   }
 }

@@ -43,7 +43,9 @@ class Nav extends React.Component {
   }
 
   handleSubmit() {
-    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
+    localStorage.removeItem('token');
+    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
+    <Redirect to='/' />
   }
 
   render() {

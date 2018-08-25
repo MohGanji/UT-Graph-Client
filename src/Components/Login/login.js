@@ -48,7 +48,7 @@ class Login extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
-        localStorage.setItem('token', responseJson.data.token)
+        localStorage.setItem('token', responseJson.data.token);
         that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
         return fetch(`/api/v1/user/${data.username}`);
       }).then(function (response) {
