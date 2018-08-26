@@ -13,7 +13,7 @@ import OrganizerImage from '../../images/eventPageOrganizer.jpg';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
-
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 export default class Event extends React.Component {
   constructor(props) {
@@ -80,7 +80,7 @@ export default class Event extends React.Component {
             <div class="event_page_about_left_description" >
               <p class="info_showing">توضیحات:</p>
               <div class="event_page_about_left_description_text" >
-                <p>{this.state.info.description}</p>
+                <p>{ReactHtmlParser(this.state.info.description)}</p>
               </div>
             </div>
             <div class="event_page_button_container">
