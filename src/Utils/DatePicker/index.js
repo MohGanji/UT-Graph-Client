@@ -76,11 +76,11 @@ export default class DatePicker extends React.Component {
   render() {
     return (
       <div class="date_picker" >
-        <input class="date_picker_day" value={this.state.day} onChange={this.handleDayChange} />
+        <input class="date_picker_day" value={this.state.day} onChange={this.handleDayChange} placeholder="DD" />
         /
-        <input class="date_picker_month" value={this.state.month} onChange={this.handleMonthChange} />
+        <input class="date_picker_month" value={this.state.month} onChange={this.handleMonthChange} placeholder="MM" />
         /
-        <input class="date_picker_year" value={this.state.year} onChange={this.handleYearChange} />
+        <input class="date_picker_year" value={this.state.year} onChange={this.handleYearChange} placeholder="YYYY" />
       </div>
     );
   }
