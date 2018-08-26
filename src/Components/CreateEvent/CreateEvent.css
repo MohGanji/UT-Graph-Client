@@ -99,3 +99,7 @@
   align-items: center;
   padding-bottom: 25px;
 }
+
+.create_event_textarea {
+  margin-bottom: 30px;
+}

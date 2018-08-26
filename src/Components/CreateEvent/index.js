@@ -4,8 +4,9 @@ import { Header } from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
-import { handleErrors } from '../../Utils/handleErrors'
-import { connect } from 'react-redux'
+import { handleErrors } from '../../Utils/handleErrors';
+import { connect } from 'react-redux';
+import TextArea from './TextArea';
 
 function mapStateToProps(state) {
   return {
@@ -30,6 +31,7 @@ class CreateEvent extends React.Component {
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
   }
 
   handleChange(event) {
@@ -56,6 +58,10 @@ class CreateEvent extends React.Component {
     let endTime = year + '-' + formattedMonth + '-' + formattedDay;
 
     this.setState({ endTime: endTime });
+  }
+
+  handleDescription(description) {
+    this.setState({ description: description });
   }
 
   handleSubmit() {
@@ -109,8 +115,9 @@ class CreateEvent extends React.Component {
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> توضیحات: </p>
-                <textarea class="event_text_area" name="description" value={this.state.description} onChange={this.handleChange}>
-                </textarea>
+                <div class="create_event_textarea">
+                  <TextArea handleText={this.handleDescription} />
+                </div>
               </div>
               <div class="create_event_submit_container">
                 <input class="event_page_signup_button" type="submit" onClick={this.handleSubmit} value='ثبت' />
