@@ -14,24 +14,29 @@ import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import NotFound from '../NotFound';
 
 export default class Event extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      info: {}
+      info: {},
+      notFound: false
     }
     this.getDateString = this.getDateString.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let that = this;
     const id = this.props.match.params.id;
 
     fetch(`/api/v1/event/${id}`)
       .then(handleErrors)
       .then(function (response) {
+        if (!response.ok) {
+          that.setState({ notFound: true });
+        }
         return response.json();
       })
       .then(function (responseJson) {
@@ -51,6 +56,10 @@ export default class Event extends React.Component {
   }
 
   render() {
+    if (this.state.notFound) {
+      return <NotFound />
+    }
+
     let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
     let endTimeString = this.getDateString(new Date(this.state.info.endTime));
 
