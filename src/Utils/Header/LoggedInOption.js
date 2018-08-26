@@ -3,6 +3,7 @@ import './LoggedInOption.css'
 import 'font-awesome/css/font-awesome.min.css'
 import profilePic from '../../images/staffAvatar.png'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -19,6 +20,7 @@ class LoggedInOption extends React.Component {
 
   handleExit() {
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
+    toast('با موفقیت خارج شدید');
   }
 
   render() {
@@ -37,13 +39,13 @@ class LoggedInOption extends React.Component {
             </div>
           </div>
           <div class="drop_down_content">
-            <a href="#">پروفایل</a>
+            <a href={`/user/${this.props.user.username}`}>پروفایل</a>
             <a href="#">رویداد های من</a>
             <a href="#">ساخت رویداد</a>
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
-      </div>
+      </div >
       // <div> 123 </div>
     )
   }
