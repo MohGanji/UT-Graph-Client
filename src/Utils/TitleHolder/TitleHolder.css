@@ -1,28 +1,31 @@
 .title_holder_container{
   direction: rtl;
-  width: 400px;
+  width: 100%;
   max-width: 85%;
-  height: 100px;
+  height: 100%;
   max-height: 20%;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
+  margin-right: 2%;
 }
 
 .title_holder_container_name {
   display: flex;
   align-items: center;
   /* font-size: 20pt; */
-  margin-right: -20px;
+  margin-right: 0;
 }
 
 .title_holder_container_image {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
+  /* align-content: center; */
   margin: auto;
   margin-right: 0;  
+  padding-left: 10px;
 }

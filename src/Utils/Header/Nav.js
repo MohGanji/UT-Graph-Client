@@ -39,11 +39,6 @@ const inner_div = {
 class Nav extends React.Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleSubmit() {
-    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
   }
 
   render() {

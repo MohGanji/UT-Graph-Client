@@ -1,11 +1,8 @@
-.new_event{
-  /* width: 100px; */
-  /* background: blue; */
-  color: #BA4B02;
-  /* background: red; */
-  /* border: 1px solid orange; */
-  margin: 5px;
-}
-.new_event:hover{
- color: rgb(228, 94, 4);
-}
+ .old_box {
+   width: 1200px;
+   height: 300px;
+   border: 1px solid red;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 30px;
+ }

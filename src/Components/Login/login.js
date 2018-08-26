@@ -2,6 +2,7 @@ import React from 'react'
 import './login.css'
 import { handleErrors } from '../../Utils/handleErrors'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -47,13 +48,15 @@ class Login extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
-        localStorage.setItem('token', responseJson.data.token)
+        localStorage.setItem('token', responseJson.data.token);
         that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
         return fetch(`/api/v1/user/${data.username}`);
       }).then(function (response) {
         return response.json();
       }).then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
+      }).then(function () {
+        toast('شما با موفقیت وارد شدید');
       }).catch(function (error) {
         //TODO: toast
         console.log(error);

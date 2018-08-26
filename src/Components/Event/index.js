@@ -13,24 +13,30 @@ import OrganizerImage from '../../images/eventPageOrganizer.jpg';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
-
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import NotFound from '../NotFound';
 
 export default class Event extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      info: {}
+      info: {},
+      notFound: false
     }
+    this.getDateString = this.getDateString.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let that = this;
     const id = this.props.match.params.id;
 
     fetch(`/api/v1/event/${id}`)
       .then(handleErrors)
       .then(function (response) {
+        if (!response.ok) {
+          that.setState({ notFound: true });
+        }
         return response.json();
       })
       .then(function (responseJson) {
@@ -44,7 +50,19 @@ export default class Event extends React.Component {
       });
   }
 
+  getDateString(date) {
+    let dateString = date.getFullYear() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getDate();
+    return dateString;
+  }
+
   render() {
+    if (this.state.notFound) {
+      return <NotFound />
+    }
+
+    let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
+    let endTimeString = this.getDateString(new Date(this.state.info.endTime));
+
     return (
       <div>
 
@@ -58,9 +76,9 @@ export default class Event extends React.Component {
               <TitleHolder image={pencilImage} title={this.state.info.title} />
             </div>
             <div class="event_page_info_container_bottom">
-              <TitleHolder image={beginTimeImage} title="۲۵ مرداد ۱۳۹۷" />
-              <TitleHolder image={endTimeImage} title="۲۵ شهریور ۱۳۹۷" />
-              <TitleHolder image={mapImage} title="دانشگاه تهران" />
+              <TitleHolder image={beginTimeImage} title={beginTimeString} />
+              <TitleHolder image={endTimeImage} title={endTimeString} />
+              <TitleHolder image={mapImage} title={this.state.info.location} />
               {/* <TitleHolder image={capacityImage} title="۶۰" /> */}
             </div>
           </div>
@@ -68,7 +86,16 @@ export default class Event extends React.Component {
 
         <div class="event_page_info_2">
           <div class="event_page_about_left">
-            <button class="event_page_signup_button"> درخواست عضویت </button>
+            <div class="event_page_about_left_description" >
+              <p class="info_showing">توضیحات:</p>
+              <div class="event_page_about_left_description_text" >
+                <p>{ReactHtmlParser(this.state.info.description)}</p>
+              </div>
+            </div>
+            <div class="event_page_button_container">
+              <button class="event_page_signup_button event_page_signup_attendent"> اضافه شدن به عنوان شرکت کننده </button>
+              <button class="event_page_signup_button event_page_signup_staff"> اضافه شدن به عنوان کمک کننده </button>
+            </div>
           </div>
           <div class="event_page_about_right">
             <div class="event_page_about_right_up">
@@ -76,7 +103,8 @@ export default class Event extends React.Component {
                 <img src={GoogleMapImage} />
               </div>
               <div class="event_page_about_right_up_title_container">
-                <p class="event_page_about_right_up_title"> دانشگاه تهران </p>
+                <p class="event_page_about_right_up_title">{this.state.info.location}</p>
+                {/* city country ?? */}
                 <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
               </div>
             </div>
@@ -98,7 +126,7 @@ export default class Event extends React.Component {
               </div>
               <div class="event_page_users_left_organizer_info">
                 <p class="event_page_users_left_organizer_info_title">  مسئول برگزاری </p>
-                <p class="event_page_users_left_organizer_info_name"> آرمان رستمی </p>
+                <p class="event_page_users_left_organizer_info_name"> {this.state.info.organizer} </p>
               </div>
             </div>
           </div>

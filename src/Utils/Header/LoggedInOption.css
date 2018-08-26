@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.7vw;
 }
 
 .logged_in_option_info {
@@ -29,11 +30,16 @@
   background-color: blue;
 }
 
+.logged_in_option_photo {
+  display: flex;
+  align-items: center;
+}
+
 .logged_in_option_photo img {
   /* border: 1px solid green; */
   margin-top: 0;
-  width: 80px;
-  height: 80px;
+  width: 8vh;
+  height: 8vh;
   border-radius: 50%;
 }
 
