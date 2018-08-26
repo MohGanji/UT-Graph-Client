@@ -11,12 +11,12 @@ export default class Register extends React.Component {
     super(props);
 
     this.state = {
-      username: "11",
-      password: "22",
-      fistName: "33",
-      lastName: "44",
-      email: "55",
-      sid: "66",
+      username: "",
+      password: "",
+      fistName: "",
+      lastName: "",
+      email: "",
+      sid: "",
       is_registered: false
     }
 
@@ -69,12 +69,12 @@ export default class Register extends React.Component {
         <div class="signup_page" >
           <h1 class="login-title">Ut Graph</h1>
           <div class="login_form">
-            <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} required autofocus />
-            <input type="password" class="login-input" placeholder="Password" name="password" onChange={this.handleChange} required />
-            <input type="text" class="login-input" placeholder="First name" name="firstname" onChange={this.handleChange} required />
-            <input type="text" class="login-input" placeholder="Last name" name="last" onChange={this.handleChange} required />
-            <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} required />
-            <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} required />
+            <input type="text" class="login-input" placeholder="username" name="username" onChange={this.handleChange} value={this.state.username} required autofocus />
+            <input type="password" class="login-input" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} required />
+            <input type="text" class="login-input" placeholder="First name" name="firstName" onChange={this.handleChange} value={this.state.firstName} required />
+            <input type="text" class="login-input" placeholder="Last name" name="lastName" onChange={this.handleChange} value={this.state.lastName} required />
+            <input type="email" class="login-input" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.value} required />
+            <input type="text" class="login-input" placeholder="Sid" name="sid" onChange={this.handleChange} value={this.state.sid} required />
 
             <input type="submit" value="ثبت نام" class="login-button" onClick={this.handleSubmit} />
             <p class="login-lost">

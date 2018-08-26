@@ -26,7 +26,9 @@ class App extends Component {
           <Route exact path={'/'} component={Home} />
           <Route exact path={'/user/:id'} component={User} />
           <Route exact path={'/event/:id'} component={Event} />
-          <Route exact path={'/edit-profile'} component={EditProfile} />
+          <Route exact path="/edit-profile" render={() => (
+            (this.props.authenticated) ? (<EditProfile />) : (<Redirect to="/" />)
+          )} />
           <Route exact path="/create-event" render={() => (
             (this.props.authenticated) ? (<CreateEvent />) : (<Redirect to="/" />)
           )} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoggedInOption.css'
 import 'font-awesome/css/font-awesome.min.css'
-import profilePic from '../../images/staffAvatar.png'
+import profilePic from '../../images/defaultProfile.jpg'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify';
 
@@ -33,16 +33,17 @@ class LoggedInOption extends React.Component {
         <div class="drop_down">
           <div class="logged_in_option_info drop_btn">
             <div class="logged_in_option_name">
-              <p><b> محمد هادی حجت </b></p>
+              <p><b> {this.props.user.firstName + ' ' + this.props.user.lastName} </b></p>
             </div>
             <div class="logged_in_option_photo">
               <img src={profilePic} />
             </div>
           </div>
           <div class="drop_down_content">
-            <a href="#">پروفایل</a>
+            <a href={`/user/${this.props.user.username}`}>پروفایل</a>
+            <a href={`/edit-profile`} >ویرایش پروفایل</a>
             <a href="#">رویداد های من</a>
-            <a href="#">ساخت رویداد</a>
+            <a href={`/create-event`}>ساخت رویداد</a>
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
