@@ -6,6 +6,7 @@ import User from './Components/User'
 import Event from './Components/Event';
 import CreateEvent from './Components/CreateEvent';
 import EditProfile from './Components/EditProfile';
+import NotFound from './Components/NotFound';
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
@@ -32,6 +33,7 @@ class App extends Component {
           <Route exact path="/create-event" render={() => (
             (this.props.authenticated) ? (<CreateEvent />) : (<Redirect to="/" />)
           )} />
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     )
