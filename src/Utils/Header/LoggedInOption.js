@@ -19,14 +19,9 @@ class LoggedInOption extends React.Component {
   }
 
   handleExit() {
-<<<<<<< HEAD
-    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
-    toast('با موفقیت خارج شدید');
-=======
     localStorage.removeItem('token');
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
     toast('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
->>>>>>> bef153259dd8f1fddff6866476e8fb4481be8295
   }
 
   render() {
@@ -46,21 +41,13 @@ class LoggedInOption extends React.Component {
           </div>
           <div class="drop_down_content">
             <a href={`/user/${this.props.user.username}`}>پروفایل</a>
-<<<<<<< HEAD
-=======
             <a href={`/edit-profile`} >ویرایش پروفایل</a>
->>>>>>> bef153259dd8f1fddff6866476e8fb4481be8295
             <a href="#">رویداد های من</a>
             <a href={`/create-event`}>ساخت رویداد</a>
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
-<<<<<<< HEAD
-      </div >
-      // <div> 123 </div>
-=======
       </div>
->>>>>>> bef153259dd8f1fddff6866476e8fb4481be8295
     )
   }
 }
