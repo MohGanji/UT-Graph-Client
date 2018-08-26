@@ -7,6 +7,7 @@ import ProfilePhoto from '../../images/defaultProfile.jpg';
 import NewEvents from '../Home/NewEvents';
 import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
+import NotFound from '../NotFound';
 
 export default class User extends React.Component {
   constructor(props) {
@@ -14,17 +15,21 @@ export default class User extends React.Component {
 
     this.state = {
       info: {},
-      events: []
+      events: [],
+      notFound: false
     }
   }
 
-  componentDidMount() {
+  componentWillMount() { //ok? why componentDidMount when there is the perfect componentWillMount? :D :/
     let that = this;
     const id = this.props.match.params.id;
 
     fetch(`/api/v1/user/${id}`)
       .then(handleErrors)
       .then(function (response) {
+        if (response.status == 404) {
+          that.setState({ notFound: true });
+        }
         return response.json();
       })
       .then(function (responseJson) {
@@ -54,6 +59,9 @@ export default class User extends React.Component {
   }
 
   render() {
+    if (this.state.notFound == true) {
+      return <NotFound />
+    }
     let userInfo = this.state.info.info == null ? 'دانشجو' : this.state.info.info;
     let userEvents = this.state.events.map((event) =>
       <EventBox event={event} />
