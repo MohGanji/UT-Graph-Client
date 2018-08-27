@@ -1,34 +1,62 @@
 import React from 'react'
 import './searchBar.css'
 import 'font-awesome/css/font-awesome.min.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Select from 'react-select';
+import {
+  withRouter
+} from 'react-router-dom';
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { value: '' }
+    this.state = {
+      keyword: '',
+      selectedOption: { value: 'رویداد', label: 'رویداد' }
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value })
+    this.setState({ keyword: event.target.value })
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value)
-    event.preventDefault()
+  handleSelect(selectedOption) {
+    this.setState({ selectedOption: selectedOption });
+  }
+
+  handleSubmit() {
+    let selectedOption = this.state.selectedOption.value == 'رویداد' ? 'event' : 'user';
+    let keyword = this.state.keyword;
+    let url = '/' + 'search' + '/' + selectedOption + '/' + keyword;
+    this.props.history.push(url);
   }
 
   render() {
+    let selectOptions = [{ value: 'رویداد', label: 'رویداد' },
+    { value: 'کابر', label: 'کاربر' }]
+
+
     return (
       <div class="search_bar" >
-        <form id="search_form">
-          <input class="search" type="search" placeholder="نام کاربر یا رویداد را جستجو کنید..." />
+        <form id="search_form" onSubmit={this.handleSubmit} >
+          <input class="search" type="search" placeholder="عبارت مورد نظر خود را وارد کنید..." onChange={this.handleChange} value={this.state.keyword} />
         </form>
+        <a class="search_icon" onClick={this.handleSubmit}> <i class="fa fa-search" aria-hidden="true"></i></a>
+        <div class="select_container" >
+          <Select className="select_custom"
+            defaultValue={selectOptions[0]}
+            options={selectOptions}
+            onChange={this.handleSelect}
+            value={this.state.value}
+          />
+        </div>
       </div>
 
     );
   }
 }
+
+export default withRouter(SearchBar);
