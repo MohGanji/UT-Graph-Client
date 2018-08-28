@@ -9,9 +9,9 @@ export default class EventBox extends React.Component {
     return (
       <div class="event">
         <div class="event_img">
-          <a href={`event/${this.props.event._id}`}> <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> </a >
+          <a href={`/event/${this.props.event._id}`}> <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> </a >
         </div>
-        <a href={`event/${this.props.event._id}`}>  <div class="event_info">
+        <a href={`/event/${this.props.event._id}`}>  <div class="event_info">
           <div class="event_title">
             {this.props.event.title}
           </div>

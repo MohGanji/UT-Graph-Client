@@ -5,12 +5,22 @@ import Slider from "react-slick";
 export default class OldEventBox extends React.Component {
 
   render() {
+    const eventsLength = this.props.events.length;
+    let centerMode, slidesToShow;
+    if (eventsLength > 3) {
+      slidesToShow = 3;
+      centerMode = true;
+    }
+    else {
+      slidesToShow = eventsLength;
+      centerMode = false;
+    }
     var settings = {
       className: "cen ter",
-      centerMode: true,
+      centerMode: centerMode,
       infinite: true,
       centerPadding: "70px",
-      slidesToShow: 3,
+      slidesToShow: slidesToShow,
       speed: 500,
       autoplay: true
     };

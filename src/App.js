@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { createStore } from 'redux';
 import Home from './Components/Home';
 import User from './Components/User'
 import Event from './Components/Event';
 import CreateEvent from './Components/CreateEvent';
 import EditProfile from './Components/EditProfile';
 import NotFound from './Components/NotFound';
+import EventSearch from './Components/EventSearch';
+import UserSearch from './Components/UserSearch';
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
@@ -27,6 +28,8 @@ class App extends Component {
           <Route exact path={'/'} component={Home} />
           <Route exact path={'/user/:id'} component={User} />
           <Route exact path={'/event/:id'} component={Event} />
+          <Route exact path={'/search/event/:keyword'} component={EventSearch} />
+          <Route exact path={'/search/user/:keyword'} component={UserSearch} />
           <Route exact path="/edit-profile" render={() => (
             (this.props.authenticated) ? (<EditProfile />) : (<Redirect to="/" />)
           )} />
