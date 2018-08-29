@@ -43,10 +43,10 @@ class Login extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     })
-      .then(handleErrors)
       .then(function (response) {
         return response.json();
       })
+      .then(handleErrors)
       .then(function (responseJson) {
         localStorage.setItem('token', responseJson.data.token);
         that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
