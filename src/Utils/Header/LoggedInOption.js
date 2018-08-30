@@ -15,7 +15,40 @@ function mapStateToProps(state) {
 class LoggedInOption extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      notifications: []
+    }
+
     this.handleExit = this.handleExit.bind(this);
+    this.showNotifications = this.showNotifications.bind(this);
+  }
+
+  componentDidMount() {
+    let that = this;
+    console.log("salam");
+    fetch(`/api/v1/notification/${1}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      },
+      method: 'GET',
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      })
+      .then(function (data) {
+        alert(data);
+        const notif = {
+          type: "ADMIN"
+        }
+        data.push(notif);
+        that.setState({ notifications: data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleExit() {
@@ -24,11 +57,26 @@ class LoggedInOption extends React.Component {
     toast('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
   }
 
+  showNotifications() {
+    // alert('salam');
+    document.getElementById('notifications_box').style.display = 'inline';
+  }
+
   render() {
+    const notifications = this.state.notifications.map((notif) => {
+      return (<p> {notif.type} </p>);
+    });
     return (
-      <div class="logged_in_option_container">
-        <div class="logged_in_option_notification">
-          <i class="fa fa-bell notification_icon"></i>
+      <div class="logged_in_option_container" >
+        <div onClick={this.showNotifications} class="logged_in_option_notification">
+          <div class="notification_icon">
+            <i class="fa fa-bell"></i>
+          </div>
+          <div id="notifications_box" class='logged_in_option_notification_content'>
+            <div> <p> hello world! </p> </div>
+            <p> hello world! </p>
+            {notifications}
+          </div>
         </div>
         <div class="drop_down">
           <div class="logged_in_option_info drop_btn">
@@ -47,7 +95,7 @@ class LoggedInOption extends React.Component {
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }
