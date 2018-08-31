@@ -11,6 +11,18 @@
 .logged_in_option_notification {
   position: relative;
   font-size: 0.7vw;
+  z-index: 20;
+}
+
+.invisible {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: yellow;
+  opacity: 0;
 }
 
 .logged_in_option_notification:hover {

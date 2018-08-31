@@ -1,9 +1,10 @@
-import React from 'react'
-import './LoggedInOption.css'
-import 'font-awesome/css/font-awesome.min.css'
-import profilePic from '../../images/defaultProfile.jpg'
-import { connect } from 'react-redux'
+import React from 'react';
+import './LoggedInOption.css';
+import 'font-awesome/css/font-awesome.min.css';
+import profilePic from '../../images/defaultProfile.jpg';
+import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import makeNotifMessage from '../../Utils/makeNotifMessage';
 
 function mapStateToProps(state) {
   return {
@@ -39,11 +40,6 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-        alert(data);
-        const notif = {
-          type: "ADMIN"
-        }
-        data.push(notif);
         that.setState({ notifications: data });
       })
       .catch(function (error) {
@@ -58,16 +54,26 @@ class LoggedInOption extends React.Component {
   }
 
   showNotifications() {
-    // alert('salam');
     document.getElementById('notifications_box').style.display = 'inline';
+    document.getElementById('invisible_box').style.display = 'block';
+  }
+
+  closeNotification() {
+    document.getElementById('notifications_box').style.display = 'none';
+    document.getElementById('invisible_box').style.display = 'none';
   }
 
   render() {
-    const notifications = this.state.notifications.map((notif) => {
-      return (<p> {notif.type} </p>);
+    const newNotif = this.state.notifications.map((notif) => {
+      return makeNotifMessage(notif);
+    });
+    const notifElement = newNotif.map((notif) => {
+      return (<p> {notif.message} </p>);
     });
     return (
       <div class="logged_in_option_container" >
+        <div onClick={this.closeNotification} id="invisible_box" class="invisible">
+        </div>
         <div onClick={this.showNotifications} class="logged_in_option_notification">
           <div class="notification_icon">
             <i class="fa fa-bell"></i>
@@ -75,7 +81,7 @@ class LoggedInOption extends React.Component {
           <div id="notifications_box" class='logged_in_option_notification_content'>
             <div> <p> hello world! </p> </div>
             <p> hello world! </p>
-            {notifications}
+            {notifElement}
           </div>
         </div>
         <div class="drop_down">
