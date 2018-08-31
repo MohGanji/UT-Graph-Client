@@ -3,6 +3,7 @@ import './UserSearch.css'
 import { Header } from '../../Utils/Header';
 import { handleErrors } from '../../Utils/handleErrors'
 import UserBox from '../../Utils/UserBox';
+import Footer from '../../Utils/Footer';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -42,6 +43,7 @@ export default class Home extends React.Component {
             {searchEvents}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

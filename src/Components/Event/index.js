@@ -15,6 +15,7 @@ import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import NotFound from '../NotFound';
+import Footer from '../../Utils/Footer';
 
 export default class Event extends React.Component {
   constructor(props) {
@@ -145,7 +146,7 @@ export default class Event extends React.Component {
             <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
           </div>
         </div>
-
+        <Footer />
       </div >
     );
   }

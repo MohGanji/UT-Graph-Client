@@ -4,6 +4,7 @@ import { Header } from '../../Utils/Header';
 import { handleErrors } from '../../Utils/handleErrors'
 import EventBox from '../../Utils/EventBox'
 import NewEvents from '../Home/NewEvents';
+import Footer from '../../Utils/Footer';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class Home extends React.Component {
             {searchEvents}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

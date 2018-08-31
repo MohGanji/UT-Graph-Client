@@ -9,6 +9,7 @@ import Login from '../Login/login';
 import skyImage from '../../images/sky.jpg'
 import { handleErrors } from '../../Utils/handleErrors.js';
 import OldEventSlider from './OldEventSlider';
+import Footer from '../../Utils/Footer'
 
 
 export default class Home extends React.Component {
@@ -100,7 +101,10 @@ export default class Home extends React.Component {
         <div class="old_events">
           {oldEvents} */}
         {/* <OldEventBox events={newEvents} /> */}
-        <OldEventSlider events={oldEvents} />
+        <div class="home_slider_old_events">
+          <OldEventSlider events={oldEvents} />
+        </div>
+        <Footer />
       </div>
     );
   }

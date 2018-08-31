@@ -1,6 +1,7 @@
 import React from 'react'
 import './NotFound.css'
 import { Header } from '../../Utils/Header'
+import Footer from '../../Utils/Footer';
 
 export default class NotFound extends React.Component {
 
@@ -16,6 +17,7 @@ export default class NotFound extends React.Component {
           </p>
           <p class="not_found_title">صفحه مورد نظر شما پیدا نشد!</p>
         </div >
+        <Footer />
       </div>
     )
   }

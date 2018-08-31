@@ -8,6 +8,7 @@ import TitleHolder from '../../Utils/TitleHolder';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import { handleErrors } from '../../Utils/handleErrors'
+import Footer from '../../Utils/Footer';
 
 function mapStateToProps(state) {
   return {
@@ -208,6 +209,7 @@ class EditProfile extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div >
     );
   }
