@@ -1,9 +1,10 @@
-import React from 'react'
-import './LoggedInOption.css'
-import 'font-awesome/css/font-awesome.min.css'
-import profilePic from '../../images/defaultProfile.jpg'
-import { connect } from 'react-redux'
+import React from 'react';
+import './LoggedInOption.css';
+import 'font-awesome/css/font-awesome.min.css';
+import profilePic from '../../images/defaultProfile.jpg';
+import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import makeNotifMessage from '../../Utils/makeNotifMessage';
 
 function mapStateToProps(state) {
   return {
@@ -15,19 +16,72 @@ function mapStateToProps(state) {
 class LoggedInOption extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      notifications: []
+    }
+
     this.handleExit = this.handleExit.bind(this);
+    this.showNotifications = this.showNotifications.bind(this);
+  }
+
+  componentDidMount() {
+    let that = this;
+    fetch(`/api/v1/notification/${1}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      },
+      method: 'GET',
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      })
+      .then(function (data) {
+        that.setState({ notifications: data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleExit() {
-    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' })
-    toast('با موفقیت خارج شدید');
+    localStorage.removeItem('token');
+    this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
+    toast('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
+  }
+
+  showNotifications() {
+    document.getElementById('notifications_box').style.display = 'inline';
+    document.getElementById('invisible_box').style.display = 'block';
+  }
+
+  closeNotification() {
+    document.getElementById('notifications_box').style.display = 'none';
+    document.getElementById('invisible_box').style.display = 'none';
   }
 
   render() {
+    const newNotif = this.state.notifications.map((notif) => {
+      return makeNotifMessage(notif);
+    });
+    const notifElement = newNotif.map((notif) => {
+      return (<p> {notif.message} </p>);
+    });
     return (
-      <div class="logged_in_option_container">
-        <div class="logged_in_option_notification">
-          <i class="fa fa-bell notification_icon"></i>
+      <div class="logged_in_option_container" >
+        <div onClick={this.closeNotification} id="invisible_box" class="invisible">
+        </div>
+        <div onClick={this.showNotifications} class="logged_in_option_notification">
+          <div class="notification_icon">
+            <i class="fa fa-bell"></i>
+          </div>
+          <div id="notifications_box" class='logged_in_option_notification_content'>
+            <div> <p> hello world! </p> </div>
+            <p> hello world! </p>
+            {notifElement}
+          </div>
         </div>
         <div class="drop_down">
           <div class="logged_in_option_info drop_btn">
@@ -47,7 +101,6 @@ class LoggedInOption extends React.Component {
           </div>
         </div>
       </div >
-      // <div> 123 </div>
     )
   }
 }

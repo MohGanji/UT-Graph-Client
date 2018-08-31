@@ -26,6 +26,8 @@ export default class Event extends React.Component {
       notFound: false
     }
     this.getDateString = this.getDateString.bind(this);
+    this.register = this.register.bind(this);
+    this.request_staff = this.request_staff.bind(this);
   }
 
   componentWillMount() {
@@ -54,6 +56,30 @@ export default class Event extends React.Component {
   getDateString(date) {
     let dateString = date.getFullYear() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getDate();
     return dateString;
+  }
+
+  register() {
+    const id = this.props.match.params.id;
+    const token = localStorage.getItem('token');
+
+    fetch(`/api/v1/event/${id}/signup_attendent`, {
+      headers: {
+        authorization: token
+      },
+      method: "POST",
+    })
+  }
+
+  request_staff() {
+    const id = this.props.match.params.id;
+    const token = localStorage.getItem('token');
+
+    fetch(`/api/v1/event/${id}/signup_staff`, {
+      headers: {
+        authorization: token
+      },
+      method: "POST",
+    })
   }
 
   render() {
@@ -94,8 +120,8 @@ export default class Event extends React.Component {
               </div>
             </div>
             <div class="event_page_button_container">
-              <button class="event_page_signup_button event_page_signup_attendent"> اضافه شدن به عنوان شرکت کننده </button>
-              <button class="event_page_signup_button event_page_signup_staff"> اضافه شدن به عنوان کمک کننده </button>
+              <button onClick={this.register} class="event_page_signup_button event_page_signup_attendent"> اضافه شدن به عنوان شرکت کننده </button>
+              <button onClick={this.request_staff} class="event_page_signup_button event_page_signup_staff"> اضافه شدن به عنوان کمک کننده </button>
             </div>
           </div>
           <div class="event_page_about_right">
