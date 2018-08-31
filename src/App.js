@@ -8,6 +8,7 @@ import EditProfile from './Components/EditProfile';
 import NotFound from './Components/NotFound';
 import EventSearch from './Components/EventSearch';
 import UserSearch from './Components/UserSearch';
+import MyEvents from './Components/MyEvents'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
@@ -34,7 +35,13 @@ class App extends Component {
             (this.props.authenticated) ? (<EditProfile />) : (<Redirect to="/" />)
           )} />
           <Route exact path="/create-event" render={() => (
-            (this.props.authenticated) ? (<CreateEvent />) : (<Redirect to="/" />)
+            (this.props.authenticated) ? (<CreateEvent type="create" />) : (<Redirect to="/" />)
+          )} />
+          <Route exact path="/event/:id/edit" render={(props) => (
+            (this.props.authenticated) ? (<CreateEvent type="edit" {...props} />) : (<Redirect to="/" />)
+          )} />
+          <Route exact path="/my-events" render={(props) => (
+            (this.props.authenticated) ? (<MyEvents />) : (<Redirect to="/" />)
           )} />
           <Route component={NotFound} />
         </Switch>
