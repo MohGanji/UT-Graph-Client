@@ -1,6 +1,6 @@
 import React from 'react'
 import './nav.css'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.svg'
 import background from '../../images/background.jpg'
 import SearchBar from './SearchBar'
 
@@ -13,27 +13,13 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { connect } from 'react-redux'
+import LoginRegisterOption from './LoginRegisterOption';
 
 function mapStateToProps(state) {
   return {
     authenticated: state.authenticated,
     user: state.user,
   }
-}
-
-const contentStyle = {
-  height: 'innerHeight',
-  width: 'innerWidth',
-  'z-index': '1',
-  padding: '0px',
-  // ,
-  // display: flex
-}
-
-const inner_div = {
-  // opacity: "0.2",
-  background: '#000000cc',
-  'z-index': '0',
 }
 
 class Nav extends React.Component {
@@ -50,42 +36,7 @@ class Nav extends React.Component {
         </div>
     } else {
       rightElementOption = (
-        <div class="login_logout_buttons not_logged_in">
-          <Popup trigger={
-            <a class="button" href="#">
-              ورود
-              </a>}
-            modal
-            contentStyle={contentStyle}
-            overlayStyle={inner_div}
-          >
-            {close => (
-              <div>
-                <span class="close" onClick={close}>
-                  &times;
-                  </span>
-                <Login />
-              </div>
-            )}
-          </Popup>
-          <Popup trigger={
-            <a class="button active" href="#">
-              ثبت نام
-              </a>}
-            modal
-            contentStyle={contentStyle}
-            overlayStyle={inner_div}
-          >
-            {close => (
-              <div>
-                <span class="close" onClick={close}>
-                  &times;
-                  </span>
-                <Register />
-              </div>
-            )}
-          </Popup>
-        </div>
+        <LoginRegisterOption />
       )
     }
     return (
