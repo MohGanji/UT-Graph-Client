@@ -40,7 +40,8 @@ class LoggedInOption extends React.Component {
           </div>
           <div class="drop_down_content">
             <a href={`/user/${this.props.user.username}`}>پروفایل</a>
-            <a href="#">رویداد های من</a>
+            <a href={`/edit-profile`}>ویرایش پروفایل</a>
+            <a href={`/my-events`}> رویداد های من</a>
             <a href={`/create-event`}>ساخت رویداد</a>
             <a onClick={this.handleExit}>خروج</a>
           </div>
