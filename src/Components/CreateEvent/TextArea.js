@@ -28,6 +28,7 @@ export default class CreateEvent extends React.Component {
             height: "250"
           }}
           onChange={this.handleChange}
+          initialValue={this.props.text}
         />
         {/* look: {this.state.text} */}
       </div>
