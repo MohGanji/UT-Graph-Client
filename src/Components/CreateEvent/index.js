@@ -7,6 +7,7 @@ import DatePicker from '../../Utils/DatePicker';
 import { handleErrors } from '../../Utils/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from './TextArea';
+import Footer from '../../Utils/Footer';
 
 function mapStateToProps(state) {
   return {
@@ -67,9 +68,11 @@ class CreateEvent extends React.Component {
   handleSubmit() {
     const data = this.state;
     const token = localStorage.getItem('token');
+    const method = this.props.type == "create" ? "POST" : "PUT";
+    let id = this.props.type == "create" ? "" : this.props.match.params.id;
 
-    fetch('/api/v1/event', {
-      method: "POST",
+    fetch(`/api/v1/event/${id}`, {
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         authorization: token
@@ -85,6 +88,38 @@ class CreateEvent extends React.Component {
       });
   }
 
+  componentDidMount() {
+    if (this.props.type == "create") {
+      return;
+    }
+    else {
+      let that = this;
+      const id = this.props.match.params.id;
+
+      fetch(`/api/v1/event/${id}`)
+        .then(handleErrors)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (responseJson) {
+          return responseJson.data;
+        })
+        .then(function (info) {
+          that.setState({
+            title: info.title,
+            location: info.location,
+            description: info.description,
+            beginTime: info.beginTime,
+            endTime: info.endTime
+          })
+          console.log(info);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -92,31 +127,36 @@ class CreateEvent extends React.Component {
         <div class="create_event_container1">
           <div class="create_event_title">
             <div class="create_event_title_container" >
-              <TitleHolder title="ساخت رویداد" image={pencilImage} />
+              <TitleHolder title={this.props.type == "create" ? "ساخت رویداد" : "ویرایش رویداد"} image={pencilImage} />
             </div>
           </div>
           <div class="create_event_container2">
             <div class="create_event_rest_1">
               <div class="create_event_input" >
                 <p> نام رویداد: </p>
-                <input class="create_event_rest_input" name="title" type="text" onChange={this.handleChange}></input>
+                <input class="create_event_rest_input" name="title" type="text" onChange={this.handleChange} value={this.state.title}></input>
               </div>
               <div class="create_event_input" >
                 <p> محل برگزاری: </p>
-                <input class="create_event_rest_input" name="location" type="text" onChange={this.handleChange} ></input>
+                <input class="create_event_rest_input" name="location" type="text" onChange={this.handleChange} value={this.state.location}></input>
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> تاریخ شروع: </p>
-                <DatePicker handleTime={this.handleBeginTime} />
+                <DatePicker date={this.state.beginTime} handleTime={this.handleBeginTime} />
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> تاریخ پایان: </p>
-                <DatePicker handleTime={this.handleEndTime} />
+                <DatePicker date={this.state.endTime} handleTime={this.handleEndTime} />
+              </div>
+              <div class="create_event_input" >
+                <p class="input_date">اعضا:</p>
+                <div class="create_event_search_user">
+                </div>
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> توضیحات: </p>
                 <div class="create_event_textarea">
-                  <TextArea handleText={this.handleDescription} />
+                  <TextArea text={this.state.description} handleText={this.handleDescription} />
                 </div>
               </div>
               <div class="create_event_submit_container">
@@ -125,6 +165,7 @@ class CreateEvent extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div >
     );
   }

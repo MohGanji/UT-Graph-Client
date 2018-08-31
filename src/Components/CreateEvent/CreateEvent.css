@@ -103,3 +103,7 @@
 .create_event_textarea {
   margin-bottom: 30px;
 }
+
+.create_event_search_user {
+  width: 35%;
+}
