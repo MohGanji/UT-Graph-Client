@@ -25,7 +25,6 @@ class LoggedInOption extends React.Component {
 
   componentDidMount() {
     let that = this;
-    console.log("salam");
     fetch(`/api/v1/notification/${1}`, {
       headers: {
         authorization: localStorage.getItem('token')
@@ -39,7 +38,6 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-        alert(data);
         const notif = {
           type: "ADMIN"
         }

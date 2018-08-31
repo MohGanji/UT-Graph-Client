@@ -25,7 +25,8 @@ export default class Home extends React.Component {
         { title: "همایشی که حجت سال ۹۶ برگزار کرد" },
         { title: "همایشی که حجت سال ۹۶ برگزار کرد" }
       ],
-      pageToken: ''
+      pageToken: '',
+      hasMore: true
     }
     this.handlePaginationSubmit = this.handlePaginationSubmit.bind(this);
   }
@@ -60,10 +61,12 @@ export default class Home extends React.Component {
       .then(function (responseJson) {
         let previousEvents = that.state.events; //async okay?
         let newEvents = responseJson.data;
+        let hasMore = (newEvents.length === 8);
         let events = previousEvents.concat(newEvents);
         that.setState({
           events: events,
-          pageToken: responseJson.pageToken
+          pageToken: responseJson.pageToken,
+          hasMore: hasMore
         })
       })
       .catch(function (error) {
@@ -89,7 +92,7 @@ export default class Home extends React.Component {
             <p> رویداد های در حال برگزاری: </p>
           </div>
           {newEvents}
-          <div class="load_more_events">
+          <div class="load_more_events" hidden={!this.state.hasMore}>
             <a class="load_more_button" onClick={this.handlePaginationSubmit}>رویداد های بیشتر</a>
           </div>
         </div>
