@@ -1,12 +1,13 @@
 .user_event_container {
   overflow: hidden;
-  margin-top: 50px;
-  width: 1000px;
+  margin-bottom: 30px;
+  width: 900px;
   height: 540px;
   display: grid;
   grid-template-rows: 11% 89%;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
+  direction: ltr;
 }
 
 .user_event_title {

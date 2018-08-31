@@ -8,6 +8,7 @@ import NewEvents from '../Home/NewEvents';
 import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
 import NotFound from '../NotFound';
+import Footer from '../../Utils/Footer'
 
 export default class User extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ export default class User extends React.Component {
     }
     let userInfo = this.state.info.info == null ? 'دانشجو' : this.state.info.info;
     let userEvents = this.state.events.map((event) =>
-      <EventBox event={event} />
+      <UserEventBox event={event} />
     );
 
     return (
@@ -81,13 +82,15 @@ export default class User extends React.Component {
           </div>
         </div>
         <hr />
-        <div class="event_container">
-          <UserEventBox />
-          <UserEventBox />
-          <UserEventBox />
-          <UserEventBox />
-          {/* {userEvents} */}
+        <div style={this.state.events.length == 0 ? { display: 'none' } : { display: 'block' }} class="event_container_all">
+          <div class="event_container_all_title" >
+            <p>رویداد های کاربر:</p>
+          </div>
+          <div class="event_container" >
+            {userEvents}
+          </div>
         </div>
+        <Footer />
       </div >
     );
   }
