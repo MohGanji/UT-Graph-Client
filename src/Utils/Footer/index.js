@@ -12,9 +12,7 @@ export default class Footer extends React.Component {
         </div>
         <div class="footer_info" >
           <div class="footer_info_logo" >
-            <a href="/" ><img class="footer_info_logo" src={logo} /> </a>
-          </div>
-          <div class="footer_info_text">
+            <div> <p class=" footer_info_text">است<a href="/" > UT Graph  </a>تمامی حقوق مادی و معنوی این سایت متعلق به تیم </p></div>
           </div>
         </div>
       </div >
