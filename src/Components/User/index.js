@@ -4,7 +4,6 @@ import { handleErrors } from '../../Utils/handleErrors';
 import Header from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover';
 import ProfilePhoto from '../../images/defaultProfile.jpg';
-import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer'
@@ -20,7 +19,7 @@ export default class User extends React.Component {
     }
   }
 
-  componentWillMount() { //ok? why componentDidMount when there is the perfect componentWillMount? :D :/
+  componentWillMount() {
     let that = this;
     const id = this.props.match.params.id;
 

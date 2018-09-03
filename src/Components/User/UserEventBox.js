@@ -21,7 +21,6 @@ export class UserEventBox extends React.Component {
           <div class="user_event_poster">
             <img class="cover" src={BackgroundImage} />
           </div>
-          {/* Where to handle role names to persian? */}
           <div class="user_event_info">
             <TitleHolder image={RoleImage} title={this.props.event.role === 'ORGANIZER' ? 'برگزار کننده' : 'شرکت کننده'} />
             <TitleHolder image={MapImage} title={this.props.event.location} />
