@@ -8,8 +8,9 @@ import EditProfile from './Components/EditProfile';
 import NotFound from './Components/NotFound';
 import EventSearch from './Components/EventSearch';
 import UserSearch from './Components/UserSearch';
-import MyEvents from './Components/MyEvents'
-import { connect } from 'react-redux'
+import MyEvents from './Components/MyEvents';
+import Notification from './Components/Notification';
+import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
@@ -42,6 +43,9 @@ class App extends Component {
           )} />
           <Route exact path="/my-events" render={(props) => (
             (this.props.authenticated) ? (<MyEvents />) : (<Redirect to="/" />)
+          )} />
+          <Route exact path="/notification" render={(props) => (
+            (this.props.authenticated) ? (<Notification />) : (<Redirect to="/" />)
           )} />
           <Route component={NotFound} />
         </Switch>
