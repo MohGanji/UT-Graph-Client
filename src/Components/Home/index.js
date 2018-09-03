@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import NewEvents from './NewEvents'
 import { MySlider } from './Slider'
 import './Home.css';

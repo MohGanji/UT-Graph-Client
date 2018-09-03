@@ -1,6 +1,6 @@
 import React from 'react';
 import './MyEvents.css';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import Footer from '../../Utils/Footer';
 import { connect } from 'react-redux'
 import { handleErrors } from '../../Utils/handleErrors'

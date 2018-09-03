@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup'
 import { toast } from 'react-toastify';
 
 import { handleErrors } from '../../Utils/handleErrors';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import BackgroundImage from '../../images/userEvent.jpg';
 import pencilImage from '../../images/pencil.svg';
 import beginTimeImage from '../../images/beginTime.svg';

@@ -1,6 +1,6 @@
 import React from 'react';
 import './CreateEvent.css';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';

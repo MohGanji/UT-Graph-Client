@@ -1,6 +1,6 @@
 import React from 'react';
 import './EventSearch.css'
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import { handleErrors } from '../../Utils/handleErrors'
 import EventBox from '../../Utils/EventBox'
 import NewEvents from '../Home/NewEvents';

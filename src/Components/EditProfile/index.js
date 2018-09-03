@@ -1,6 +1,6 @@
 import React from 'react';
 import './EditProfile.css';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import prof_pic from '../../images/temp_image.png';
 import 'font-awesome/css/font-awesome.min.css'
