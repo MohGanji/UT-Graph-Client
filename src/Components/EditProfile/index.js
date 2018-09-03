@@ -100,16 +100,6 @@ class EditProfile extends React.Component {
     reader.readAsDataURL(event.target.files[0]);
   }
   fileUpload(file) {
-    // toast('upload');
-    // const url = 'http://example.com/file-upload';
-    // const formData = new FormData();
-    // formData.append('file', file)
-    // const config = {
-    //   headers: {
-    //     'content-type': 'multipart/form-data'
-    //   }
-    // }
-    // return post(url, formData, config)
   }
 
   password_change(event) {
