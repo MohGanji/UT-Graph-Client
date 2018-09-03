@@ -68,7 +68,6 @@
   box-shadow: 2px 2px 15px #888888be;
   position: relative;
   direction: rtl;
-  /* min-height: 800px; */
 }
 
 .event_page_about_left_description {
@@ -254,24 +253,6 @@
   margin: auto;
 }
 
-/* .event_page_signup_button {
-  background-color: #352649;
-  color: rgb(233, 229, 229);
-  font-family: sahel;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18pt;
-  margin: 4px 2px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-} */
-
 .event_page_button_container { 
   position: absolute;
   padding-right: 10px;
@@ -362,13 +343,3 @@
 .close:hover {
   background: #0095ff;
 }
-
-/* 
-.event_page_signup_attendent {
-  background: cyan;
-} 
-
-.event_page_signup_staff {
-  background: orangered;
-}  */
-

@@ -2,7 +2,6 @@ import React from 'react';
 import './Event.css';
 import Popup from 'reactjs-popup'
 import { toast } from 'react-toastify';
-
 import { handleErrors } from '../../Utils/handleErrors';
 import Header from '../../Utils/Header';
 import BackgroundImage from '../../images/userEvent.jpg';
@@ -10,13 +9,12 @@ import pencilImage from '../../images/pencil.svg';
 import beginTimeImage from '../../images/beginTime.svg';
 import endTimeImage from '../../images/endTime2.svg';
 import mapImage from '../../images/eventMap.svg';
-import capacityImage from '../../images/capacity.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import OrganizerImage from '../../images/eventPageOrganizer.jpg';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
 
@@ -26,7 +24,6 @@ const contentStyle = {
   'z-index': '1',
   padding: '0px',
 }
-
 
 const inner_div = {
   background: '#000000cc',
@@ -126,7 +123,6 @@ export default class Event extends React.Component {
               <TitleHolder image={beginTimeImage} title={beginTimeString} />
               <TitleHolder image={endTimeImage} title={endTimeString} />
               <TitleHolder image={mapImage} title={this.state.info.location} />
-              {/* <TitleHolder image={capacityImage} title="۶۰" /> */}
             </div>
           </div>
         </div>
@@ -199,7 +195,6 @@ export default class Event extends React.Component {
               </div>
               <div class="event_page_about_right_up_title_container">
                 <p class="event_page_about_right_up_title">{this.state.info.location}</p>
-                {/* city country ?? */}
                 <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
               </div>
             </div>
