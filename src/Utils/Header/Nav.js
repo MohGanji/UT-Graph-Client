@@ -1,12 +1,7 @@
 import React from 'react'
 import './nav.css'
 import logo from '../../images/logo.svg'
-import background from '../../images/background.jpg'
 import SearchBar from './SearchBar'
-
-import Popup from 'reactjs-popup'
-import Login from '../../Components/Login/login'
-import Register from '../../Components/Register/Register'
 import LoggedInOption from './LoggedInOption'
 
 import { ToastContainer, toast } from 'react-toastify'
