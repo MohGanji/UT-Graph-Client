@@ -28,7 +28,7 @@ export default class OldEventBox extends React.Component {
       <div class="old_box">
         <div class="home_old_events_title">
           <p>رویداد های برگزار شده:</p>
-          <a class="load_more_button" href="#">مشاهده رویداد های بیشتر</a>
+          <a class="load_more_button" href="/events">مشاهده رویداد های بیشتر</a>
         </div>
         <Slider {...settings}>
           {this.props.events}

@@ -23,7 +23,7 @@ export class UserEventBox extends React.Component {
           </div>
           {/* Where to handle role names to persian? */}
           <div class="user_event_info">
-            <TitleHolder image={RoleImage} title={this.props.event.role} />
+            <TitleHolder image={RoleImage} title={this.props.event.role === 'ORGANIZER' ? 'برگزار کننده' : 'شرکت کننده'} />
             <TitleHolder image={MapImage} title={this.props.event.location} />
             <TitleHolder image={CalenderImage} title={getDateString(new Date(this.props.event.beginTime))} />
           </div>
