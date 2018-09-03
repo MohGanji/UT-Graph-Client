@@ -1,8 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import graphImage from '../../images/graph.svg';
-import logo from '../../images/logo.svg'
-import LoginRegisterOption from '../Header/LoginRegisterOption';
 
 export default class Footer extends React.Component {
   render() {
