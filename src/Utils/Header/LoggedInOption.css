@@ -69,6 +69,8 @@
   padding-right: 16px;
   cursor: pointer;
   font-size: 11pt;
+  display: flex;
+  align-items: center;
 }
 
 .notification_box_footer:hover {

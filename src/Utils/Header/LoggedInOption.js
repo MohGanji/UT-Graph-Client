@@ -78,7 +78,7 @@ class LoggedInOption extends React.Component {
       return notif.message;
     });
     if (this.state.notifications.length === 0)
-      notifElement = <p class="notification_box_empty"> تذکر تازه ای ندارید! </p>
+      notifElement = <p class="notification_box_empty"> اطلاعیه تازه ای ندارید! </p>
 
     return (
       <div class="logged_in_option_container" >
@@ -90,11 +90,13 @@ class LoggedInOption extends React.Component {
           </div>
           <div id="notifications_box" class='logged_in_option_notification_content'>
             {notifElement}
-            <div class="notification_box_footer">
-              <a href={`/notification`}>
-                مشاهده تمام تذکر ها
+            <a href={`/notification`}>
+              <div class="notification_box_footer">
+                <a href={`/notification`}>
+                  مشاهده تمام اطلاعیه ها
               </a>
-            </div>
+              </div>
+            </a>
           </div>
         </div>
         <div class="drop_down">

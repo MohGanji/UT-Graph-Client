@@ -38,6 +38,10 @@
   color: white;
   font-family: sahel;
   font-size: 14pt;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px;
 }
 
 .notification_button #accept_button:hover {

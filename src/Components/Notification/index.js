@@ -2,7 +2,7 @@ import React from 'react';
 import './Notification.css'
 import Header from '../../Utils/Header';
 import NotifCard from './NotifCard';
-import makeNotifMessage from '../../Utils/makeNotifMessage';
+import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
 import Footer from '../../Utils/Footer';
 
 export default class Notification extends React.Component {
@@ -48,7 +48,7 @@ export default class Notification extends React.Component {
         <Header />
         <div class="notification_container_all">
           <div class="notification_title">
-            <p> لیست تذکر ها: </p>
+            <p> لیست اطلاعیه ها: </p>
           </div>
           <div class="notification_container">
             {cards}
