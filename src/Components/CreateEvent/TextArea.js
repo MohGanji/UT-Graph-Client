@@ -30,7 +30,6 @@ export default class CreateEvent extends React.Component {
           onChange={this.handleChange}
           initialValue={this.props.text}
         />
-        {/* look: {this.state.text} */}
       </div>
     );
   }

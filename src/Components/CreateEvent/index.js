@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import TextArea from './TextArea';
 import Footer from '../../Utils/Footer';
 import { Redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
