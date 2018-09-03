@@ -143,7 +143,7 @@ export default class Event extends React.Component {
               {/* <button onClick={this.register} class="event_page_signup_button"> اضافه شدن به عنوان شرکت کننده </button> */}
               <Popup
                 trigger={
-                  <button class="event_page_signup_button"> اضافه شدن به عنوان شرکت کننده </button>
+                  <button class="event_page_signup_button"> ثبت نام </button>
                 }
                 modal
                 contentStyle={contentStyle}
@@ -155,9 +155,9 @@ export default class Event extends React.Component {
                       &times;
                     </span> */}
                     <div class="modal_message">
-                      آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد "
+                      آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
                       <b> {this.state.info.title} </b>
-                      " شرکت کنید؟
+                      شرکت کنید؟
                     </div>
                     <div class="accept_request">
                       <button onClick={() => { this.register(); close(); }} onSubmit={close}> <b> تایید </b> </button>
@@ -168,7 +168,7 @@ export default class Event extends React.Component {
               {/* <button onClick="return reAssign({this.request_staff},close)" class="event_page_signup_button"> اضافه شدن به عنوان کمک کننده </button> */}
               <Popup
                 trigger={
-                  <button class="event_page_signup_button"> اضافه شدن به عنوان کمک کننده </button>
+                  <button class="event_page_signup_button"> درخواست همکاری </button>
                 }
                 modal
                 contentStyle={contentStyle}
@@ -180,9 +180,9 @@ export default class Event extends React.Component {
                       &times;
                     </span> */}
                     <div class="modal_message">
-                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در رویداد "
+                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در رویداد
                       <b> {this.state.info.title} </b>
-                      " مشارکت کنید؟
+                      مشارکت کنید؟
                     </div>
                     <div class="accept_request">
                       <button onClick={() => { this.request_staff(); close(); }}> <b> تایید </b> </button>
@@ -217,11 +217,15 @@ export default class Event extends React.Component {
           <div class="event_page_users_left">
             <div class="event_page_users_left_organizer">
               <div class="event_page_users_left_organizer_image">
-                <img src={OrganizerImage} />
+                <a href={`/user/${this.state.info.organizer}`} >
+                  <img src={OrganizerImage} />
+                </a>
               </div>
               <div class="event_page_users_left_organizer_info">
                 <p class="event_page_users_left_organizer_info_title">  مسئول برگزاری </p>
-                <p class="event_page_users_left_organizer_info_name"> {this.state.info.organizer} </p>
+                <a href={`/user/${this.state.info.organizer}`} >
+                  <p class="event_page_users_left_organizer_info_name"> @{this.state.info.organizer} </p>
+                </a>
               </div>
             </div>
           </div>

@@ -287,7 +287,7 @@
   border-radius: 5px;
   color: white;
   padding: 15px 25px;
-  margin-left: 20px;
+  margin-right: 10px;
   font-size: 14pt;
   cursor: pointer;
   background-color: #352649;
@@ -332,15 +332,18 @@
 }
 
 .accept_request button {
-  background: grey;
+  background-color: #0095ff;
+  border: 1px solid #07c;
   padding: 10px 20px;
   color: white;
   font-family: sahel;
   font-size: 14pt;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .accept_request button:hover {
-  background: #0095ff;
+  background: #0066af;
 }
 
 .close {
