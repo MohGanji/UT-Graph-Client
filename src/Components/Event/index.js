@@ -85,7 +85,7 @@ export default class Event extends React.Component {
       method: "POST",
     })
 
-    toast("ثبت نام شما در رویداد با موفقیت انجام شد");
+    toast.success("ثبت نام شما در رویداد با موفقیت انجام شد");
   }
 
   request_staff() {
@@ -99,7 +99,7 @@ export default class Event extends React.Component {
       method: "POST",
     })
 
-    toast("درخواست شما برای ادمین رویداد ارسال شد");
+    toast.info("درخواست شما برای ادمین رویداد ارسال شد");
   }
 
   render() {

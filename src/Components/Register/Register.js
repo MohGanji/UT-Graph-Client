@@ -58,7 +58,7 @@ export default class Register extends React.Component {
 
   render() {
     if (this.state.is_registered) {
-      toast("شما با موفقیت ثبت نام شدید");
+      toast.success("شما با موفقیت ثبت نام شدید");
       return (
         <div>
           < Login />

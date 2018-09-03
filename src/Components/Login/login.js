@@ -56,7 +56,7 @@ class Login extends React.Component {
       }).then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).then(function () {
-        toast('شما با موفقیت وارد شدید');
+        toast.success('شما با موفقیت وارد شدید');
       }).catch(function (error) {
         //TODO: toast
         console.log(error);

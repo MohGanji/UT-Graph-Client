@@ -22,10 +22,10 @@ export default class DatePicker extends React.Component {
     let value = target.value;
 
     if (value < 0 || value > 31) {
-      toast('روز باید بین ۱ تا ۳۱ باشد');
+      toast.error('روز باید بین ۱ تا ۳۱ باشد');
     }
     else if (isNaN(value)) {
-      toast('لطفا ورودی عددی وارد کنید')
+      toast.error('لطفا ورودی عددی وارد کنید')
     }
     else {
       this.props.handleTime(value, this.state.month, this.state.year);
@@ -38,10 +38,10 @@ export default class DatePicker extends React.Component {
     let value = target.value;
 
     if (value < 0 || value > 12) {
-      toast('ماه باید بین ۱ تا ۱۲ باشد');
+      toast.error('ماه باید بین ۱ تا ۱۲ باشد');
     }
     else if (isNaN(value)) {
-      toast('لطفا ورودی عددی وارد کنید')
+      toast.error('لطفا ورودی عددی وارد کنید')
     }
     else {
       this.props.handleTime(this.state.day, value, this.state.year);
@@ -54,10 +54,10 @@ export default class DatePicker extends React.Component {
     const value = target.value;
 
     if (value < 0 || value > 1500) {
-      toast('سال باید کوچکتر از ۱۵۰۰ باشد')
+      toast.error('سال باید کوچکتر از ۱۵۰۰ باشد')
     }
     else if (isNaN(value)) {
-      toast('لطفا ورودی عددی وارد کنید');
+      toast.error('لطفا ورودی عددی وارد کنید');
     }
     else {
       this.props.handleTime(this.state.day, this.state.month, value);

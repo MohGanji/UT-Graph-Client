@@ -49,7 +49,7 @@ class LoggedInOption extends React.Component {
   handleExit() {
     localStorage.removeItem('token');
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
-    toast('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
+    toast.success('شما با موفقیت خارج شدید'); //funny fact: dispatch and setstate don't work together! absolutely shit
   }
 
   showNotifications() {

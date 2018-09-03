@@ -83,7 +83,7 @@ class EditProfile extends React.Component {
       }).then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).then(function () {
-        toast('ویرایش پروفایل شما با موفقیت انجام شد')
+        toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
       }).then(function () {
         that.setState({ isEdited: true })
       }).catch(function (error) {
