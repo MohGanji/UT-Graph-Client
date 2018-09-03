@@ -1,7 +1,6 @@
 .date_picker {
   width: 200px;
   height: 60px;
-  /* margin-bottom: 25px; */
   font-size: 14pt;
   font-family: sahel;
   background: #f7f7f7;
@@ -23,21 +22,18 @@
 .date_picker_day {
   width: 25%;
   height: 80%;
-  /* border: 1px solid black; */
   text-align: center;
 }
 
 .date_picker_month {
   width: 25%;
   height: 80%;
-  /* border: 1px solid black; */
   text-align: center;
 }
 
 .date_picker_year {
   width: 35%;
   height: 80%;
-  /* border: 1px solid black; */
   position: relative;
   text-align: center;
 }
