@@ -11,15 +11,20 @@
   display: grid;
   grid-template-rows: 70% 30%;
   box-shadow: 2px 2px 15px #888888be;
+  direction: rtl;
 }
-.event_title{
+.event_title {
   font-size: 20px;
   font-weight: 400p;
 }
-.event_date{
+.event_date {
   font-size: 17px;
   font-weight: 300p;
   color: gray;
+}
+
+.event_date p {
+  display: inline;
 }
 .event_img{
   width: 100%;
@@ -30,7 +35,7 @@
   margin-right: auto;
   margin-left: auto;
   text-align: right;
-  direction: rtl;
+  /* direction: rtl; */
   /* text-align: right; */
   /* background: yellow; */
 }
