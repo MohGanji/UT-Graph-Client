@@ -2,8 +2,15 @@ import React from 'react';
 import './MyEventBox.css';
 import defaultEventImage from '../../images/event3.jpg';
 import getDateString from '../../Utils/functions/getDateString';
+import { connect } from 'react-redux';
 
-export default class MyEventBox extends React.Component {
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+class MyEventBox extends React.Component {
   render() {
     return (
       <div class="my_event_box_container">
@@ -22,9 +29,14 @@ export default class MyEventBox extends React.Component {
           </div>
         </div>
         <div class="my_event_box_buttons">
-          <a href={this.props.event._id}>مشاهده رویداد</a>
+          <div class="my_event_box_buttons_container">
+            <a href={`event/${this.props.event._id}`} style={this.props.event.organizer === this.props.user.username ? { display: 'block' } : { display: 'none' }}>ویرایش</a>
+            <a href={`event/${this.props.event._id}`}>مشاهده رویداد</a>
+          </div>
         </div>
       </div>
     )
   }
 }
+
+export default connect(mapStateToProps)(MyEventBox);

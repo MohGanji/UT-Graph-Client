@@ -54,16 +54,24 @@
 
 .my_event_box_buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.my_event_box_buttons_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
 }
 
 .my_event_box_buttons a {
   background-color: #352649;
   color: rgb(233, 229, 229);
-  font-size: 16pt;
-  padding: 14px;
+  font-size: 13pt;
+  padding: 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
-  height: 50px;
+  box-shadow: 2px 2px 8px #888888be;
+  height: 42px;
 }
