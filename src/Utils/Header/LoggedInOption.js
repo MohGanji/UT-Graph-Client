@@ -55,6 +55,13 @@ class LoggedInOption extends React.Component {
   showNotifications() {
     document.getElementById('notifications_box').style.display = 'inline';
     document.getElementById('invisible_box').style.display = 'block';
+
+    fetch('/api/v1/notification/read-all', {
+      headers: {
+        authorization: localStorage.getItem('token')
+      },
+      method: 'POST',
+    })
   }
 
   closeNotification() {
@@ -78,8 +85,6 @@ class LoggedInOption extends React.Component {
             <i class="fa fa-bell"></i>
           </div>
           <div id="notifications_box" class='logged_in_option_notification_content'>
-            <div> <p> hello world! </p> </div>
-            <p> hello world! </p>
             {notifElement}
           </div>
         </div>
