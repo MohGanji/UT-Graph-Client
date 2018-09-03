@@ -9,6 +9,10 @@ import { toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import { handleErrors } from '../../Utils/handleErrors'
 
+import axios from 'axios';
+import request from 'superagent';
+
+
 function mapStateToProps(state) {
   return {
     user: state.user,
@@ -62,14 +66,18 @@ class EditProfile extends React.Component {
     let data = this.state;
     let token = localStorage.getItem('token');
     let that = this;
-
+    let form = new FormData();
+    form.append('file', this.state.file);
     fetch('/api/v1/user', {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
         'authorization': token
       },
-      body: JSON.stringify({ data: data })
+      body: JSON.stringify({
+        data: data
+        , form: form
+      })
     })
       .then(function (response) {
         return response;
@@ -92,23 +100,40 @@ class EditProfile extends React.Component {
   }
 
   onChange(event) {
+    event.preventDefault();
     let reader = new FileReader();
-    reader.onload = (e) => {
-      this.setState({ image: e.target.result });
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        image: reader.result
+      });
+    }
+    reader.readAsDataURL(file)
   }
-  fileUpload(file) {
-    // toast('upload');
-    // const url = 'http://example.com/file-upload';
-    // const formData = new FormData();
-    // formData.append('file', file)
-    // const config = {
-    //   headers: {
-    //     'content-type': 'multipart/form-data'
-    //   }
-    // }
-    // return post(url, formData, config)
+  async fileUpload() {
+    let token = localStorage.getItem('token');
+    toast('upload');
+    const url = '/api/v1/user/upload';
+    let data = await new FormData()
+    data.append('file', this.state.file, this.state.file.name);
+    let config = {
+      headers: {
+        'authorization': token
+      },
+      params: {
+        "a": "b"
+      }
+    }
+    axios.post(url, data, config)
+      .then((result) => {
+        console.log("res:");
+        console.log(result);
+      })
+      .catch(function (error) {
+        console.log("err");
+        console.log(error);
+      });
   }
 
   password_change(event) {
@@ -153,7 +178,7 @@ class EditProfile extends React.Component {
                   </div>
                   <label class="change_button" for="upload-photo" > تغییر تصویر </label>
                   <input type="file" id="upload-photo" onChange={this.onChange} />
-
+                  <div onClick={this.fileUpload}> تغییر عکس </div>
                 </div>
               </div>
             </div>

@@ -84,6 +84,8 @@ export default class Home extends React.Component {
         {/* <div class="home_slider">
           <MySlider events={this.state.events} />
         </div> */}
+        <OldEventSlider events={oldEvents} />
+
         <div class="home_new_events_container">
           <div class="home_new_events_title">
             <p> رویداد های در حال برگزاری: </p>
@@ -100,7 +102,6 @@ export default class Home extends React.Component {
         <div class="old_events">
           {oldEvents} */}
         {/* <OldEventBox events={newEvents} /> */}
-        <OldEventSlider events={oldEvents} />
       </div>
     );
   }
