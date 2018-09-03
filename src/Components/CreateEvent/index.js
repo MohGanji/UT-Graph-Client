@@ -8,6 +8,8 @@ import { handleErrors } from '../../Utils/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from './TextArea';
 import Footer from '../../Utils/Footer';
+import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -27,6 +29,7 @@ class CreateEvent extends React.Component {
       endTime: '',
       description: '',
       organizer: this.props.user.username,
+      redirect: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleBeginTime = this.handleBeginTime.bind(this);
@@ -70,6 +73,7 @@ class CreateEvent extends React.Component {
     const token = localStorage.getItem('token');
     const method = this.props.type == "create" ? "POST" : "PUT";
     let id = this.props.type == "create" ? "" : this.props.match.params.id;
+    let that = this;
 
     fetch(`/api/v1/event/${id}`, {
       method: method,
@@ -80,6 +84,7 @@ class CreateEvent extends React.Component {
       body: JSON.stringify({ data: data })
     })
       .then(function (response) {
+        that.setState({ redirect: true });
         return response.json();
       })
       .then(handleErrors)
@@ -121,6 +126,9 @@ class CreateEvent extends React.Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return (
       <div>
         <Header />
@@ -147,11 +155,6 @@ class CreateEvent extends React.Component {
               <div class="create_event_input" >
                 <p class="input_date"> تاریخ پایان: </p>
                 <DatePicker date={this.state.endTime} handleTime={this.handleEndTime} />
-              </div>
-              <div class="create_event_input" >
-                <p class="input_date">اعضا:</p>
-                <div class="create_event_search_user">
-                </div>
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> توضیحات: </p>
