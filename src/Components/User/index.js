@@ -1,7 +1,7 @@
 import React from 'react';
 import './User.css';
 import { handleErrors } from '../../Utils/handleErrors';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover';
 import ProfilePhoto from '../../images/defaultProfile.jpg';
 import NewEvents from '../Home/NewEvents';

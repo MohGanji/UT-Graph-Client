@@ -1,6 +1,6 @@
 import React from 'react';
 import './UserSearch.css'
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import { handleErrors } from '../../Utils/handleErrors'
 import UserBox from '../../Utils/UserBox';
 import Footer from '../../Utils/Footer';
