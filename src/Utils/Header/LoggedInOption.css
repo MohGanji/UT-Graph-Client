@@ -42,17 +42,13 @@
   /* overflow: scroll; */
 }
 
-/* .logged_in_option_notification_content:hover {
-  display: block;
-} */
 .logged_in_option_notification_content p {
   color: black;
   padding: 12px 16px; 
   text-decoration: none;
   display: block;
   font-size: 14pt;
-  /* padding: 20px 20px 30px; */
-  /* padding-right: 170px; */
+
   padding-top: 20px;
   padding-bottom: 30px;
   margin: 0;
@@ -64,6 +60,27 @@
 
 .logged_in_option_notification_content p:hover {
   background-color: antiquewhite;
+}
+
+.notification_box_empty {
+  font-style: oblique; 
+}
+
+.notification_box_footer {
+  background-color: rgba(163, 126, 126, 0.164);
+  height: 30px;
+  width: 100%;
+  padding-right: 16px;
+  cursor: pointer;
+  font-size: 11pt;
+}
+
+.notification_box_footer:hover {
+  background-color: rgb(112, 112, 189);
+}
+
+.notification_box_footer:hover a {
+  color: white;
 }
 
 .logged_in_option_info {

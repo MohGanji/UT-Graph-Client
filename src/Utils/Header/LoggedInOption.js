@@ -61,7 +61,7 @@ class LoggedInOption extends React.Component {
         authorization: localStorage.getItem('token')
       },
       method: 'POST',
-    })
+    });
   }
 
   closeNotification() {
@@ -73,9 +73,13 @@ class LoggedInOption extends React.Component {
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
-    const notifElement = newNotif.map((notif) => {
-      return (<p> {notif.message} </p>);
+    let notifElement = newNotif.map((notif) => {
+      console.log(notif.message);
+      return notif.message;
     });
+    if (this.state.notifications.length === 0)
+      notifElement = <p class="notification_box_empty"> تذکر تازه ای ندارید! </p>
+
     return (
       <div class="logged_in_option_container" >
         <div onClick={this.closeNotification} id="invisible_box" class="invisible">
@@ -86,6 +90,11 @@ class LoggedInOption extends React.Component {
           </div>
           <div id="notifications_box" class='logged_in_option_notification_content'>
             {notifElement}
+            <div class="notification_box_footer">
+              <a href={`/notification`}>
+                مشاهده تمام تذکر ها
+              </a>
+            </div>
           </div>
         </div>
         <div class="drop_down">
