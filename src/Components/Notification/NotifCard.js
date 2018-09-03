@@ -12,7 +12,7 @@ export default class NotifCard extends React.Component {
   }
 
   acceptNotif() {
-    console.log(this.props.notification);
+    // console.log(this.props.notification);
     const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/accept`, {
       headers: {

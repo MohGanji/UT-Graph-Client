@@ -74,7 +74,7 @@ class LoggedInOption extends React.Component {
       return makeNotifMessage(notif);
     });
     let notifElement = newNotif.map((notif) => {
-      console.log(notif.message);
+      // console.log(notif.message);
       return notif.message;
     });
     if (this.state.notifications.length === 0)
