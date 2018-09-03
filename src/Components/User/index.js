@@ -4,7 +4,6 @@ import { handleErrors } from '../../Utils/handleErrors';
 import Header from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover';
 import ProfilePhoto from '../../images/defaultProfile.jpg';
-import NewEvents from '../Home/NewEvents';
 import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
 import NotFound from '../NotFound';
