@@ -156,7 +156,7 @@ export default class Event extends React.Component {
                       شرکت کنید؟
                     </div>
                     <div class="accept_request">
-                      <button onClick={() => { this.register(); close(); }} onSubmit={close}> <b> تایید </b> </button>
+                      <button onClick={() => { this.register(); close(); }}> <b> تایید </b> </button>
                     </div>
                   </form>
                 )}

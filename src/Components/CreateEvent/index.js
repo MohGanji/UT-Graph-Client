@@ -116,7 +116,7 @@ class CreateEvent extends React.Component {
             beginTime: info.beginTime,
             endTime: info.endTime
           })
-          console.log(info);
+          // console.log(info);
         })
         .catch(function (error) {
           console.log(error);

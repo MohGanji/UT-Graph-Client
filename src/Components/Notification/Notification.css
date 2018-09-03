@@ -1,4 +1,8 @@
-.my_events_container_all {
+.page_body {
+  
+}
+
+.notification_container_all {
   width: 1200px;
   max-width: 95%;
   min-height: 470px;
@@ -10,9 +14,10 @@
   background: #ffffff;
   margin-top: 100px;
   direction: rtl;
+  /* position: relative; */
 }
 
-.my_events_container_all_title {
+.notification_title {
   background-color: #352649;
   color: rgb(233, 229, 229);
   display: inline-block;
@@ -25,15 +30,15 @@
   width: 160px;
 }
 
-.my_events_container {
-  width: 90%;
-  padding-top: 30px;
-  min-height: 300px;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+.notification_container {
+  background-color: white;
+  /* position: absolute; */
+  top: 100px;
+  bottom: 0;
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-bottom: 60px;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-bottom: 20px;
+  /* justify-content: center; */
+  flex-wrap: wrap; 
 }

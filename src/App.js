@@ -8,7 +8,7 @@ import EditProfile from './Components/EditProfile';
 import NotFound from './Components/NotFound';
 import MyEvents from './Components/MyEvents';
 import ResultPage from './Components/ResultPage';
-
+import Notification from './Components/Notification';
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
@@ -49,6 +49,9 @@ class App extends Component {
           )} />
           <Route exact path="/my-events" render={(props) => (
             (this.props.authenticated) ? (<MyEvents />) : (<Redirect to="/" />)
+          )} />
+          <Route exact path="/notification" render={(props) => (
+            (this.props.authenticated) ? (<Notification />) : (<Redirect to="/" />)
           )} />
           <Route component={NotFound} />
         </Switch>
