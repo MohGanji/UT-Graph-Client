@@ -3,7 +3,8 @@ import './OldEventBox.css';
 import EventImage from '../../images/event3.jpg'
 import MapImage from '../../images/map.svg'
 import CalenderImage from '../../images/calender.svg'
-import TitleHolder from '../../Utils/TitleHolder';
+import TitleHolder from '../TitleHolder';
+import getDateString from '../../Utils/getDateString';
 
 export default class OldEventBox extends React.Component {
 
@@ -19,13 +20,11 @@ export default class OldEventBox extends React.Component {
           </div>
           <div class="old_event_info">
             <div class="old_event_info_title">
-              <TitleHolder image={MapImage} title="دانشگاه تهران" />
+              <TitleHolder image={MapImage} title={this.props.event.location} />
             </div>
             <div class="old_event_info_title">
-              <TitleHolder image={CalenderImage} title="شهریور ۹۶" />
+              <TitleHolder image={CalenderImage} title={getDateString(new Date(this.props.event.endTime))} />
             </div>
-            {/* <TitleHolder image={MapImage} title="دانشگاه تهران" />
-          <TitleHolder image={CalenderImage} title="مرداد ۱۳۹۷" /> */}
           </div>
         </div>
       </a>
