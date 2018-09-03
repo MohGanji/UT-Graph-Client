@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyEventBox.css';
 import defaultEventImage from '../../images/event3.jpg';
-import getDateString from '../../Utils/getDateString';
+import getDateString from '../../Utils/functions/getDateString';
 
 export default class MyEventBox extends React.Component {
   render() {

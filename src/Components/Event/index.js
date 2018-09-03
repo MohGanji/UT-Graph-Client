@@ -2,7 +2,7 @@ import React from 'react';
 import './Event.css';
 import Popup from 'reactjs-popup'
 import { toast } from 'react-toastify';
-import { handleErrors } from '../../Utils/handleErrors';
+import handleErrors from '../../Utils/functions/handleErrors';
 import Header from '../../Utils/Header';
 import BackgroundImage from '../../images/userEvent.jpg';
 import pencilImage from '../../images/pencil.svg';

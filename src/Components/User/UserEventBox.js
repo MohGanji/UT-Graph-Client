@@ -1,12 +1,11 @@
 import React from 'react';
 import './UserEventBox.css';
-import { handleErrors } from '../../Utils/handleErrors';
 import BackgroundImage from '../../images/userEvent.jpg'
 import MapImage from '../../images/map.svg'
 import CalenderImage from '../../images/calender.svg'
 import RoleImage from '../../images/role.svg';
 import TitleHolder from '../../Utils/TitleHolder';
-import getDateString from '../../Utils/getDateString';
+import getDateString from '../../Utils/functions/getDateString';
 
 
 export class UserEventBox extends React.Component {

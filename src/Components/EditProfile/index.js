@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import TitleHolder from '../../Utils/TitleHolder';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux'
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer';
 
 function mapStateToProps(state) {

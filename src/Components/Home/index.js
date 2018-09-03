@@ -3,7 +3,7 @@ import Header from '../../Utils/Header';
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
-import { handleErrors } from '../../Utils/handleErrors.js';
+import handleErrors from '../../Utils/functions/handleErrors';
 import OldEventSlider from './OldEventSlider';
 import Footer from '../../Utils/Footer'
 

@@ -4,7 +4,7 @@ import EventImage from '../../images/event3.jpg'
 import MapImage from '../../images/map.svg'
 import CalenderImage from '../../images/calender.svg'
 import TitleHolder from '../TitleHolder';
-import getDateString from '../../Utils/getDateString';
+import getDateString from '../../Utils/functions/getDateString';
 
 export default class OldEventBox extends React.Component {
 

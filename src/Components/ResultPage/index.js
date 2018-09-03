@@ -1,7 +1,7 @@
 import React from 'react';
 import './ResultPage.css'
 import Header from '../../Utils/Header';
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
 import EventBox from '../../Utils/EventBox'
 import Footer from '../../Utils/Footer';
 import UserBox from '../../Utils/UserBox';

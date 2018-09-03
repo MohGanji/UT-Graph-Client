@@ -1,6 +1,6 @@
 import React from 'react';
 import './User.css';
-import { handleErrors } from '../../Utils/handleErrors';
+import handleErrors from '../../Utils/functions/handleErrors';
 import Header from '../../Utils/Header';
 import { BackgroundCover } from './Background_Cover';
 import ProfilePhoto from '../../images/defaultProfile.jpg';

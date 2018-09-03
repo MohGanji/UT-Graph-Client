@@ -3,7 +3,7 @@ import './MyEvents.css';
 import Header from '../../Utils/Header';
 import Footer from '../../Utils/Footer';
 import { connect } from 'react-redux'
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
 import MyEventBox from './MyEventBox';
 
 function mapStateToProps(state) {

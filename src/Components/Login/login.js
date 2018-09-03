@@ -1,6 +1,6 @@
 import React from 'react'
 import './login.css'
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify';
 

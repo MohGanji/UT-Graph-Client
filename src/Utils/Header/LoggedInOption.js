@@ -4,7 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import profilePic from '../../images/defaultProfile.jpg';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import makeNotifMessage from '../../Utils/makeNotifMessage';
+import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
 
 function mapStateToProps(state) {
   return {

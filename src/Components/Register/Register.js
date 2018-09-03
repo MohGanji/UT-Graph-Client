@@ -1,6 +1,6 @@
 import React from 'react';
 import './Register.css';
-import { handleErrors } from '../../Utils/handleErrors.js';
+import handleErrors from '../../Utils/functions/handleErrors';
 import Login from '../Login/login'
 
 import { ToastContainer, toast } from 'react-toastify';

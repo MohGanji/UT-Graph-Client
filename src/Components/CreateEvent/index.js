@@ -4,7 +4,7 @@ import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
-import { handleErrors } from '../../Utils/handleErrors';
+import handleErrors from '../../Utils/functions/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from './TextArea';
 import Footer from '../../Utils/Footer';
