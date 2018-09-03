@@ -1,12 +1,8 @@
 import React from 'react';
 import Header from '../../Utils/Header';
-import NewEvents from './NewEvents'
-import { MySlider } from './Slider'
 import './Home.css';
 import EventBox from '../../Utils/EventBox';
-import OldEventBox from './OldEventBox';
-import Login from '../Login/login';
-import skyImage from '../../images/sky.jpg'
+import OldEventBox from '../../Utils/OldEventBox';
 import { handleErrors } from '../../Utils/handleErrors.js';
 import OldEventSlider from './OldEventSlider';
 import Footer from '../../Utils/Footer'
@@ -92,7 +88,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <Header />
-        <div class="test">
+        <div class="welcome_home">
           <div class="centered">به UT Graph خوش آمدید!</div>
         </div>
         <div class="home_new_events_container">
