@@ -2,9 +2,7 @@
   cursor: pointer;
   width: 260px;
   height: 260px;
-  /* background: red; */
   background: white;
-  /* border: 1px solid black; */
   border-radius: 5px;
   margin: 15px;
   overflow: hidden;
@@ -28,16 +26,12 @@
 }
 .event_img{
   width: 100%;
-  /* background: purple; */
 }
 .event_info{
   width: 90%;
   margin-right: auto;
   margin-left: auto;
   text-align: right;
-  /* direction: rtl; */
-  /* text-align: right; */
-  /* background: yellow; */
 }
 .img_fill_div{
   width: 100%;
