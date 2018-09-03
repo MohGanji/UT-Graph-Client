@@ -58,7 +58,6 @@ class Login extends React.Component {
       }).then(function () {
         toast.success('شما با موفقیت وارد شدید');
       }).catch(function (error) {
-        //TODO: toast
         console.log(error);
       });
   }
