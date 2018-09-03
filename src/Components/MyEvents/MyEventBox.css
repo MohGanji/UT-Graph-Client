@@ -40,7 +40,7 @@
 }
 
 .my_event_box_info_container_title a {
-  font-size: 26pt;
+  font-size: 22pt;
   margin-right: 15px;
   display: inline-block;  
 }
@@ -67,5 +67,5 @@
   padding: 14px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
-  height: 55px;
+  height: 50px;
 }
