@@ -6,9 +6,9 @@ import Event from './Components/Event';
 import CreateEvent from './Components/CreateEvent';
 import EditProfile from './Components/EditProfile';
 import NotFound from './Components/NotFound';
-import EventSearch from './Components/EventSearch';
-import UserSearch from './Components/UserSearch';
-import MyEvents from './Components/MyEvents'
+import MyEvents from './Components/MyEvents';
+import ResultPage from './Components/ResultPage';
+
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
@@ -29,8 +29,15 @@ class App extends Component {
           <Route exact path={'/'} component={Home} />
           <Route exact path={'/user/:id'} component={User} />
           <Route exact path={'/event/:id'} component={Event} />
-          <Route exact path={'/search/event/:keyword'} component={EventSearch} />
-          <Route exact path={'/search/user/:keyword'} component={UserSearch} />
+          <Route exact path="/events" render={(props) => (
+            <ResultPage type="events" {...props} />
+          )} />
+          <Route exact path="/search/event/:keyword" render={(props) => (
+            <ResultPage type="event-search" {...props} />
+          )} />
+          <Route exact path="/search/user/:keyword" render={(props) => (
+            <ResultPage type="user-search" {...props} />
+          )} />
           <Route exact path="/edit-profile" render={() => (
             (this.props.authenticated) ? (<EditProfile />) : (<Redirect to="/" />)
           )} />
