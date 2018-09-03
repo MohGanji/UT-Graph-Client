@@ -295,6 +295,71 @@
   display: inline;
 }
 
+.modal {
+  position: relative;
+}
+
+.modal_close {
+  float: right;
+  cursor: pointer;
+  background: grey;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+
+  position: absolute; 
+  top: -65px;
+  right: -25px;
+}
+
+.modal_close:hover {
+  background: #0095ff;
+}
+
+.modal_message {
+  margin: 40px 30px 60px 100px;
+  text-align: center;
+  font-size: 14pt;
+}
+
+.accept_request {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.accept_request button {
+  background: grey;
+  padding: 10px 20px;
+  color: white;
+  font-family: sahel;
+  font-size: 14pt;
+}
+
+.accept_request button:hover {
+  background: #0095ff;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  background: grey;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.close:hover {
+  background: #0095ff;
+}
+
 /* 
 .event_page_signup_attendent {
   background: cyan;
