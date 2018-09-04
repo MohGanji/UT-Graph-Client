@@ -11,7 +11,7 @@ import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer';
 
 import axios from 'axios';
-import request from 'superagent';
+// import request from 'superagent';
 var path = require('path');
 
 

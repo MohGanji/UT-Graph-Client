@@ -91,14 +91,6 @@ export default class Home extends React.Component {
         <div class="welcome_home">
           <div class="centered">به UT Graph خوش آمدید!</div>
         </div>
-<<<<<<< HEAD
-        {/* <div class="home_slider">
-          <MySlider events={this.state.events} />
-        </div> */}
-        <OldEventSlider events={oldEvents} />
-
-=======
->>>>>>> 0dcdea21544d4b80a1cbbd2d0ca20788e7796cbf
         <div class="home_new_events_container">
           <div class="home_new_events_title">
             <p> رویداد های در حال برگزاری: </p>
@@ -111,13 +103,7 @@ export default class Home extends React.Component {
         <div class="home_slider_old_events">
           <OldEventSlider events={oldEvents} />
         </div>
-<<<<<<< HEAD
-        <div class="old_events">
-          {oldEvents} */}
-        {/* <OldEventBox events={newEvents} /> */}
-=======
         <Footer />
->>>>>>> 0dcdea21544d4b80a1cbbd2d0ca20788e7796cbf
       </div>
     );
   }
