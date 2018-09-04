@@ -1,0 +1,53 @@
+.notification_card_container {
+  background-color: rgb(209, 198, 198);
+  width: 100%;
+  height: 80px;
+  margin-top: 30px;
+  /* padding: 23px 20px 50px 20px; */
+  /* padding-top: 20px;
+  padding-right: 30px; */
+  font-size: 16pt;
+  /* display: block; */
+  direction: rtl;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 100%;
+}
+
+.notification_card_container p {
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
+.notification_message {
+  /* border: 1px solid red; */
+}
+
+.notification_button {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification_button button {
+  margin-left: 15px;
+  margin-right: 15px;
+  background: grey;
+  padding: 10px 20px;
+  color: white;
+  font-family: sahel;
+  font-size: 14pt;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px;
+}
+
+.notification_button #accept_button:hover {
+  background: green;
+}
+
+.notification_button #reject_button:hover {
+  background: red;
+}

@@ -68,7 +68,6 @@
   box-shadow: 2px 2px 15px #888888be;
   position: relative;
   direction: rtl;
-  /* min-height: 800px; */
 }
 
 .event_page_about_left_description {
@@ -254,24 +253,6 @@
   margin: auto;
 }
 
-/* .event_page_signup_button {
-  background-color: #352649;
-  color: rgb(233, 229, 229);
-  font-family: sahel;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18pt;
-  margin: 4px 2px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-} */
-
 .event_page_button_container { 
   position: absolute;
   padding-right: 10px;
@@ -287,7 +268,7 @@
   border-radius: 5px;
   color: white;
   padding: 15px 25px;
-  margin-left: 20px;
+  margin-right: 10px;
   font-size: 14pt;
   cursor: pointer;
   background-color: #352649;
@@ -295,12 +276,70 @@
   display: inline;
 }
 
-/* 
-.event_page_signup_attendent {
-  background: cyan;
-} 
+.modal {
+  position: relative;
+}
 
-.event_page_signup_staff {
-  background: orangered;
-}  */
+.modal_close {
+  float: right;
+  cursor: pointer;
+  background: grey;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 
+  position: absolute; 
+  top: -65px;
+  right: -25px;
+}
+
+.modal_close:hover {
+  background: #0095ff;
+}
+
+.modal_message {
+  margin: 40px 30px 60px 100px;
+  text-align: center;
+  font-size: 14pt;
+}
+
+.accept_request {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.accept_request button {
+  background-color: #0095ff;
+  border: 1px solid #07c;
+  padding: 10px 20px;
+  color: white;
+  font-family: sahel;
+  font-size: 14pt;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accept_request button:hover {
+  background: #0066af;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  background: grey;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.close:hover {
+  background: #0095ff;
+}

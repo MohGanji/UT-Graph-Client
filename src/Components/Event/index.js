@@ -1,20 +1,34 @@
 import React from 'react';
 import './Event.css';
-import { handleErrors } from '../../Utils/handleErrors';
-import { Header } from '../../Utils/Header';
+import Popup from 'reactjs-popup'
+import { toast } from 'react-toastify';
+import handleErrors from '../../Utils/functions/handleErrors';
+import Header from '../../Utils/Header';
 import BackgroundImage from '../../images/userEvent.jpg';
 import pencilImage from '../../images/pencil.svg';
 import beginTimeImage from '../../images/beginTime.svg';
 import endTimeImage from '../../images/endTime2.svg';
 import mapImage from '../../images/eventMap.svg';
-import capacityImage from '../../images/capacity.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import OrganizerImage from '../../images/eventPageOrganizer.jpg';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox';
 import staffAvatar from '../../images/staffAvatar.png';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import NotFound from '../NotFound';
+import Footer from '../../Utils/Footer';
+
+const contentStyle = {
+  height: 'innerHeight',
+  width: 'innerWidth',
+  'z-index': '1',
+  padding: '0px',
+}
+
+const inner_div = {
+  background: '#000000cc',
+  'z-index': '0',
+}
 
 export default class Event extends React.Component {
   constructor(props) {
@@ -57,7 +71,7 @@ export default class Event extends React.Component {
     return dateString;
   }
 
-  register() {
+  register(close) {
     const id = this.props.match.params.id;
     const token = localStorage.getItem('token');
 
@@ -67,6 +81,8 @@ export default class Event extends React.Component {
       },
       method: "POST",
     })
+
+    toast.success("ثبت نام شما در رویداد با موفقیت انجام شد");
   }
 
   request_staff() {
@@ -79,6 +95,8 @@ export default class Event extends React.Component {
       },
       method: "POST",
     })
+
+    toast.info("درخواست شما برای ادمین رویداد ارسال شد");
   }
 
   render() {
@@ -105,7 +123,6 @@ export default class Event extends React.Component {
               <TitleHolder image={beginTimeImage} title={beginTimeString} />
               <TitleHolder image={endTimeImage} title={endTimeString} />
               <TitleHolder image={mapImage} title={this.state.info.location} />
-              {/* <TitleHolder image={capacityImage} title="۶۰" /> */}
             </div>
           </div>
         </div>
@@ -119,8 +136,56 @@ export default class Event extends React.Component {
               </div>
             </div>
             <div class="event_page_button_container">
-              <button onClick={this.register} class="event_page_signup_button event_page_signup_attendent"> اضافه شدن به عنوان شرکت کننده </button>
-              <button onClick={this.request_staff} class="event_page_signup_button event_page_signup_staff"> اضافه شدن به عنوان کمک کننده </button>
+              {/* <button onClick={this.register} class="event_page_signup_button"> اضافه شدن به عنوان شرکت کننده </button> */}
+              <Popup
+                trigger={
+                  <button class="event_page_signup_button"> ثبت نام </button>
+                }
+                modal
+                contentStyle={contentStyle}
+                overlayStyle={inner_div}
+              >
+                {close => (
+                  <form class="modal">
+                    {/* <span class="modal_close" onClick={close}>
+                      &times;
+                    </span> */}
+                    <div class="modal_message">
+                      آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
+                      <b> {this.state.info.title} </b>
+                      شرکت کنید؟
+                    </div>
+                    <div class="accept_request">
+                      <button onClick={() => { this.register(); close(); }}> <b> تایید </b> </button>
+                    </div>
+                  </form>
+                )}
+              </Popup>
+              {/* <button onClick="return reAssign({this.request_staff},close)" class="event_page_signup_button"> اضافه شدن به عنوان کمک کننده </button> */}
+              <Popup
+                trigger={
+                  <button class="event_page_signup_button"> درخواست همکاری </button>
+                }
+                modal
+                contentStyle={contentStyle}
+                overlayStyle={inner_div}
+              >
+                {close => (
+                  <div class="modal">
+                    {/* <span class="modal_close" onClick={close}>
+                      &times;
+                    </span> */}
+                    <div class="modal_message">
+                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در رویداد
+                      <b> {this.state.info.title} </b>
+                      مشارکت کنید؟
+                    </div>
+                    <div class="accept_request">
+                      <button onClick={() => { this.request_staff(); close(); }}> <b> تایید </b> </button>
+                    </div>
+                  </div>
+                )}
+              </Popup>
             </div>
           </div>
           <div class="event_page_about_right">
@@ -130,7 +195,6 @@ export default class Event extends React.Component {
               </div>
               <div class="event_page_about_right_up_title_container">
                 <p class="event_page_about_right_up_title">{this.state.info.location}</p>
-                {/* city country ?? */}
                 <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
               </div>
             </div>
@@ -148,11 +212,15 @@ export default class Event extends React.Component {
           <div class="event_page_users_left">
             <div class="event_page_users_left_organizer">
               <div class="event_page_users_left_organizer_image">
-                <img src={OrganizerImage} />
+                <a href={`/user/${this.state.info.organizer}`} >
+                  <img src={OrganizerImage} />
+                </a>
               </div>
               <div class="event_page_users_left_organizer_info">
                 <p class="event_page_users_left_organizer_info_title">  مسئول برگزاری </p>
-                <p class="event_page_users_left_organizer_info_name"> {this.state.info.organizer} </p>
+                <a href={`/user/${this.state.info.organizer}`} >
+                  <p class="event_page_users_left_organizer_info_name"> @{this.state.info.organizer} </p>
+                </a>
               </div>
             </div>
           </div>
@@ -171,7 +239,7 @@ export default class Event extends React.Component {
             <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
           </div>
         </div>
-
+        <Footer />
       </div >
     );
   }

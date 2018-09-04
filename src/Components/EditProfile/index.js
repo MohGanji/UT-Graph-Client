@@ -1,14 +1,14 @@
 import React from 'react';
 import './EditProfile.css';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
-import prof_pic from '../../images/temp_image.png';
-
+import prof_pic from '../../images/defaultProfile.jpg';
 import 'font-awesome/css/font-awesome.min.css'
 import TitleHolder from '../../Utils/TitleHolder';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux'
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
+import Footer from '../../Utils/Footer';
 
 import axios from 'axios';
 import request from 'superagent';
@@ -93,7 +93,7 @@ class EditProfile extends React.Component {
       }).then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).then(function () {
-        toast('ویرایش پروفایل شما با موفقیت انجام شد')
+        toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
       }).then(function () {
         that.setState({ isEdited: true })
       }).catch(function (error) {
@@ -238,6 +238,7 @@ class EditProfile extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div >
     );
   }

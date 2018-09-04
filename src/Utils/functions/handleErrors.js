@@ -1,10 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export function handleErrors(response) {
+export default function handleErrors(response) {
   if (response.hasOwnProperty('errors')) {
     response.errors.forEach(err => {
-      toast(err.msg);
+      toast.error(err.msg);
     })
   }
   return response;

@@ -2,7 +2,6 @@
   direction: rtl;
   width: 1200px;
   background:white;
-  /* border: 1px solid black; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -22,7 +21,6 @@
 
 .create_event_title {
   background-color: #352649;
-  /* border-radius: 5px; */
   display: flex;
   align-items: center;
   padding: 10px;
@@ -42,13 +40,11 @@
 }
 
 .create_event_rest p{
-  /* margin-top: 50px; */
   font-size: 16pt;
   font-weight: bold;
 }
 
 .create_event_rest_1 p{
-  /* margin-top: 50px; */
   font-size: 16pt;
   font-weight: bold;
 }
@@ -102,4 +98,8 @@
 
 .create_event_textarea {
   margin-bottom: 30px;
+}
+
+.create_event_search_user {
+  width: 35%;
 }

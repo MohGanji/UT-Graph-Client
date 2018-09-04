@@ -1,12 +1,14 @@
 import React from 'react';
 import './CreateEvent.css';
-import { Header } from '../../Utils/Header';
+import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
-import { handleErrors } from '../../Utils/handleErrors';
+import handleErrors from '../../Utils/functions/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from './TextArea';
+import Footer from '../../Utils/Footer';
+import { Redirect } from 'react-router-dom';
 
 function mapStateToProps(state) {
   return {
@@ -26,6 +28,7 @@ class CreateEvent extends React.Component {
       endTime: '',
       description: '',
       organizer: this.props.user.username,
+      redirect: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleBeginTime = this.handleBeginTime.bind(this);
@@ -67,9 +70,12 @@ class CreateEvent extends React.Component {
   handleSubmit() {
     const data = this.state;
     const token = localStorage.getItem('token');
+    const method = this.props.type == "create" ? "POST" : "PUT";
+    let id = this.props.type == "create" ? "" : this.props.match.params.id;
+    let that = this;
 
-    fetch('/api/v1/event', {
-      method: "POST",
+    fetch(`/api/v1/event/${id}`, {
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         authorization: token
@@ -77,6 +83,7 @@ class CreateEvent extends React.Component {
       body: JSON.stringify({ data: data })
     })
       .then(function (response) {
+        that.setState({ redirect: true });
         return response.json();
       })
       .then(handleErrors)
@@ -85,38 +92,73 @@ class CreateEvent extends React.Component {
       });
   }
 
+  componentDidMount() {
+    if (this.props.type == "create") {
+      return;
+    }
+    else {
+      let that = this;
+      const id = this.props.match.params.id;
+
+      fetch(`/api/v1/event/${id}`)
+        .then(handleErrors)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (responseJson) {
+          return responseJson.data;
+        })
+        .then(function (info) {
+          that.setState({
+            title: info.title,
+            location: info.location,
+            description: info.description,
+            beginTime: info.beginTime,
+            endTime: info.endTime
+          })
+          // console.log(info);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return (
       <div>
         <Header />
         <div class="create_event_container1">
           <div class="create_event_title">
             <div class="create_event_title_container" >
-              <TitleHolder title="ساخت رویداد" image={pencilImage} />
+              <TitleHolder title={this.props.type == "create" ? "ساخت رویداد" : "ویرایش رویداد"} image={pencilImage} />
             </div>
           </div>
           <div class="create_event_container2">
             <div class="create_event_rest_1">
               <div class="create_event_input" >
                 <p> نام رویداد: </p>
-                <input class="create_event_rest_input" name="title" type="text" onChange={this.handleChange}></input>
+                <input class="create_event_rest_input" name="title" type="text" onChange={this.handleChange} value={this.state.title}></input>
               </div>
               <div class="create_event_input" >
                 <p> محل برگزاری: </p>
-                <input class="create_event_rest_input" name="location" type="text" onChange={this.handleChange} ></input>
+                <input class="create_event_rest_input" name="location" type="text" onChange={this.handleChange} value={this.state.location}></input>
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> تاریخ شروع: </p>
-                <DatePicker handleTime={this.handleBeginTime} />
+                <DatePicker date={this.state.beginTime} handleTime={this.handleBeginTime} />
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> تاریخ پایان: </p>
-                <DatePicker handleTime={this.handleEndTime} />
+                <DatePicker date={this.state.endTime} handleTime={this.handleEndTime} />
               </div>
               <div class="create_event_input" >
                 <p class="input_date"> توضیحات: </p>
                 <div class="create_event_textarea">
-                  <TextArea handleText={this.handleDescription} />
+                  <TextArea text={this.state.description} handleText={this.handleDescription} />
                 </div>
               </div>
               <div class="create_event_submit_container">
@@ -125,6 +167,7 @@ class CreateEvent extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div >
     );
   }

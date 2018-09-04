@@ -1,7 +1,6 @@
 .user_box {
   width: 250px;
   height: 335px;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   overflow: hidden;

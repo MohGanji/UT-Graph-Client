@@ -1,6 +1,6 @@
 import React from 'react';
 import './Register.css';
-import { handleErrors } from '../../Utils/handleErrors.js';
+import handleErrors from '../../Utils/functions/handleErrors';
 import Login from '../Login/login'
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -58,7 +58,7 @@ export default class Register extends React.Component {
 
   render() {
     if (this.state.is_registered) {
-      toast("شما با موفقیت ثبت نام شدید");
+      toast.success("شما با موفقیت ثبت نام شدید");
       return (
         <div>
           < Login />

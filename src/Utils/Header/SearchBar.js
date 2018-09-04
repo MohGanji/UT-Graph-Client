@@ -38,7 +38,6 @@ class SearchBar extends React.Component {
     let selectOptions = [{ value: 'رویداد', label: 'رویداد' },
     { value: 'کابر', label: 'کاربر' }]
 
-
     return (
       <div class="search_bar" >
         <form id="search_form" onSubmit={this.handleSubmit} >
@@ -54,7 +53,6 @@ class SearchBar extends React.Component {
           />
         </div>
       </div>
-
     );
   }
 }

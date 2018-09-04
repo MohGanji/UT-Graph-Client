@@ -1,6 +1,6 @@
 import React from 'react'
 import './login.css'
-import { handleErrors } from '../../Utils/handleErrors'
+import handleErrors from '../../Utils/functions/handleErrors'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify';
 
@@ -56,9 +56,8 @@ class Login extends React.Component {
       }).then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       }).then(function () {
-        toast('شما با موفقیت وارد شدید');
+        toast.info('شما با موفقیت وارد شدید');
       }).catch(function (error) {
-        //TODO: toast
         console.log(error);
       });
   }

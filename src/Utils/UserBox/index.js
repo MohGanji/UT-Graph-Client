@@ -5,7 +5,6 @@ import './UserBox.css'
 export default class UserBox extends React.Component {
 
   render() {
-    var date = new Date();
     return (
       <a href={`/user/${this.props.user.username}`} >
         <div class="user_box">

@@ -2,35 +2,8 @@ import React from 'react';
 import './slider.css';
 import 'nuka-carousel'
 import Slider from "react-slick";
-import BackgroundImage from '../../images/hojjat.jpg'
-import BackgroundImage2 from '../../images/event3.jpg'
-import BackgroundImage3 from '../../images/hojjat4.jpg'
-import BackgroundImage4 from '../../images/hojjat5.jpg'
-import BackgroundImage5 from '../../images/hojjat6.jpg'
-import BackgroundImage6 from '../../images/hojjat7.jpg'
 import sliderImage from '../../images/eventSlider.jpg';
 
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "inline", background: "red" }}
-//       onClick={onClick}
-//     >salam</div>
-//   );
-// }
-
-// function SamplePrevArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "inline", background: "green", color: "red" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
@@ -49,15 +22,6 @@ function NextArrow(props) {
     </button>
   );
 }
-
-// var NextArrow = React.createClass({
-//   render: function () {
-//     return <button {...this.props} style={{ fontSize: "40px", display: 'block', right: "100px", zIndex: "15", height: "40px", width: "40px", opacity: "1", color: "White" }} >
-//       <span className="icon icon-chevron-with-circle-right"></span>
-//     </button>;
-//   }
-// });
-
 
 
 export class MySlider extends React.Component {
@@ -88,24 +52,6 @@ export class MySlider extends React.Component {
       <div class="slider">
         <Slider {...settings}>
           {sliderEvents}
-          {/* <div>
-            <img src={BackgroundImage2} />
-          </div>
-          <div>
-            <img src={BackgroundImage3} />
-          </div>
-          <div>
-            <img src={BackgroundImage4} />
-          </div>
-          <div>
-            <img src={BackgroundImage5} />
-          </div>
-          <div>
-            <img src={BackgroundImage6} />
-          </div>
-          <div>
-            <img src={BackgroundImage4} />
-          </div> */}
         </Slider>
       </div>
     );

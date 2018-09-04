@@ -1,10 +1,8 @@
 .search_page_container {
   width: 1200px;
   max-width: 95%;
-  /* min-height: 830px830px;; */
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
@@ -12,7 +10,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 170px;
+  margin-bottom: 100px;
 }
 
 .search_page_title {
@@ -21,6 +20,17 @@
   margin-right: auto;
   margin-top: 35px;
   direction: rtl;
+}
+
+.search_page_title a {
+  float: left;
+  margin-left: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.search_page_title a:hover {
+  border: none;
 }
 
 .search_page_title p {
@@ -37,5 +47,6 @@
 .search_page_results_container {
   box-shadow: none;
   max-width: 100%;
-  min-height: 400px;
+  min-height: 350px;
+  margin-top: 75px;
 }

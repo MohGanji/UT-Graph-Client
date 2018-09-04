@@ -1,0 +1,77 @@
+.my_event_box_container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 35% 45% 20%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px #888888be;
+}
+
+.my_event_box_image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my_event_box_image {
+  width: 100%;
+  height: 200px;
+}
+
+.my_event_box_image img {
+  width: 100%;
+  height: 100%;
+}
+
+.my_event_box_info_container {
+  display: grid;
+  border-right: 1px solid rgba(0, 0, 0, 0.246);
+  border-left: 1px solid rgba(0, 0, 0, 0.246);
+  grid-template-rows: 55% 45%;
+}
+
+.my_event_box_info_container_title {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my_event_box_info_container_title a {
+  font-size: 22pt;
+  margin-right: 15px;
+  display: inline-block;  
+}
+
+.my_event_box_info_container_rest {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 15px;
+}
+
+.my_event_box_buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.my_event_box_buttons_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+}
+
+.my_event_box_buttons a {
+  background-color: #352649;
+  color: rgb(233, 229, 229);
+  font-size: 13pt;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px #888888be;
+  height: 42px;
+}

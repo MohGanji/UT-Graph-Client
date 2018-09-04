@@ -1,0 +1,39 @@
+.user_search_drop_btn {
+  width: 100%;
+  border: none; 
+  cursor: pointer;
+}
+
+.user_search_drop_down_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 400px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  direction: rtl;
+}
+
+.user_search_drop_down_content a {
+  color: black;
+  padding: 12px 16px; 
+  text-decoration: none;
+  display: block;
+  font-size: 14pt;
+  padding: 20px 20px 30px;
+  direction: rtl;
+  width: 100%;
+  cursor: pointer;
+}
+
+.user_search_drop_down_content a:hover {
+  background-color: #f1f1f1;
+}
+
+.user_search_drop_down:hover .user_search_drop_down_content {
+  display: block;
+}
+
+.user_search_drop_down:hover .user_search_drop_btn {
+  background-color: #4d1a8f;
+} 

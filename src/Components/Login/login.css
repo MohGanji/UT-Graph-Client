@@ -1,7 +1,5 @@
 .login_page {
-  /* background: #2d343d; */
   background: white;
-  /* width: 4vw; */
 }
 
 .login_form{
@@ -13,8 +11,6 @@
 }
 
 h1.login-title {
-  /* margin: -28px -25px 25px; */
-  
   padding: 15px 25px;
   width: 100%;
   line-height: 30px;
@@ -23,7 +19,6 @@ h1.login-title {
   color: #ADADAD;
   text-align:center;
   background: #f7f7f7;
- 
 }
 
 .login-input {

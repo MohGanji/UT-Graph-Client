@@ -1,21 +1,17 @@
-.test {
-  /* margin-top: 80px; */
-  /* width: 100%; */
+.welcome_home {
   position: relative;
   direction: rtl;
   color: white;
   font-size: 36pt; 
   background-image: url("../../images/sky.jpg");
-
   min-height: 650px; 
-
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.test img {
+.welcome_home img {
   width: 100%;
 }
 
@@ -38,7 +34,6 @@
 
 .home_new_events_title {
   width: 1200px;
-  /* max-width: 95%; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 35px;
@@ -63,7 +58,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  /* padding: 10px; */
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 15px #888888be;
@@ -72,13 +66,12 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row-reverse;
+  padding-bottom: 5px;
 }
 
 .load_more_events {
   width: 1200px;
   max-width: 95%;
-  /* margin-left: auto;
-  margin-rightload: auto; */
   margin-top: 30px;
   margin-bottom: 35px;
   direction: rtl;
@@ -104,4 +97,8 @@
 .load_more_button:hover {
   border: 1px solid black;
   color: black;
+}
+
+.home_slider_old_events {
+  margin-bottom: -20px;
 }
