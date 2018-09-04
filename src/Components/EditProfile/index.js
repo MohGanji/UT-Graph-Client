@@ -3,6 +3,7 @@ import './EditProfile.css';
 import { Header } from '../../Utils/Header';
 import pencilImage from '../../images/pencil.svg';
 import prof_pic from '../../images/temp_image.png';
+
 import 'font-awesome/css/font-awesome.min.css'
 import TitleHolder from '../../Utils/TitleHolder';
 import { toast } from 'react-toastify';
@@ -11,6 +12,7 @@ import { handleErrors } from '../../Utils/handleErrors'
 
 import axios from 'axios';
 import request from 'superagent';
+var path = require('path');
 
 
 function mapStateToProps(state) {
@@ -48,7 +50,8 @@ class EditProfile extends React.Component {
       firstName: this.props.user.firstName,
       lastName: this.props.user.lastName,
       email: this.props.user.email,
-      sid: this.props.user.sid
+      sid: this.props.user.sid,
+      image: this.props.user.image
     })
   }
 
@@ -158,6 +161,8 @@ class EditProfile extends React.Component {
   }
 
   render() {
+    // alert(this.state.image);
+    // alert(path.join(__dirname));
     let check_passwords_equal_class = { visibility: this.state.visibility };
     return (
       <div>
