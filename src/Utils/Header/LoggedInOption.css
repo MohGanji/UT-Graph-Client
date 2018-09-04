@@ -13,7 +13,7 @@
   z-index: 20;
 }
 
-.invisible {
+.notification_invisible {
   display: none;
   position: fixed;
   top: 0;
@@ -24,8 +24,14 @@
   opacity: 0;
 }
 
-.logged_in_option_notification:hover {
-  background-color: rgb(83, 83, 182);
+
+.logged_in_option_notification:hover > div >i{
+  /* color: #4d1a8f; */
+
+  /* position: absolute; */
+  /* right: -8px; */
+  transform: rotateY(-45deg);
+  /* background-color: rgb(83, 83, 182); */
   cursor: pointer;
 }
 

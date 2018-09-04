@@ -51,8 +51,13 @@ export default class NotifCard extends React.Component {
           <button id="reject_button" onClick={this.rejectNotif}> رد </button>
         </div>
       )
+    const selectedBoxStyle = {
+      border: "3px solid blue",
+      'box-shadow': "5px 10px 15px #888888",
+    }
+
     return (
-      <div class="notification_card_container">
+      <div id="container" class="notification_card_container" style={(this.props.selected) ? selectedBoxStyle : {}} >
         <div class="notification_message">
           {this.props.notification.message}
         </div>
