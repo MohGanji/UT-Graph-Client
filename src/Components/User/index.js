@@ -9,6 +9,8 @@ import EventBox from '../../Utils/EventBox';
 import { UserEventBox } from './UserEventBox';
 import NotFound from '../NotFound';
 
+const axios = require('axios');
+
 export default class User extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,8 @@ export default class User extends React.Component {
     this.state = {
       info: {},
       events: [],
-      notFound: false
+      notFound: false,
+      image: ""
     }
   }
 
@@ -36,6 +39,7 @@ export default class User extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
+        console.log(info);
         that.setState({ info: info })
       })
       .catch(function (error) {
@@ -56,6 +60,20 @@ export default class User extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    axios
+      .get(
+      '/default.jpg',
+      { responseType: 'arraybuffer' },
+    )
+      .then(response => {
+        const base64 = btoa(
+          new Uint8Array(response.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            '',
+          ),
+        );
+        this.setState({ image: "data:;base64," + base64 });
+      });
   }
 
   render() {
@@ -66,6 +84,7 @@ export default class User extends React.Component {
     let userEvents = this.state.events.map((event) =>
       <EventBox event={event} />
     );
+    // alert(this.state.info.image);
 
     return (
       <div class="user">
@@ -73,7 +92,8 @@ export default class User extends React.Component {
         <BackgroundCover />
         <div class="user_info">
           <div class="profile_photo_container">
-            <img class="profile_photo" src={ProfilePhoto} />
+            <img class="profile_photo" src={this.state.image} />
+            {/* <img class="profile_photo" src={this.state.info.image} /> */}
           </div>
           <div class="user_about">
             <p id="user_name" class="user_about_text"> {this.state.info.firstName} {this.state.info.lastName}</p>

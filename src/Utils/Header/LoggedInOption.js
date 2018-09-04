@@ -39,7 +39,7 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-        alert(data);
+        // alert(data);
         const notif = {
           type: "ADMIN"
         }
