@@ -2,13 +2,16 @@ import React from 'react';
 import EventImage from '../../images/event3.jpg'
 import './EventBox.css'
 import getDateString from '../../Utils/functions/getDateString';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default class EventBox extends React.Component {
 
   render() {
+    AOS.init();
     var date = new Date();
     return (
-      <div class="event">
+      <div class="event" data-aos="zoom-in">
         <div class="event_img">
           <a href={`/event/${this.props.event._id}`}> <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> </a >
         </div>
