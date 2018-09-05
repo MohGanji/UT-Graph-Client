@@ -73,10 +73,11 @@ class LoggedInOption extends React.Component {
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
-    let notifElement = newNotif.map((notif, index) => {
+    newNotif.reverse();
+    let notifElement = newNotif.map((notif) => {
       // console.log(notif.message);
       return (
-        <a href={`/notification/${index}`} >
+        <a href={`/notification/${notif.index}`} >
           {notif.message}
         </a>
       )

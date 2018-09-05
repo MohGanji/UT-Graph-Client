@@ -55,8 +55,9 @@ export default class Notification extends React.Component {
     if (this.props.type == "selected") {
       console.log(this.props.match.params.index);
     }
+    newNotif.reverse();
     const cards = newNotif.map((notif, index) => {
-      if (this.state.type == "selected" && this.props.match.params.index == index)
+      if (this.state.type == "selected" && this.props.match.params.index == notif.index)
         return (<NotifCard selected={true} notification={notif} key={index} />)
       else
         return (<NotifCard selected={false} notification={notif} key={index} />)
