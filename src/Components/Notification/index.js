@@ -10,11 +10,17 @@ export default class Notification extends React.Component {
     super(props);
 
     this.state = {
-      notifications: []
+      notifications: [],
+      type: String
     }
+
+    this.closeInvisibleBox = this.closeInvisibleBox.bind(this);
   }
 
   componentDidMount() {
+    let type = this.props.type;
+    this.setState({ type: type });
+
     var that = this;
     fetch(`/api/v1/notification/${0}`, {
       headers: {
@@ -36,16 +42,31 @@ export default class Notification extends React.Component {
       });
   }
 
+  closeInvisibleBox() {
+    console.log("Click");
+    document.getElementById("selected_invisible").style.display = "none";
+    this.setState({ type: "normal" });
+  }
+
   render() {
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
-    const cards = newNotif.map(
-      (notif, index) => (<NotifCard notification={notif} key={index} />)
-    );
+    if (this.props.type == "selected") {
+      console.log(this.props.match.params.index);
+    }
+    const cards = newNotif.map((notif, index) => {
+      if (this.state.type == "selected" && this.props.match.params.index == index)
+        return (<NotifCard selected={true} notification={notif} key={index} />)
+      else
+        return (<NotifCard selected={false} notification={notif} key={index} />)
+    });
     return (
       <div>
         <Header />
+        <div onClick={this.closeInvisibleBox} class="selected_invisible" id="selected_invisible"
+          style={(this.props.type == "selected") ? { display: "inline" } : { display: "none" }}>
+        </div>
         <div class="notification_container_all">
           <div class="notification_title">
             <p> لیست اطلاعیه ها: </p>

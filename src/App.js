@@ -50,8 +50,11 @@ class App extends Component {
           <Route exact path="/my-events" render={(props) => (
             (this.props.authenticated) ? (<MyEvents />) : (<Redirect to="/" />)
           )} />
+          <Route exact path="/notification/:index" render={(props) => (
+            (this.props.authenticated) ? (<Notification type="selected" {...props} />) : (<Redirect to="/" />)
+          )} />
           <Route exact path="/notification" render={(props) => (
-            (this.props.authenticated) ? (<Notification />) : (<Redirect to="/" />)
+            (this.props.authenticated) ? (<Notification type="normal" />) : (<Redirect to="/" />)
           )} />
           <Route component={NotFound} />
         </Switch>

@@ -73,16 +73,20 @@ class LoggedInOption extends React.Component {
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
-    let notifElement = newNotif.map((notif) => {
+    let notifElement = newNotif.map((notif, index) => {
       // console.log(notif.message);
-      return notif.message;
+      return (
+        <a href={`/notification/${index}`} >
+          {notif.message}
+        </a>
+      )
     });
     if (this.state.notifications.length === 0)
       notifElement = <p class="notification_box_empty"> اطلاعیه تازه ای ندارید! </p>
 
     return (
       <div class="logged_in_option_container" >
-        <div onClick={this.closeNotification} id="invisible_box" class="invisible">
+        <div onClick={this.closeNotification} id="invisible_box" class="notification_invisible">
         </div>
         <div onClick={this.showNotifications} class="logged_in_option_notification">
           <div class="notification_icon">
@@ -94,7 +98,7 @@ class LoggedInOption extends React.Component {
               <div class="notification_box_footer">
                 <a href={`/notification`}>
                   مشاهده تمام اطلاعیه ها
-              </a>
+                </a>
               </div>
             </a>
           </div>

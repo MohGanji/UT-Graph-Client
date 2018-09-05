@@ -5,8 +5,8 @@ export default function makeMessage(notification) {
     case ('REQUEST'):
       notification.message =
         <p>
-          <b> {notification.applicant} </b> درخواست عضویت در رویداد
-           <b> {notification.event} </b>
+          <b> {notification.applicant} </b> درخواست همکاری در رویداد
+           <b> "{notification.event}" </b>
           را دارد
         </p>
       break;
@@ -23,7 +23,8 @@ export default function makeMessage(notification) {
         <p>
           متاسفانه درخواست شما برای کمک به رویداد
           <b> "{notification.event}" </b>
-          از طرف ادمین برگزار کننده رویداد رد شده است
+          از طرف برگزار کننده رویداد
+          <b> رد شده است </b>
         </p>
       break;
     case ('INFORMATION'):
