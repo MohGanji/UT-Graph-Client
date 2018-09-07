@@ -35,6 +35,7 @@ export default class Notification extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
+        console.log("notifications", data);
         that.setState({ notifications: data });
       })
       .catch(function (error) {
@@ -43,7 +44,6 @@ export default class Notification extends React.Component {
   }
 
   closeInvisibleBox() {
-    console.log("Click");
     document.getElementById("selected_invisible").style.display = "none";
     this.setState({ type: "normal" });
   }
@@ -52,9 +52,6 @@ export default class Notification extends React.Component {
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
-    if (this.props.type == "selected") {
-      console.log(this.props.match.params.index);
-    }
     newNotif.reverse();
     const cards = newNotif.map((notif, index) => {
       if (this.state.type == "selected" && this.props.match.params.index == notif.index)
