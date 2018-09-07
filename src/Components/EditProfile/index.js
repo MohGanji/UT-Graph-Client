@@ -11,7 +11,6 @@ import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer';
 
 import axios from 'axios';
-// import request from 'superagent';
 var path = require('path');
 
 
@@ -66,6 +65,7 @@ class EditProfile extends React.Component {
   }
 
   handleSubmit() {
+    this.fileUpload();
     let data = this.state;
     let token = localStorage.getItem('token');
     let that = this;
@@ -116,16 +116,17 @@ class EditProfile extends React.Component {
   }
   async fileUpload() {
     let token = localStorage.getItem('token');
-    toast('upload');
+    // toast('upload');
     const url = '/api/v1/user/upload';
     let data = await new FormData()
     data.append('file', this.state.file, this.state.file.name);
     let config = {
+      method: "post",
       headers: {
         'authorization': token
       },
       params: {
-        "a": "b"
+        // "a": "b"
       }
     }
     axios.post(url, data, config)
@@ -183,7 +184,7 @@ class EditProfile extends React.Component {
                   </div>
                   <label class="change_button" for="upload-photo" > تغییر تصویر </label>
                   <input type="file" id="upload-photo" onChange={this.onChange} />
-                  <div onClick={this.fileUpload}> تغییر عکس </div>
+                  {/* <div onClick={this.fileUpload}> تغییر عکس </div> */}
                 </div>
               </div>
             </div>
