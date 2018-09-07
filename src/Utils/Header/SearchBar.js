@@ -50,6 +50,7 @@ class SearchBar extends React.Component {
             options={selectOptions}
             onChange={this.handleSelect}
             value={this.state.value}
+            isSearchable={false}
           />
         </div>
       </div>
