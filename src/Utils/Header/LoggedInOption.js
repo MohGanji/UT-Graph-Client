@@ -19,7 +19,8 @@ class LoggedInOption extends React.Component {
     super(props);
     this.state = {
       notifications: [],
-      image: ""
+      image: "",
+      unReadNotifSize: 0
     }
 
     this.handleExit = this.handleExit.bind(this);
@@ -42,12 +43,13 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-        // console.log(data);
-        that.setState({ notifications: data });
+        let size = data.length;
+        that.setState({ notifications: data, unReadNotifSize: size });
       })
       .catch(function (error) {
         console.log(error);
       });
+
     // axios
     //   .get(
     //   '/' + that.props.user.image,
@@ -80,11 +82,15 @@ class LoggedInOption extends React.Component {
       },
       method: 'POST',
     });
+    this.setState({ unReadNotifSize: 0 });
+    document.getElementById("notification_icon").style.transform = "rotate(15deg)";
   }
 
   closeNotification() {
     document.getElementById('notifications_box').style.display = 'none';
     document.getElementById('invisible_box').style.display = 'none';
+
+    document.getElementById("notification_icon").style.transform = "rotate(0deg)";
   }
 
   render() {
@@ -106,13 +112,17 @@ class LoggedInOption extends React.Component {
     if (this.state.notifications.length === 0)
       notifElement = <p class="notification_box_empty"> اطلاعیه تازه ای ندارید! </p>
     const createEventClass = (this.props.user.role !== "ADMIN") ? "logged_in_option_create_event" : "";
+    const hiddenClass = (this.state.unReadNotifSize === 0) ? "notification_badge_hidden" : "";
     return (
-      <div class="logged_in_option_container" >
+      <div id="option_container" class="logged_in_option_container" >
         <div onClick={this.closeNotification} id="invisible_box" class="notification_invisible">
         </div>
         <div onClick={this.showNotifications} class="logged_in_option_notification">
+          <div class={"notification_badge " + hiddenClass}>
+            {this.state.unReadNotifSize}
+          </div>
           <div class="notification_icon">
-            <i class="fa fa-bell"></i>
+            <i id="notification_icon" class="fa fa-bell"></i>
           </div>
           <div id="notifications_box" class='logged_in_option_notification_content'>
             {notifElement}

@@ -8,9 +8,28 @@
 }
 
 .logged_in_option_notification {
+  /* background: green; */
   position: relative;
   font-size: 0.7vw;
   z-index: 20;
+  cursor: pointer;
+}
+
+.notification_badge {
+  position: absolute;
+  background: red;
+  bottom: 10px;
+  right: 0;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification_badge_hidden {
+  display: none;
 }
 
 .notification_invisible {
@@ -25,14 +44,8 @@
 }
 
 
-.logged_in_option_notification:hover > div >i{
-  /* color: #4d1a8f; */
-
-  /* position: absolute; */
-  /* right: -8px; */
-  transform: rotateY(-45deg);
-  /* background-color: rgb(83, 83, 182); */
-  cursor: pointer;
+.logged_in_option_notification:hover > div > i {
+  transform: rotate(15deg);
 }
 
 .logged_in_option_notification_content {
