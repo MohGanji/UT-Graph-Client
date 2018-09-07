@@ -180,3 +180,7 @@
 .drop_down:hover .drop_btn {
   background-color: #4d1a8f;
 } 
+
+.logged_in_option_create_event {
+  display: none !important;
+}
