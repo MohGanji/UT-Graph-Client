@@ -84,7 +84,7 @@ class LoggedInOption extends React.Component {
     });
     if (this.state.notifications.length === 0)
       notifElement = <p class="notification_box_empty"> اطلاعیه تازه ای ندارید! </p>
-
+    const createEventClass = (this.props.user.role !== "ADMIN") ? "logged_in_option_create_event" : "";
     return (
       <div class="logged_in_option_container" >
         <div onClick={this.closeNotification} id="invisible_box" class="notification_invisible">
@@ -117,7 +117,7 @@ class LoggedInOption extends React.Component {
             <a href={`/user/${this.props.user.username}`}>پروفایل</a>
             <a href={`/edit-profile`}>ویرایش پروفایل</a>
             <a href={`/my-events`}> رویداد های من</a>
-            <a href={`/create-event`}>ساخت رویداد</a>
+            <a href={`/create-event`} className={createEventClass}>ساخت رویداد</a>
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
