@@ -10,6 +10,7 @@ import getDateString from '../../Utils/functions/getDateString';
 
 export class UserEventBox extends React.Component {
   render() {
+    let show_image = '/' + this.props.event.image;
     return (
       <div class="user_event_container">
         <div class="user_event_title">
@@ -18,7 +19,7 @@ export class UserEventBox extends React.Component {
 
         <div class="user_event_rest">
           <div class="user_event_poster">
-            <img class="cover" src={BackgroundImage} />
+            <img class="cover" src={show_image} />
           </div>
           <div class="user_event_info">
             <TitleHolder image={RoleImage} title={this.props.event.role === 'ORGANIZER' ? 'برگزار کننده' : 'شرکت کننده'} />
