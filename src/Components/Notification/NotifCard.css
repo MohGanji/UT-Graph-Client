@@ -8,9 +8,9 @@
   box-shadow: 0px 0px 2px;
   /* display: block; */
   direction: rtl;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 75% 25%;
-  grid-template-rows: 100%;
+  grid-template-rows: 100%; */
 }
 
 .notification_card_container p {
@@ -58,4 +58,15 @@
 
 .notification_button #reject_button:hover {
   background: red;
+}
+
+.selected_box {
+  border: 3px solid blue;
+  box-shadow: 5px 10px 15px #888888;
+}
+
+.bottun_box {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 100%;
 }
