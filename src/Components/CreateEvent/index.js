@@ -100,6 +100,9 @@ class CreateEvent extends React.Component {
       headers: {
         'authorization': token
       },
+      params: {
+        username: this.state.organizer
+      }
     }
     axios.post(url, data, config)
       .then((result) => {
@@ -141,10 +144,13 @@ class CreateEvent extends React.Component {
         })
         .then(handleErrors)
         .catch(function (error) {
-          this.fileUpload();
+          // this.fileUpload();
           console.log(error);
         });
     }
+
+
+
     // fetch(`/api/v1/event/${id}`, {
     //   method: method,
     //   headers: {
