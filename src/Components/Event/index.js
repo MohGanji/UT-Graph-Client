@@ -7,6 +7,7 @@ import Header from '../../Utils/Header';
 import BackgroundImage from '../../images/userEvent.jpg';
 import pencilImage from '../../images/pencil.svg';
 import beginTimeImage from '../../images/beginTime.svg';
+import capacityImage from '../../images/capacity.svg';
 import endTimeImage from '../../images/endTime2.svg';
 import mapImage from '../../images/eventMap.svg';
 import TitleHolder from '../../Utils/TitleHolder';
@@ -123,6 +124,7 @@ export default class Event extends React.Component {
               <TitleHolder image={beginTimeImage} title={beginTimeString} />
               <TitleHolder image={endTimeImage} title={endTimeString} />
               <TitleHolder image={mapImage} title={this.state.info.location} />
+              <TitleHolder image={capacityImage} title="تعداد شرکت کنندگان   73 نفر" />
             </div>
           </div>
         </div>
