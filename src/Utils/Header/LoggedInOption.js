@@ -42,26 +42,12 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-        // console.log(data);
         that.setState({ notifications: data });
       })
       .catch(function (error) {
         console.log(error);
       });
-    // axios
-    //   .get(
-    //   '/' + that.props.user.image,
-    //   { responseType: 'arraybuffer' },
-    // )
-    //   .then(response => {
-    //     const base64 = btoa(
-    //       new Uint8Array(response.data).reduce(
-    //         (data, byte) => data + String.fromCharCode(byte),
-    //         '',
-    //       ),
-    //     );
-    //     that.setState({ image: "data:;base64," + base64 });
-    //   });
+
   }
 
   handleExit() {
@@ -88,15 +74,12 @@ class LoggedInOption extends React.Component {
   }
 
   render() {
-    // console.log(this.props.user);
-    // console.log("sssssss");
     let show_image = '/public/' + this.props.user.image;
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
     newNotif.reverse();
     let notifElement = newNotif.map((notif) => {
-      // console.log(notif.message);
       return (
         <a href={`/notification/${notif.index}`} >
           {notif.message}

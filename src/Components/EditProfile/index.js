@@ -131,11 +131,11 @@ class EditProfile extends React.Component {
     }
     axios.post(url, data, config)
       .then((result) => {
-        console.log("res:");
+        // console.log("res:");
         console.log(result);
       })
       .catch(function (error) {
-        console.log("err");
+        // console.log("err");
         console.log(error);
       });
   }

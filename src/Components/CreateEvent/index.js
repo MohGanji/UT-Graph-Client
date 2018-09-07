@@ -106,11 +106,11 @@ class CreateEvent extends React.Component {
     }
     axios.post(url, data, config)
       .then((result) => {
-        console.log("res:");
-        console.log(result);
+        // console.log("res:");
+        // console.log(result);
       })
       .catch(function (error) {
-        console.log("err");
+        // console.log("err");
         console.log(error);
       });
   }
@@ -149,25 +149,6 @@ class CreateEvent extends React.Component {
         });
     }
 
-
-
-    // fetch(`/api/v1/event/${id}`, {
-    //   method: method,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     authorization: token
-    //   },
-    //   body: JSON.stringify({ data: data })
-    // })
-    //   .then(function (response) {
-    //     that.setState({ redirect: true });
-    //     return response.json();
-    //   })
-    //   .then(handleErrors)
-    //   .catch(function (error) {
-    //     this.fileUpload();
-    //     console.log(error);
-    //   });
   }
 
   componentDidMount() {

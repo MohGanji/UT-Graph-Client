@@ -76,8 +76,6 @@ export default class Event extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
-        // console.log("rrrrres");
-        console.log(responseJson);
         that.setState({
           user_pic: responseJson.image
         });
@@ -128,8 +126,6 @@ export default class Event extends React.Component {
     let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
     let endTimeString = this.getDateString(new Date(this.state.info.endTime));
     let show_image = '/public/' + this.state.info.image;
-    console.log("innn");
-    console.log(this.state.info)
     return (
       <div>
 
