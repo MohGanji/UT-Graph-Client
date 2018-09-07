@@ -45,7 +45,7 @@
 
 
 .logged_in_option_notification:hover > div > i {
-  transform: rotate(15deg);
+  transform: rotate(15deg) !important;
 }
 
 .logged_in_option_notification_content {
