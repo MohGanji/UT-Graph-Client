@@ -212,6 +212,20 @@ export default class Event extends React.Component {
             </div>
           </div>
           <div class="event_page_about_right">
+            <div class="event_page_about_right_bottom" >
+              <div class="event_page_about_right_bottom_title">
+                <p> حامیان </p>
+              </div>
+              <div class="event_page_about_right_bottom_description">
+              </div>
+            </div>
+
+            {/* <div class="event_page_about_right_center">
+              <div class="event_page_about_right_center_description">
+                <p> سلام</p>
+              </div>
+            </div> */}
+
             <div class="event_page_about_right_up">
               <div class="event_page_about_right_up_map">
                 <img src={GoogleMapImage} />
@@ -221,13 +235,7 @@ export default class Event extends React.Component {
                 <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
               </div>
             </div>
-            <div class="event_page_about_right_bottom" >
-              <div class="event_page_about_right_bottom_title">
-                <p> حامیان </p>
-              </div>
-              <div class="event_page_about_right_bottom_description">
-              </div>
-            </div>
+
           </div>
         </div>
 
