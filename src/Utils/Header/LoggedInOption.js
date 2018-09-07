@@ -43,34 +43,13 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
-<<<<<<< HEAD
         let size = data.length;
         that.setState({ notifications: data, unReadNotifSize: size });
-=======
-        that.setState({ notifications: data });
->>>>>>> 1ee89f477b93e369d06fe41209013dcad6a44e47
       })
       .catch(function (error) {
         console.log(error);
       });
 
-<<<<<<< HEAD
-    // axios
-    //   .get(
-    //   '/' + that.props.user.image,
-    //   { responseType: 'arraybuffer' },
-    // )
-    //   .then(response => {
-    //     const base64 = btoa(
-    //       new Uint8Array(response.data).reduce(
-    //         (data, byte) => data + String.fromCharCode(byte),
-    //         '',
-    //       ),
-    //     );
-    //     that.setState({ image: "data:;base64," + base64 });
-    //   });
-=======
->>>>>>> 1ee89f477b93e369d06fe41209013dcad6a44e47
   }
 
   handleExit() {
