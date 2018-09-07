@@ -90,7 +90,7 @@ class LoggedInOption extends React.Component {
   render() {
     // console.log(this.props.user);
     // console.log("sssssss");
-    let show_image = '/' + this.props.user.image;
+    let show_image = '/public/' + this.props.user.image;
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });

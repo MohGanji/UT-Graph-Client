@@ -75,7 +75,7 @@ export default class User extends React.Component {
   }
 
   render() {
-    let show_image = '/' + this.state.info.image;
+    let show_image = '/public/' + this.state.info.image;
 
     if (this.state.notFound == true) {
       return <NotFound />

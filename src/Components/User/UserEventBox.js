@@ -10,7 +10,7 @@ import getDateString from '../../Utils/functions/getDateString';
 
 export class UserEventBox extends React.Component {
   render() {
-    let show_image = '/' + this.props.event.image;
+    let show_image = '/public/' + this.props.event.image;
     return (
       <div class="user_event_container">
         <div class="user_event_title">

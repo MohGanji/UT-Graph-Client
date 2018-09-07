@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 export default class EventBox extends React.Component {
 
   render() {
-    let show_image = '/' + this.props.event.image;
+    let show_image = '/public/' + this.props.event.image;
     AOS.init();
     var date = new Date();
     return (

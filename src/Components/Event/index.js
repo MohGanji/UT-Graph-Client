@@ -124,10 +124,10 @@ export default class Event extends React.Component {
     if (this.state.notFound) {
       return <NotFound />
     }
-    let user_pic_show = '/' + this.state.user_pic;
+    let user_pic_show = '/public/' + this.state.user_pic;
     let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
     let endTimeString = this.getDateString(new Date(this.state.info.endTime));
-    let show_image = '/' + this.state.info.image;
+    let show_image = '/public/' + this.state.info.image;
     console.log("innn");
     console.log(this.state.info)
     return (
