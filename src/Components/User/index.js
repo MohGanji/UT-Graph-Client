@@ -22,7 +22,7 @@ export default class User extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let that = this;
     const id = this.props.match.params.id;
 
@@ -38,8 +38,21 @@ export default class User extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
         that.setState({ info: info })
+        // axios
+        //   .get(
+        //   '/' + that.state.info.image,
+        //   { responseType: 'arraybuffer' },
+        // )
+        //   .then(response => {
+        //     const base64 = btoa(
+        //       new Uint8Array(response.data).reduce(
+        //         (data, byte) => data + String.fromCharCode(byte),
+        //         '',
+        //       ),
+        //     );
+        //     that.setState({ image: "data:;base64," + base64 });
+        //   });
       })
       .catch(function (error) {
         console.log(error);
@@ -59,23 +72,11 @@ export default class User extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-    axios
-      .get(
-      '/default.jpg',
-      { responseType: 'arraybuffer' },
-    )
-      .then(response => {
-        const base64 = btoa(
-          new Uint8Array(response.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            '',
-          ),
-        );
-        this.setState({ image: "data:;base64," + base64 });
-      });
   }
 
   render() {
+    let show_image = '/' + this.state.info.image;
+
     if (this.state.notFound == true) {
       return <NotFound />
     }
@@ -91,7 +92,7 @@ export default class User extends React.Component {
         <BackgroundCover />
         <div class="user_info">
           <div class="profile_photo_container">
-            <img class="profile_photo" src={this.state.image} />
+            <img class="profile_photo" src={show_image} />
             {/* <img class="profile_photo" src={this.state.info.image} /> */}
           </div>
           <div class="user_about">

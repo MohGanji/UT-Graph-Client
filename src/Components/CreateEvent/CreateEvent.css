@@ -103,3 +103,10 @@
 .create_event_search_user {
   width: 35%;
 }
+
+.change_image{
+  margin-top:50px;
+  width: 100%;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  padding-bottom: 30px;
+}

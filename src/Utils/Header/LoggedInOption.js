@@ -5,6 +5,7 @@ import profilePic from '../../images/defaultProfile.jpg';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
+const axios = require('axios');
 
 function mapStateToProps(state) {
   return {
@@ -17,7 +18,8 @@ class LoggedInOption extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notifications: []
+      notifications: [],
+      image: ""
     }
 
     this.handleExit = this.handleExit.bind(this);
@@ -25,6 +27,7 @@ class LoggedInOption extends React.Component {
   }
 
   componentDidMount() {
+
     let that = this;
     fetch(`/api/v1/notification/${1}`, {
       headers: {
@@ -39,11 +42,26 @@ class LoggedInOption extends React.Component {
         return responseJson.data;
       })
       .then(function (data) {
+        // console.log(data);
         that.setState({ notifications: data });
       })
       .catch(function (error) {
         console.log(error);
       });
+    // axios
+    //   .get(
+    //   '/' + that.props.user.image,
+    //   { responseType: 'arraybuffer' },
+    // )
+    //   .then(response => {
+    //     const base64 = btoa(
+    //       new Uint8Array(response.data).reduce(
+    //         (data, byte) => data + String.fromCharCode(byte),
+    //         '',
+    //       ),
+    //     );
+    //     that.setState({ image: "data:;base64," + base64 });
+    //   });
   }
 
   handleExit() {
@@ -70,6 +88,9 @@ class LoggedInOption extends React.Component {
   }
 
   render() {
+    // console.log(this.props.user);
+    // console.log("sssssss");
+    let show_image = '/' + this.props.user.image;
     const newNotif = this.state.notifications.map((notif) => {
       return makeNotifMessage(notif);
     });
@@ -110,7 +131,8 @@ class LoggedInOption extends React.Component {
               <p><b> {this.props.user.firstName + ' ' + this.props.user.lastName} </b></p>
             </div>
             <div class="logged_in_option_photo">
-              <img src={profilePic} />
+              {/* <img src={this.state.image} /> */}
+              <img src={show_image} />
             </div>
           </div>
           <div class="drop_down_content">

@@ -9,11 +9,16 @@ import getDateString from '../../Utils/functions/getDateString';
 export default class OldEventBox extends React.Component {
 
   render() {
+    let show_image = '/' + this.props.event.image;
+
     return (
       <a href={`/event/${this.props.event._id}`} >
         <div class="old_event_box">
           <div class="old_event_image">
-            <a href={`/event/${this.props.event._id}`}> <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> </a >
+            <a href={`/event/${this.props.event._id}`}>
+              <img class="img_fill_div" src={show_image} />
+              {/* <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> */}
+            </a >
           </div>
           <div class="old_event_title">
             {this.props.event.title}

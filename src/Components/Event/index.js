@@ -36,6 +36,7 @@ export default class Event extends React.Component {
 
     this.state = {
       info: {},
+      user_pic: "",
       notFound: false
     }
     this.getDateString = this.getDateString.bind(this);
@@ -43,11 +44,11 @@ export default class Event extends React.Component {
     this.request_staff = this.request_staff.bind(this);
   }
 
-  componentWillMount() {
+  async componentDidMount() {
     let that = this;
     const id = this.props.match.params.id;
-
-    fetch(`/api/v1/event/${id}`)
+    let username;
+    await fetch(`/api/v1/event/${id}`)
       .then(handleErrors)
       .then(function (response) {
         if (!response.ok) {
@@ -59,7 +60,26 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
+        username = info.organizer;
         that.setState({ info: info })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    // alert(username);
+    fetch(`/api/v1/user/get_image/${username}`)
+      .then(function (response) {
+        if (!response.ok) {
+          that.setState({ notFound: true });
+        }
+        return response.json();
+      })
+      .then(function (responseJson) {
+        // console.log("rrrrres");
+        console.log(responseJson);
+        that.setState({
+          user_pic: responseJson.image
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -103,17 +123,20 @@ export default class Event extends React.Component {
     if (this.state.notFound) {
       return <NotFound />
     }
-
+    let user_pic_show = '/' + this.state.user_pic;
     let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
     let endTimeString = this.getDateString(new Date(this.state.info.endTime));
-
+    let show_image = '/' + this.state.info.image;
+    console.log("innn");
+    console.log(this.state.info)
     return (
       <div>
 
         <Header />
         <div class="event_page_info_1">
           <div class="event_page_photo_container">
-            <img src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} />
+            <img src={show_image} />
+            {/* <img src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} /> */}
           </div>
           <div class="event_page_info_container">
             <div class="event_page_info_container_up">
@@ -213,7 +236,7 @@ export default class Event extends React.Component {
             <div class="event_page_users_left_organizer">
               <div class="event_page_users_left_organizer_image">
                 <a href={`/user/${this.state.info.organizer}`} >
-                  <img src={OrganizerImage} />
+                  <img src={user_pic_show} />
                 </a>
               </div>
               <div class="event_page_users_left_organizer_info">
