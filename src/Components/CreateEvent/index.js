@@ -9,6 +9,12 @@ import { connect } from 'react-redux';
 import TextArea from './TextArea';
 import Footer from '../../Utils/Footer';
 import { Redirect } from 'react-router-dom';
+import prof_pic from '../../images/background.jpg';
+import { toast } from 'react-toastify';
+
+
+import axios from 'axios';
+var path = require('path');
 
 function mapStateToProps(state) {
   return {
@@ -28,13 +34,30 @@ class CreateEvent extends React.Component {
       endTime: '',
       description: '',
       organizer: this.props.user.username,
-      redirect: false
+      redirect: false,
+      image: prof_pic,
+      file: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
+
+  }
+  onChange(event) {
+    event.preventDefault();
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        image: reader.result
+      });
+    }
+    reader.readAsDataURL(file)
   }
 
   handleChange(event) {
@@ -66,6 +89,28 @@ class CreateEvent extends React.Component {
   handleDescription(description) {
     this.setState({ description: description });
   }
+  async fileUpload(id, token) {
+    toast("upload")
+    const url = `/api/v1/event/upload/${id}`
+    alert(url);
+    alert(this.state.file);
+    let data = await new FormData();
+    data.append('event', this.state.file, this.state.file.name);
+    let config = {
+      headers: {
+        'authorization': token
+      },
+    }
+    axios.post(url, data, config)
+      .then((result) => {
+        console.log("res:");
+        console.log(result);
+      })
+      .catch(function (error) {
+        console.log("err");
+        console.log(error);
+      });
+  }
 
   handleSubmit() {
     const data = this.state;
@@ -74,22 +119,49 @@ class CreateEvent extends React.Component {
     let id = this.props.type == "create" ? "" : this.props.match.params.id;
     let that = this;
 
-    fetch(`/api/v1/event/${id}`, {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: token
-      },
-      body: JSON.stringify({ data: data })
-    })
-      .then(function (response) {
-        that.setState({ redirect: true });
-        return response.json();
+    if (this.props.type == "create") {
+      fetch(`/api/v1/event/${id}`, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: token
+        },
+        body: JSON.stringify({ data: data })
       })
-      .then(handleErrors)
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+
+          that.setState({ redirect: true });
+          return response.json();
+        })
+        .then(ress => {
+          toast("123");
+          let id = ress.data;
+          this.fileUpload(id, token);
+          return ress;
+        })
+        .then(handleErrors)
+        .catch(function (error) {
+          this.fileUpload();
+          console.log(error);
+        });
+    }
+    // fetch(`/api/v1/event/${id}`, {
+    //   method: method,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     authorization: token
+    //   },
+    //   body: JSON.stringify({ data: data })
+    // })
+    //   .then(function (response) {
+    //     that.setState({ redirect: true });
+    //     return response.json();
+    //   })
+    //   .then(handleErrors)
+    //   .catch(function (error) {
+    //     this.fileUpload();
+    //     console.log(error);
+    //   });
   }
 
   componentDidMount() {
@@ -137,7 +209,20 @@ class CreateEvent extends React.Component {
               <TitleHolder title={this.props.type == "create" ? "ساخت رویداد" : "ویرایش رویداد"} image={pencilImage} />
             </div>
           </div>
+
           <div class="create_event_container2">
+            <div class="change_image">
+              <div class="create_event_input" >
+                <p class="edit_header_font"> تصویر رویداد </p>
+                <div class="change_image_2">
+                  <div class="prof_pic">
+                    <img src={this.state.image} alt={123} />
+                  </div>
+                  <label class="change_button" for="upload-photo" > تغییر تصویر </label>
+                  <input type="file" id="upload-photo" onChange={this.onChange} />
+                </div>
+              </div>
+            </div>
             <div class="create_event_rest_1">
               <div class="create_event_input" >
                 <p> نام رویداد: </p>

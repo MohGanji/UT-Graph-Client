@@ -8,12 +8,16 @@ import 'aos/dist/aos.css';
 export default class EventBox extends React.Component {
 
   render() {
+    let show_image = '/' + this.props.event.image;
     AOS.init();
     var date = new Date();
     return (
       <div class="event" data-aos="zoom-in">
         <div class="event_img">
-          <a href={`/event/${this.props.event._id}`}> <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> </a >
+          <a href={`/event/${this.props.event._id}`}>
+            <img class="img_fill_div" src={show_image} />
+            {/* <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} />  */}
+          </a >
         </div>
         <a href={`/event/${this.props.event._id}`}>
           <div class="event_info">
