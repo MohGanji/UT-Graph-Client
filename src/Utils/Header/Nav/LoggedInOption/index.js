@@ -1,10 +1,10 @@
 import React from 'react';
-import './LoggedInOption.css';
+import './style.css';
 import 'font-awesome/css/font-awesome.min.css';
-import profilePic from '../../images/defaultProfile.jpg';
+import profilePic from '../../../../images/defaultProfile.jpg';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
+import makeNotifMessage from '../../../../Utils/functions/makeNotifMessage';
 const axios = require('axios');
 
 function mapStateToProps(state) {

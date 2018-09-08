@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResultPage.css'
+import './style.css'
 import Header from '../../Utils/Header';
 import handleErrors from '../../Utils/functions/handleErrors'
 import EventBox from '../../Utils/EventBox'

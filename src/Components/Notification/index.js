@@ -1,7 +1,7 @@
 import React from 'react'
-import './Notification.css'
+import './style.css'
 import Header from '../../Utils/Header'
-import NotifCard from './NotifCard'
+import NotifCard from './NotifCard/'
 import makeNotifMessage from '../../Utils/functions/makeNotifMessage'
 import Footer from '../../Utils/Footer'
 
@@ -28,16 +28,16 @@ export default class Notification extends React.Component {
       },
       method: 'GET',
     })
-      .then(function(response) {
+      .then(function (response) {
         return response.json()
       })
-      .then(function(responseJson) {
+      .then(function (responseJson) {
         return responseJson.data
       })
-      .then(function(data) {
+      .then(function (data) {
         that.setState({ notifications: data })
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error)
       })
   }

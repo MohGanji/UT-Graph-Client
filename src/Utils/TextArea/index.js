@@ -1,7 +1,7 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-export default class CreateEvent extends React.Component {
+export default class TextArea extends React.Component {
 
   constructor(props) {
     super(props);

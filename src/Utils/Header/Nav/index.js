@@ -1,14 +1,12 @@
 import React from 'react'
-import './nav.css'
-import logo from '../../images/logo.svg'
-import SearchBar from './SearchBar'
-import LoggedInOption from './LoggedInOption'
-
+import './style.css'
+import logo from '../../../images/logo.svg'
+import SearchBar from './SearchBar/'
+import LoggedInOption from './LoggedInOption/';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 import { connect } from 'react-redux'
-import LoginRegisterOption from './LoginRegisterOption';
+import LoginRegisterOption from './LoginRegisterOption/';
 
 function mapStateToProps(state) {
   return {

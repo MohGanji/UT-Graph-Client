@@ -1,5 +1,5 @@
 import React from 'react';
-import './OldEventSlider.css';
+import './style.css';
 import Slider from "react-slick";
 
 export default class OldEventBox extends React.Component {

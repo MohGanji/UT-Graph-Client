@@ -1,5 +1,5 @@
 import React from 'react'
-import './login.css'
+import './style.css'
 import handleErrors from '../../Utils/functions/handleErrors'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify';

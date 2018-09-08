@@ -1,5 +1,5 @@
 import React from 'react'
-import './NotFound.css'
+import './style.css'
 import Header from '../../Utils/Header'
 import Footer from '../../Utils/Footer';
 

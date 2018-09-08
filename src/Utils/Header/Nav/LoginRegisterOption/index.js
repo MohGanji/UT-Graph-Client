@@ -1,10 +1,9 @@
 import React from 'react'
-import './nav.css'
+import '../style.css'
 import Popup from 'reactjs-popup'
-import Login from '../../Components/Login/login'
-import Register from '../../Components/Register/Register'
+import Login from '../../../../Components/Login/'
+import Register from '../../../../Components/Register/'
 import 'react-toastify/dist/ReactToastify.css'
-
 
 const contentStyle = {
   height: 'innerHeight',

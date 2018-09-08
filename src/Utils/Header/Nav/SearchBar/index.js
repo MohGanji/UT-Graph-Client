@@ -1,9 +1,9 @@
 import React from 'react'
-import './searchBar.css'
+import './style.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Select from 'react-select';
 import { withRouter } from 'react-router-dom';
-import BaseForm from '../../Utils/BaseForm';
+import BaseForm from '../../../../Utils/BaseForm';
 
 class SearchBar extends BaseForm {
   constructor(props) {

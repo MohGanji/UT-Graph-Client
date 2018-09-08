@@ -1,7 +1,7 @@
 import React from 'react';
-import './Register.css';
+import './style.css';
 import handleErrors from '../../Utils/functions/handleErrors';
-import Login from '../Login/login'
+import Login from '../Login'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BaseForm from '../../Utils/BaseForm';

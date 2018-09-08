@@ -1,10 +1,10 @@
 import React from 'react';
-import './MyEvents.css';
+import './style.css';
 import Header from '../../Utils/Header';
 import Footer from '../../Utils/Footer';
 import { connect } from 'react-redux'
 import handleErrors from '../../Utils/functions/handleErrors'
-import MyEventBox from './MyEventBox';
+import MyEventBox from './MyEventBox/';
 
 function mapStateToProps(state) {
   return {

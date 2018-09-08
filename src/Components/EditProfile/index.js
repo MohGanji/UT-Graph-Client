@@ -1,5 +1,5 @@
 import React from 'react'
-import './EditProfile.css'
+import './style.css'
 import Header from '../../Utils/Header'
 import pencilImage from '../../images/pencil.svg'
 import prof_pic from '../../images/defaultProfile.jpg'

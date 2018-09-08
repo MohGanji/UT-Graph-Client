@@ -1,7 +1,6 @@
 import React from 'react';
-import './DatePicker.css'
+import './style.css'
 import { toast } from 'react-toastify';
-
 
 export default class DatePicker extends React.Component {
   constructor(props) {

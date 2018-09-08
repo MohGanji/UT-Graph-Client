@@ -1,5 +1,5 @@
 import React from 'react'
-import './NotifCard.css'
+import './style.css'
 import { toast } from 'react-toastify'
 
 export default class NotifCard extends React.Component {
@@ -29,7 +29,7 @@ export default class NotifCard extends React.Component {
         authorization: localStorage.getItem('token'),
       },
       method: 'POST',
-    }).catch(function(error) {
+    }).catch(function (error) {
       console.log(error)
     })
 
@@ -44,7 +44,7 @@ export default class NotifCard extends React.Component {
         authorization: localStorage.getItem('token'),
       },
       method: 'POST',
-    }).catch(function(error) {
+    }).catch(function (error) {
       console.log(error)
     })
 

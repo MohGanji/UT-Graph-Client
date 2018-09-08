@@ -1,5 +1,5 @@
 import React from 'react';
-import './StaffBox.css';
+import './style.css';
 
 export default class StaffBox extends React.Component {
 
