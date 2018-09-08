@@ -11,6 +11,7 @@ import Footer from '../../Utils/Footer'
 import { Redirect } from 'react-router-dom'
 import prof_pic from '../../images/background.jpg'
 import { toast } from 'react-toastify'
+import BaseForm from '../../Utils/BaseForm';
 
 import axios from 'axios'
 var path = require('path')
@@ -22,7 +23,7 @@ function mapStateToProps(state) {
   }
 }
 
-class CreateEvent extends React.Component {
+class CreateEvent extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -36,7 +37,6 @@ class CreateEvent extends React.Component {
       image: prof_pic,
       file: '',
     }
-    this.handleChange = this.handleChange.bind(this)
     this.handleBeginTime = this.handleBeginTime.bind(this)
     this.handleEndTime = this.handleEndTime.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -55,16 +55,6 @@ class CreateEvent extends React.Component {
       })
     }
     reader.readAsDataURL(file)
-  }
-
-  handleChange(event) {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-
-    this.setState({
-      [name]: value,
-    })
   }
 
   handleBeginTime(day, month, year) {
@@ -107,7 +97,7 @@ class CreateEvent extends React.Component {
         // console.log("res:");
         // console.log(result);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // console.log("err");
         console.log(error)
       })
@@ -128,7 +118,7 @@ class CreateEvent extends React.Component {
       },
       body: JSON.stringify({ data: data }),
     })
-      .then(function(response) {
+      .then(function (response) {
         that.setState({ redirect: true })
         return response.json()
       })
@@ -139,7 +129,7 @@ class CreateEvent extends React.Component {
         return ress
       })
       .then(handleErrors)
-      .catch(function(error) {
+      .catch(function (error) {
         // this.fileUpload();
         console.log(error)
       })
@@ -154,13 +144,13 @@ class CreateEvent extends React.Component {
 
       fetch(`/api/v1/event/${id}`)
         .then(handleErrors)
-        .then(function(response) {
+        .then(function (response) {
           return response.json()
         })
-        .then(function(responseJson) {
+        .then(function (responseJson) {
           return responseJson.data
         })
-        .then(function(info) {
+        .then(function (info) {
           that.setState({
             title: info.title,
             location: info.location,
@@ -170,7 +160,7 @@ class CreateEvent extends React.Component {
           })
           // console.log(info);
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error)
         })
     }

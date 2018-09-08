@@ -2,11 +2,11 @@ import React from 'react';
 import './Register.css';
 import handleErrors from '../../Utils/functions/handleErrors';
 import Login from '../Login/login'
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BaseForm from '../../Utils/BaseForm';
 
-export default class Register extends React.Component {
+export default class Register extends BaseForm {
   constructor(props) {
     super(props);
 
@@ -20,19 +20,7 @@ export default class Register extends React.Component {
       is_registered: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    // toast("change!");
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
   }
 
   handleSubmit() {

@@ -2,11 +2,10 @@ import React from 'react'
 import './searchBar.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Select from 'react-select';
-import {
-  withRouter
-} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import BaseForm from '../../Utils/BaseForm';
 
-class SearchBar extends React.Component {
+class SearchBar extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,14 +13,10 @@ class SearchBar extends React.Component {
       selectedOption: { value: 'رویداد', label: 'رویداد' }
     }
 
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ keyword: event.target.value })
-  }
 
   handleSelect(selectedOption) {
     this.setState({ selectedOption: selectedOption });
@@ -41,7 +36,7 @@ class SearchBar extends React.Component {
     return (
       <div class="search_bar" >
         <form id="search_form" onSubmit={this.handleSubmit} >
-          <input class="search" type="search" placeholder="عبارت مورد نظر خود را وارد کنید..." onChange={this.handleChange} value={this.state.keyword} />
+          <input class="search" type="search" placeholder="عبارت مورد نظر خود را وارد کنید..." onChange={this.handleChange} value={this.state.keyword} name="keyword" />
         </form>
         <a class="search_icon" onClick={this.handleSubmit}> <i class="fa fa-search" aria-hidden="true"></i></a>
         <div class="select_container" >
