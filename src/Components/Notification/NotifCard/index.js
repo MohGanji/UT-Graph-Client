@@ -29,12 +29,12 @@ export default class NotifCard extends React.Component {
         authorization: localStorage.getItem('token'),
       },
       method: 'POST',
-    }).catch(function (error) {
+    }).catch(function(error) {
       console.log(error)
     })
 
     this.setState({ hasButton: false, off: true })
-    toast('درخواست ' + this.props.notification.applicant + ' تایید شد')
+    toast.info('درخواست ' + this.props.notification.applicant + ' تایید شد')
   }
 
   rejectNotif() {
@@ -44,12 +44,12 @@ export default class NotifCard extends React.Component {
         authorization: localStorage.getItem('token'),
       },
       method: 'POST',
-    }).catch(function (error) {
+    }).catch(function(error) {
       console.log(error)
     })
 
     this.setState({ hasButton: false, off: true })
-    toast('درخواست ' + this.props.notification.applicant + ' رد شد')
+    toast.info('درخواست ' + this.props.notification.applicant + ' رد شد')
   }
 
   render() {
