@@ -17,7 +17,7 @@
 
 .notification_badge {
   position: absolute;
-  background: red;
+  background: #cae4f7;
   bottom: 10px;
   right: 0;
   width: 23px;
@@ -26,6 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .notification_badge_hidden {
@@ -43,7 +44,6 @@
   opacity: 0;
 }
 
-
 .logged_in_option_notification:hover > div > i {
   transform: rotate(15deg) !important;
 }
@@ -54,14 +54,14 @@
   right: 0;
   background-color: #f9f9f9;
   width: 300px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
   direction: rtl;
 }
 
 .logged_in_option_notification_content p {
   color: black;
-  padding: 12px 16px; 
+  padding: 12px 16px;
   text-decoration: none;
   display: block;
   font-size: 14pt;
@@ -78,7 +78,7 @@
 }
 
 .notification_box_empty {
-  font-style: oblique; 
+  font-style: oblique;
 }
 
 .notification_box_footer {
@@ -128,14 +128,13 @@
 .logged_in_option_name {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .logged_in_option_name p {
   color: white;
   font-size: 1.2vw;
 }
-
 
 .notification_icon {
   display: flex;
@@ -149,7 +148,7 @@
 
 .drop_btn {
   width: 100%;
-  border: none; 
+  border: none;
   cursor: pointer;
 }
 
@@ -165,14 +164,14 @@
   position: absolute;
   background-color: #f9f9f9;
   width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
   direction: rtl;
 }
 
 .drop_down_content a {
   color: black;
-  padding: 12px 16px; 
+  padding: 12px 16px;
   text-decoration: none;
   display: block;
   font-size: 14pt;
@@ -192,7 +191,7 @@
 
 .drop_down:hover .drop_btn {
   background-color: #4d1a8f;
-} 
+}
 
 .logged_in_option_create_event {
   display: none !important;
