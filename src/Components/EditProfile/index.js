@@ -54,9 +54,16 @@ class EditProfile extends BaseForm {
 
   handleSubmit() {
     this.fileUpload()
-    let data = this.state
-    let token = localStorage.getItem('token')
     let that = this
+    let data = {
+      new_password: that.state.new_password,
+      new_password_repeat: that.state.new_password_repeat,
+      firstName: that.state.firstName,
+      lastName: that.state.lastName,
+      email: that.state.email,
+      sid: that.state.sid,
+    }
+    let token = localStorage.getItem('token')
     let form = new FormData()
     form.append('file', this.state.file)
     fetch('/api/v1/user', {
@@ -67,7 +74,7 @@ class EditProfile extends BaseForm {
       },
       body: JSON.stringify({
         data: data,
-        form: form,
+        // form: form,
       }),
     })
       .then(function (response) {
@@ -155,7 +162,9 @@ class EditProfile extends BaseForm {
   render() {
     // alert(this.state.image);
     // alert(path.join(__dirname));
-    let show_image = '/public/' + this.state.image
+    let show_image
+    if (this.state.file == null) show_image = '/public/' + this.state.image
+    else show_image = this.state.image
     let check_passwords_equal_class = { visibility: this.state.visibility }
     return (
       <div>
