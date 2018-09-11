@@ -161,11 +161,6 @@ class EditProfile extends BaseForm {
   }
 
   render() {
-    // alert(this.state.image);
-    // alert(path.join(__dirname));
-    let show_image
-    if (this.state.file == null) show_image = '/public/' + this.state.image
-    else show_image = this.state.image
     let check_passwords_equal_class = { visibility: this.state.visibility }
     return (
       <div>
@@ -182,7 +177,7 @@ class EditProfile extends BaseForm {
                 <p class="edit_header_font"> تصویر کاربر </p>
                 <div class="change_image_2">
                   <div class="prof_pic">
-                    <img src={show_image} alt={123} />
+                    <img src={this.state.image} alt={123} />
                   </div>
                   <label class="change_button" for="upload-photo">
                     {' '}

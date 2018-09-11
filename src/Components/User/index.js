@@ -1,43 +1,43 @@
-import React from 'react';
-import './style.css';
-import handleErrors from '../../Utils/functions/handleErrors';
-import Header from '../../Utils/Header';
-import BackgroundCover from './BackgroundCover/';
-import ProfilePhoto from '../../images/defaultProfile.jpg';
-import UserEventBox from './UserEventBox/';
-import NotFound from '../NotFound';
+import React from 'react'
+import './style.css'
+import handleErrors from '../../Utils/functions/handleErrors'
+import Header from '../../Utils/Header'
+import BackgroundCover from './BackgroundCover/'
+import ProfilePhoto from '../../images/defaultProfile.jpg'
+import UserEventBox from './UserEventBox/'
+import NotFound from '../NotFound'
 import Footer from '../../Utils/Footer'
 
-const axios = require('axios');
+const axios = require('axios')
 
 export default class User extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       info: {},
       events: [],
       notFound: false,
-      image: ""
+      image: '',
     }
   }
 
   componentDidMount() {
-    let that = this;
-    const id = this.props.match.params.id;
+    let that = this
+    const id = this.props.match.params.id
 
     fetch(`/api/v1/user/${id}`)
       .then(handleErrors)
-      .then(function (response) {
+      .then(function(response) {
         if (response.status == 404) {
-          that.setState({ notFound: true });
+          that.setState({ notFound: true })
         }
-        return response.json();
+        return response.json()
       })
-      .then(function (responseJson) {
-        return responseJson.data;
+      .then(function(responseJson) {
+        return responseJson.data
       })
-      .then(function (info) {
+      .then(function(info) {
         that.setState({ info: info })
         // axios
         //   .get(
@@ -54,36 +54,35 @@ export default class User extends React.Component {
         //     that.setState({ image: "data:;base64," + base64 });
         //   });
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function(error) {
+        console.log(error)
+      })
 
     fetch(`/api/v1/user/${id}/events`)
       .then(handleErrors)
-      .then(function (response) {
-        return response.json();
+      .then(function(response) {
+        return response.json()
       })
-      .then(function (responseJson) {
-        return responseJson.data;
+      .then(function(responseJson) {
+        return responseJson.data
       })
-      .then(function (events) {
+      .then(function(events) {
         that.setState({ events: events })
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 
   render() {
-    let show_image = '/public/' + this.state.info.image;
-
     if (this.state.notFound == true) {
       return <NotFound />
     }
-    let userInfo = this.state.info.info == null ? 'دانشجو' : this.state.info.info;
-    let userEvents = this.state.events.map((event) =>
+    let userInfo =
+      this.state.info.info == null ? 'دانشجو' : this.state.info.info
+    let userEvents = this.state.events.map(event => (
       <UserEventBox event={event} />
-    );
+    ))
     // alert(this.state.info.image);
 
     return (
@@ -92,25 +91,33 @@ export default class User extends React.Component {
         <BackgroundCover />
         <div class="user_info">
           <div class="profile_photo_container">
-            <img class="profile_photo" src={show_image} />
+            <img class="profile_photo" src={this.state.info.image} />
             {/* <img class="profile_photo" src={this.state.info.image} /> */}
           </div>
           <div class="user_about">
-            <p id="user_name" class="user_about_text"> {this.state.info.firstName} {this.state.info.lastName}</p>
+            <p id="user_name" class="user_about_text">
+              {' '}
+              {this.state.info.firstName} {this.state.info.lastName}
+            </p>
             <p class="user_about_text"> {userInfo} </p>
           </div>
         </div>
         <hr />
-        <div style={this.state.events.length == 0 ? { display: 'none' } : { display: 'block' }} class="event_container_all">
-          <div class="event_container_all_title" >
+        <div
+          style={
+            this.state.events.length == 0
+              ? { display: 'none' }
+              : { display: 'block' }
+          }
+          class="event_container_all"
+        >
+          <div class="event_container_all_title">
             <p>رویداد های کاربر:</p>
           </div>
-          <div class="event_container" >
-            {userEvents}
-          </div>
+          <div class="event_container">{userEvents}</div>
         </div>
         <Footer />
-      </div >
-    );
+      </div>
+    )
   }
 }

@@ -80,7 +80,10 @@ class LoggedInOption extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     let show_image = '/public/' + this.props.user.image
+=======
+>>>>>>> a8eae5c3715b48e59888acd452235064e7619512
     const newNotif = this.state.notifications.map(notif => {
       return makeNotifMessage(notif)
     })
@@ -139,7 +142,7 @@ class LoggedInOption extends React.Component {
             </div>
             <div class="logged_in_option_photo">
               {/* <img src={this.state.image} /> */}
-              <img src={show_image} />
+              <img src={this.props.user.image} />
             </div>
           </div>
           <div class="drop_down_content">

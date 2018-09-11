@@ -1,23 +1,23 @@
-import React from 'react';
-import './style.css';
+import React from 'react'
+import './style.css'
 import Popup from 'reactjs-popup'
-import { toast } from 'react-toastify';
-import handleErrors from '../../Utils/functions/handleErrors';
-import Header from '../../Utils/Header';
-import BackgroundImage from '../../images/userEvent.jpg';
-import pencilImage from '../../images/pencil.svg';
-import beginTimeImage from '../../images/beginTime.svg';
-import capacityImage from '../../images/capacity.svg';
-import endTimeImage from '../../images/endTime2.svg';
-import mapImage from '../../images/eventMap.svg';
-import TitleHolder from '../../Utils/TitleHolder';
-import OrganizerImage from '../../images/eventPageOrganizer.jpg';
-import GoogleMapImage from '../../images/eventPageMap.png';
+import { toast } from 'react-toastify'
+import handleErrors from '../../Utils/functions/handleErrors'
+import Header from '../../Utils/Header'
+import BackgroundImage from '../../images/userEvent.jpg'
+import pencilImage from '../../images/pencil.svg'
+import beginTimeImage from '../../images/beginTime.svg'
+import capacityImage from '../../images/capacity.svg'
+import endTimeImage from '../../images/endTime2.svg'
+import mapImage from '../../images/eventMap.svg'
+import TitleHolder from '../../Utils/TitleHolder'
+import OrganizerImage from '../../images/eventPageOrganizer.jpg'
+import GoogleMapImage from '../../images/eventPageMap.png'
 import StaffBox from './StaffBox/'
-import staffAvatar from '../../images/staffAvatar.png';
-import ReactHtmlParser from 'react-html-parser';
-import NotFound from '../NotFound';
-import Footer from '../../Utils/Footer';
+import staffAvatar from '../../images/staffAvatar.png'
+import ReactHtmlParser from 'react-html-parser'
+import NotFound from '../NotFound'
+import Footer from '../../Utils/Footer'
 
 const contentStyle = {
   height: 'innerHeight',
@@ -33,106 +33,113 @@ const inner_div = {
 
 export default class Event extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       info: {},
-      user_pic: "",
-      notFound: false
+      user_pic: '',
+      notFound: false,
     }
-    this.getDateString = this.getDateString.bind(this);
-    this.register = this.register.bind(this);
-    this.request_staff = this.request_staff.bind(this);
+    this.getDateString = this.getDateString.bind(this)
+    this.register = this.register.bind(this)
+    this.request_staff = this.request_staff.bind(this)
   }
 
   async componentDidMount() {
-    let that = this;
-    const id = this.props.match.params.id;
-    let username;
+    let that = this
+    const id = this.props.match.params.id
+    let username
     await fetch(`/api/v1/event/${id}`)
       .then(handleErrors)
-      .then(function (response) {
+      .then(function(response) {
         if (!response.ok) {
-          that.setState({ notFound: true });
+          that.setState({ notFound: true })
         }
-        return response.json();
+        return response.json()
       })
-      .then(function (responseJson) {
-        return responseJson.data;
+      .then(function(responseJson) {
+        return responseJson.data
       })
-      .then(function (info) {
-        username = info.organizer;
+      .then(function(info) {
+        username = info.organizer
         that.setState({ info: info })
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function(error) {
+        console.log(error)
+      })
     // alert(username);
     fetch(`/api/v1/user/get_image/${username}`)
-      .then(function (response) {
+      .then(function(response) {
         if (!response.ok) {
-          that.setState({ notFound: true });
+          that.setState({ notFound: true })
         }
-        return response.json();
+        return response.json()
       })
-      .then(function (responseJson) {
+      .then(function(responseJson) {
+        // alert('get image')
+        // alert(responseJson.image)
         that.setState({
-          user_pic: responseJson.image
-        });
+          user_pic: responseJson.image,
+        })
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 
   getDateString(date) {
-    let dateString = date.getFullYear() + '/' + (Number(date.getMonth()) + 1) + '/' + date.getDate();
-    return dateString;
+    let dateString =
+      date.getFullYear() +
+      '/' +
+      (Number(date.getMonth()) + 1) +
+      '/' +
+      date.getDate()
+    return dateString
   }
 
   register(close) {
-    const id = this.props.match.params.id;
-    const token = localStorage.getItem('token');
+    const id = this.props.match.params.id
+    const token = localStorage.getItem('token')
 
     fetch(`/api/v1/event/${id}/signup_attendent`, {
       headers: {
-        authorization: token
+        authorization: token,
       },
-      method: "POST",
+      method: 'POST',
     })
 
-    toast.success("ثبت نام شما در رویداد با موفقیت انجام شد");
+    toast.success('ثبت نام شما در رویداد با موفقیت انجام شد')
   }
 
   request_staff() {
-    const id = this.props.match.params.id;
-    const token = localStorage.getItem('token');
+    const id = this.props.match.params.id
+    const token = localStorage.getItem('token')
 
     fetch(`/api/v1/event/${id}/signup_staff`, {
       headers: {
-        authorization: token
+        authorization: token,
       },
-      method: "POST",
+      method: 'POST',
     })
 
-    toast.info("درخواست شما برای ادمین رویداد ارسال شد");
+    toast.info('درخواست شما برای ادمین رویداد ارسال شد')
   }
 
   render() {
     if (this.state.notFound) {
       return <NotFound />
     }
-    let user_pic_show = '/public/' + this.state.user_pic;
-    let beginTimeString = this.getDateString(new Date(this.state.info.beginTime));
-    let endTimeString = this.getDateString(new Date(this.state.info.endTime));
-    let show_image = '/public/' + this.state.info.image;
+    // alert(this.state.user_pic)
+    let beginTimeString = this.getDateString(
+      new Date(this.state.info.beginTime),
+    )
+    let endTimeString = this.getDateString(new Date(this.state.info.endTime))
     return (
       <div>
-
         <Header />
         <div class="event_page_info_1">
           <div class="event_page_photo_container">
-            <img src={show_image} />
+            <img src={this.state.info.image} />
             {/* <img src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} /> */}
           </div>
           <div class="event_page_info_container">
@@ -143,16 +150,19 @@ export default class Event extends React.Component {
               <TitleHolder image={beginTimeImage} title={beginTimeString} />
               <TitleHolder image={endTimeImage} title={endTimeString} />
               <TitleHolder image={mapImage} title={this.state.info.location} />
-              <TitleHolder image={capacityImage} title="تعداد شرکت کنندگان   73 نفر" />
+              <TitleHolder
+                image={capacityImage}
+                title="تعداد شرکت کنندگان   73 نفر"
+              />
             </div>
           </div>
         </div>
 
         <div class="event_page_info_2">
           <div class="event_page_about_left">
-            <div class="event_page_about_left_description" >
+            <div class="event_page_about_left_description">
               <p class="info_showing">توضیحات:</p>
-              <div class="event_page_about_left_description_text" >
+              <div class="event_page_about_left_description_text">
                 <p>{ReactHtmlParser(this.state.info.description)}</p>
               </div>
             </div>
@@ -177,7 +187,15 @@ export default class Event extends React.Component {
                       شرکت کنید؟
                     </div>
                     <div class="accept_request">
-                      <button onClick={() => { this.register(); close(); }}> <b> تایید </b> </button>
+                      <button
+                        onClick={() => {
+                          this.register()
+                          close()
+                        }}
+                      >
+                        {' '}
+                        <b> تایید </b>{' '}
+                      </button>
                     </div>
                   </form>
                 )}
@@ -185,7 +203,10 @@ export default class Event extends React.Component {
               {/* <button onClick="return reAssign({this.request_staff},close)" class="event_page_signup_button"> اضافه شدن به عنوان کمک کننده </button> */}
               <Popup
                 trigger={
-                  <button class="event_page_signup_button"> درخواست همکاری </button>
+                  <button class="event_page_signup_button">
+                    {' '}
+                    درخواست همکاری{' '}
+                  </button>
                 }
                 modal
                 contentStyle={contentStyle}
@@ -197,12 +218,21 @@ export default class Event extends React.Component {
                       &times;
                     </span> */}
                     <div class="modal_message">
-                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در رویداد
+                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در
+                      رویداد
                       <b> {this.state.info.title} </b>
                       مشارکت کنید؟
                     </div>
                     <div class="accept_request">
-                      <button onClick={() => { this.request_staff(); close(); }}> <b> تایید </b> </button>
+                      <button
+                        onClick={() => {
+                          this.request_staff()
+                          close()
+                        }}
+                      >
+                        {' '}
+                        <b> تایید </b>{' '}
+                      </button>
                     </div>
                   </div>
                 )}
@@ -210,12 +240,11 @@ export default class Event extends React.Component {
             </div>
           </div>
           <div class="event_page_about_right">
-            <div class="event_page_about_right_bottom" >
+            <div class="event_page_about_right_bottom">
               <div class="event_page_about_right_bottom_title">
                 <p> حامیان </p>
               </div>
-              <div class="event_page_about_right_bottom_description">
-              </div>
+              <div class="event_page_about_right_bottom_description" />
             </div>
 
             {/* <div class="event_page_about_right_center">
@@ -229,11 +258,15 @@ export default class Event extends React.Component {
                 <img src={GoogleMapImage} />
               </div>
               <div class="event_page_about_right_up_title_container">
-                <p class="event_page_about_right_up_title">{this.state.info.location}</p>
-                <p class="event_page_about_right_up_location"> <b>تهران</b> ایران</p>
+                <p class="event_page_about_right_up_title">
+                  {this.state.info.location}
+                </p>
+                <p class="event_page_about_right_up_location">
+                  {' '}
+                  <b>تهران</b> ایران
+                </p>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -241,14 +274,20 @@ export default class Event extends React.Component {
           <div class="event_page_users_left">
             <div class="event_page_users_left_organizer">
               <div class="event_page_users_left_organizer_image">
-                <a href={`/user/${this.state.info.organizer}`} >
-                  <img src={user_pic_show} />
+                <a href={`/user/${this.state.info.organizer}`}>
+                  <img src={this.state.user_pic} />
                 </a>
               </div>
               <div class="event_page_users_left_organizer_info">
-                <p class="event_page_users_left_organizer_info_title">  مسئول برگزاری </p>
-                <a href={`/user/${this.state.info.organizer}`} >
-                  <p class="event_page_users_left_organizer_info_name"> @{this.state.info.organizer} </p>
+                <p class="event_page_users_left_organizer_info_title">
+                  {' '}
+                  مسئول برگزاری{' '}
+                </p>
+                <a href={`/user/${this.state.info.organizer}`}>
+                  <p class="event_page_users_left_organizer_info_name">
+                    {' '}
+                    @{this.state.info.organizer}{' '}
+                  </p>
                 </a>
               </div>
             </div>
@@ -269,7 +308,7 @@ export default class Event extends React.Component {
           </div>
         </div>
         <Footer />
-      </div >
-    );
+      </div>
+    )
   }
 }
