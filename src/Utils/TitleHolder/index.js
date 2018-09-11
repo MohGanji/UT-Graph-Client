@@ -1,8 +1,7 @@
 import React from 'react';
-import './TitleHolder.css'
+import './style.css'
 
 export default class TitleHolder extends React.Component {
-
   render() {
     return (
       <div class="title_holder_container">

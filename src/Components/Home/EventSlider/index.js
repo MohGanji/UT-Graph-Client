@@ -1,5 +1,5 @@
 import React from 'react';
-import './slider.css';
+import './style.css';
 import 'nuka-carousel'
 import Slider from "react-slick";
 import sliderImage from '../../images/eventSlider.jpg';
@@ -24,7 +24,7 @@ function NextArrow(props) {
 }
 
 
-export class MySlider extends React.Component {
+export default class EventSlider extends React.Component {
   render() {
     var settings = {
       dots: false,

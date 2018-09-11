@@ -1,5 +1,5 @@
 import React from 'react';
-import './Event.css';
+import './style.css';
 import Popup from 'reactjs-popup'
 import { toast } from 'react-toastify';
 import handleErrors from '../../Utils/functions/handleErrors';
@@ -13,7 +13,7 @@ import mapImage from '../../images/eventMap.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import OrganizerImage from '../../images/eventPageOrganizer.jpg';
 import GoogleMapImage from '../../images/eventPageMap.png';
-import StaffBox from './StaffBox';
+import StaffBox from './StaffBox/'
 import staffAvatar from '../../images/staffAvatar.png';
 import ReactHtmlParser from 'react-html-parser';
 import NotFound from '../NotFound';

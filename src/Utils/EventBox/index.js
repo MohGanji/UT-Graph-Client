@@ -1,6 +1,6 @@
 import React from 'react';
 import EventImage from '../../images/event3.jpg'
-import './EventBox.css'
+import './style.css'
 import getDateString from '../../Utils/functions/getDateString';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

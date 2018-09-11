@@ -1,5 +1,5 @@
 import React from 'react'
-import './EditProfile.css'
+import './style.css'
 import Header from '../../Utils/Header'
 import pencilImage from '../../images/pencil.svg'
 import prof_pic from '../../images/defaultProfile.jpg'
@@ -9,8 +9,9 @@ import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer'
-
 import axios from 'axios'
+import BaseForm from '../../Utils/BaseForm';
+
 var path = require('path')
 
 function mapStateToProps(state) {
@@ -20,7 +21,7 @@ function mapStateToProps(state) {
   }
 }
 
-class EditProfile extends React.Component {
+class EditProfile extends BaseForm {
   constructor(props) {
     super(props)
     this.state = {
@@ -38,7 +39,6 @@ class EditProfile extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.fileUpload = this.fileUpload.bind(this)
     this.password_change = this.password_change.bind(this)
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -49,16 +49,6 @@ class EditProfile extends React.Component {
       email: this.props.user.email,
       sid: this.props.user.sid,
       image: this.props.user.image,
-    })
-  }
-
-  handleChange(event) {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-
-    this.setState({
-      [name]: value,
     })
   }
 
@@ -87,26 +77,26 @@ class EditProfile extends React.Component {
         // form: form,
       }),
     })
-      .then(function(response) {
+      .then(function (response) {
         return response
       })
       .then(handleErrors)
-      .then(function() {
+      .then(function () {
         return fetch(`/api/v1/user/${that.props.user.username}`)
       })
-      .then(function(response) {
+      .then(function (response) {
         return response.json()
       })
-      .then(function(responseJson) {
+      .then(function (responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data })
       })
-      .then(function() {
+      .then(function () {
         toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
       })
-      .then(function() {
+      .then(function () {
         that.setState({ isEdited: true })
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error)
       })
   }
@@ -144,7 +134,7 @@ class EditProfile extends React.Component {
         // console.log("res:");
         console.log(result)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // console.log("err");
         console.log(error)
       })

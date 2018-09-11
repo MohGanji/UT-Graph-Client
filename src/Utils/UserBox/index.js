@@ -1,6 +1,6 @@
 import React from 'react';
 import profilePhoto from '../../images/defaultProfile.jpg'
-import './UserBox.css'
+import './style.css'
 
 export default class UserBox extends React.Component {
 

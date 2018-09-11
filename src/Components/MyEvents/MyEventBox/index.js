@@ -1,7 +1,7 @@
 import React from 'react'
-import './MyEventBox.css'
-import defaultEventImage from '../../images/event3.jpg'
-import getDateString from '../../Utils/functions/getDateString'
+import './style.css'
+import defaultEventImage from '../../../images/event3.jpg'
+import getDateString from '../../../Utils/functions/getDateString'
 import { connect } from 'react-redux'
 
 function mapStateToProps(state) {

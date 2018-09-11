@@ -1,14 +1,14 @@
 import React from 'react';
-import './UserEventBox.css';
-import BackgroundImage from '../../images/userEvent.jpg'
-import MapImage from '../../images/map.svg'
-import CalenderImage from '../../images/calender.svg'
-import RoleImage from '../../images/role.svg';
-import TitleHolder from '../../Utils/TitleHolder';
-import getDateString from '../../Utils/functions/getDateString';
+import './style.css';
+import BackgroundImage from '../../../images/userEvent.jpg'
+import MapImage from '../../../images/map.svg'
+import CalenderImage from '../../../images/calender.svg'
+import RoleImage from '../../../images/role.svg';
+import TitleHolder from '../../../Utils/TitleHolder';
+import getDateString from '../../../Utils/functions/getDateString';
 
 
-export class UserEventBox extends React.Component {
+export default class UserEventBox extends React.Component {
   render() {
     let show_image = '/public/' + this.props.event.image;
     return (

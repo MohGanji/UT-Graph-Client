@@ -1,5 +1,5 @@
 import React from 'react';
-import './OldEventBox.css';
+import './style.css';
 import EventImage from '../../images/event3.jpg'
 import MapImage from '../../images/map.svg'
 import CalenderImage from '../../images/calender.svg'

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-export default class CreateEvent extends React.Component {
+export default class TextArea extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       text: ''
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
   }
 
-  handleChange(event) {
+  handleTextChange(event) {
     let target = event.target;
     let text = target.getContent();
     this.props.handleText(text);
@@ -27,7 +27,7 @@ export default class CreateEvent extends React.Component {
             menubar: false,
             height: "250"
           }}
-          onChange={this.handleChange}
+          onChange={this.handleTextChange}
           initialValue={this.props.text}
         />
       </div>

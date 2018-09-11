@@ -1,10 +1,10 @@
 import React from 'react';
-import './User.css';
+import './style.css';
 import handleErrors from '../../Utils/functions/handleErrors';
 import Header from '../../Utils/Header';
-import { BackgroundCover } from './Background_Cover';
+import BackgroundCover from './BackgroundCover/';
 import ProfilePhoto from '../../images/defaultProfile.jpg';
-import { UserEventBox } from './UserEventBox';
+import UserEventBox from './UserEventBox/';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer'
 
