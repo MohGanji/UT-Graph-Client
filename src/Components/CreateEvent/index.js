@@ -114,7 +114,18 @@ class CreateEvent extends React.Component {
   }
 
   handleSubmit() {
-    const data = this.state
+    if (this.state.file == null) {
+      toast('aks nadare')
+      return
+    }
+    let data = {
+      title: that.state.title,
+      location: that.state.location,
+      beginTime: that.state.beginTime,
+      endTime: that.state.endTime,
+      description: that.state.description,
+      organizer: that.state.organizer,
+    }
     const token = localStorage.getItem('token')
     const method = this.props.type == 'create' ? 'POST' : 'PUT'
     let id = this.props.type == 'create' ? '' : this.props.match.params.id
@@ -133,7 +144,7 @@ class CreateEvent extends React.Component {
         return response.json()
       })
       .then(ress => {
-        toast('123')
+        // toast('123')
         let id = ress.data
         this.fileUpload(id, token)
         return ress
