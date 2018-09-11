@@ -12,13 +12,12 @@ function mapStateToProps(state) {
 
 class MyEventBox extends React.Component {
   render() {
-    let show_image = '/public/' + this.props.event.image
     return (
       <div class="my_event_box_container">
         <div class="my_event_box_image_container">
           <div class="my_event_box_image">
             <a href={`/event/${this.props.event._id}`}>
-              <img src={show_image} />
+              <img src={this.props.event.image} />
             </a>
           </div>
         </div>

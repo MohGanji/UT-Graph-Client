@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer'
 import axios from 'axios'
-import BaseForm from '../../Utils/BaseForm';
+import BaseForm from '../../Utils/BaseForm'
 
 var path = require('path')
 
@@ -77,26 +77,26 @@ class EditProfile extends BaseForm {
         // form: form,
       }),
     })
-      .then(function (response) {
+      .then(function(response) {
         return response
       })
       .then(handleErrors)
-      .then(function () {
+      .then(function() {
         return fetch(`/api/v1/user/${that.props.user.username}`)
       })
-      .then(function (response) {
+      .then(function(response) {
         return response.json()
       })
-      .then(function (responseJson) {
+      .then(function(responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data })
       })
-      .then(function () {
+      .then(function() {
         toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
       })
-      .then(function () {
+      .then(function() {
         that.setState({ isEdited: true })
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error)
       })
   }
@@ -134,7 +134,7 @@ class EditProfile extends BaseForm {
         // console.log("res:");
         console.log(result)
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // console.log("err");
         console.log(error)
       })
@@ -160,11 +160,6 @@ class EditProfile extends BaseForm {
   }
 
   render() {
-    // alert(this.state.image);
-    // alert(path.join(__dirname));
-    let show_image
-    if (this.state.file == null) show_image = '/public/' + this.state.image
-    else show_image = this.state.image
     let check_passwords_equal_class = { visibility: this.state.visibility }
     return (
       <div>
@@ -181,7 +176,7 @@ class EditProfile extends BaseForm {
                 <p class="edit_header_font"> تصویر کاربر </p>
                 <div class="change_image_2">
                   <div class="prof_pic">
-                    <img src={show_image} alt={123} />
+                    <img src={this.state.image} alt={123} />
                   </div>
                   <label class="change_button" for="upload-photo">
                     {' '}
