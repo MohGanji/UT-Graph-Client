@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 import handleErrors from '../../Utils/functions/handleErrors'
 import Footer from '../../Utils/Footer'
 import axios from 'axios'
-import BaseForm from '../../Utils/BaseForm';
+import BaseForm from '../../Utils/BaseForm'
+import numberConverter from '../../Utils/BaseForm/numberConverter'
 
 var path = require('path')
 
@@ -34,6 +35,7 @@ class EditProfile extends BaseForm {
       lastName: '',
       email: '',
       sid: '',
+      p_sid: '',
       isEdited: false,
     }
     this.onChange = this.onChange.bind(this)
@@ -48,6 +50,7 @@ class EditProfile extends BaseForm {
       lastName: this.props.user.lastName,
       email: this.props.user.email,
       sid: this.props.user.sid,
+      p_sid: numberConverter.toPersian(this.props.user.sid),
       image: this.props.user.image,
     })
   }
@@ -56,8 +59,7 @@ class EditProfile extends BaseForm {
     this.fileUpload()
     let that = this
     let data = {
-      new_password: that.state.new_password,
-      new_password_repeat: that.state.new_password_repeat,
+      password: that.state.new_password,
       firstName: that.state.firstName,
       lastName: that.state.lastName,
       email: that.state.email,
@@ -74,29 +76,28 @@ class EditProfile extends BaseForm {
       },
       body: JSON.stringify({
         data: data,
-        // form: form,
       }),
     })
-      .then(function (response) {
+      .then(function(response) {
         return response
       })
       .then(handleErrors)
-      .then(function () {
+      .then(function() {
         return fetch(`/api/v1/user/${that.props.user.username}`)
       })
-      .then(function (response) {
+      .then(function(response) {
         return response.json()
       })
-      .then(function (responseJson) {
+      .then(function(responseJson) {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data })
       })
-      .then(function () {
+      .then(function() {
         toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
       })
-      .then(function () {
+      .then(function() {
         that.setState({ isEdited: true })
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error)
       })
   }
@@ -134,7 +135,7 @@ class EditProfile extends BaseForm {
         // console.log("res:");
         console.log(result)
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // console.log("err");
         console.log(error)
       })
@@ -241,9 +242,9 @@ class EditProfile extends BaseForm {
                   <input
                     name="sid"
                     class="create_event_rest_input"
-                    value={this.state.sid}
+                    value={this.state.p_sid}
                     type="text"
-                    onChange={this.handleChange}
+                    onChange={this.handleNumberInput}
                   />
                 </div>
               </div>

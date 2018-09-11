@@ -1,9 +1,9 @@
-.signup_page{
+.signup_page {
   background: white;
   color: white;
   width: 100vh;
 }
-.login_form{
+.login_form {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -11,7 +11,7 @@
   background: white;
   border: 1px solid #c4c4c4;
 }
-.message{
+.message {
   width: 40vw;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
   direction: rtl;
   /* background: #0095ff; */
 }
-.message > p{
+.message > p {
   margin-top: -30px;
 }
 h1.login-title {
@@ -33,8 +33,8 @@ h1.login-title {
   line-height: 5vh;
   font-size: 150%;
   font-weight: 300;
-  color: #ADADAD;
-  text-align:center;
+  color: #adadad;
+  text-align: center;
   background: #352649;
   /* background: purple; */
 }
@@ -45,16 +45,17 @@ h1.login-title {
   height: 6vh;
   /* height: 10px; */
   margin-bottom: 2vh;
-  padding-left:10px;
+  padding-right: 10px;
   font-size: 15px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  direction: rtl;
 }
 .login-input:focus {
-    border-color:#6e8095;
-    outline: none;
-  }
+  border-color: #6e8095;
+  outline: none;
+}
 .login-button {
   width: 100%;
   height: 50px;
@@ -65,20 +66,18 @@ h1.login-title {
   background: #f0776c;
   border: 0;
   border-radius: 5px;
-  cursor: pointer; 
-  outline:0;
+  cursor: pointer;
+  outline: 0;
   background-color: #0095ff;
 }
 
-.login-lost
-{
-  text-align:center;
-  margin-bottom:0px;
+.login-lost {
+  text-align: center;
+  margin-bottom: 0px;
 }
 
-.login-lost a
-{
-  color:#666;
-  text-decoration:none;
-  font-size:13px;
+.login-lost a {
+  color: #666;
+  text-decoration: none;
+  font-size: 13px;
 }

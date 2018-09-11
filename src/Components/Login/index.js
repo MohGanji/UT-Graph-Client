@@ -2,8 +2,8 @@ import React from 'react'
 import './style.css'
 import handleErrors from '../../Utils/functions/handleErrors'
 import { connect } from 'react-redux'
-import { toast } from 'react-toastify';
-import BaseForm from '../../Utils/BaseForm';
+import { toast } from 'react-toastify'
+import BaseForm from '../../Utils/BaseForm'
 
 function mapStateToProps(state) {
   return {
@@ -31,25 +31,29 @@ class Login extends BaseForm {
     fetch('/api/v1/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ data: data })
+      body: JSON.stringify({ data: data }),
     })
-      .then(function (response) {
-        return response.json();
+      .then(function(response) {
+        return response.json()
       })
       .then(handleErrors)
-      .then(function (responseJson) {
-        localStorage.setItem('token', responseJson.data.token);
-        that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
-        return fetch(`/api/v1/user/${data.username}`);
-      }).then(function (response) {
-        return response.json();
-      }).then(function (responseJson) {
-        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
-      }).then(function () {
-        toast.info('شما با موفقیت وارد شدید');
-      }).catch(function (error) {
-        console.log(error);
-      });
+      .then(function(responseJson) {
+        localStorage.setItem('token', responseJson.data.token)
+        that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' })
+        return fetch(`/api/v1/user/${data.username}`)
+      })
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(responseJson) {
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data })
+      })
+      .then(function() {
+        toast.info('شما با موفقیت وارد شدید')
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 
   render() {
@@ -60,7 +64,7 @@ class Login extends BaseForm {
           <input
             type="text"
             class="login-input"
-            placeholder="username"
+            placeholder="نام کاربری"
             name="username"
             onChange={this.handleChange}
             required
@@ -69,7 +73,7 @@ class Login extends BaseForm {
           <input
             type="password"
             class="login-input"
-            placeholder="Password"
+            placeholder="رمز عبور"
             name="password"
             onChange={this.handleChange}
             required

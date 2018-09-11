@@ -33,9 +33,6 @@ export default class DatePicker extends BaseForm {
     } else {
       this.props.handleTime(value, this.state.month, this.state.year)
       this.handleNumberInput(event)
-      this.setState({
-        p_day: numberConverter.toPersian(value),
-      })
     }
   }
 
@@ -51,9 +48,6 @@ export default class DatePicker extends BaseForm {
     } else {
       this.props.handleTime(this.state.day, value, this.state.year)
       this.handleNumberInput(event)
-      this.setState({
-        p_month: numberConverter.toPersian(value),
-      })
     }
   }
 
@@ -69,9 +63,6 @@ export default class DatePicker extends BaseForm {
     } else {
       this.props.handleTime(this.state.day, this.state.month, value)
       this.handleNumberInput(event)
-      this.setState({
-        p_year: numberConverter.toPersian(value),
-      })
     }
   }
 
