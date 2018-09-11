@@ -11,7 +11,7 @@ import Footer from '../../Utils/Footer'
 import { Redirect } from 'react-router-dom'
 import prof_pic from '../../images/background.jpg'
 import { toast } from 'react-toastify'
-import BaseForm from '../../Utils/BaseForm';
+import BaseForm from '../../Utils/BaseForm'
 
 import axios from 'axios'
 var path = require('path')
@@ -35,7 +35,7 @@ class CreateEvent extends BaseForm {
       organizer: this.props.user.username,
       redirect: false,
       image: prof_pic,
-      file: '',
+      file: null,
     }
     this.handleBeginTime = this.handleBeginTime.bind(this)
     this.handleEndTime = this.handleEndTime.bind(this)
@@ -78,8 +78,10 @@ class CreateEvent extends BaseForm {
   }
   async fileUpload(id, token) {
     toast('upload')
-    const url = `/api/v1/event/upload/${id}`
-    alert(url)
+    const url = '/api/v1/event/upload/' + id
+    // alert(url)
+    toast(url)
+    toast(id)
     alert(this.state.file)
     let data = await new FormData()
     data.append('event', this.state.file, this.state.file.name)
@@ -97,17 +99,18 @@ class CreateEvent extends BaseForm {
         // console.log("res:");
         // console.log(result);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // console.log("err");
         console.log(error)
       })
   }
 
   handleSubmit() {
-    if (this.state.file == null) {
+    if (this.props.type == 'create' && this.state.file == null) {
       toast('aks nadare')
       return
     }
+    let that = this
     let data = {
       title: that.state.title,
       location: that.state.location,
@@ -119,8 +122,7 @@ class CreateEvent extends BaseForm {
     const token = localStorage.getItem('token')
     const method = this.props.type == 'create' ? 'POST' : 'PUT'
     let id = this.props.type == 'create' ? '' : this.props.match.params.id
-    let that = this
-
+    alert(id)
     fetch(`/api/v1/event/${id}`, {
       method: method,
       headers: {
@@ -129,19 +131,23 @@ class CreateEvent extends BaseForm {
       },
       body: JSON.stringify({ data: data }),
     })
-      .then(function (response) {
+      .then(function(response) {
         that.setState({ redirect: true })
-        return response.json()
+        if (that.props.type == 'create') return response.json()
+        else return response
       })
       .then(ress => {
-        // toast('123')
-        let id = ress.data
-        this.fileUpload(id, token)
+        toast('123')
+        if (that.props.type == 'create') id = ress.data
+        if (this.state.file != null) this.fileUpload(id, token)
+        else alert('nullfile')
         return ress
       })
       .then(handleErrors)
-      .catch(function (error) {
+      .catch(function(error) {
+        alert('err')
         // this.fileUpload();
+        console.log('11111111')
         console.log(error)
       })
   }
@@ -155,13 +161,13 @@ class CreateEvent extends BaseForm {
 
       fetch(`/api/v1/event/${id}`)
         .then(handleErrors)
-        .then(function (response) {
+        .then(function(response) {
           return response.json()
         })
-        .then(function (responseJson) {
+        .then(function(responseJson) {
           return responseJson.data
         })
-        .then(function (info) {
+        .then(function(info) {
           that.setState({
             title: info.title,
             location: info.location,
@@ -171,7 +177,7 @@ class CreateEvent extends BaseForm {
           })
           // console.log(info);
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error)
         })
     }
