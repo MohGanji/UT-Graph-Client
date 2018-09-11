@@ -80,9 +80,9 @@ class CreateEvent extends BaseForm {
     toast('upload')
     const url = '/api/v1/event/upload/' + id
     // alert(url)
-    toast(url)
-    toast(id)
-    alert(this.state.file)
+    // toast(url)
+    // toast(id)
+    // alert(this.state.file)
     let data = await new FormData()
     data.append('event', this.state.file, this.state.file.name)
     let config = {
@@ -122,7 +122,7 @@ class CreateEvent extends BaseForm {
     const token = localStorage.getItem('token')
     const method = this.props.type == 'create' ? 'POST' : 'PUT'
     let id = this.props.type == 'create' ? '' : this.props.match.params.id
-    alert(id)
+    // alert(id)
     fetch(`/api/v1/event/${id}`, {
       method: method,
       headers: {
@@ -140,12 +140,12 @@ class CreateEvent extends BaseForm {
         toast('123')
         if (that.props.type == 'create') id = ress.data
         if (this.state.file != null) this.fileUpload(id, token)
-        else alert('nullfile')
+        // else alert('nullfile')
         return ress
       })
       .then(handleErrors)
       .catch(function(error) {
-        alert('err')
+        // alert('err')
         // this.fileUpload();
         console.log('11111111')
         console.log(error)
