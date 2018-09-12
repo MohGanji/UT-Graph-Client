@@ -1,31 +1,29 @@
-import React from 'react'
-import './style.css'
-import Header from '../../Utils/Header'
-import pencilImage from '../../images/pencil.svg'
-import TitleHolder from '../../Utils/TitleHolder'
-import DatePicker from '../../Utils/DatePicker'
-import handleErrors from '../../Utils/functions/handleErrors'
-import { connect } from 'react-redux'
-import TextArea from '../../Utils/TextArea'
-import Footer from '../../Utils/Footer'
-import { Redirect } from 'react-router-dom'
-import prof_pic from '../../images/background.jpg'
-import { toast } from 'react-toastify'
-import BaseForm from '../../Utils/BaseForm'
+import React from 'react';
+import './style.css';
+import Header from '../../Utils/Header';
+import pencilImage from '../../images/pencil.svg';
+import TitleHolder from '../../Utils/TitleHolder';
+import DatePicker from '../../Utils/DatePicker';
+import handleErrors from '../../Utils/functions/handleErrors';
+import { connect } from 'react-redux';
+import TextArea from '../../Utils/TextArea';
+import Footer from '../../Utils/Footer';
+import { Redirect } from 'react-router-dom';
+import profilePicture from '../../images/background.jpg';
+import { toast } from 'react-toastify';
+import BaseForm from '../../Utils/BaseForm';
+import axios from 'axios';
 
-import axios from 'axios'
-var path = require('path')
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     authenticated: state.authenticated,
-    user: state.user,
-  }
+    user: state.user
+  };
 }
 
 class CreateEvent extends BaseForm {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
     this.state = {
       title: '',
       location: '',
@@ -34,183 +32,182 @@ class CreateEvent extends BaseForm {
       description: '',
       organizer: this.props.user.username,
       redirect: false,
-      image: prof_pic,
-      file: null,
-    }
-    this.handleBeginTime = this.handleBeginTime.bind(this)
-    this.handleEndTime = this.handleEndTime.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleDescription = this.handleDescription.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
+      image: profilePicture,
+      file: null
+    };
+    this.handleBeginTime = this.handleBeginTime.bind(this);
+    this.handleEndTime = this.handleEndTime.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
   }
-  onChange(event) {
-    event.preventDefault()
-    let reader = new FileReader()
-    let file = event.target.files[0]
+  onChange (event) {
+    event.preventDefault();
+    let reader = new FileReader();
+    let file = event.target.files[0];
     reader.onloadend = () => {
       this.setState({
         file: file,
-        image: reader.result,
-      })
-    }
-    reader.readAsDataURL(file)
+        image: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
   }
 
-  handleBeginTime(day, month, year) {
-    let formattedDay = day < 10 ? (day = '0' + day) : day
-    let formattedMonth = month < 10 ? (month = '0' + month) : month
-    let beginTime = year + '-' + formattedMonth + '-' + formattedDay
+  handleBeginTime (day, month, year) {
+    let formattedDay = day < 10 ? (day = '0' + day) : day;
+    let formattedMonth = month < 10 ? (month = '0' + month) : month;
+    let beginTime = year + '-' + formattedMonth + '-' + formattedDay;
 
-    this.setState({ beginTime: beginTime })
+    this.setState({ beginTime: beginTime });
   }
 
-  handleEndTime(day, month, year) {
-    let formattedDay = day < 10 ? (day = '0' + day) : day
-    let formattedMonth = month < 10 ? (month = '0' + month) : month
-    let endTime = year + '-' + formattedMonth + '-' + formattedDay
+  handleEndTime (day, month, year) {
+    let formattedDay = day < 10 ? (day = '0' + day) : day;
+    let formattedMonth = month < 10 ? (month = '0' + month) : month;
+    let endTime = year + '-' + formattedMonth + '-' + formattedDay;
 
-    this.setState({ endTime: endTime })
+    this.setState({ endTime: endTime });
   }
 
-  handleDescription(description) {
-    this.setState({ description: description })
+  handleDescription (description) {
+    this.setState({ description: description });
   }
-  async fileUpload(id, token) {
-    toast('upload')
-    const url = '/api/v1/event/upload/' + id
+  async fileUpload (id, token) {
+    toast('upload');
+    const url = '/api/v1/event/upload/' + id;
     // alert(url)
     // toast(url)
     // toast(id)
     // alert(this.state.file)
-    let data = await new FormData()
-    data.append('event', this.state.file, this.state.file.name)
+    let data = await new FormData();
+    data.append('event', this.state.file, this.state.file.name);
     let config = {
       headers: {
-        authorization: token,
+        authorization: token
       },
       params: {
-        username: this.state.organizer,
-      },
-    }
+        username: this.state.organizer
+      }
+    };
     axios
       .post(url, data, config)
       .then(result => {
         // console.log("res:");
         // console.log(result);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // console.log("err");
-        console.log(error)
-      })
+        console.log(error);
+      });
   }
 
-  handleSubmit() {
-    if (this.props.type == 'create' && this.state.file == null) {
-      toast('aks nadare')
-      return
+  handleSubmit () {
+    if (this.props.type === 'create' && this.state.file == null) {
+      toast('aks nadare');
+      return;
     }
-    let that = this
+    let that = this;
     let data = {
       title: that.state.title,
       location: that.state.location,
       beginTime: that.state.beginTime,
       endTime: that.state.endTime,
       description: that.state.description,
-      organizer: that.state.organizer,
-    }
-    const token = localStorage.getItem('token')
-    const method = this.props.type == 'create' ? 'POST' : 'PUT'
-    let id = this.props.type == 'create' ? '' : this.props.match.params.id
+      organizer: that.state.organizer
+    };
+    const token = localStorage.getItem('token');
+    const method = this.props.type === 'create' ? 'POST' : 'PUT';
+    let id = this.props.type === 'create' ? '' : this.props.match.params.id;
     // alert(id)
     fetch(`/api/v1/event/${id}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        authorization: token,
+        authorization: token
       },
-      body: JSON.stringify({ data: data }),
+      body: JSON.stringify({ data: data })
     })
-      .then(function(response) {
-        that.setState({ redirect: true })
-        if (that.props.type == 'create') return response.json()
-        else return response
+      .then(function (response) {
+        that.setState({ redirect: true });
+        if (that.props.type === 'create') return response.json();
+        else return response;
       })
       .then(ress => {
-        toast('123')
-        if (that.props.type == 'create') id = ress.data
-        if (this.state.file != null) this.fileUpload(id, token)
+        toast('123');
+        if (that.props.type === 'create') id = ress.data;
+        if (this.state.file != null) this.fileUpload(id, token);
         // else alert('nullfile')
-        return ress
+        return ress;
       })
       .then(handleErrors)
-      .catch(function(error) {
+      .catch(function (error) {
         // alert('err')
         // this.fileUpload();
-        console.log('11111111')
-        console.log(error)
-      })
+        console.log('11111111');
+        console.log(error);
+      });
   }
 
-  componentDidMount() {
-    if (this.props.type == 'create') {
-      return
+  componentDidMount () {
+    if (this.props.type === 'create') {
     } else {
-      let that = this
-      const id = this.props.match.params.id
+      let that = this;
+      const id = this.props.match.params.id;
 
       fetch(`/api/v1/event/${id}`)
         .then(handleErrors)
-        .then(function(response) {
-          return response.json()
+        .then(function (response) {
+          return response.json();
         })
-        .then(function(responseJson) {
-          return responseJson.data
+        .then(function (responseJson) {
+          return responseJson.data;
         })
-        .then(function(info) {
+        .then(function (info) {
           that.setState({
             title: info.title,
             location: info.location,
             description: info.description,
             beginTime: info.beginTime,
-            endTime: info.endTime,
-          })
+            endTime: info.endTime
+          });
           // console.log(info);
         })
-        .catch(function(error) {
-          console.log(error)
-        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
 
-  render() {
+  render () {
     if (this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
     return (
       <div>
         <Header />
-        <div class="create_event_container1">
-          <div class="create_event_title">
-            <div class="create_event_title_container">
+        <div className="create_event_container1">
+          <div className="create_event_title">
+            <div className="create_event_title_container">
               <TitleHolder
                 title={
-                  this.props.type == 'create' ? 'ساخت رویداد' : 'ویرایش رویداد'
+                  this.props.type === 'create' ? 'ساخت رویداد' : 'ویرایش رویداد'
                 }
                 image={pencilImage}
               />
             </div>
           </div>
 
-          <div class="create_event_container2">
-            <div class="change_image">
-              <div class="create_event_input">
-                <p class="edit_header_font"> تصویر رویداد </p>
-                <div class="change_image_2">
-                  <div class="prof_pic">
+          <div className="create_event_container2">
+            <div className="change_image">
+              <div className="create_event_input">
+                <p className="edit_header_font"> تصویر رویداد </p>
+                <div className="change_image_2">
+                  <div className="prof_pic">
                     <img src={this.state.image} alt={123} />
                   </div>
-                  <label class="change_button" for="upload-photo">
+                  <label className="change_button" htmlFor="upload-photo">
                     {' '}
                     تغییر تصویر{' '}
                   </label>
@@ -222,53 +219,53 @@ class CreateEvent extends BaseForm {
                 </div>
               </div>
             </div>
-            <div class="create_event_rest_1">
-              <div class="create_event_input">
+            <div className="create_event_rest_1">
+              <div className="create_event_input">
                 <p> نام رویداد: </p>
                 <input
-                  class="create_event_rest_input"
+                  className="create_event_rest_input"
                   name="title"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.title}
                 />
               </div>
-              <div class="create_event_input">
+              <div className="create_event_input">
                 <p> محل برگزاری: </p>
                 <input
-                  class="create_event_rest_input"
+                  className="create_event_rest_input"
                   name="location"
                   type="text"
                   onChange={this.handleChange}
                   value={this.state.location}
                 />
               </div>
-              <div class="create_event_input">
-                <p class="input_date"> تاریخ شروع: </p>
+              <div className="create_event_input">
+                <p className="input_date"> تاریخ شروع: </p>
                 <DatePicker
                   date={this.state.beginTime}
                   handleTime={this.handleBeginTime}
                 />
               </div>
-              <div class="create_event_input">
-                <p class="input_date"> تاریخ پایان: </p>
+              <div className="create_event_input">
+                <p className="input_date"> تاریخ پایان: </p>
                 <DatePicker
                   date={this.state.endTime}
                   handleTime={this.handleEndTime}
                 />
               </div>
-              <div class="create_event_input">
-                <p class="input_date"> توضیحات: </p>
-                <div class="create_event_textarea">
+              <div className="create_event_input">
+                <p className="input_date"> توضیحات: </p>
+                <div className="create_event_textarea">
                   <TextArea
                     text={this.state.description}
                     handleText={this.handleDescription}
                   />
                 </div>
               </div>
-              <div class="create_event_submit_container">
+              <div className="create_event_submit_container">
                 <input
-                  class="event_page_signup_button"
+                  className="event_page_signup_button"
                   type="submit"
                   onClick={this.handleSubmit}
                   value="ثبت"
@@ -279,8 +276,8 @@ class CreateEvent extends BaseForm {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default connect(mapStateToProps)(CreateEvent)
+export default connect(mapStateToProps)(CreateEvent);

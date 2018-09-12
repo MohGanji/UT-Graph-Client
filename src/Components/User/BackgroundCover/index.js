@@ -3,10 +3,10 @@ import './style.css';
 import Background from '../../../images/coverpic.svg';
 
 export default class BackgroundCover extends React.Component {
-  render() {
+  render () {
     return (
-      <div class="background_cover">
-        <img class="background_image" src={Background} />
+      <div className="background_cover">
+        <img className="background_image" src={Background} />
       </div>
     );
   }

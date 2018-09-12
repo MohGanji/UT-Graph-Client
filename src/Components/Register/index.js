@@ -1,14 +1,14 @@
-import React from 'react'
-import './style.css'
-import handleErrors from '../../Utils/functions/handleErrors'
-import Login from '../Login'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import BaseForm from '../../Utils/BaseForm'
+import React from 'react';
+import './style.css';
+import handleErrors from '../../Utils/functions/handleErrors';
+import Login from '../Login';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import BaseForm from '../../Utils/BaseForm';
 
 export default class Register extends BaseForm {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
 
     this.state = {
       username: '',
@@ -18,59 +18,60 @@ export default class Register extends BaseForm {
       email: '',
       sid: '',
       p_sid: '',
-      is_registered: false,
-    }
+      is_registered: false
+    };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
-    const data = this.state
-    let that = this
+  handleSubmit () {
+    const data = this.state;
+    let that = this;
     fetch('/api/v1/user/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ data: data }),
+      body: JSON.stringify({ data: data })
     })
       .then(res => {
-        if (res.status == 200)
+        if (res.status === 200) {
           that.setState({
-            is_registered: true,
-          })
-        return res.json()
+            is_registered: true
+          });
+        }
+        return res.json();
       })
       .then(handleErrors)
-      .catch(function(error) {
-        console.log(error)
-      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  render() {
+  render () {
     if (this.state.is_registered) {
-      toast.success('شما با موفقیت ثبت نام شدید')
+      toast.success('شما با موفقیت ثبت نام شدید');
       return (
         <div>
           <Login />
         </div>
-      )
+      );
     } else {
       return (
-        <div class="signup_page">
-          <h1 class="login-title">Ut Graph</h1>
-          <div class="login_form">
+        <div className="signup_page">
+          <h1 className="login-title">Ut Graph</h1>
+          <div className="login_form">
             <input
               type="text"
-              class="login-input"
+              className="login-input"
               placeholder="نام کاربری"
               name="username"
               onChange={this.handleChange}
               value={this.state.username}
               required
-              autofocus
+              autoFocus
             />
             <input
               type="password"
-              class="login-input"
+              className="login-input"
               placeholder="رمز عبور"
               name="password"
               onChange={this.handleChange}
@@ -79,7 +80,7 @@ export default class Register extends BaseForm {
             />
             <input
               type="text"
-              class="login-input"
+              className="login-input"
               placeholder="نام"
               name="firstName"
               onChange={this.handlePersianInput}
@@ -88,7 +89,7 @@ export default class Register extends BaseForm {
             />
             <input
               type="text"
-              class="login-input"
+              className="login-input"
               placeholder="نام خانوادگی"
               name="lastName"
               onChange={this.handlePersianInput}
@@ -97,7 +98,7 @@ export default class Register extends BaseForm {
             />
             <input
               type="email"
-              class="login-input"
+              className="login-input"
               placeholder="ایمیل"
               name="email"
               onChange={this.handleChange}
@@ -106,7 +107,7 @@ export default class Register extends BaseForm {
             />
             <input
               type="text"
-              class="login-input"
+              className="login-input"
               placeholder="شماره دانشجویی"
               name="sid"
               onChange={this.handleNumberInput}
@@ -117,15 +118,15 @@ export default class Register extends BaseForm {
             <input
               type="submit"
               value="ثبت نام"
-              class="login-button"
+              className="login-button"
               onClick={this.handleSubmit}
             />
-            <p class="login-lost">
+            <p className="login-lost">
               <a href=""> آیا حساب کاربری دارید؟ کلیک کنید</a>
             </p>
           </div>
         </div>
-      )
+      );
     }
   }
 }

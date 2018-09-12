@@ -1,62 +1,63 @@
-import React from 'react'
-import './style.css'
-import { toast } from 'react-toastify'
+import React from 'react';
+import './style.css';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export default class NotifCard extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
 
     this.state = {
       hasButton: false,
-      off: false,
-    }
+      off: false
+    };
 
-    this.acceptNotif = this.acceptNotif.bind(this)
-    this.rejectNotif = this.rejectNotif.bind(this)
+    this.acceptNotif = this.acceptNotif.bind(this);
+    this.rejectNotif = this.rejectNotif.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       hasButton: this.props.notification.hasButton,
-      off: this.props.notification.off,
-    })
+      off: this.props.notification.off
+    });
   }
 
-  acceptNotif() {
-    const id = this.props.notification._id
+  acceptNotif () {
+    const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/accept`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: localStorage.getItem('token')
       },
-      method: 'POST',
-    }).catch(function(error) {
-      console.log(error)
-    })
+      method: 'POST'
+    }).catch(function (error) {
+      console.log(error);
+    });
 
-    this.setState({ hasButton: false, off: true })
-    toast.info('درخواست ' + this.props.notification.applicant + ' تایید شد')
+    this.setState({ hasButton: false, off: true });
+    toast.info('درخواست ' + this.props.notification.applicant + ' تایید شد');
   }
 
-  rejectNotif() {
-    const id = this.props.notification._id
+  rejectNotif () {
+    const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/reject`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: localStorage.getItem('token')
       },
-      method: 'POST',
-    }).catch(function(error) {
-      console.log(error)
-    })
+      method: 'POST'
+    }).catch(function (error) {
+      console.log(error);
+    });
 
-    this.setState({ hasButton: false, off: true })
-    toast.info('درخواست ' + this.props.notification.applicant + ' رد شد')
+    this.setState({ hasButton: false, off: true });
+    toast.info('درخواست ' + this.props.notification.applicant + ' رد شد');
   }
 
-  render() {
-    let buttons
-    if (this.state.hasButton)
+  render () {
+    let buttons;
+    if (this.state.hasButton) {
       buttons = (
-        <div class="notification_button">
+        <div className="notification_button">
           <button id="accept_button" onClick={this.acceptNotif}>
             {' '}
             تایید{' '}
@@ -66,10 +67,11 @@ export default class NotifCard extends React.Component {
             رد{' '}
           </button>
         </div>
-      )
-    const selectedBoxClass = this.props.selected ? 'selected_box' : ''
-    const buttonBoxClass = this.state.hasButton ? 'button_box' : ''
-    const offBoxClass = this.state.off ? 'off_box' : ''
+      );
+    }
+    const selectedBoxClass = this.props.selected ? 'selected_box' : '';
+    const buttonBoxClass = this.state.hasButton ? 'button_box' : '';
+    const offBoxClass = this.state.off ? 'off_box' : '';
 
     return (
       <div
@@ -83,11 +85,16 @@ export default class NotifCard extends React.Component {
           offBoxClass
         }
       >
-        <div class="notification_message">
+        <div className="notification_message">
           {this.props.notification.message}
         </div>
         {buttons}
       </div>
-    )
+    );
   }
 }
+
+NotifCard.propTypes = {
+  notification: PropTypes.object.isRequired,
+  selected: PropTypes.bool.isRequired
+};

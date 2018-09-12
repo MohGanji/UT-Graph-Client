@@ -1,27 +1,27 @@
-import React from 'react'
-import './style.css'
-import BackgroundImage from '../../../images/userEvent.jpg'
-import MapImage from '../../../images/map.svg'
-import CalenderImage from '../../../images/calender.svg'
-import RoleImage from '../../../images/role.svg'
-import TitleHolder from '../../../Utils/TitleHolder'
-import getDateString from '../../../Utils/functions/getDateString'
+import React from 'react';
+import './style.css';
+import MapImage from '../../../images/map.svg';
+import CalenderImage from '../../../images/calender.svg';
+import RoleImage from '../../../images/role.svg';
+import TitleHolder from '../../../Utils/TitleHolder';
+import getDateString from '../../../Utils/functions/getDateString';
+import PropTypes from 'prop-types';
 
 export default class UserEventBox extends React.Component {
-  render() {
+  render () {
     return (
-      <div class="user_event_container">
-        <div class="user_event_title">
+      <div className="user_event_container">
+        <div className="user_event_title">
           <a href={`/event/${this.props.event._id}`}>
             <p>{this.props.event.title}</p>
           </a>
         </div>
 
-        <div class="user_event_rest">
-          <div class="user_event_poster">
-            <img class="cover" src={this.props.event.image} />
+        <div className="user_event_rest">
+          <div className="user_event_poster">
+            <img className="cover" src={this.props.event.image} />
           </div>
-          <div class="user_event_info">
+          <div className="user_event_info">
             <TitleHolder
               image={RoleImage}
               title={
@@ -38,6 +38,10 @@ export default class UserEventBox extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
+
+UserEventBox.propTypes = {
+  event: PropTypes.object.isRequired
+};

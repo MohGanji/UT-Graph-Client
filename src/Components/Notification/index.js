@@ -1,87 +1,99 @@
-import React from 'react'
-import './style.css'
-import Header from '../../Utils/Header'
-import NotifCard from './NotifCard/'
-import makeNotifMessage from '../../Utils/functions/makeNotifMessage'
-import Footer from '../../Utils/Footer'
+import React from 'react';
+import './style.css';
+import Header from '../../Utils/Header';
+import NotifCard from './NotifCard/';
+import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
+import Footer from '../../Utils/Footer';
+import PropTypes from 'prop-types';
 
 export default class Notification extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
 
     this.state = {
       notifications: [],
-      type: String,
-    }
+      type: String
+    };
 
-    this.closeInvisibleBox = this.closeInvisibleBox.bind(this)
+    this.closeInvisibleBox = this.closeInvisibleBox.bind(this);
   }
 
-  componentDidMount() {
-    let type = this.props.type
-    this.setState({ type: type })
+  componentDidMount () {
+    let type = this.props.type;
+    this.setState({ type: type });
 
-    var that = this
+    var that = this;
     fetch(`/api/v1/notification/${0}`, {
       headers: {
-        authorization: localStorage.getItem('token'),
+        authorization: localStorage.getItem('token')
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then(function (response) {
-        return response.json()
+        return response.json();
       })
       .then(function (responseJson) {
-        return responseJson.data
+        return responseJson.data;
       })
       .then(function (data) {
-        that.setState({ notifications: data })
+        that.setState({ notifications: data });
       })
       .catch(function (error) {
-        console.log(error)
-      })
+        console.log(error);
+      });
   }
 
-  closeInvisibleBox() {
-    document.getElementById('selected_invisible').style.display = 'none'
-    this.setState({ type: 'normal' })
+  closeInvisibleBox () {
+    document.getElementById('selected_invisible').style.display = 'none';
+    this.setState({ type: 'normal' });
   }
 
-  render() {
+  render () {
     const newNotif = this.state.notifications.map(notif => {
-      return makeNotifMessage(notif)
-    })
-    newNotif.reverse()
+      return makeNotifMessage(notif);
+    });
+    newNotif.reverse();
     const cards = newNotif.map((notif, index) => {
       if (
-        this.state.type == 'selected' &&
-        this.props.match.params.index == notif.index
-      )
-        return <NotifCard selected={true} notification={notif} key={index} />
-      else
-        return <NotifCard selected={false} notification={notif} key={index} />
-    })
+        this.state.type === 'selected' &&
+        this.props.match.params.index === notif.index
+      ) {
+        return <NotifCard selected={true} notification={notif} key={index} />;
+      } else {
+        return <NotifCard selected={false} notification={notif} key={index} />;
+      }
+    });
     return (
       <div>
         <Header />
         <div
           onClick={this.closeInvisibleBox}
-          class="selected_invisible"
+          className="selected_invisible"
           id="selected_invisible"
           style={
-            this.props.type == 'selected'
+            this.props.type === 'selected'
               ? { display: 'inline' }
               : { display: 'none' }
           }
         />
-        <div class="notification_container_all">
-          <div class="notification_title">
+        <div className="notification_container_all">
+          <div className="notification_title">
             <p> لیست اطلاعیه ها: </p>
           </div>
-          <div class="notification_container">{cards}</div>
+          <div className="notification_container">{cards}</div>
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
+
+Notification.propTypes = {
+  type: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      index: PropTypes.number.isRequired
+    })
+  })
+};

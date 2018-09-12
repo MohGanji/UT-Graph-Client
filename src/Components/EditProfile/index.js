@@ -1,33 +1,31 @@
-import React from 'react'
-import './style.css'
-import Header from '../../Utils/Header'
-import pencilImage from '../../images/pencil.svg'
-import prof_pic from '../../images/defaultProfile.jpg'
-import 'font-awesome/css/font-awesome.min.css'
-import TitleHolder from '../../Utils/TitleHolder'
-import { toast } from 'react-toastify'
-import { connect } from 'react-redux'
-import handleErrors from '../../Utils/functions/handleErrors'
-import Footer from '../../Utils/Footer'
-import axios from 'axios'
-import BaseForm from '../../Utils/BaseForm'
-import numberConverter from '../../Utils/BaseForm/numberConverter'
+import React from 'react';
+import './style.css';
+import Header from '../../Utils/Header';
+import pencilImage from '../../images/pencil.svg';
+import profilePicture from '../../images/defaultProfile.jpg';
+import 'font-awesome/css/font-awesome.min.css';
+import TitleHolder from '../../Utils/TitleHolder';
+import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import handleErrors from '../../Utils/functions/handleErrors';
+import Footer from '../../Utils/Footer';
+import axios from 'axios';
+import BaseForm from '../../Utils/BaseForm';
+import numberConverter from '../../Utils/BaseForm/numberConverter';
 
-var path = require('path')
-
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.user,
-    authenticated: state.authenticated,
-  }
+    authenticated: state.authenticated
+  };
 }
 
 class EditProfile extends BaseForm {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
     this.state = {
       file: null,
-      image: prof_pic,
+      image: profilePicture,
       visibility: 'visible',
       new_password: '',
       new_password_repeat: '',
@@ -36,150 +34,150 @@ class EditProfile extends BaseForm {
       email: '',
       sid: '',
       p_sid: '',
-      isEdited: false,
-    }
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
-    this.password_change = this.password_change.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+      isEdited: false
+    };
+    this.onChange = this.onChange.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       firstName: this.props.user.firstName,
       lastName: this.props.user.lastName,
       email: this.props.user.email,
       sid: this.props.user.sid,
       p_sid: numberConverter.toPersian(this.props.user.sid),
-      image: this.props.user.image,
-    })
+      image: this.props.user.image
+    });
   }
 
-  handleSubmit() {
-    this.fileUpload()
-    let that = this
+  handleSubmit () {
+    this.fileUpload();
+    let that = this;
     let data = {
       password: that.state.new_password,
       firstName: that.state.firstName,
       lastName: that.state.lastName,
       email: that.state.email,
-      sid: that.state.sid,
-    }
-    let token = localStorage.getItem('token')
-    let form = new FormData()
-    form.append('file', this.state.file)
+      sid: that.state.sid
+    };
+    let token = localStorage.getItem('token');
+    let form = new FormData();
+    form.append('file', this.state.file);
     fetch('/api/v1/user', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        authorization: token,
+        authorization: token
       },
       body: JSON.stringify({
-        data: data,
-      }),
+        data: data
+      })
     })
-      .then(function(response) {
-        return response
+      .then(function (response) {
+        return response;
       })
       .then(handleErrors)
-      .then(function() {
-        return fetch(`/api/v1/user/${that.props.user.username}`)
+      .then(function () {
+        return fetch(`/api/v1/user/${that.props.user.username}`);
       })
-      .then(function(response) {
-        return response.json()
+      .then(function (response) {
+        return response.json();
       })
-      .then(function(responseJson) {
-        that.props.dispatch({ type: 'SET_USER', user: responseJson.data })
+      .then(function (responseJson) {
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
       })
-      .then(function() {
-        toast.success('ویرایش پروفایل شما با موفقیت انجام شد')
+      .then(function () {
+        toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
       })
-      .then(function() {
-        that.setState({ isEdited: true })
+      .then(function () {
+        that.setState({ isEdited: true });
       })
-      .catch(function(error) {
-        console.log(error)
-      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  onChange(event) {
-    event.preventDefault()
-    let reader = new FileReader()
-    let file = event.target.files[0]
+  onChange (event) {
+    event.preventDefault();
+    let reader = new FileReader();
+    let file = event.target.files[0];
     reader.onloadend = () => {
       this.setState({
         file: file,
-        image: reader.result,
-      })
-    }
-    reader.readAsDataURL(file)
+        image: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
   }
-  async fileUpload() {
-    let token = localStorage.getItem('token')
+  async fileUpload () {
+    let token = localStorage.getItem('token');
     // toast('upload');
-    const url = '/api/v1/user/upload'
-    let data = await new FormData()
-    data.append('file', this.state.file, this.state.file.name)
+    const url = '/api/v1/user/upload';
+    let data = await new FormData();
+    data.append('file', this.state.file, this.state.file.name);
     let config = {
       method: 'post',
       headers: {
-        authorization: token,
+        authorization: token
       },
       params: {
         // "a": "b"
-      },
-    }
+      }
+    };
     axios
       .post(url, data, config)
       .then(result => {
         // console.log("res:");
-        console.log(result)
+        console.log(result);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // console.log("err");
-        console.log(error)
-      })
+        console.log(error);
+      });
   }
 
-  password_change(event) {
-    this.handleChange(event)
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    let value2
-    if (name == 'new_password') value2 = this.state.new_password_repeat
-    else value2 = this.state.new_password
-    if (value == value2)
+  handlePasswordChange (event) {
+    this.handleChange(event);
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    let value2;
+    if (name === 'new_password') value2 = this.state.new_password_repeat;
+    else value2 = this.state.new_password;
+    if (value === value2) {
       this.setState({
-        visibility: 'visible',
-      })
-    else {
+        visibility: 'visible'
+      });
+    } else {
       this.setState({
-        visibility: 'hidden',
-      })
+        visibility: 'hidden'
+      });
     }
   }
 
-  render() {
-    let check_passwords_equal_class = { visibility: this.state.visibility }
+  render () {
+    let checkPasswordEqualStyle = { visibility: this.state.visibility };
     return (
       <div>
         <Header />
-        <div class="create_event_container1">
-          <div class="create_event_title">
-            <div class="create_event_title_container">
+        <div className="create_event_container1">
+          <div className="create_event_title">
+            <div className="create_event_title_container">
               <TitleHolder title="ویرایش پروفایل" image={pencilImage} />
             </div>
           </div>
-          <div class="create_event_container2">
-            <div class="change_image">
-              <div class="create_event_input">
-                <p class="edit_header_font"> تصویر کاربر </p>
-                <div class="change_image_2">
-                  <div class="prof_pic">
+          <div className="create_event_container2">
+            <div className="change_image">
+              <div className="create_event_input">
+                <p className="edit_header_font"> تصویر کاربر </p>
+                <div className="change_image_2">
+                  <div className="prof_pic">
                     <img src={this.state.image} alt={123} />
                   </div>
-                  <label class="change_button" for="upload-photo">
+                  <label className="change_button" htmlFor="upload-photo">
                     {' '}
                     تغییر تصویر{' '}
                   </label>
@@ -192,25 +190,25 @@ class EditProfile extends BaseForm {
                 </div>
               </div>
             </div>
-            <div class="two_info">
-              <div class="create_event_rest">
-                <div class="create_event_input">
+            <div className="two_info">
+              <div className="create_event_rest">
+                <div className="create_event_input">
                   <p> نام : </p>
                   <input
                     name="firstName"
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     value={this.state.firstName}
                     type="text"
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div class="create_event_rest">
-                <div class="create_event_input">
+              <div className="create_event_rest">
+                <div className="create_event_input">
                   <p> نام خانوادگی : </p>
                   <input
                     name="lastName"
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     value={this.state.lastName}
                     type="text"
                     onChange={this.handleChange}
@@ -218,25 +216,25 @@ class EditProfile extends BaseForm {
                 </div>
               </div>
             </div>
-            <div class="two_info">
-              <div class="create_event_rest">
-                <div class="create_event_input">
+            <div className="two_info">
+              <div className="create_event_rest">
+                <div className="create_event_input">
                   <p> ایمیل : </p>
                   <input
                     name="email"
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     value={this.state.email}
                     type="text"
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div class="create_event_rest">
-                <div class="create_event_input">
+              <div className="create_event_rest">
+                <div className="create_event_input">
                   <p> شماره دانشجویی : </p>
                   <input
                     name="sid"
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     value={this.state.p_sid}
                     type="text"
                     onChange={this.handleNumberInput}
@@ -245,35 +243,35 @@ class EditProfile extends BaseForm {
               </div>
             </div>
 
-            <div class="two_info">
-              <div class="create_event_rest">
-                <div class="create_event_input">
+            <div className="two_info">
+              <div className="create_event_rest">
+                <div className="create_event_input">
                   <p> رمزعبور جدید : </p>
                   <input
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     type="password"
                     name="new_password"
-                    onChange={this.password_change}
+                    onChange={this.handlePasswordChange}
                   />
                 </div>
               </div>
-              <div class="create_event_rest tekrar">
-                <div class="create_event_input">
+              <div className="create_event_rest tekrar">
+                <div className="create_event_input">
                   <p> تکرار : </p>
                   <input
-                    class="create_event_rest_input"
+                    className="create_event_rest_input"
                     type="password"
                     name="new_password_repeat"
-                    onChange={this.password_change}
+                    onChange={this.handlePasswordChange}
                   />
                 </div>
               </div>
-              <div class="ok_sign">
-                <i class="fa fa-check" style={check_passwords_equal_class} />
+              <div className="ok_sign">
+                <i className="fa fa-check" style={checkPasswordEqualStyle} />
               </div>
-              <div class="create_event_submit_container edit_profile_submit">
+              <div className="create_event_submit_container edit_profile_submit">
                 <input
-                  class="event_page_signup_button"
+                  className="event_page_signup_button"
                   type="submit"
                   onClick={this.handleSubmit}
                   value="ثبت"
@@ -284,8 +282,8 @@ class EditProfile extends BaseForm {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default connect(mapStateToProps)(EditProfile)
+export default connect(mapStateToProps)(EditProfile);

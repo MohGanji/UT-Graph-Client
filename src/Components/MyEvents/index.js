@@ -2,25 +2,26 @@ import React from 'react';
 import './style.css';
 import Header from '../../Utils/Header';
 import Footer from '../../Utils/Footer';
-import { connect } from 'react-redux'
-import handleErrors from '../../Utils/functions/handleErrors'
+import { connect } from 'react-redux';
+import handleErrors from '../../Utils/functions/handleErrors';
 import MyEventBox from './MyEventBox/';
+import PropTypes from 'prop-types';
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.user,
-    authenticated: state.authenticated,
-  }
+    authenticated: state.authenticated
+  };
 }
 
 class MyEvents extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       events: []
-    }
+    };
   }
-  componentDidMount() {
+  componentDidMount () {
     let user = this.props.user;
     let that = this;
 
@@ -33,29 +34,33 @@ class MyEvents extends React.Component {
         return responseJson.data;
       })
       .then(function (events) {
-        that.setState({ events: events })
+        that.setState({ events: events });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  render() {
-    const myEvents = this.state.events.map((event) => <MyEventBox event={event} />)
+  render () {
+    const myEvents = this.state.events.map((event, i) => (
+      <MyEventBox key={i} event={event} />
+    ));
     return (
       <div>
         <Header />
-        <div class="my_events_container_all">
-          <div class="my_events_container_all_title" >
+        <div className="my_events_container_all">
+          <div className="my_events_container_all_title">
             <p>رویداد های من:</p>
           </div>
-          <div class="my_events_container">
-            {myEvents}
-          </div>
+          <div className="my_events_container">{myEvents}</div>
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
 export default connect(mapStateToProps)(MyEvents);
+
+MyEvents.propTypes = {
+  user: PropTypes.object.isRequired
+};

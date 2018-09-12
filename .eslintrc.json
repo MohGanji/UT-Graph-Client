@@ -2,5 +2,11 @@
   "extends": ["standard", "plugin:react/recommended"],
   "rules": {
     "semi": [1, "always"]
+  },
+  "globals": {
+    "FileReader": true,
+    "FormData": true,
+    "localStorage": true,
+    "fetch": true
   }
 }
