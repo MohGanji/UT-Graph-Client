@@ -1,4 +1,4 @@
-const persian_alphabet = [
+const persianAlphabet = [
   'آ',
   'ب',
   '‍‍پ',
@@ -32,11 +32,11 @@ const persian_alphabet = [
   'ی',
   'ء',
   ' ',
-  'ا',
-]
+  'ا'
+];
 
-export default function isPersianCharacter(char) {
-  return persian_alphabet.find(element => {
-    return element == char
-  })
+export default function isPersianCharacter (char) {
+  return persianAlphabet.find(element => {
+    return element === char;
+  });
 }

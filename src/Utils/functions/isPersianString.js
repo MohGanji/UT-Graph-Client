@@ -1,10 +1,10 @@
-import isPersianCharacter from './isPersianCharacter'
+import isPersianCharacter from './isPersianCharacter';
 
-export default function isPersianString(str) {
+export default function isPersianString (str) {
   for (var i = 0; i < str.length; i++) {
     if (!isPersianCharacter(str[i])) {
-      return false
+      return false;
     }
   }
-  return true
+  return true;
 }

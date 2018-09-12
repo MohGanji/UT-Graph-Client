@@ -1,14 +1,15 @@
 import React from 'react';
-import './style.css'
+import './style.css';
+import PropTypes from 'prop-types';
 
 export default class TitleHolder extends React.Component {
-  render() {
+  render () {
     return (
-      <div class="title_holder_container">
-        <div class="title_holder_container_image">
+      <div className="title_holder_container">
+        <div className="title_holder_container_image">
           <img src={this.props.image} />
         </div>
-        <div class="title_holder_container_name">
+        <div className="title_holder_container_name">
           <p>{this.props.title}</p>
         </div>
       </div>
@@ -16,3 +17,7 @@ export default class TitleHolder extends React.Component {
   }
 }
 
+TitleHolder.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
+};
