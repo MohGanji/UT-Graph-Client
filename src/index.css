@@ -4,3 +4,24 @@ body {
   font-family: sahel, sans-serif;
   background-color: #dfe3ec;
 }
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+.a:hover {
+  color: #1e70bf;
+}
+
+p {
+  margin: 0 0 1em;
+  line-height: 1.4285em;
+}
+p:first-child {
+  margin-top: 0;
+}
+p:last-child {
+  margin-bottom: 0;
+}
