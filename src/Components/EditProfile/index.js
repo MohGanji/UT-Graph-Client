@@ -175,7 +175,7 @@ class EditProfile extends BaseForm {
                 <p className="edit_header_font"> تصویر کاربر </p>
                 <div className="change_image_2">
                   <div className="prof_pic">
-                    <img src={this.state.image} alt={123} />
+                    <img src={this.state.image} alt="عکس پروفایل" />
                   </div>
                   <label className="change_button" htmlFor="upload-photo">
                     {' '}

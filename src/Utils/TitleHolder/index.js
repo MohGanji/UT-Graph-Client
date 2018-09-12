@@ -7,7 +7,7 @@ export default class TitleHolder extends React.Component {
     return (
       <div className="title_holder_container">
         <div className="title_holder_container_image">
-          <img src={this.props.image} />
+          <img src={this.props.image} alt="" />
         </div>
         <div className="title_holder_container_name">
           <p>{this.props.title}</p>

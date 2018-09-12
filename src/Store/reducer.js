@@ -3,7 +3,7 @@ const initialState = {
   user: {}
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer (state = initialState, action) {
   switch (action.type) {
     case 'AUTHENTICATE_THE_USER':
       return {
@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action) {
       return {
         authenticated: true,
         user: action.user
-      }
+      };
     default:
       return state;
   }

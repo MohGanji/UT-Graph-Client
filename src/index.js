@@ -13,5 +13,6 @@ ReactDOM.render(
       <App />
     </PersistGate>
   </Provider>,
-  document.getElementById('root'))
-registerServiceWorker()
+  document.getElementById('root')
+);
+registerServiceWorker();

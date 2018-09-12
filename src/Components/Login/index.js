@@ -85,7 +85,7 @@ class Login extends BaseForm {
             onClick={this.handleSubmit}
           />
           <p className="login-lost">
-            <a href=""> کلمه عبور خود را فراموش کرده اید؟ </a>/
+            <a href=""> کلمه عبور خود را فراموش کرده اید؟ </a> /
             <a href=""> حساب کاربری ندارید؟ </a>
           </p>
         </div>

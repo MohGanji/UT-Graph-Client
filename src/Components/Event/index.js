@@ -138,8 +138,8 @@ export default class Event extends React.Component {
         <Header />
         <div className="event_page_info_1">
           <div className="event_page_photo_container">
-            <img src={this.state.info.image} />
-            {/* <img src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} /> */}
+            <img src={this.state.info.image} alt="عکس رویداد" />
+            {/* <img alt="عکس رویداد" src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} /> */}
           </div>
           <div className="event_page_info_container">
             <div className="event_page_info_container_up">
@@ -257,7 +257,7 @@ export default class Event extends React.Component {
 
             <div className="event_page_about_right_up">
               <div className="event_page_about_right_up_map">
-                <img src={GoogleMapImage} />
+                <img src={GoogleMapImage} alt="نقشه" />
               </div>
               <div className="event_page_about_right_up_title_container">
                 <p className="event_page_about_right_up_title">
@@ -277,7 +277,7 @@ export default class Event extends React.Component {
             <div className="event_page_users_left_organizer">
               <div className="event_page_users_left_organizer_image">
                 <a href={`/user/${this.state.info.organizer}`}>
-                  <img src={this.state.user_pic} />
+                  <img src={this.state.user_pic} alt="عکس برگزار کننده" />
                 </a>
               </div>
               <div className="event_page_users_left_organizer_info">
@@ -295,18 +295,66 @@ export default class Event extends React.Component {
             </div>
           </div>
           <div className="event_page_users_staff_container">
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
-            <StaffBox image={staffAvatar} role="عکاس" name="آواتار آواتاریان" />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
+            <StaffBox
+              image={staffAvatar}
+              leadingRole="عکاس"
+              name="آواتار آواتاریان"
+            />
           </div>
         </div>
         <Footer />

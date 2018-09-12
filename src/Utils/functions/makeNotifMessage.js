@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function makeMessage (notification) {
+export default function makeNotifMessage (notification) {
   switch (notification.type) {
     case 'REQUEST':
       notification.message = (
@@ -38,6 +38,9 @@ export default function makeMessage (notification) {
           مانده است
         </p>
       );
+      break;
+    default:
+      notification.message = <p>نوع اطلاعیه مشخص نشده</p>;
       break;
   }
   return notification;

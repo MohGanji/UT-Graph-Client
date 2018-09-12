@@ -89,8 +89,11 @@ export default class User extends React.Component {
         <BackgroundCover />
         <div className="user_info">
           <div className="profile_photo_container">
-            <img className="profile_photo" src={this.state.info.image} />
-            {/* <img class="profile_photo" src={this.state.info.image} /> */}
+            <img
+              className="profile_photo"
+              src={this.state.info.image}
+              alt="عکس کاربر"
+            />
           </div>
           <div className="user_about">
             <p id="user_name" className="user_about_text">

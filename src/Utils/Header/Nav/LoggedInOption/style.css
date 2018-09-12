@@ -96,7 +96,7 @@
   background-color: rgb(112, 112, 189);
 }
 
-.notification_box_footer:hover a {
+.notification_box_footer:hover span {
   color: white;
 }
 

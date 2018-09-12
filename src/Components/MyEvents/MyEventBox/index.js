@@ -17,7 +17,7 @@ class MyEventBox extends React.Component {
         <div className="my_event_box_image_container">
           <div className="my_event_box_image">
             <a href={`/event/${this.props.event._id}`}>
-              <img src={this.props.event.image} />
+              <img src={this.props.event.image} alt="عکس رویداد" />
             </a>
           </div>
         </div>

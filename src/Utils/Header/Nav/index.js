@@ -34,7 +34,7 @@ class Nav extends React.Component {
           <a href={'/'}>
             {' '}
             <div className="logo_container">
-              <img id="logoImage" src={logo} />
+              <img id="logoImage" src={logo} alt="logo" />
             </div>{' '}
           </a>
           <SearchBar />

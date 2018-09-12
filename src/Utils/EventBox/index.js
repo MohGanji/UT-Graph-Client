@@ -12,7 +12,11 @@ export default class EventBox extends React.Component {
       <div className="event" data-aos="zoom-in">
         <div className="event_img">
           <a href={`/event/${this.props.event._id}`}>
-            <img className="img_fill_div" src={this.props.event.image} />
+            <img
+              className="img_fill_div"
+              src={this.props.event.image}
+              alt="عکس رویداد"
+            />
             {/* <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} />  */}
           </a>
         </div>

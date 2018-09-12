@@ -205,7 +205,7 @@ class CreateEvent extends BaseForm {
                 <p className="edit_header_font"> تصویر رویداد </p>
                 <div className="change_image_2">
                   <div className="prof_pic">
-                    <img src={this.state.image} alt={123} />
+                    <img src={this.state.image} alt="پروفایل" />
                   </div>
                   <label className="change_button" htmlFor="upload-photo">
                     {' '}

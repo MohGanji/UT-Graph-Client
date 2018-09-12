@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   position: fixed;
   min-height: 8vh;
   height: 80px;
@@ -30,6 +30,7 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 12pt;
+  cursor: pointer;
 }
 
 .active {
@@ -52,7 +53,7 @@
   justify-content: flex-end;
 }
 
-.close{
+.close {
   float: right;
   cursor: pointer;
   background: grey;
@@ -64,7 +65,7 @@
   line-height: 30px;
   text-align: center;
 }
-.close:hover{
+.close:hover {
   background: #0095ff;
 }
 

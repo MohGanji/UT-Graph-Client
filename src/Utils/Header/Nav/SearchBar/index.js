@@ -29,7 +29,7 @@ class SearchBar extends BaseForm {
       let selectedOption =
         this.state.selectedOption.value === 'رویداد' ? 'event' : 'user';
       let keyword = this.state.keyword;
-      let url = '/' + 'search' + '/' + selectedOption + '/' + keyword;
+      let url = '/search/' + selectedOption + '/' + keyword;
       this.props.history.push(url);
     }
   }

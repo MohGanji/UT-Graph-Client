@@ -22,11 +22,7 @@ export default class LoginRegisterOption extends React.Component {
     return (
       <div className="login_logout_buttons not_logged_in">
         <Popup
-          trigger={
-            <a className="button" href="#">
-              ورود
-            </a>
-          }
+          trigger={<a className="button">ورود</a>}
           modal
           contentStyle={contentStyle}
           overlayStyle={innerDiv}
@@ -41,11 +37,7 @@ export default class LoginRegisterOption extends React.Component {
           )}
         </Popup>
         <Popup
-          trigger={
-            <a className="button active" href="#">
-              ثبت نام
-            </a>
-          }
+          trigger={<a className="button active">ثبت نام</a>}
           modal
           contentStyle={contentStyle}
           overlayStyle={innerDiv}

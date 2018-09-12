@@ -67,6 +67,7 @@ export default class EventSlider extends React.Component {
         <a href="#">
           <img
             src={event.poster_path == null ? sliderImage : event.poster_path}
+            alt="عکس رویداد"
           />
         </a>
         {/* <p class="slider_text">{event.title}</p> */}

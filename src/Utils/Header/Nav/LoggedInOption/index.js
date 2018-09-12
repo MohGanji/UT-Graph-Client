@@ -123,7 +123,7 @@ class LoggedInOption extends React.Component {
             {notifElement}
             <a href={`/notification`}>
               <div className="notification_box_footer">
-                <a href={`/notification`}>مشاهده تمام اطلاعیه ها</a>
+                <span>مشاهده تمام اطلاعیه ها</span>
               </div>
             </a>
           </div>
@@ -142,7 +142,7 @@ class LoggedInOption extends React.Component {
             </div>
             <div className="logged_in_option_photo">
               {/* <img src={this.state.image} /> */}
-              <img src={this.props.user.image} />
+              <img src={this.props.user.image} alt="عکس پروفایل" />
             </div>
           </div>
           <div className="drop_down_content">

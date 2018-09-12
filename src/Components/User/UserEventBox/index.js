@@ -19,7 +19,11 @@ export default class UserEventBox extends React.Component {
 
         <div className="user_event_rest">
           <div className="user_event_poster">
-            <img className="cover" src={this.props.event.image} />
+            <img
+              className="cover"
+              src={this.props.event.image}
+              alt="عکس رویداد"
+            />
           </div>
           <div className="user_event_info">
             <TitleHolder
