@@ -33,11 +33,17 @@ export default class UserEventBox extends React.Component {
                   ? 'برگزار کننده'
                   : 'شرکت کننده'
               }
+              customHeight="45px"
             />
-            <TitleHolder image={MapImage} title={this.props.event.location} />
+            <TitleHolder
+              image={MapImage}
+              title={this.props.event.location}
+              customHeight="45px"
+            />
             <TitleHolder
               image={CalenderImage}
               title={getDateString(new Date(this.props.event.beginTime))}
+              customHeight="45px"
             />
           </div>
         </div>

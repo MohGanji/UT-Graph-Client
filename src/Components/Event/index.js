@@ -143,15 +143,37 @@ export default class Event extends React.Component {
           </div>
           <div className="event_page_info_container">
             <div className="event_page_info_container_up">
-              <TitleHolder image={pencilImage} title={this.state.info.title} />
+              <TitleHolder
+                image={pencilImage}
+                title={this.state.info.title}
+                customHeight="45px"
+                customWidth="90%"
+              />
             </div>
             <div className="event_page_info_container_bottom">
-              <TitleHolder image={beginTimeImage} title={beginTimeString} />
-              <TitleHolder image={endTimeImage} title={endTimeString} />
-              <TitleHolder image={mapImage} title={this.state.info.location} />
+              <TitleHolder
+                image={beginTimeImage}
+                title={beginTimeString}
+                customHeight="45px"
+                customWidth="90%"
+              />
+              <TitleHolder
+                image={endTimeImage}
+                title={endTimeString}
+                customHeight="45px"
+                customWidth="90%"
+              />
+              <TitleHolder
+                image={mapImage}
+                title={this.state.info.location}
+                customHeight="45px"
+                customWidth="90%"
+              />
               <TitleHolder
                 image={capacityImage}
                 title="تعداد شرکت کنندگان   73 نفر"
+                customHeight="45px"
+                customWidth="90%"
               />
             </div>
           </div>
