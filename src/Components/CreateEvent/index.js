@@ -220,48 +220,60 @@ class CreateEvent extends BaseForm {
                 </div>
               </div>
             </div>
-            <div className="create_event_rest_1">
-              <div className="create_event_input">
-                <p> نام رویداد: </p>
-                <input
-                  className="create_event_rest_input"
-                  name="title"
-                  type="text"
-                  onChange={this.handleChange}
-                  value={this.state.title}
-                />
-              </div>
-              <div className="create_event_input">
-                <p> محل برگزاری: </p>
-                <input
-                  className="create_event_rest_input"
-                  name="location"
-                  type="text"
-                  onChange={this.handleChange}
-                  value={this.state.location}
-                />
-              </div>
-              <div className="create_event_input">
-                <p className="input_date"> تاریخ شروع: </p>
-                <DatePicker
-                  date={this.state.beginTime}
-                  handleTime={this.handleBeginTime}
-                />
-              </div>
-              <div className="create_event_input">
-                <p className="input_date"> تاریخ پایان: </p>
-                <DatePicker
-                  date={this.state.endTime}
-                  handleTime={this.handleEndTime}
-                />
-              </div>
-              <div className="create_event_input">
-                <p className="input_date"> توضیحات: </p>
-                <div className="create_event_textarea">
-                  <TextArea
-                    text={this.state.description}
-                    handleText={this.handleDescription}
+            <div className="two_info">
+              <div className="create_event_rest">
+                <div className="create_event_input">
+                  <p> نام رویداد: </p>
+                  <input
+                    className="create_event_rest_input"
+                    name="title"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.title}
                   />
+                </div>
+              </div>
+              <div className="create_event_rest">
+                <div className="create_event_input">
+                  <p> محل برگزاری: </p>
+                  <input
+                    className="create_event_rest_input"
+                    name="location"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.location}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="create_event_rest_1">
+              <div className="one_info">
+                <div className="create_event_input">
+                  <p className="input_date"> تاریخ شروع: </p>
+                  <DatePicker
+                    date={this.state.beginTime}
+                    handleTime={this.handleBeginTime}
+                  />
+                </div>
+              </div>
+              <div className="one_info">
+                <div className="create_event_input">
+                  <p className="input_date"> تاریخ پایان: </p>
+                  <DatePicker
+                    date={this.state.endTime}
+                    handleTime={this.handleEndTime}
+                  />
+                </div>
+              </div>
+              <div className="one_info">
+                <div className="create_event_input">
+                  <p className="input_date"> توضیحات: </p>
+                  <div className="create_event_textarea">
+                    <TextArea
+                      text={this.state.description}
+                      handleText={this.handleDescription}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="create_event_submit_container">

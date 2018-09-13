@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import Header from '../../Utils/Header';
 import handleErrors from '../../Utils/functions/handleErrors';
-import EventBox from '../../Utils/EventBox';
+import OldEventBox from '../../Utils/OldEventBox';
 import Footer from '../../Utils/Footer';
 import UserBox from '../../Utils/UserBox';
 import PropTypes from 'prop-types';
@@ -124,7 +124,7 @@ export default class ResultPage extends React.Component {
     } else if (type === 'event-search') {
       resultDialog = 'نتایج جستجو:';
       resultItems = this.state.events.map((event, i) => (
-        <EventBox key={i} event={event} />
+        <OldEventBox key={i} event={event} />
       ));
     } else if (type === 'events') {
       let eventsType = this.state.eventsType;
@@ -143,7 +143,7 @@ export default class ResultPage extends React.Component {
           </a>
         );
       resultItems = this.state.events.map((event, i) => (
-        <EventBox key={i} event={event} />
+        <OldEventBox key={i} event={event} />
       ));
     }
 

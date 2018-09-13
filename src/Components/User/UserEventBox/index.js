@@ -26,6 +26,7 @@ export default class UserEventBox extends React.Component {
             />
           </div>
           <div className="user_event_info">
+            {/* edit to event role */}
             <TitleHolder
               image={RoleImage}
               title={

@@ -29,8 +29,8 @@ export default class TitleHolder extends React.Component {
 }
 
 TitleHolder.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  customHeight: PropTypes.number,
-  customWidth: PropTypes.number
+  image: PropTypes.string,
+  title: PropTypes.string,
+  customHeight: PropTypes.string,
+  customWidth: PropTypes.string
 };

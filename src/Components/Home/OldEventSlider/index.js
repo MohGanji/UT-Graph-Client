@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import Slider from 'react-slick';
 
-export default class OldEventBox extends React.Component {
+export default class OldEventSlider extends React.Component {
   render () {
     const eventsLength = this.props.events.length;
     let centerMode, slidesToShow;
