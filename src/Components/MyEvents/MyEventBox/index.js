@@ -41,7 +41,7 @@ class MyEventBox extends React.Component {
         <div className="my_event_box_buttons">
           <div className="my_event_box_buttons_container">
             <a
-              href={`event/${this.props.event._id}`}
+              href={`event/${this.props.event._id}/edit`}
               style={
                 this.props.event.organizer === this.props.user.username
                   ? { display: 'block' }
@@ -50,7 +50,7 @@ class MyEventBox extends React.Component {
             >
               ویرایش
             </a>
-            <a href={`event/${this.props.event._id}`}>مشاهده رویداد</a>
+            {/* <a href={`event/${this.props.event._id}`}>مشاهده رویداد</a> */}
           </div>
         </div>
       </div>
