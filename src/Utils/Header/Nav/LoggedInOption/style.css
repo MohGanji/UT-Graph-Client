@@ -69,7 +69,6 @@
   padding-bottom: 30px;
   margin: 0;
   direction: rtl;
-  width: 100%;
   cursor: pointer;
 }
 
@@ -84,7 +83,6 @@
 .notification_box_footer {
   background-color: rgba(163, 126, 126, 0.164);
   height: 30px;
-  width: 100%;
   padding-right: 16px;
   cursor: pointer;
   font-size: 11pt;
