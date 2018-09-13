@@ -4,12 +4,15 @@ import MapImage from '../../images/map.svg';
 import CalenderImage from '../../images/calender.svg';
 import TitleHolder from '../TitleHolder';
 import getDateString from '../../Utils/functions/getDateString';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import PropTypes from 'prop-types';
 
 export default class OldEventBox extends React.Component {
   render () {
+    AOS.init();
     return (
-      <div className="old_event_box">
+      <div className="old_event_box" data-aos="zoom-in">
         <div className="old_event_image">
           <a href={`/event/${this.props.event._id}`}>
             <img

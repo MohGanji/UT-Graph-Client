@@ -2,9 +2,9 @@
   position: relative;
   direction: rtl;
   color: white;
-  font-size: 36pt; 
-  background-image: url("../../images/sky.jpg");
-  min-height: 650px; 
+  font-size: 36pt;
+  background-image: url('../../images/sky.jpg');
+  min-height: 650px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,20 +53,19 @@
 }
 .home_new_events_container {
   width: 1200px;
-  max-width: 95%;
-  min-height: 600px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 5px;
   border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
   background: #ffffff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row-reverse;
   padding-bottom: 5px;
+  box-shadow: none;
+  min-height: 350px;
 }
 
 .load_more_events {
@@ -101,4 +100,8 @@
 
 .home_slider_old_events {
   margin-bottom: -20px;
+}
+
+.home_page_events_container {
+  margin-top: 60px !important;
 }

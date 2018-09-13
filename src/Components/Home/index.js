@@ -86,7 +86,7 @@ export default class Home extends React.Component {
 
   render () {
     const newEvents = this.state.newEvents.map((event, i) => (
-      <EventBox key={i} event={event} />
+      <OldEventBox key={i} event={event} />
     ));
     const oldEvents = this.state.oldEvents.map((oldEvent, i) => (
       <OldEventBox key={i} event={oldEvent} />
@@ -97,11 +97,11 @@ export default class Home extends React.Component {
         <div className="welcome_home">
           <div className="centered">به UT Graph خوش آمدید!</div>
         </div>
-        <div className="home_new_events_container">
-          <div className="home_new_events_title">
+        <div className="home_page_events_container search_page_container">
+          <div className="search_page_title">
             <p> رویداد های در حال برگزاری: </p>
           </div>
-          {newEvents}
+          <div className="home_new_events_container">{newEvents}</div>
           <div className="load_more_events" hidden={!this.state.hasMore}>
             <a
               className="load_more_button"

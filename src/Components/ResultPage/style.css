@@ -43,10 +43,3 @@
   box-shadow: 2px 2px 15px #888888be;
   margin-right: 25px;
 }
-
-.search_page_results_container {
-  box-shadow: none;
-  max-width: 100%;
-  min-height: 350px;
-  margin-top: 75px;
-}

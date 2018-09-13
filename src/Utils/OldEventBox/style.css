@@ -1,9 +1,7 @@
 .old_event_box {
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 40px;
-  width: 320px;
-  height: 260px;
+  width: 270px;
+  height: 230px;
   display: grid;
   grid-template-rows: 74% 13% 13%;
   font-size: 11pt;
@@ -11,6 +9,7 @@
   box-shadow: 2px 2px 15px #888888be;
   overflow: hidden;
   background: #ffffff;
+  margin: 10px 10px;
 }
 
 .old_event_image img {
