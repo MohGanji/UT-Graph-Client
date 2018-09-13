@@ -7,8 +7,16 @@ import UserEventBox from './UserEventBox/';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-export default class User extends React.Component {
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  };
+}
+
+class User extends React.Component {
   constructor (props) {
     super(props);
 
@@ -81,7 +89,6 @@ export default class User extends React.Component {
     let userEvents = this.state.events.map((event, i) => (
       <UserEventBox key={i} event={event} />
     ));
-    // alert(this.state.info.image);
 
     return (
       <div className="user">
@@ -101,6 +108,28 @@ export default class User extends React.Component {
               {this.state.info.firstName} {this.state.info.lastName}
             </p>
             <p className="user_about_text"> {userInfo} </p>
+            <div className="user_about_button_container">
+              <Link to={`/edit-profile`}>
+                <button
+                  hidden={
+                    this.props.match.params.id !== this.props.user.username
+                  }
+                  className="user_about_button_edit_profile"
+                >
+                  ویرایش پروفایل
+                </button>
+              </Link>
+              <Link to={`/my-events`}>
+                <button
+                  hidden={
+                    this.props.match.params.id !== this.props.user.username
+                  }
+                  className="user_about_button_my_events"
+                >
+                  رویداد های من
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
         <hr />
@@ -130,3 +159,5 @@ User.propTypes = {
     })
   })
 };
+
+export default connect(mapStateToProps)(User);
