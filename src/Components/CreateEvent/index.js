@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom';
 import profilePicture from '../../images/background.jpg';
 import { toast } from 'react-toastify';
 import BaseForm from '../../Utils/BaseForm';
+import centralRequest from '../../Utils/functions/centralRequest';
 import axios from 'axios';
 
 function mapStateToProps (state) {
@@ -75,7 +76,7 @@ class CreateEvent extends BaseForm {
     this.setState({ description: description });
   }
   async fileUpload (id, token) {
-    toast('upload');
+    // toast('upload');
     const url = '/api/v1/event/upload/' + id;
     // alert(url)
     // toast(url)
@@ -105,7 +106,7 @@ class CreateEvent extends BaseForm {
 
   handleSubmit () {
     if (this.props.type === 'create' && this.state.file == null) {
-      toast('aks nadare');
+      toast.error('شما عکسی انتخاب نکرده اید!');
       return;
     }
     let that = this;
@@ -120,22 +121,24 @@ class CreateEvent extends BaseForm {
     const token = localStorage.getItem('token');
     const method = this.props.type === 'create' ? 'POST' : 'PUT';
     let id = this.props.type === 'create' ? '' : this.props.match.params.id;
-    // alert(id)
-    fetch(`/api/v1/event/${id}`, {
+    let url = `/api/v1/event/${id}`;
+    let dataSend = {
       method: method,
       headers: {
         'Content-Type': 'application/json',
         authorization: token
       },
       body: JSON.stringify({ data: data })
-    })
+    };
+    // centralRequest(url, dataSend)
+    fetch(url, dataSend)
       .then(function (response) {
         that.setState({ redirect: true });
         if (that.props.type === 'create') return response.json();
         else return response;
       })
       .then(ress => {
-        toast('123');
+        // toast('123');
         if (that.props.type === 'create') id = ress.data;
         if (this.state.file != null) this.fileUpload(id, token);
         // else alert('nullfile')
@@ -143,9 +146,7 @@ class CreateEvent extends BaseForm {
       })
       .then(handleErrors)
       .catch(function (error) {
-        // alert('err')
         // this.fileUpload();
-        console.log('11111111');
         console.log(error);
       });
   }
