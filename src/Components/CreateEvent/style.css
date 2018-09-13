@@ -1,7 +1,7 @@
 .create_event_container1 {
   direction: rtl;
   width: 1200px;
-  background:white;
+  background: white;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -32,26 +32,25 @@
 
 .create_event_title p {
   color: rgb(233, 229, 229);
-  font-size: 20pt;
 }
 
 .full_width {
   width: 100%;
 }
 
-.create_event_rest p{
-  font-size: 16pt;
+.create_event_rest p {
+  font-size: 18pt;
   font-weight: bold;
 }
 
-.create_event_rest_1 p{
-  font-size: 16pt;
+.create_event_rest_1 p {
+  font-size: 18pt;
   font-weight: bold;
 }
 
 .create_event_rest_input {
   margin-bottom: 25px;
-  padding-right:10px;
+  padding-right: 10px;
   font-size: 14pt;
   font-family: sahel;
   background: #f7f7f7;
@@ -68,6 +67,7 @@
 }
 
 .create_event_input {
+  width: 100%;
   margin-top: 50px;
 }
 
@@ -97,6 +97,7 @@
 }
 
 .create_event_textarea {
+  width: 100%;
   margin-bottom: 30px;
 }
 
@@ -104,9 +105,24 @@
   width: 35%;
 }
 
-.change_image{
-  margin-top:50px;
+.change_image {
+  margin-top: 50px;
   width: 100%;
   border-bottom: 1px solid rgb(160, 160, 160);
   padding-bottom: 30px;
+}
+
+.one_info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create_event_rest_1 > :nth-child(3) {
+  padding-top: 3%;
+  /* border-top: 1px solid rgb(160, 160, 160); */
 }

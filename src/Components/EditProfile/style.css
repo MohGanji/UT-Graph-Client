@@ -2,7 +2,7 @@
   direction: rtl;
   width: 1200px;
   max-width: 95%;
-  background:white;
+  background: white;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -21,21 +21,24 @@
   padding: 10px;
 }
 
-.two_info{
+.two_info {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   position: relative;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.ok_sign{
+.ok_sign {
   position: absolute;
   right: calc(50% - 12px);
   top: 43%;
 }
 
-.ok_sign > i{
+.ok_sign > i {
   font-size: 25px;
   color: green;
 }
@@ -51,38 +54,37 @@
   font-size: 22pt;
 }
 
-.create_event_rest{
+.create_event_rest {
   width: 45%;
 }
-.edit_password{
-  margin-top:50px;
+.edit_password {
+  margin-top: 50px;
   width: 45%;
   background: yellow;
 }
-.change_image{
-  margin-top:50px;
+.change_image {
+  margin-top: 50px;
   width: 100%;
   border-bottom: 1px solid rgb(160, 160, 160);
   padding-bottom: 30px;
 }
-.change_image_2{
+.change_image_2 {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
-.prof_pic > img{
+.prof_pic > img {
   height: 100%;
   width: 100%;
 }
-.prof_pic
-{
+.prof_pic {
   height: 150px;
   width: 150px;
   margin-right: 40px;
 }
-.change_button{
+.change_button {
   margin-right: 40px;
   font-size: 18px;
   font-weight: 500;
@@ -95,22 +97,22 @@
   background: rgb(198, 198, 198);
   cursor: pointer;
 }
-.change_button:hover{
+.change_button:hover {
   background: #858585;
 }
 
-.create_event_rest p{
+.create_event_rest p {
   font-size: 18pt;
   font-weight: bold;
 }
-.edit_header_font{
+.edit_header_font {
   font-size: 18pt;
   font-weight: bold;
 }
 
 .create_event_rest_input {
   margin-bottom: 25px;
-  padding-right:10px;
+  padding-right: 10px;
   font-size: 14pt;
   font-family: sahel;
   background: #f7f7f7;

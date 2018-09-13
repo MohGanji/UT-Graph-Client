@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../../Utils/Header';
 import './style.css';
-import EventBox from '../../Utils/EventBox';
 import OldEventBox from '../../Utils/OldEventBox';
 import handleErrors from '../../Utils/functions/handleErrors';
 import OldEventSlider from './OldEventSlider/';
