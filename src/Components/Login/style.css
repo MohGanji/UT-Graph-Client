@@ -14,8 +14,9 @@
 .input_container > i {
   position: absolute;
   color: gray;
-  left: 15px;
-  top: 30%;
+  /* left: 15px; */
+  right: 15px;
+  top: 27%;
   /* z-index: 300; */
 }
 
@@ -50,6 +51,7 @@ div.login-title {
   margin-bottom: 25px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-right: 40px !important;
   box-sizing: border-box;
   margin-right: 3%;
   font-size: 15px;
