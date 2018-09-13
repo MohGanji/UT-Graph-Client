@@ -59,25 +59,31 @@ class Login extends BaseForm {
   render () {
     return (
       <div className="login_page">
-        <h1 className="login-title">Ut Graph</h1>
+        <div className="login-title">ورود</div>
         <div className="login_form">
-          <input
-            type="text"
-            className="login-input"
-            placeholder="نام کاربری"
-            name="username"
-            onChange={this.handleChange}
-            required
-            autoFocus
-          />
-          <input
-            type="password"
-            className="login-input"
-            placeholder="رمز عبور"
-            name="password"
-            onChange={this.handleChange}
-            required
-          />
+          <div className="input_container">
+            <input
+              type="text"
+              className="login-input"
+              placeholder="نام کاربری"
+              name="username"
+              onChange={this.handleChange}
+              required
+              autoFocus
+            />
+            <i className="fa fa-user" />
+          </div>
+          <div className="input_container">
+            <input
+              type="password"
+              className="login-input"
+              placeholder="رمز عبور"
+              name="password"
+              onChange={this.handleChange}
+              required
+            />
+            <i className="fa fa-unlock-alt" />
+          </div>
           <input
             type="submit"
             value="ورود"

@@ -5,6 +5,7 @@ import Login from '../Login';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BaseForm from '../../Utils/BaseForm';
+import 'font-awesome/css/font-awesome.min.css';
 
 export default class Register extends BaseForm {
   constructor (props) {
@@ -57,36 +58,45 @@ export default class Register extends BaseForm {
     } else {
       return (
         <div className="signup_page">
-          <h1 className="login-title">Ut Graph</h1>
+          <div className="login-title">ثبت نام</div>
           <div className="login_form">
-            <input
-              type="text"
-              className="login-input"
-              placeholder="نام کاربری"
-              name="username"
-              onChange={this.handleChange}
-              value={this.state.username}
-              required
-              autoFocus
-            />
-            <input
-              type="password"
-              className="login-input"
-              placeholder="رمز عبور"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              required
-            />
-            <input
-              type="text"
-              className="login-input"
-              placeholder="نام"
-              name="firstName"
-              onChange={this.handlePersianInput}
-              value={this.state.firstName}
-              required
-            />
+            <div className="input_container">
+              <input
+                type="text"
+                className="login-input"
+                placeholder="نام کاربری"
+                name="username"
+                onChange={this.handleChange}
+                value={this.state.username}
+                required
+                autoFocus
+              />
+              <i className="fa fa-user" />
+            </div>
+            <div className="input_container">
+              <input
+                type="password"
+                className="login-input"
+                placeholder="رمز عبور"
+                name="password"
+                onChange={this.handleChange}
+                value={this.state.password}
+                required
+              />
+              <i className="fa fa-unlock-alt" />
+            </div>
+            <div className="input_container">
+              <input
+                type="text"
+                className="login-input"
+                placeholder="نام"
+                name="firstName"
+                onChange={this.handlePersianInput}
+                value={this.state.firstName}
+                required
+              />
+              <i className="fa fa-unlock-alt" />
+            </div>
             <input
               type="text"
               className="login-input"
@@ -96,25 +106,30 @@ export default class Register extends BaseForm {
               value={this.state.lastName}
               required
             />
-            <input
-              type="email"
-              className="login-input"
-              placeholder="ایمیل"
-              name="email"
-              onChange={this.handleChange}
-              value={this.state.value}
-              required
-            />
-            <input
-              type="text"
-              className="login-input"
-              placeholder="شماره دانشجویی"
-              name="sid"
-              onChange={this.handleNumberInput}
-              value={this.state.p_sid}
-              required
-            />
-
+            <div className="input_container">
+              <input
+                type="email"
+                className="login-input"
+                placeholder="ایمیل"
+                name="email"
+                onChange={this.handleChange}
+                value={this.state.value}
+                required
+              />
+              <i className="fa fa-envelope-open" />
+            </div>
+            <div className="input_container">
+              <input
+                type="text"
+                className="login-input"
+                placeholder="شماره دانشجویی"
+                name="sid"
+                onChange={this.handleNumberInput}
+                value={this.state.p_sid}
+                required
+              />
+              <i className="fa fa-graduation-cap" />
+            </div>
             <input
               type="submit"
               value="ثبت نام"
