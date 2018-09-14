@@ -281,7 +281,7 @@ class EditProfile extends BaseForm {
               <div className="ok_sign">
                 <i className="fa fa-check" style={checkPasswordEqualStyle} />
               </div>
-              <div className="create_event_input">
+              <div className="create_event_input about_center">
                 <p className="input_date"> درباره من: </p>
                 <div className="create_event_textarea">
                   <TextArea text={this.state.bio} handleText={this.handleBio} />
