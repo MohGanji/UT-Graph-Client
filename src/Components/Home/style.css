@@ -47,8 +47,8 @@
   display: inline;
   font-size: 16pt;
   padding: 14px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 4px;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(209, 78, 78, 0.11);
   margin-right: 25px;
 }
 .home_new_events_container {

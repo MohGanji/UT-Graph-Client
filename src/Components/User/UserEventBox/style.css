@@ -5,9 +5,22 @@
   height: 500px;
   display: grid;
   grid-template-rows: 11% 89%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border: 1.6px solid #cecdcd;
+  transition: -webkit-box-shadow 0.2s;
+  -o-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  border-radius: 0.4rem 0.4rem 0 0;
   direction: ltr;
+  cursor: pointer;
+}
+
+.user_event_container:hover {
+  -webkit-box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .user_event_title {
@@ -45,7 +58,7 @@
 
 .user_event_info {
   height: 100%;
-  display: flex; 
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   background-color: #ffffff;

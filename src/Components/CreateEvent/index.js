@@ -182,9 +182,9 @@ class CreateEvent extends BaseForm {
   }
 
   render () {
-    if (this.state.redirect) {
-      return <Redirect to="/" />;
-    }
+    // if (this.state.redirect) {
+    //   return <Redirect to="/" />;
+    // }
     return (
       <div>
         <Header />

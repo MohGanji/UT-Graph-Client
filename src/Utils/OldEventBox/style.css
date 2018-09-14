@@ -3,13 +3,29 @@
   width: 270px;
   height: 230px;
   display: grid;
-  grid-template-rows: 74% 13% 13%;
+  grid-template-rows: 76% 15% 9%;
   font-size: 11pt;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
   overflow: hidden;
   background: #ffffff;
   margin: 10px 10px;
+  padding: 1rem;
+  border: 1.6px solid #cecdcd;
+  transition: -webkit-box-shadow 0.2s;
+  -o-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.old_event_box:hover {
+  -webkit-box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .old_event_image img {

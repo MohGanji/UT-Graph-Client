@@ -12,9 +12,10 @@
 
 .event_page_photo_container {
   margin: 8px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_photo_container img {
@@ -34,20 +35,21 @@
   direction: rtl;
   margin-bottom: 6px;
   background-color: #352649;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   display: flex;
   align-items: center;
 }
 
 .event_page_info_container_bottom {
   background: #ffffff;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   direction: rtl;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_info_2 {
@@ -64,10 +66,11 @@
 .event_page_about_left {
   margin: 8px;
   background: #ffffff;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   position: relative;
   direction: rtl;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_about_left_description {
@@ -79,11 +82,10 @@
 .event_page_about_left_description_text {
   margin-top: 35px;
   width: 95%;
-  height: 90%;
+  height: 80%;
   margin-left: auto;
   margin-right: auto;
-  border-right: 2px solid #352649;
-    /* border-radius: 5px; */
+  /* border-right: 2px solid #352649; */
   padding: 20px;
   font-size: 14pt;
   overflow: scroll;
@@ -94,8 +96,8 @@
   display: inline;
   font-size: 16pt;
   padding: 14px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   margin-right: 25px;
 }
 
@@ -104,16 +106,17 @@
   display: grid;
   grid-template-rows: 50% 50%;
 }
-.event_page_about_right_up  {
+.event_page_about_right_up {
   margin-top: 10px;
   display: grid;
   grid-template-rows: 77% 23%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
+  border: 1.6px solid #cecdcd;
 }
 
-.event_page_about_right_up_map img{
+.event_page_about_right_up_map img {
   width: 100%;
   height: 100%;
 }
@@ -145,9 +148,10 @@
   margin-bottom: 10px;
   display: grid;
   grid-template-rows: 15% 85%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_about_right_bottom_title {
@@ -165,7 +169,6 @@
 
 .event_page_about_right_bottom_description {
   background-color: #ffffff;
-
 }
 
 .event_page_info_3 {
@@ -174,7 +177,7 @@
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: 25% 75%;
 }
@@ -188,9 +191,10 @@
   grid-template-rows: 75% 25%;
   height: 390px;
   width: 100%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_users_left_organizer_image img {
@@ -204,16 +208,16 @@
   justify-content: center;
   text-align: center;
   background: #ffffff;
-} 
+}
 
 .event_page_users_left_organizer_info p {
   display: block;
   padding: 0;
 }
 
-.event_page_users_left_organizer_info_title{
+.event_page_users_left_organizer_info_title {
   margin: 0;
-  font-size: 24pt; 
+  font-size: 24pt;
   justify-content: center;
 }
 
@@ -224,12 +228,13 @@
 
 .event_page_users_staff_container {
   margin: 8px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   background: #ffffff;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  border: 1.6px solid #cecdcd;
 }
 
 .event_page_info_image_container {
@@ -254,7 +259,7 @@
   margin: auto;
 }
 
-.event_page_button_container { 
+.event_page_button_container {
   position: absolute;
   padding-right: 10px;
   bottom: 0;
@@ -292,8 +297,7 @@
   height: 30px;
   line-height: 30px;
   text-align: center;
-
-  position: absolute; 
+  position: absolute;
   top: -65px;
   right: -25px;
 }
