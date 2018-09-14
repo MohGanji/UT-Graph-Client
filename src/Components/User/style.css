@@ -62,7 +62,13 @@
   font-family: sahel;
   font-size: 14pt;
   cursor: pointer;
+  border: none;
   margin-right: 0px;
+}
+
+.user_about_button_edit_profile:hover {
+  font-size: 15pt;
+  box-shadow: 3px 4px #888888;
 }
 
 .user_about_button_my_events {
@@ -73,7 +79,13 @@
   font-family: sahel;
   font-size: 14pt;
   cursor: pointer;
+  border: none;
   margin-right: 50px;
+}
+
+.user_about_button_my_events:hover {
+  font-size: 15pt;
+  box-shadow: 3px 4px #888888;
 }
 
 #user_name {
