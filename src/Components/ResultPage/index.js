@@ -46,7 +46,7 @@ export default class ResultPage extends React.Component {
         } else if (type === 'event-search') {
           that.setState({ events: responseJson.data });
         } else {
-          let hasMore = responseJson.data.length === 8;
+          let hasMore = responseJson.data.length === 6;
           that.setState({
             events: responseJson.data,
             pageToken: responseJson.pageToken,
@@ -71,7 +71,7 @@ export default class ResultPage extends React.Component {
       })
       .then(handleErrors)
       .then(function (responseJson) {
-        let hasMore = responseJson.data.length === 8;
+        let hasMore = responseJson.data.length === 6;
         that.setState({
           events: responseJson.data,
           pageToken: responseJson.pageToken,
@@ -100,7 +100,7 @@ export default class ResultPage extends React.Component {
         let previousEvents = that.state.events;
         let newEvents = responseJson.data;
         let events = previousEvents.concat(newEvents);
-        let hasMore = newEvents.length === 8;
+        let hasMore = newEvents.length === 6;
         that.setState({
           events: events,
           pageToken: responseJson.pageToken,

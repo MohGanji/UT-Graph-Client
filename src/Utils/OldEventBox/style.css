@@ -1,7 +1,7 @@
 .old_event_box {
   margin-bottom: 40px;
-  width: 270px;
-  height: 230px;
+  width: 300px;
+  height: 250px;
   display: grid;
   grid-template-rows: 76% 15% 9%;
   font-size: 11pt;
@@ -44,6 +44,10 @@
   color: rgb(80, 79, 79);
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+.old_event_info_title > :nth-child(1) {
+  padding-top: 5px;
 }
 
 .old_event_info_title {

@@ -112,9 +112,9 @@
 #search_form input[type='search']:focus {
   color: black;
 }
-#search_form input:-moz-placeholder {
+/* #search_form input:-moz-placeholder {
   color: transparent;
 }
 #search_form input::-webkit-input-placeholder {
   color: transparent;
-}
+} */

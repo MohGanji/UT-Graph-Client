@@ -4,11 +4,11 @@ import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';
 import handleErrors from '../../Utils/functions/handleErrors';
 import Header from '../../Utils/Header';
-import pencilImage from '../../images/pencil.svg';
-import beginTimeImage from '../../images/beginTime.svg';
-import capacityImage from '../../images/capacity.svg';
-import endTimeImage from '../../images/endTime2.svg';
-import mapImage from '../../images/eventMap.svg';
+import pencilImage from '../../images/tag.svg';
+import beginTimeImage from '../../images/hourglass1.svg';
+import capacityImage from '../../images/group1.svg';
+import endTimeImage from '../../images/hourglass2.svg';
+import mapImage from '../../images/map1.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox/';
@@ -37,7 +37,9 @@ export default class Event extends React.Component {
     this.state = {
       info: {},
       user_pic: '',
-      notFound: false
+      notFound: false,
+      participantNumber: '',
+      staffs: {}
     };
     this.getDateString = this.getDateString.bind(this);
     this.register = this.register.bind(this);
@@ -79,6 +81,36 @@ export default class Event extends React.Component {
         // alert(responseJson.image)
         that.setState({
           user_pic: responseJson.image
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    fetch(`/api/v1/event/participant-number`)
+      .then(function (response) {
+        if (!response.ok) {
+          // that.setState({ notFound: true });
+        }
+        return response.json();
+      })
+      .then(function (responseJson) {
+        that.setState({
+          participantNumber: responseJson.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    fetch(`/api/v1/event/staff`)
+      .then(function (response) {
+        if (!response.ok) {
+          // that.setState({ notFound: true });
+        }
+        return response.json();
+      })
+      .then(function (responseJson) {
+        that.setState({
+          staffs: responseJson.data
         });
       })
       .catch(function (error) {
@@ -171,7 +203,9 @@ export default class Event extends React.Component {
               />
               <TitleHolder
                 image={capacityImage}
-                title="تعداد شرکت کنندگان   73 نفر"
+                title={
+                  'تعداد شرکت کنندگان  ' + this.state.participantNumber + ' نفر'
+                }
                 customHeight="45px"
                 customWidth="90%"
               />

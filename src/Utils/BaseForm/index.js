@@ -37,10 +37,8 @@ export default class BaseForm extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
-    // console.log(this.state.firstName)
+    
     if (isPersianString(value)) {
-      console.log(value);
       this.setState({
         [name]: value
       });

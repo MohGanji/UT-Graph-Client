@@ -10,7 +10,7 @@
   -o-transition: box-shadow 0.2s;
   transition: box-shadow 0.2s;
   transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
-  margin: 15px;
+  margin: 14px;
 }
 
 .user_box:hover {

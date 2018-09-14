@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.css';
-import MapImage from '../../images/map.svg';
-import CalenderImage from '../../images/calender.svg';
+import MapImage from '../../images/map1.svg';
+import CalenderImage from '../../images/calender1.svg';
 import TitleHolder from '../TitleHolder';
 import getDateString from '../../Utils/functions/getDateString';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class OldEventBox extends React.Component {
   render () {
@@ -25,18 +26,23 @@ export default class OldEventBox extends React.Component {
             </a>
           </div>
           <div className="old_event_title">
-            <a href={`/event/${this.props.event._id}`}>
+            <Link to={`/event/${this.props.event._id}`}>
               {this.props.event.title}
-            </a>
+            </Link>
           </div>
           <div className="old_event_info">
             <div className="old_event_info_title">
-              <TitleHolder image={MapImage} title={this.props.event.location} />
+              <TitleHolder
+                image={MapImage}
+                title={this.props.event.location}
+                customHeight="23px"
+              />
             </div>
             <div className="old_event_info_title">
               <TitleHolder
                 image={CalenderImage}
                 title={getDateString(new Date(this.props.event.endTime))}
+                customHeight="23px"
               />
             </div>
           </div>

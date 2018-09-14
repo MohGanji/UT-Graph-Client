@@ -4,7 +4,7 @@
   color: white;
   font-size: 36pt;
   background-image: url('../../images/sky.jpg');
-  min-height: 650px;
+  height: 700px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 5px;
   border-radius: 5px;
   background: #ffffff;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import Header from '../../Utils/Header';
-import pencilImage from '../../images/pencil.svg';
+import pencilImage from '../../images/pencil1.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
 import handleErrors from '../../Utils/functions/handleErrors';
@@ -9,10 +9,8 @@ import { connect } from 'react-redux';
 import TextArea from '../../Utils/TextArea';
 import Footer from '../../Utils/Footer';
 import { Redirect } from 'react-router-dom';
-import profilePicture from '../../images/background.jpg';
-import { toast } from 'react-toastify';
+import profilePicture from '../../images/defaultEvent.svg';
 import BaseForm from '../../Utils/BaseForm';
-import centralRequest from '../../Utils/functions/centralRequest';
 import axios from 'axios';
 
 function mapStateToProps (state) {
@@ -105,10 +103,6 @@ class CreateEvent extends BaseForm {
   }
 
   handleSubmit () {
-    if (this.props.type === 'create' && this.state.file == null) {
-      toast.error('شما عکسی انتخاب نکرده اید!');
-      return;
-    }
     let that = this;
     let data = {
       title: that.state.title,
@@ -125,7 +119,7 @@ class CreateEvent extends BaseForm {
     let dataSend = {
       method: method,
       headers: {
-        'Content-Type': 'application/json',
+        'Contentdi-Type': 'application/json',
         authorization: token
       },
       body: JSON.stringify({ data: data })
@@ -171,7 +165,8 @@ class CreateEvent extends BaseForm {
             location: info.location,
             description: info.description,
             beginTime: info.beginTime,
-            endTime: info.endTime
+            endTime: info.endTime,
+            image: info.image
           });
           // console.log(info);
         })
@@ -182,9 +177,9 @@ class CreateEvent extends BaseForm {
   }
 
   render () {
-    // if (this.state.redirect) {
-    //   return <Redirect to="/" />;
-    // }
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <Header />
@@ -196,6 +191,7 @@ class CreateEvent extends BaseForm {
                   this.props.type === 'create' ? 'ساخت رویداد' : 'ویرایش رویداد'
                 }
                 image={pencilImage}
+                customHeight="42px"
               />
             </div>
           </div>
