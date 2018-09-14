@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import Header from '../../Utils/Header';
-import pencilImage from '../../images/pencil.svg';
+import pencilImage from '../../images/pencil1.svg';
 import profilePicture from '../../images/defaultProfile.jpg';
 import 'font-awesome/css/font-awesome.min.css';
 import TitleHolder from '../../Utils/TitleHolder';
@@ -12,6 +12,7 @@ import Footer from '../../Utils/Footer';
 import axios from 'axios';
 import BaseForm from '../../Utils/BaseForm';
 import numberConverter from '../../Utils/BaseForm/numberConverter';
+import TextArea from '../../Utils/TextArea';
 
 function mapStateToProps (state) {
   return {
@@ -34,12 +35,14 @@ class EditProfile extends BaseForm {
       email: '',
       sid: '',
       p_sid: '',
+      bio: '',
       isEdited: false
     };
     this.onChange = this.onChange.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBio = this.handleBio.bind(this);
   }
 
   componentDidMount () {
@@ -49,19 +52,23 @@ class EditProfile extends BaseForm {
       email: this.props.user.email,
       sid: this.props.user.sid,
       p_sid: numberConverter.toPersian(this.props.user.sid),
-      image: this.props.user.image
+      image: this.props.user.image,
+      bio: this.props.user.bio
     });
   }
 
   handleSubmit () {
-    this.fileUpload();
+    if (this.state.file != null) {
+      this.fileUpload();
+    }
     let that = this;
     let data = {
       password: that.state.new_password,
       firstName: that.state.firstName,
       lastName: that.state.lastName,
       email: that.state.email,
-      sid: that.state.sid
+      sid: that.state.sid,
+      bio: that.state.bio
     };
     let token = localStorage.getItem('token');
     let form = new FormData();
@@ -98,6 +105,10 @@ class EditProfile extends BaseForm {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  handleBio (bio) {
+    this.setState({ bio: bio });
   }
 
   onChange (event) {
@@ -166,7 +177,11 @@ class EditProfile extends BaseForm {
         <div className="create_event_container1">
           <div className="create_event_title">
             <div className="create_event_title_container">
-              <TitleHolder title="ویرایش پروفایل" image={pencilImage} />
+              <TitleHolder
+                title="ویرایش پروفایل"
+                image={pencilImage}
+                customHeight="42px"
+              />
             </div>
           </div>
           <div className="create_event_container2">
@@ -268,6 +283,12 @@ class EditProfile extends BaseForm {
               </div>
               <div className="ok_sign">
                 <i className="fa fa-check" style={checkPasswordEqualStyle} />
+              </div>
+              <div className="create_event_input">
+                <p className="input_date"> درباره من: </p>
+                <div className="create_event_textarea">
+                  <TextArea text={this.state.bio} handleText={this.handleBio} />
+                </div>
               </div>
               <div className="create_event_submit_container edit_profile_submit">
                 <input

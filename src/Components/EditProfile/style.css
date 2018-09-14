@@ -78,10 +78,6 @@
   background: #858585;
 }
 
-.create_event_rest p {
-  font-size: 18pt;
-  font-weight: bold;
-}
 .edit_header_font {
   font-size: 18pt;
   font-weight: bold;
@@ -110,6 +106,8 @@
 
 .create_event_input {
   margin-top: 50px;
+  font-size: 18pt;
+  font-weight: bold;
 }
 
 .event_text_area {
