@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom';
 import profilePicture from '../../images/defaultEvent.svg';
 import BaseForm from '../../Utils/BaseForm';
 import axios from 'axios';
+import Select from 'react-select';
 
 function mapStateToProps (state) {
   return {
@@ -74,12 +75,7 @@ class CreateEvent extends BaseForm {
     this.setState({ description: description });
   }
   async fileUpload (id, token) {
-    // toast('upload');
     const url = '/api/v1/event/upload/' + id;
-    // alert(url)
-    // toast(url)
-    // toast(id)
-    // alert(this.state.file)
     let data = await new FormData();
     data.append('event', this.state.file, this.state.file.name);
     let config = {
@@ -92,12 +88,8 @@ class CreateEvent extends BaseForm {
     };
     axios
       .post(url, data, config)
-      .then(result => {
-        // console.log("res:");
-        // console.log(result);
-      })
+      .then(result => {})
       .catch(function (error) {
-        // console.log("err");
         console.log(error);
       });
   }
@@ -132,15 +124,12 @@ class CreateEvent extends BaseForm {
         else return response;
       })
       .then(ress => {
-        // toast('123');
         if (that.props.type === 'create') id = ress.data;
         if (this.state.file != null) this.fileUpload(id, token);
-        // else alert('nullfile')
         return ress;
       })
       .then(handleErrors)
       .catch(function (error) {
-        // this.fileUpload();
         console.log(error);
       });
   }
@@ -168,7 +157,6 @@ class CreateEvent extends BaseForm {
             endTime: info.endTime,
             image: info.image
           });
-          // console.log(info);
         })
         .catch(function (error) {
           console.log(error);
@@ -180,6 +168,11 @@ class CreateEvent extends BaseForm {
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
+    const staffOptions = [
+      { value: 'hadi.hojjat', label: 'Hadi Hojjat' },
+      { value: 'mahdi.jahed', label: 'Mahdi Jahed' },
+      { value: 'mojtaba.shahbazi', label: 'Mojtaba Shahbazi' }
+    ];
     return (
       <div>
         <Header />
@@ -197,89 +190,116 @@ class CreateEvent extends BaseForm {
           </div>
 
           <div className="create_event_container2">
-            <div className="change_image">
-              <div className="create_event_input">
-                <p className="edit_header_font"> تصویر رویداد </p>
-                <div className="change_image_2">
-                  <div className="prof_pic">
-                    <img src={this.state.image} alt="پروفایل" />
+            <div className="create_event_picture">
+              <div className="create_event_tittle">
+                <p className="create_event_header_font"> تصویر رویداد </p>
+              </div>
+              <div className="create_event_picture_content">
+                <div className="prof_pic">
+                  <img src={this.state.image} alt="پروفایل" />
+                </div>
+                <label className="change_button" htmlFor="upload-photo">
+                  {' '}
+                  تغییر تصویر{' '}
+                </label>
+                <input type="file" id="upload-photo" onChange={this.onChange} />
+              </div>
+            </div>
+            <div className="create_event_details">
+              <div className="create_event_tittle">
+                <p className="create_event_header_font"> مشخصات رویداد </p>
+              </div>
+              <div className="create_event_details_content">
+                <div className="create_event_details_row first_row">
+                  <div className="create_event_input left_field">
+                    <p className="create_event_subtittle_font"> نام رویداد: </p>
+                    <input
+                      className="create_event_rest_input"
+                      name="title"
+                      type="text"
+                      onChange={this.handleChange}
+                      value={this.state.title}
+                    />
                   </div>
-                  <label className="change_button" htmlFor="upload-photo">
-                    {' '}
-                    تغییر تصویر{' '}
-                  </label>
-                  <input
-                    type="file"
-                    id="upload-photo"
-                    onChange={this.onChange}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="two_info">
-              <div className="create_event_rest">
-                <div className="create_event_input">
-                  <p> نام رویداد: </p>
-                  <input
-                    className="create_event_rest_input"
-                    name="title"
-                    type="text"
-                    onChange={this.handleChange}
-                    value={this.state.title}
-                  />
-                </div>
-              </div>
-              <div className="create_event_rest">
-                <div className="create_event_input">
-                  <p> محل برگزاری: </p>
-                  <input
-                    className="create_event_rest_input"
-                    name="location"
-                    type="text"
-                    onChange={this.handleChange}
-                    value={this.state.location}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="create_event_rest_1">
-              <div className="one_info">
-                <div className="create_event_input">
-                  <p className="input_date"> تاریخ شروع: </p>
-                  <DatePicker
-                    date={this.state.beginTime}
-                    handleTime={this.handleBeginTime}
-                  />
-                </div>
-              </div>
-              <div className="one_info">
-                <div className="create_event_input">
-                  <p className="input_date"> تاریخ پایان: </p>
-                  <DatePicker
-                    date={this.state.endTime}
-                    handleTime={this.handleEndTime}
-                  />
-                </div>
-              </div>
-              <div className="one_info">
-                <div className="create_event_input">
-                  <p className="input_date"> توضیحات: </p>
-                  <div className="create_event_textarea">
-                    <TextArea
-                      text={this.state.description}
-                      handleText={this.handleDescription}
+                  <div className="create_event_input right_field">
+                    <p className="create_event_subtittle_font">
+                      {' '}
+                      محل برگزاری:{' '}
+                    </p>
+                    <input
+                      className="create_event_rest_input"
+                      name="location"
+                      type="text"
+                      onChange={this.handleChange}
+                      value={this.state.location}
                     />
                   </div>
                 </div>
+                <div className="create_event_details_row second_row">
+                  <div className="create_event_input">
+                    <p className="create_event_subtittle_font"> تاریخ شروع: </p>
+                    <DatePicker
+                      date={this.state.beginTime}
+                      handleTime={this.handleBeginTime}
+                    />
+                  </div>
+                  <div className="create_event_input">
+                    <p className="create_event_subtittle_font">
+                      {' '}
+                      تاریخ پایان:{' '}
+                    </p>
+                    <DatePicker
+                      date={this.state.endTime}
+                      handleTime={this.handleEndTime}
+                    />
+                  </div>
+                </div>
+                <div className="create_event_details_row third_row">
+                  <div className="create_event_input">
+                    <p className="create_event_subtittle_font"> توضیحات: </p>
+                    <div className="create_event_textarea">
+                      <TextArea
+                        text={this.state.description}
+                        handleText={this.handleDescription}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="create_event_submit_container">
-                <input
-                  className="event_page_signup_button"
-                  type="submit"
-                  onClick={this.handleSubmit}
-                  value="ثبت"
-                />
+            </div>
+            <div className="create_event_search">
+              <div className="create_event_search_staff">
+                <div className="create_event_tittle">
+                  <p className="create_event_header_font"> اضافه کردن همکار </p>
+                </div>
+                <div className="create_event_search_content">
+                  <Select
+                    options={staffOptions}
+                    isMulti={true}
+                    placeholder={'جستجو...'}
+                  />
+                </div>
               </div>
+              <div className="create_event_search_sponser">
+                <div className="create_event_tittle">
+                  <p className="create_event_header_font"> اضافه کردن حامی </p>
+                </div>
+                <div className="create_event_search_content">
+                  <Select
+                    options={staffOptions}
+                    isMulti={true}
+                    placeholder={'جستجو...'}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="create_event_submit">
+              <input
+                className="event_page_signup_button"
+                type="submit"
+                onClick={this.handleSubmit}
+                value="ثبت"
+              />
             </div>
           </div>
         </div>

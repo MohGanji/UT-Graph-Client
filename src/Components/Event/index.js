@@ -68,7 +68,6 @@ export default class Event extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-    // alert(username);
     fetch(`/api/v1/user/get_image/${username}`)
       .then(function (response) {
         if (!response.ok) {
@@ -77,8 +76,6 @@ export default class Event extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
-        // alert('get image')
-        // alert(responseJson.image)
         that.setState({
           user_pic: responseJson.image
         });
@@ -160,7 +157,6 @@ export default class Event extends React.Component {
     if (this.state.notFound) {
       return <NotFound />;
     }
-    // alert(this.state.user_pic)
     let beginTimeString = this.getDateString(
       new Date(this.state.info.beginTime)
     );

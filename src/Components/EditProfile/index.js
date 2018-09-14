@@ -125,7 +125,6 @@ class EditProfile extends BaseForm {
   }
   async fileUpload () {
     let token = localStorage.getItem('token');
-    // toast('upload');
     const url = '/api/v1/user/upload';
     let data = await new FormData();
     data.append('file', this.state.file, this.state.file.name);
@@ -141,11 +140,9 @@ class EditProfile extends BaseForm {
     axios
       .post(url, data, config)
       .then(result => {
-        // console.log("res:");
         console.log(result);
       })
       .catch(function (error) {
-        // console.log("err");
         console.log(error);
       });
   }
