@@ -1,8 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sahel, sans-serif;
-  background-color: #dfe3ec;
+  font-family: sahel, sans-serif !important;
+  background-color: #fafafa;
+}
+
+input,
+.Toastify__toast-body {
+  font-family: sahel, sans-serif !important;
 }
 
 a {

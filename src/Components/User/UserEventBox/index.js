@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import MapImage from '../../../images/map.svg';
-import CalenderImage from '../../../images/calender.svg';
+import CalenderImage from '../../../images/group.svg';
 import RoleImage from '../../../images/role.svg';
 import TitleHolder from '../../../Utils/TitleHolder';
 import getDateString from '../../../Utils/functions/getDateString';

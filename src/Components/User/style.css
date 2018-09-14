@@ -88,7 +88,9 @@
   margin-top: 20px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 2px 2px 15px #888888be;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 1.6px solid #cecdcd;
   direction: rtl;
   margin-bottom: 20px;
 }
@@ -100,7 +102,7 @@
   font-size: 16pt;
   padding: 14px;
   border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   margin-right: 25px;
   margin-top: 20px;
 }

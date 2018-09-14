@@ -7,8 +7,8 @@
   margin-top: 100px;
   display: grid;
   grid-template-rows: 8% 92%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border-radius: 0.4rem 0.4rem 0 0;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
   margin-bottom: 50px;
 }

@@ -5,8 +5,21 @@
   margin-bottom: 30px;
   display: grid;
   grid-template-columns: 35% 45% 20%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 15px #888888be;
+  border: 2px solid #e7e5e7;
+  transition: -webkit-box-shadow 0.2s;
+  -o-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  border-radius: 0.4rem 0.4rem 0 0;
+  cursor: pointer;
+}
+
+.my_event_box_container:hover {
+  -webkit-box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .my_event_box_image_container {
@@ -27,12 +40,12 @@
 
 .my_event_box_info_container {
   display: grid;
-  border-right: 1px solid rgba(0, 0, 0, 0.246);
-  border-left: 1px solid rgba(0, 0, 0, 0.246);
+  border-right: 2px solid #e7e5e7;
+  border-left: 2px solid #e7e5e7;
   grid-template-rows: 55% 45%;
 }
 
-.my_event_box_info_container_title {  
+.my_event_box_info_container_title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +54,7 @@
 .my_event_box_info_container_title a {
   font-size: 22pt;
   margin-right: 15px;
-  display: inline-block;  
+  display: inline-block;
 }
 
 .my_event_box_info_container_rest {
@@ -71,7 +84,7 @@
   color: rgb(233, 229, 229);
   font-size: 13pt;
   padding: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 8px #888888be;
+  border-radius: 4px;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(209, 78, 78, 0.11);
   height: 42px;
 }

@@ -1,5 +1,4 @@
 .page_body {
-  
 }
 
 .notification_container_all {
@@ -9,8 +8,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 15px #888888be;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 1.6px solid #cecdcd;
   background: #ffffff;
   margin-top: 100px;
   direction: rtl;
@@ -23,11 +23,11 @@
   display: inline-block;
   font-size: 16pt;
   padding: 14px;
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   border-radius: 7px;
-  box-shadow: 2px 2px 15px #888888be;
   margin-right: 25px;
   margin-top: 20px;
-  width: 180px;
+  width: 160px;
 }
 
 .notification_container {
@@ -40,7 +40,7 @@
   padding-bottom: 60px;
   display: flex;
   /* justify-content: center; */
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .selected_invisible {
