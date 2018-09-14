@@ -5,6 +5,7 @@ import OldEventBox from '../../Utils/OldEventBox';
 import handleErrors from '../../Utils/functions/handleErrors';
 import OldEventSlider from './OldEventSlider/';
 import Footer from '../../Utils/Footer';
+import WelcomeGraph from './WelcomeGraph';
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -28,7 +29,7 @@ export default class Home extends React.Component {
       })
       .then(handleErrors)
       .then(function (responseJson) {
-        let hasMore = responseJson.data.length === 8;
+        let hasMore = responseJson.data.length === 6;
         that.setState({
           newEvents: responseJson.data,
           pageToken: responseJson.pageToken,
@@ -70,7 +71,7 @@ export default class Home extends React.Component {
       .then(function (responseJson) {
         let previousEvents = that.state.newEvents;
         let newEvents = responseJson.data;
-        let hasMore = newEvents.length === 8;
+        let hasMore = newEvents.length === 6;
         let events = previousEvents.concat(newEvents);
         that.setState({
           newEvents: events,
@@ -92,8 +93,9 @@ export default class Home extends React.Component {
     ));
     return (
       <div>
-        <Header />
+        <Header type="home" />
         <div className="welcome_home">
+          <WelcomeGraph />
           <div className="centered">به UT Graph خوش آمدید!</div>
         </div>
         <div className="home_page_events_container search_page_container">

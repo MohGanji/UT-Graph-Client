@@ -5,11 +5,17 @@
   width: 100%;
   top: 0px;
   z-index: 1;
-  background-color: #352649;
+  /* background-color: #352649; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  -webkit-transition: background-color 0.7s;
+  transition: background-color 0.7s;
+}
+
+.navbar_scrolled {
+  background-color: #352649;
 }
 
 .logo_container {
