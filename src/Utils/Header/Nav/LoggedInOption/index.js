@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './style.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { connect } from 'react-redux';
@@ -53,7 +53,7 @@ class LoggedInOption extends React.Component {
   handleExit () {
     localStorage.removeItem('token');
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
-    toast.info('شما با موفقیت خارج شدید'); // funny fact: dispatch and setstate don't work together! absolutely shit
+    toast.info('شما با موفقیت خارج شدید');
   }
 
   showNotifications () {

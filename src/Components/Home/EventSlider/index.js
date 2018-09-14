@@ -5,7 +5,6 @@ import Slider from 'react-slick';
 import sliderImage from '../../images/eventSlider.jpg';
 
 function PrevArrow (props) {
-  // const { className, style, onClick } = props;
   return (
     <button
       {...props}
@@ -26,7 +25,6 @@ function PrevArrow (props) {
 }
 
 function NextArrow (props) {
-  // const { className, style, onClick } = props;
   return (
     <button
       {...props}

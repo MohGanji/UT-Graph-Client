@@ -45,20 +45,6 @@ class User extends React.Component {
       })
       .then(function (info) {
         that.setState({ info: info });
-        // axios
-        //   .get(
-        //   '/' + that.state.info.image,
-        //   { responseType: 'arraybuffer' },
-        // )
-        //   .then(response => {
-        //     const base64 = btoa(
-        //       new Uint8Array(response.data).reduce(
-        //         (data, byte) => data + String.fromCharCode(byte),
-        //         '',
-        //       ),
-        //     );
-        //     that.setState({ image: "data:;base64," + base64 });
-        //   });
       })
       .catch(function (error) {
         console.log(error);

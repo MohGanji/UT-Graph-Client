@@ -76,12 +76,7 @@ class CreateEvent extends BaseForm {
     this.setState({ description: description });
   }
   async fileUpload (id, token) {
-    // toast('upload');
     const url = '/api/v1/event/upload/' + id;
-    // alert(url)
-    // toast(url)
-    // toast(id)
-    // alert(this.state.file)
     let data = await new FormData();
     data.append('event', this.state.file, this.state.file.name);
     let config = {
@@ -94,12 +89,8 @@ class CreateEvent extends BaseForm {
     };
     axios
       .post(url, data, config)
-      .then(result => {
-        // console.log("res:");
-        // console.log(result);
-      })
+      .then(result => {})
       .catch(function (error) {
-        // console.log("err");
         console.log(error);
       });
   }
@@ -138,15 +129,12 @@ class CreateEvent extends BaseForm {
         else return response;
       })
       .then(ress => {
-        // toast('123');
         if (that.props.type === 'create') id = ress.data;
         if (this.state.file != null) this.fileUpload(id, token);
-        // else alert('nullfile')
         return ress;
       })
       .then(handleErrors)
       .catch(function (error) {
-        // this.fileUpload();
         console.log(error);
       });
   }
@@ -173,7 +161,6 @@ class CreateEvent extends BaseForm {
             beginTime: info.beginTime,
             endTime: info.endTime
           });
-          // console.log(info);
         })
         .catch(function (error) {
           console.log(error);
