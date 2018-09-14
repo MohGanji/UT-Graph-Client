@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { connect } from 'react-redux';
@@ -146,13 +147,13 @@ class LoggedInOption extends React.Component {
             </div>
           </div>
           <div className="drop_down_content">
-            <a href={`/`}>خانه</a>
-            <a href={`/user/${this.props.user.username}`}>پروفایل</a>
-            <a href={`/edit-profile`}>ویرایش پروفایل</a>
-            <a href={`/my-events`}> رویداد های من</a>
-            <a href={`/create-event`} className={createEventClass}>
+            <Link to={`/`}>خانه</Link>
+            <Link to={`/user/${this.props.user.username}`}>پروفایل</Link>
+            <Link to={`/edit-profile`}>ویرایش پروفایل</Link>
+            <Link to={`/my-events`}> رویداد های من</Link>
+            <Link to={`/create-event`} className={createEventClass}>
               ساخت رویداد
-            </a>
+            </Link>
             <a onClick={this.handleExit}>خروج</a>
           </div>
         </div>
