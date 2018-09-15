@@ -27,7 +27,7 @@ export default class NotifCard extends React.Component {
     const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/accept`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'POST'
     }).catch(function (error) {
@@ -42,7 +42,7 @@ export default class NotifCard extends React.Component {
     const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/reject`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'POST'
     }).catch(function (error) {

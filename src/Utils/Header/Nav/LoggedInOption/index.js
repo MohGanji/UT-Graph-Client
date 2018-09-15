@@ -31,7 +31,7 @@ class LoggedInOption extends React.Component {
     let that = this;
     fetch(`/api/v1/notification/${1}`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'GET'
     })
@@ -62,7 +62,7 @@ class LoggedInOption extends React.Component {
 
     fetch('/api/v1/notification/read-all', {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'POST'
     });

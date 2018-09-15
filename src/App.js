@@ -19,7 +19,7 @@ function mapStateToProps (state) {
 
 class App extends Component {
   render () {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('accessToken');
     if (!token) {
       this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
     }

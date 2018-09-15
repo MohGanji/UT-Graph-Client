@@ -23,7 +23,7 @@ class MyEventBox extends React.Component {
 
   handleDelete () {
     let that = this;
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('accessToken');
     let url = `/api/v1/event/${this.props.event._id}`;
     let dataSend = {
       method: 'delete',

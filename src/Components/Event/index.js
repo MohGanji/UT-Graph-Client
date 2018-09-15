@@ -127,7 +127,7 @@ export default class Event extends React.Component {
 
   register (close) {
     const id = this.props.match.params.id;
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
 
     fetch(`/api/v1/event/${id}/signup_attendent`, {
       headers: {
@@ -141,7 +141,7 @@ export default class Event extends React.Component {
 
   requestStaff () {
     const id = this.props.match.params.id;
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
 
     fetch(`/api/v1/event/${id}/signup_staff`, {
       headers: {

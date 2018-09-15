@@ -25,7 +25,7 @@ export default class Notification extends React.Component {
     var that = this;
     fetch(`/api/v1/notification/${0}`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'GET'
     })

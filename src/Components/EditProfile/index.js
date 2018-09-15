@@ -70,7 +70,7 @@ class EditProfile extends BaseForm {
       sid: that.state.sid,
       bio: that.state.bio
     };
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('accessToken');
     let form = new FormData();
     form.append('file', this.state.file);
     fetch('/api/v1/user', {
@@ -124,7 +124,7 @@ class EditProfile extends BaseForm {
     reader.readAsDataURL(file);
   }
   async fileUpload () {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('accessToken');
     const url = '/api/v1/user/upload';
     let data = await new FormData();
     data.append('file', this.state.file, this.state.file.name);

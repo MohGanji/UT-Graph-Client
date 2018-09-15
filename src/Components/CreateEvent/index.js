@@ -104,7 +104,7 @@ class CreateEvent extends BaseForm {
       description: that.state.description,
       organizer: that.state.organizer
     };
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     const method = this.props.type === 'create' ? 'POST' : 'PUT';
     let id = this.props.type === 'create' ? '' : this.props.match.params.id;
     let url = `/api/v1/event/${id}`;
