@@ -10,7 +10,7 @@ import MyEvents from './Components/MyEvents';
 import ResultPage from './Components/ResultPage';
 import Notification from './Components/Notification';
 import { connect } from 'react-redux';
-import { store } from './Store';
+import Auth from './Auth';
 
 function mapStateToProps (state) {
   return {
@@ -18,94 +18,91 @@ function mapStateToProps (state) {
   };
 }
 
-let accessToken = localStorage.getItem('accessToken');
-if (accessToken) {
-  store.dispatch({ type: 'AUTHENTICATE_THE_USER' });
-}
-
 class App extends Component {
   render () {
     return (
       <BrowserRouter>
-        <Switch>
-          <Route exact path={'/'} component={Home} />
-          <Route exact path={'/user/:id'} component={User} />
-          <Route exact path={'/event/:id'} component={Event} />
-          <Route
-            exact
-            path="/events"
-            render={props => <ResultPage type="events" {...props} />}
-          />
-          <Route
-            exact
-            path="/search/event/:keyword"
-            render={props => <ResultPage type="event-search" {...props} />}
-          />
-          <Route
-            exact
-            path="/search/user/:keyword"
-            render={props => <ResultPage type="user-search" {...props} />}
-          />
-          <Route
-            exact
-            path="/edit-profile"
-            render={() =>
-              this.props.authenticated ? <EditProfile /> : <Redirect to="/" />
-            }
-          />
-          <Route
-            exact
-            path="/create-event"
-            render={() =>
-              this.props.authenticated ? (
-                <CreateEvent type="create" />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/event/:id/edit"
-            render={props =>
-              this.props.authenticated ? (
-                <CreateEvent type="edit" {...props} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/my-events"
-            render={props =>
-              this.props.authenticated ? <MyEvents /> : <Redirect to="/" />
-            }
-          />
-          <Route
-            exact
-            path="/notification/:index"
-            render={props =>
-              this.props.authenticated ? (
-                <Notification type="selected" {...props} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/notification"
-            render={props =>
-              this.props.authenticated ? (
-                <Notification type="normal" />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route component={NotFound} />
-        </Switch>
+        <Auth>
+          <Switch>
+            <Route exact path={'/'} component={Home} />
+            <Route exact path={'/user/:id'} component={User} />
+            <Route exact path={'/event/:id'} component={Event} />
+            <Route
+              exact
+              path="/events"
+              render={props => <ResultPage type="events" {...props} />}
+            />
+            <Route
+              exact
+              path="/search/event/:keyword"
+              render={props => <ResultPage type="event-search" {...props} />}
+            />
+            <Route
+              exact
+              path="/search/user/:keyword"
+              render={props => <ResultPage type="user-search" {...props} />}
+            />
+            <Route
+              exact
+              path="/edit-profile"
+              render={() =>
+                this.props.authenticated ? <EditProfile /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/create-event"
+              render={() =>
+                this.props.authenticated ? (
+                  <CreateEvent type="create" />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/event/:id/edit"
+              render={props =>
+                this.props.authenticated ? (
+                  <CreateEvent type="edit" {...props} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/my-events"
+              render={props =>
+                this.props.authenticated ? <MyEvents /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/notification/:index"
+              render={props =>
+                this.props.authenticated ? (
+                  <Notification type="selected" {...props} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/notification"
+              render={props =>
+                this.props.authenticated ? (
+                  <Notification type="normal" />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </Auth>
       </BrowserRouter>
     );
   }
