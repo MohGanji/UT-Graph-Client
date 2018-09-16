@@ -4,6 +4,7 @@ import getDateString from '../../../Utils/functions/getDateString';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import defaultEventImage from '../../../images/defaultEvent.svg';
 
 function mapStateToProps (state) {
   return {
@@ -54,7 +55,12 @@ class MyEventBox extends React.Component {
         <div className="my_event_box_image_container">
           <div className="my_event_box_image">
             <a href={`/event/${this.props.event._id}`}>
-              <img src={this.props.event.image} alt="عکس رویداد" />
+              {this.props.event.image ===
+              'http://localhost:8080/public/defaultEvent.svg' ? (
+                  <img src={defaultEventImage} alt="عکس رویداد" />
+                ) : (
+                  <img src={this.props.event.image} alt="عکس رویداد" />
+                )}
             </a>
           </div>
         </div>

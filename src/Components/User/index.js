@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import ProgressBar from 'react-progress-bar-plus';
+import defaultProfileImage from '../../images/defaultProfile.svg';
 
 function mapStateToProps (state) {
   return {
@@ -48,6 +49,7 @@ class User extends React.Component {
       })
       .then(function (info) {
         that.setState({ info: info });
+        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
@@ -89,11 +91,20 @@ class User extends React.Component {
         <BackgroundCover />
         <div className="user_info">
           <div className="profile_photo_container">
-            <img
-              className="profile_photo"
-              src={this.state.info.image}
-              alt="عکس کاربر"
-            />
+            {this.state.info.image ===
+            'http://localhost:8080/public/defaultProfile.svg' ? (
+                <img
+                  className="profile_photo"
+                  src={defaultProfileImage}
+                  alt="عکس کاربر"
+                />
+              ) : (
+                <img
+                  className="profile_photo"
+                  src={this.state.info.image}
+                  alt="عکس کاربر"
+                />
+              )}
           </div>
           <div className="user_about">
             <p id="user_name" className="user_about_text">
@@ -152,7 +163,8 @@ User.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     })
-  })
+  }),
+  user: PropTypes.object
 };
 
 export default connect(mapStateToProps)(User);

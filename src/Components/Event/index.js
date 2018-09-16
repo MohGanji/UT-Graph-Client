@@ -18,6 +18,8 @@ import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
 import ProgressBar from 'react-progress-bar-plus';
+import defaultEventImage from '../../images/defaultEvent.svg';
+import defaultProfileImage from '../../images/defaultProfile.svg';
 
 const contentStyle = {
   height: 'innerHeight',
@@ -64,6 +66,7 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
+        console.log(info);
         username = info.organizer;
         that.setState({ info: info });
       })
@@ -174,8 +177,12 @@ export default class Event extends React.Component {
         <Header />
         <div className="event_page_info_1">
           <div className="event_page_photo_container">
-            <img src={this.state.info.image} alt="عکس رویداد" />
-            {/* <img alt="عکس رویداد" src={this.state.info.poster_path == null ? BackgroundImage : this.state.info.poster_path} /> */}
+            {this.state.info.image ===
+            'http://localhost:8080/public/defaultEvent.svg' ? (
+                <img src={defaultEventImage} alt="عکس رویداد" />
+              ) : (
+                <img src={this.state.info.image} alt="عکس رویداد" />
+              )}
           </div>
           <div className="event_page_info_container">
             <div className="event_page_info_container_up">
@@ -337,7 +344,12 @@ export default class Event extends React.Component {
             <div className="event_page_users_left_organizer">
               <div className="event_page_users_left_organizer_image">
                 <a href={`/user/${this.state.info.organizer}`}>
-                  <img src={this.state.user_pic} alt="عکس برگزار کننده" />
+                  {this.state.user_pic ===
+                  'http://localhost:8080/public/defaultProfile.svg' ? (
+                      <img src={defaultProfileImage} alt="عکس کاربر" />
+                    ) : (
+                      <img src={this.state.user_pic} alt="عکس کاربر" />
+                    )}
                 </a>
               </div>
               <div className="event_page_users_left_organizer_info">

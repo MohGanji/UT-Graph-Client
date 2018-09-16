@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import makeNotifMessage from '../../../../Utils/functions/makeNotifMessage';
 import PropTypes from 'prop-types';
+import defaultProfileImage from '../../../../images/defaultProfile.svg';
 
 function mapStateToProps (state) {
   return {
@@ -145,7 +146,12 @@ class LoggedInOption extends React.Component {
             </div>
             <div className="logged_in_option_photo">
               {/* <img src={this.state.image} /> */}
-              <img src={this.props.user.image} alt="عکس پروفایل" />
+              {this.props.user.image ===
+              'http://localhost:8080/public/defaultProfile.svg' ? (
+                  <img src={defaultProfileImage} alt="عکس پروفایل" />
+                ) : (
+                  <img src={this.props.user.image} alt="عکس پروفایل" />
+                )}
             </div>
           </div>
           <div className="drop_down_content">

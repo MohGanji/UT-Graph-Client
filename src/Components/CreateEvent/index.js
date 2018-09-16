@@ -9,11 +9,11 @@ import { connect } from 'react-redux';
 import TextArea from '../../Utils/TextArea';
 import Footer from '../../Utils/Footer';
 import { Redirect } from 'react-router-dom';
-import profilePicture from '../../images/defaultEvent.svg';
 import BaseForm from '../../Utils/BaseForm';
 import axios from 'axios';
 import Select from 'react-select';
 import ProgressBar from 'react-progress-bar-plus';
+import defaultEventImage from '../../images/defaultEvent.svg';
 
 function mapStateToProps (state) {
   return {
@@ -33,7 +33,7 @@ class CreateEvent extends BaseForm {
       description: '',
       organizer: this.props.user.username,
       redirect: false,
-      image: profilePicture,
+      image: defaultEventImage,
       file: null,
       loading: true
     };
@@ -204,7 +204,12 @@ class CreateEvent extends BaseForm {
               </div>
               <div className="create_event_picture_content">
                 <div className="prof_pic">
-                  <img src={this.state.image} alt="پروفایل" />
+                  {this.state.image ===
+                  'http://localhost:8080/public/defaultEvent.svg' ? (
+                      <img src={defaultEventImage} alt="عکس رویداد" />
+                    ) : (
+                      <img src={this.state.image} alt="عکس رویداد" />
+                    )}
                 </div>
                 <label className="change_button" htmlFor="upload-photo">
                   {' '}
