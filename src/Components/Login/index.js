@@ -38,8 +38,8 @@ class Login extends BaseForm {
       })
       .then(handleErrors)
       .then(function (responseJson) {
-        localStorage.setItem('token', responseJson.data.token);
-        that.props.dispatch({ type: 'AUTHENTICATE_THE_USER' });
+        localStorage.setItem('accessToken', responseJson.data.accessToken);
+        localStorage.setItem('refreshToken', responseJson.data.refreshToken);
         return fetch(`/api/v1/user/${data.username}`);
       })
       .then(function (response) {

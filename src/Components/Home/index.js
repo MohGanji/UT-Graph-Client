@@ -6,6 +6,7 @@ import handleErrors from '../../Utils/functions/handleErrors';
 import OldEventSlider from './OldEventSlider/';
 import Footer from '../../Utils/Footer';
 import WelcomeGraph from './WelcomeGraph';
+import ProgressBar from 'react-progress-bar-plus';
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -14,7 +15,8 @@ export default class Home extends React.Component {
       newEvents: [],
       oldEvents: [],
       pageToken: '',
-      hasMore: false
+      hasMore: false,
+      loading: true
     };
     this.handlePaginationSubmit = this.handlePaginationSubmit.bind(this);
   }
@@ -35,14 +37,8 @@ export default class Home extends React.Component {
           pageToken: responseJson.pageToken,
           hasMore: hasMore
         });
+        return fetch(`/api/v1/event/get/old`);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    fetch(`/api/v1/event/get/old`, {
-      method: 'GET'
-    })
       .then(function (response) {
         return response.json();
       })
@@ -55,6 +51,9 @@ export default class Home extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+      })
+      .then(function () {
+        that.setState({ loading: false });
       });
   }
 
@@ -93,6 +92,11 @@ export default class Home extends React.Component {
     ));
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 95 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header type="home" />
         <div className="welcome_home">
           <WelcomeGraph />

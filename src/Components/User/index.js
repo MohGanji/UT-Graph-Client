@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
+import ProgressBar from 'react-progress-bar-plus';
 
 function mapStateToProps (state) {
   return {
@@ -25,7 +26,8 @@ class User extends React.Component {
       info: {},
       events: [],
       notFound: false,
-      image: ''
+      image: '',
+      loading: true
     };
   }
 
@@ -65,6 +67,7 @@ class User extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    this.setState({ loading: false });
   }
 
   render () {
@@ -77,6 +80,11 @@ class User extends React.Component {
 
     return (
       <div className="user">
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <BackgroundCover />
         <div className="user_info">

@@ -11,11 +11,17 @@ import ResultPage from './Components/ResultPage';
 import Notification from './Components/Notification';
 import { connect } from 'react-redux';
 import AboutUs from './Components/AboutUs';
+import { store } from './Store';
 
 function mapStateToProps(state) {
   return {
     authenticated: state.authenticated
   };
+}
+
+let accessToken = localStorage.getItem('accessToken');
+if (accessToken) {
+  store.dispatch({ type: 'AUTHENTICATE_THE_USER' });
 }
 
 class App extends Component {

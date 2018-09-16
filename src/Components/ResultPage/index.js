@@ -6,6 +6,7 @@ import OldEventBox from '../../Utils/OldEventBox';
 import Footer from '../../Utils/Footer';
 import UserBox from '../../Utils/UserBox';
 import PropTypes from 'prop-types';
+import ProgressBar from 'react-progress-bar-plus';
 
 export default class ResultPage extends React.Component {
   constructor (props) {
@@ -15,7 +16,8 @@ export default class ResultPage extends React.Component {
       events: [],
       eventsType: 'old',
       pageToken: '',
-      hasMore: false
+      hasMore: false,
+      loading: true
     };
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handlePaginationSubmit = this.handlePaginationSubmit.bind(this);
@@ -58,6 +60,7 @@ export default class ResultPage extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    this.setState({ loading: false });
   }
 
   handleTypeChange () {
@@ -149,6 +152,11 @@ export default class ResultPage extends React.Component {
 
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div className="search_page_container">
           <div className="search_page_title">

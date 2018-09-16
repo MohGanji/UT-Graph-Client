@@ -13,6 +13,7 @@ import profilePicture from '../../images/defaultEvent.svg';
 import BaseForm from '../../Utils/BaseForm';
 import axios from 'axios';
 import Select from 'react-select';
+import ProgressBar from 'react-progress-bar-plus';
 
 function mapStateToProps (state) {
   return {
@@ -33,7 +34,8 @@ class CreateEvent extends BaseForm {
       organizer: this.props.user.username,
       redirect: false,
       image: profilePicture,
-      file: null
+      file: null,
+      loading: true
     };
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
@@ -104,14 +106,14 @@ class CreateEvent extends BaseForm {
       description: that.state.description,
       organizer: that.state.organizer
     };
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     const method = this.props.type === 'create' ? 'POST' : 'PUT';
     let id = this.props.type === 'create' ? '' : this.props.match.params.id;
     let url = `/api/v1/event/${id}`;
     let dataSend = {
       method: method,
       headers: {
-        'Contentdi-Type': 'application/json',
+        'Content-Type': 'application/json',
         authorization: token
       },
       body: JSON.stringify({ data: data })
@@ -162,6 +164,7 @@ class CreateEvent extends BaseForm {
           console.log(error);
         });
     }
+    this.setState({ loading: false });
   }
 
   render () {
@@ -175,6 +178,11 @@ class CreateEvent extends BaseForm {
     ];
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div className="create_event_container1">
           <div className="create_event_title">

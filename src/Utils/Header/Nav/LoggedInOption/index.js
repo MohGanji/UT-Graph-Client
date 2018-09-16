@@ -31,7 +31,7 @@ class LoggedInOption extends React.Component {
     let that = this;
     fetch(`/api/v1/notification/${1}`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'GET'
     })
@@ -51,7 +51,9 @@ class LoggedInOption extends React.Component {
   }
 
   handleExit () {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    // fetch('/api/v1/user/logout', { method: 'POST' }); //cant be used :( asynchronous problems :(
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
     toast.info('شما با موفقیت خارج شدید');
   }
@@ -62,7 +64,7 @@ class LoggedInOption extends React.Component {
 
     fetch('/api/v1/notification/read-all', {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: localStorage.getItem('accessToken')
       },
       method: 'POST'
     });
@@ -147,7 +149,8 @@ class LoggedInOption extends React.Component {
             </div>
           </div>
           <div className="drop_down_content">
-            <Link to={`/`}>خانه</Link>
+            {/* change to <a /> because link doesn't load script! */}
+            <a href={`/`}>خانه</a>
             <Link to={`/user/${this.props.user.username}`}>پروفایل</Link>
             <Link to={`/edit-profile`}>ویرایش پروفایل</Link>
             <Link to={`/my-events`}> رویداد های من</Link>
