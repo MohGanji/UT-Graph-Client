@@ -51,7 +51,9 @@ class LoggedInOption extends React.Component {
   }
 
   handleExit () {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    // fetch('/api/v1/user/logout', { method: 'POST' }); //cant be used :( asynchronous problems :(
     this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
     toast.info('شما با موفقیت خارج شدید');
   }

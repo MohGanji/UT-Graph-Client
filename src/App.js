@@ -10,6 +10,7 @@ import MyEvents from './Components/MyEvents';
 import ResultPage from './Components/ResultPage';
 import Notification from './Components/Notification';
 import { connect } from 'react-redux';
+import { store } from './Store';
 
 function mapStateToProps (state) {
   return {
@@ -17,12 +18,13 @@ function mapStateToProps (state) {
   };
 }
 
+let accessToken = localStorage.getItem('accessToken');
+if (accessToken) {
+  store.dispatch({ type: 'AUTHENTICATE_THE_USER' });
+}
+
 class App extends Component {
   render () {
-    let token = localStorage.getItem('accessToken');
-    if (!token) {
-      this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
-    }
     return (
       <BrowserRouter>
         <Switch>
