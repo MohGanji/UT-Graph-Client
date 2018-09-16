@@ -5,6 +5,7 @@ import utg from '../../images/utg.svg';
 import email from '../../images/email.svg';
 import './style.css';
 import Developer from './Developer';
+import TextArea from '../../Utils/TextArea';
 
 const developers = [
 	{ name: 'محمد مهدی جاهد خانیکی', username: 'mahdi.jahed', email: 'mahdi.jax@gmail.com', description: 'سلام بچه ها' },
@@ -28,7 +29,7 @@ export default class AboutUs extends React.Component {
 					<Developer details={developers[1]} />
 				</div>
 				<div className="contact_us">
-					<div className="about_team_image"><img id="utg-logo" src={email} /></div>
+					<div className="about_team_image"><img id="email-logo" src={email} /></div>
 					<div className="inputs">
 						<form >
 							<label className="fname"> نام و نام خانوادگی </label>
@@ -41,9 +42,10 @@ export default class AboutUs extends React.Component {
 							<input type="tel" id="input_frame" name="firstname" maxlength="11" />
 
 							<label className="message_input">متن پیام </label>
-							<input type="text" id="message_input_text" name="firstname" maxlength="250" />
+							{/*<input type="text" id="message_input_text" name="firstname" maxlength="250" /> */}
 							{/* ba texxt area taviz behse aakharish */}
-							<input id="submit_button" type="submit" value="Submit" />
+							<TextArea />
+							<input id="submit_button" type="submit" value="ثبت" />
 						</form>
 					</div>
 				</div>
