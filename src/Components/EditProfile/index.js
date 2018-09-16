@@ -13,6 +13,7 @@ import axios from 'axios';
 import BaseForm from '../../Utils/BaseForm';
 import numberConverter from '../../Utils/BaseForm/numberConverter';
 import TextArea from '../../Utils/TextArea';
+import ProgressBar from 'react-progress-bar-plus';
 
 function mapStateToProps (state) {
   return {
@@ -105,6 +106,7 @@ class EditProfile extends BaseForm {
       .catch(function (error) {
         console.log(error);
       });
+    this.setState({ loading: false });
   }
 
   handleBio (bio) {
@@ -170,6 +172,11 @@ class EditProfile extends BaseForm {
     let checkPasswordEqualStyle = { visibility: this.state.visibility };
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div className="create_event_container1">
           <div className="create_event_title">

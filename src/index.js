@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistor, store } from './Store';
+require('react-progress-bar-plus/lib/progress-bar.css');
 
 ReactDOM.render(
   <Provider store={store}>

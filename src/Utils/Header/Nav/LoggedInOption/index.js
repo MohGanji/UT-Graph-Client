@@ -149,7 +149,8 @@ class LoggedInOption extends React.Component {
             </div>
           </div>
           <div className="drop_down_content">
-            <Link to={`/`}>خانه</Link>
+            {/* change to <a /> because link doesn't load script! */}
+            <a href={`/`}>خانه</a>
             <Link to={`/user/${this.props.user.username}`}>پروفایل</Link>
             <Link to={`/edit-profile`}>ویرایش پروفایل</Link>
             <Link to={`/my-events`}> رویداد های من</Link>

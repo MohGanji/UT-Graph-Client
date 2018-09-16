@@ -17,6 +17,7 @@ import ReactHtmlParser from 'react-html-parser';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
+import ProgressBar from 'react-progress-bar-plus';
 
 const contentStyle = {
   height: 'innerHeight',
@@ -39,7 +40,8 @@ export default class Event extends React.Component {
       user_pic: '',
       notFound: false,
       participantNumber: '',
-      staffs: {}
+      staffs: {},
+      loading: true
     };
     this.getDateString = this.getDateString.bind(this);
     this.register = this.register.bind(this);
@@ -113,6 +115,7 @@ export default class Event extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    this.setState({ loading: false });
   }
 
   getDateString (date) {
@@ -163,6 +166,11 @@ export default class Event extends React.Component {
     let endTimeString = this.getDateString(new Date(this.state.info.endTime));
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div className="event_page_info_1">
           <div className="event_page_photo_container">

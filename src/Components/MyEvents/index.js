@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import handleErrors from '../../Utils/functions/handleErrors';
 import MyEventBox from './MyEventBox/';
 import PropTypes from 'prop-types';
+import ProgressBar from 'react-progress-bar-plus';
 
 function mapStateToProps (state) {
   return {
@@ -39,6 +40,7 @@ class MyEvents extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    this.setState({ loading: false });
   }
   render () {
     const myEvents = this.state.events.map((event, i) => (
@@ -46,6 +48,11 @@ class MyEvents extends React.Component {
     ));
     return (
       <div>
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div className="my_events_container_all">
           <div className="my_events_container_all_title">
