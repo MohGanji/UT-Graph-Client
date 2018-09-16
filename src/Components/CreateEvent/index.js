@@ -111,7 +111,7 @@ class CreateEvent extends BaseForm {
     let dataSend = {
       method: method,
       headers: {
-        'Contentdi-Type': 'application/json',
+        'Content-Type': 'application/json',
         authorization: token
       },
       body: JSON.stringify({ data: data })
