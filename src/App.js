@@ -11,6 +11,7 @@ import ResultPage from './Components/ResultPage';
 import Notification from './Components/Notification';
 import { connect } from 'react-redux';
 import Auth from './Auth';
+import AboutUs from './Components/AboutUs';
 
 function mapStateToProps (state) {
   return {
@@ -20,6 +21,10 @@ function mapStateToProps (state) {
 
 class App extends Component {
   render () {
+    let token = localStorage.getItem('token');
+    if (!token) {
+      this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
+    }
     return (
       <BrowserRouter>
         <Auth>
@@ -27,6 +32,7 @@ class App extends Component {
             <Route exact path={'/'} component={Home} />
             <Route exact path={'/user/:id'} component={User} />
             <Route exact path={'/event/:id'} component={Event} />
+            <Route exact path={'/AboutUs'} component={AboutUs} />
             <Route
               exact
               path="/events"

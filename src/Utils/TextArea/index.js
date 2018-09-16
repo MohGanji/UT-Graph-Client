@@ -17,9 +17,6 @@ export default class TextArea extends React.Component {
     this.props.handleText(text);
   }
 
-  componentDidMount () {
-    console.log('look', this.props.text);
-  }
   render () {
     return (
       <div>

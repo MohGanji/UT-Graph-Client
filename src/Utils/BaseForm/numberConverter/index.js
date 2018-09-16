@@ -22,7 +22,6 @@ export default class NumberConverter {
       for (let j = 0; j < 10; j++) {
         if (str[i] === english[j] || str[i] === persian[j]) char = persian[j];
       }
-      console.log(char);
       if (!char) return '';
       res += char;
     }
