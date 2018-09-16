@@ -10,15 +10,16 @@ import MyEvents from './Components/MyEvents';
 import ResultPage from './Components/ResultPage';
 import Notification from './Components/Notification';
 import { connect } from 'react-redux';
+import AboutUs from './Components/AboutUs';
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     authenticated: state.authenticated
   };
 }
 
 class App extends Component {
-  render () {
+  render() {
     let token = localStorage.getItem('token');
     if (!token) {
       this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path={'/'} component={Home} />
           <Route exact path={'/user/:id'} component={User} />
           <Route exact path={'/event/:id'} component={Event} />
+          <Route exact path={'/AboutUs'} component={AboutUs} />
           <Route
             exact
             path="/events"
@@ -58,8 +60,8 @@ class App extends Component {
               this.props.authenticated ? (
                 <CreateEvent type="create" />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route
@@ -69,8 +71,8 @@ class App extends Component {
               this.props.authenticated ? (
                 <CreateEvent type="edit" {...props} />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route
@@ -87,8 +89,8 @@ class App extends Component {
               this.props.authenticated ? (
                 <Notification type="selected" {...props} />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route
@@ -98,8 +100,8 @@ class App extends Component {
               this.props.authenticated ? (
                 <Notification type="normal" />
               ) : (
-                <Redirect to="/" />
-              )
+                  <Redirect to="/" />
+                )
             }
           />
           <Route component={NotFound} />
