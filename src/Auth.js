@@ -19,6 +19,7 @@ export default class Auth extends React.Component {
   }
 
   handleLocationChange() {
+    window.scrollTo(0, 0); //is it a good idea?
     let accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
       store.dispatch({ type: 'AUTHENTICATE_THE_USER' });
