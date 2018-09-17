@@ -96,7 +96,7 @@
   display: inline;
   font-size: 16pt;
   padding: 14px;
-  border-radius: 0.4rem 0.4rem 0 0;
+  border-radius: 5px;
   box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   margin-right: 25px;
 }
@@ -219,6 +219,7 @@
   margin: 0;
   font-size: 24pt;
   justify-content: center;
+  color: black;
 }
 
 .event_page_users_left_organizer_info_name {
@@ -226,15 +227,23 @@
   justify-content: center;
 }
 
-.event_page_users_staff_container {
+.event_page_users_staff_container_full {
   margin: 8px;
   border-radius: 0.4rem 0.4rem 0 0;
   box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
-  background: #ffffff;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   border: 1.6px solid #cecdcd;
+  background: #ffffff;
+  text-align: right;
+  direction: rtl;
+  padding-top: 30px;
+}
+
+.event_page_users_staff_container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .event_page_info_image_container {

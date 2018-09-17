@@ -12,7 +12,6 @@ import mapImage from '../../images/map1.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import GoogleMapImage from '../../images/eventPageMap.png';
 import StaffBox from './StaffBox/';
-import staffAvatar from '../../images/staffAvatar.png';
 import ReactHtmlParser from 'react-html-parser';
 import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
@@ -20,6 +19,7 @@ import PropTypes from 'prop-types';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
 import defaultProfileImage from '../../images/defaultProfile.svg';
+import { Link } from 'react-router-dom';
 
 const contentStyle = {
   height: 'innerHeight',
@@ -38,11 +38,8 @@ export default class Event extends React.Component {
     super(props);
 
     this.state = {
-      info: {},
-      user_pic: '',
+      info: { event: {}, organizer: {}, participantsCount: 0, staff: [] },
       notFound: false,
-      participantNumber: '',
-      staffs: {},
       loading: true
     };
     this.getDateString = this.getDateString.bind(this);
@@ -53,7 +50,7 @@ export default class Event extends React.Component {
   async componentDidMount () {
     let that = this;
     const id = this.props.match.params.id;
-    let username;
+
     await fetch(`/api/v1/event/${id}`)
       .then(handleErrors)
       .then(function (response) {
@@ -67,53 +64,7 @@ export default class Event extends React.Component {
       })
       .then(function (info) {
         console.log(info);
-        username = info.organizer;
         that.setState({ info: info });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    fetch(`/api/v1/user/get_image/${username}`)
-      .then(function (response) {
-        if (!response.ok) {
-          that.setState({ notFound: true });
-        }
-        return response.json();
-      })
-      .then(function (responseJson) {
-        that.setState({
-          user_pic: responseJson.image
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    fetch(`/api/v1/event/participant-number`)
-      .then(function (response) {
-        if (!response.ok) {
-          // that.setState({ notFound: true });
-        }
-        return response.json();
-      })
-      .then(function (responseJson) {
-        that.setState({
-          participantNumber: responseJson.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    fetch(`/api/v1/event/staff`)
-      .then(function (response) {
-        if (!response.ok) {
-          // that.setState({ notFound: true });
-        }
-        return response.json();
-      })
-      .then(function (responseJson) {
-        that.setState({
-          staffs: responseJson.data
-        });
       })
       .catch(function (error) {
         console.log(error);
@@ -164,9 +115,15 @@ export default class Event extends React.Component {
       return <NotFound />;
     }
     let beginTimeString = this.getDateString(
-      new Date(this.state.info.beginTime)
+      new Date(this.state.info.event.beginTime)
     );
-    let endTimeString = this.getDateString(new Date(this.state.info.endTime));
+    let endTimeString = this.getDateString(
+      new Date(this.state.info.event.endTime)
+    );
+
+    let staff = this.state.info.staff.map((user, i) => (
+      <StaffBox key={i} user={user} />
+    ));
     return (
       <div>
         <ProgressBar
@@ -177,18 +134,18 @@ export default class Event extends React.Component {
         <Header />
         <div className="event_page_info_1">
           <div className="event_page_photo_container">
-            {this.state.info.image ===
+            {this.state.info.event.image ===
             'http://localhost:8080/public/defaultEvent.svg' ? (
                 <img src={defaultEventImage} alt="عکس رویداد" />
               ) : (
-                <img src={this.state.info.image} alt="عکس رویداد" />
+                <img src={this.state.info.event.image} alt="عکس رویداد" />
               )}
           </div>
           <div className="event_page_info_container">
             <div className="event_page_info_container_up">
               <TitleHolder
                 image={pencilImage}
-                title={this.state.info.title}
+                title={this.state.info.event.title}
                 customHeight="45px"
                 customWidth="90%"
               />
@@ -208,14 +165,16 @@ export default class Event extends React.Component {
               />
               <TitleHolder
                 image={mapImage}
-                title={this.state.info.location}
+                title={this.state.info.event.location}
                 customHeight="45px"
                 customWidth="90%"
               />
               <TitleHolder
                 image={capacityImage}
                 title={
-                  'تعداد شرکت کنندگان  ' + this.state.participantNumber + ' نفر'
+                  'تعداد شرکت کنندگان: ' +
+                  this.state.info.participantsCount +
+                  ' نفر'
                 }
                 customHeight="45px"
                 customWidth="90%"
@@ -229,7 +188,7 @@ export default class Event extends React.Component {
             <div className="event_page_about_left_description">
               <p className="info_showing">توضیحات:</p>
               <div className="event_page_about_left_description_text">
-                <p>{ReactHtmlParser(this.state.info.description)}</p>
+                <p>{ReactHtmlParser(this.state.info.event.description)}</p>
               </div>
             </div>
             <div className="event_page_button_container">
@@ -252,7 +211,7 @@ export default class Event extends React.Component {
                     </span> */}
                     <div className="modal_message">
                       آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
-                      <b> {this.state.info.title} </b>
+                      <b> {this.state.info.event.title} </b>
                       شرکت کنید؟
                     </div>
                     <div className="accept_request">
@@ -289,7 +248,7 @@ export default class Event extends React.Component {
                     <div className="modal_message">
                       آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در
                       رویداد
-                      <b> {this.state.info.title} </b>
+                      <b> {this.state.info.event.title} </b>
                       مشارکت کنید؟
                     </div>
                     <div className="accept_request">
@@ -328,7 +287,7 @@ export default class Event extends React.Component {
               </div>
               <div className="event_page_about_right_up_title_container">
                 <p className="event_page_about_right_up_title">
-                  {this.state.info.location}
+                  {this.state.info.event.location}
                 </p>
                 <p className="event_page_about_right_up_location">
                   {' '}
@@ -341,92 +300,36 @@ export default class Event extends React.Component {
 
         <div className="event_page_info_3">
           <div className="event_page_users_left">
-            <div className="event_page_users_left_organizer">
-              <div className="event_page_users_left_organizer_image">
-                <a href={`/user/${this.state.info.organizer}`}>
-                  {this.state.user_pic ===
+            <Link to={`/user/${this.state.info.organizer.username}`}>
+              <div className="event_page_users_left_organizer">
+                <div className="event_page_users_left_organizer_image">
+                  {this.state.info.organizer.image ===
                   'http://localhost:8080/public/defaultProfile.svg' ? (
                       <img src={defaultProfileImage} alt="عکس کاربر" />
                     ) : (
-                      <img src={this.state.user_pic} alt="عکس کاربر" />
+                      <img
+                        src={this.state.info.organizer.image}
+                        alt="عکس کاربر"
+                      />
                     )}
-                </a>
-              </div>
-              <div className="event_page_users_left_organizer_info">
-                <p className="event_page_users_left_organizer_info_title">
-                  {' '}
-                  مسئول برگزاری{' '}
-                </p>
-                <a href={`/user/${this.state.info.organizer}`}>
+                </div>
+                <div className="event_page_users_left_organizer_info">
+                  <p className="event_page_users_left_organizer_info_title">
+                    مسئول برگزاری
+                  </p>
                   <p className="event_page_users_left_organizer_info_name">
                     {' '}
-                    @{this.state.info.organizer}{' '}
+                    {this.state.info.organizer.firstName +
+                      ' ' +
+                      this.state.info.organizer.lastName}{' '}
                   </p>
-                </a>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
-          <div className="event_page_users_staff_container">
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
-            <StaffBox
-              image={staffAvatar}
-              leadingRole="عکاس"
-              name="آواتار آواتاریان"
-            />
+          <div className="event_page_users_staff_container_full">
+            <p className="info_showing">همکاران:</p>
+            <div className="event_page_users_staff_container">{staff}</div>
           </div>
         </div>
         <Footer />
