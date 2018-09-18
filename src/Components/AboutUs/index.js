@@ -10,7 +10,7 @@ import TextArea from '../../Utils/TextArea';
 const developers = [
 	{ name: 'محمد مهدی جاهد خانیکی', username: 'mahdi.jahed', email: 'mahdi.jax@gmail.com', description: 'سلام بچه ها' },
 	{ name: 'هادی حجت', username: 'hadi.hojjat', email: 'm.hadi.hojjat@gmail.com', description: 'سلام بچه ها' }
-]
+];
 export default class AboutUs extends React.Component {
 	render() {
 		return (
