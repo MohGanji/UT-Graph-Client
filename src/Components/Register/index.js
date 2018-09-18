@@ -49,7 +49,7 @@ export default class Register extends BaseForm {
 
   render () {
     if (this.state.is_registered) {
-      toast.success('شما با موفقیت ثبت نام شدید');
+      toast.success('لینک فعال سازی به ایمیل شما فرستاده شد');
       return (
         <div>
           <Login />

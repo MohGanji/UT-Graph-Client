@@ -1,0 +1,20 @@
+.email-validation {
+  box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 1.6px solid #cecdcd;
+  width: 1200px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+#validation_p {
+  font-size: 32pt;
+  direction: rtl;
+}
