@@ -2,9 +2,11 @@ import React from 'react';
 import './style.css';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import Ignore from '../../../images/cancel(1).svg'
+import Confirm from '../../../images/checked.svg'
 
 export default class NotifCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -16,14 +18,14 @@ export default class NotifCard extends React.Component {
     this.rejectNotif = this.rejectNotif.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({
       hasButton: this.props.notification.hasButton,
       off: this.props.notification.off
     });
   }
 
-  acceptNotif () {
+  acceptNotif() {
     const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/accept`, {
       headers: {
@@ -38,7 +40,7 @@ export default class NotifCard extends React.Component {
     toast.info('درخواست ' + this.props.notification.applicant + ' تایید شد');
   }
 
-  rejectNotif () {
+  rejectNotif() {
     const id = this.props.notification._id;
     fetch(`/api/v1/notification/${id}/reject`, {
       headers: {
@@ -53,19 +55,19 @@ export default class NotifCard extends React.Component {
     toast.info('درخواست ' + this.props.notification.applicant + ' رد شد');
   }
 
-  render () {
+  render() {
     let buttons;
     if (this.state.hasButton) {
       buttons = (
         <div className="notification_button">
-          <button id="accept_button" onClick={this.acceptNotif}>
-            {' '}
-            تایید{' '}
-          </button>
-          <button id="reject_button" onClick={this.rejectNotif}>
-            {' '}
-            رد{' '}
-          </button>
+          <img id="accept_button" src={Confirm} onClick={this.acceptNotif}>
+            {/* {' '}
+            تایید{' '} */}
+          </img>
+          <img id="reject_button" src={Ignore} onClick={this.rejectNotif}>
+            {/* {' '}
+            رد{' '} */}
+          </img>
         </div>
       );
     }
