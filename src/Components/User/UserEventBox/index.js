@@ -6,6 +6,7 @@ import RoleImage from '../../../images/group1.svg';
 import TitleHolder from '../../../Utils/TitleHolder';
 import getDateString from '../../../Utils/functions/getDateString';
 import PropTypes from 'prop-types';
+import defaultEventImage from '../../../images/defaultEvent.svg';
 
 export default class UserEventBox extends React.Component {
   render () {
@@ -19,11 +20,16 @@ export default class UserEventBox extends React.Component {
 
         <div className="user_event_rest">
           <div className="user_event_poster">
-            <img
-              className="cover"
-              src={this.props.event.image}
-              alt="عکس رویداد"
-            />
+            {this.props.event.image ===
+            'http://localhost:8080/public/defaultEvent.svg' ? (
+                <img className="cover" src={defaultEventImage} alt="عکس رویداد" />
+              ) : (
+                <img
+                  className="cover"
+                  src={this.props.event.image}
+                  alt="عکس رویداد"
+                />
+              )}
           </div>
           <div className="user_event_info">
             {/* edit to event role */}

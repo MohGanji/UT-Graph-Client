@@ -14,6 +14,7 @@ import BaseForm from '../../Utils/BaseForm';
 import numberConverter from '../../Utils/BaseForm/numberConverter';
 import TextArea from '../../Utils/TextArea';
 import ProgressBar from 'react-progress-bar-plus';
+import defaultProfileImage from '../../images/defaultProfile.svg';
 
 function mapStateToProps (state) {
   return {
@@ -194,7 +195,12 @@ class EditProfile extends BaseForm {
                 <p className="edit_header_font"> تصویر کاربر </p>
                 <div className="change_image_2">
                   <div className="prof_pic">
-                    <img src={this.state.image} alt="عکس پروفایل" />
+                    {this.state.image ===
+                    'http://localhost:8080/public/defaultProfile.svg' ? (
+                        <img src={defaultProfileImage} alt="عکس پروفایل" />
+                      ) : (
+                        <img src={this.state.image} alt="عکس پروفایل" />
+                      )}
                   </div>
                   <label className="change_button" htmlFor="upload-photo">
                     {' '}

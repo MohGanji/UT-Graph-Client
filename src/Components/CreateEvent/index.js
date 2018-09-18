@@ -4,18 +4,21 @@ import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil1.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
+// import moment from 'moment-jalaali';
+// import DatePicker from 'react-datepicker2';
+// import 'react-datepicker2/dist/react-datepicker2.min.css';
 import handleErrors from '../../Utils/functions/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from '../../Utils/TextArea';
 import Footer from '../../Utils/Footer';
 import { Redirect } from 'react-router-dom';
-import profilePicture from '../../images/defaultEvent.svg';
 import BaseForm from '../../Utils/BaseForm';
 import axios from 'axios';
 import Select from 'react-select';
 import ProgressBar from 'react-progress-bar-plus';
+import defaultEventImage from '../../images/defaultEvent.svg';
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     authenticated: state.authenticated,
     user: state.user
@@ -23,7 +26,7 @@ function mapStateToProps (state) {
 }
 
 class CreateEvent extends BaseForm {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       title: '',
@@ -33,9 +36,13 @@ class CreateEvent extends BaseForm {
       description: '',
       organizer: this.props.user.username,
       redirect: false,
-      image: profilePicture,
+      image: defaultEventImage,
       file: null,
-      loading: true
+      loading: true,
+      sponsers: [],
+      staffs: [],
+      sponserSelected: [],
+      staffSelected: []
     };
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
@@ -43,8 +50,9 @@ class CreateEvent extends BaseForm {
     this.handleDescription = this.handleDescription.bind(this);
     this.onChange = this.onChange.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
-  onChange (event) {
+  onChange(event) {
     event.preventDefault();
     let reader = new FileReader();
     let file = event.target.files[0];
@@ -57,26 +65,10 @@ class CreateEvent extends BaseForm {
     reader.readAsDataURL(file);
   }
 
-  handleBeginTime (day, month, year) {
-    let formattedDay = day < 10 ? (day = '0' + day) : day;
-    let formattedMonth = month < 10 ? (month = '0' + month) : month;
-    let beginTime = year + '-' + formattedMonth + '-' + formattedDay;
-
-    this.setState({ beginTime: beginTime });
-  }
-
-  handleEndTime (day, month, year) {
-    let formattedDay = day < 10 ? (day = '0' + day) : day;
-    let formattedMonth = month < 10 ? (month = '0' + month) : month;
-    let endTime = year + '-' + formattedMonth + '-' + formattedDay;
-
-    this.setState({ endTime: endTime });
-  }
-
-  handleDescription (description) {
+  handleDescription(description) {
     this.setState({ description: description });
   }
-  async fileUpload (id, token) {
+  async fileUpload(id, token) {
     const url = '/api/v1/event/upload/' + id;
     let data = await new FormData();
     data.append('event', this.state.file, this.state.file.name);
@@ -91,12 +83,12 @@ class CreateEvent extends BaseForm {
     axios
       .post(url, data, config)
       .then(result => {})
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }
 
-  handleSubmit () {
+  handleSubmit() {
     let that = this;
     let data = {
       title: that.state.title,
@@ -104,7 +96,9 @@ class CreateEvent extends BaseForm {
       beginTime: that.state.beginTime,
       endTime: that.state.endTime,
       description: that.state.description,
-      organizer: that.state.organizer
+      organizer: that.state.organizer,
+      sponsers: that.state.sponserSelected,
+      staffs: that.state.staffSelected
     };
     const token = localStorage.getItem('accessToken');
     const method = this.props.type === 'create' ? 'POST' : 'PUT';
@@ -120,7 +114,7 @@ class CreateEvent extends BaseForm {
     };
     // centralRequest(url, dataSend)
     fetch(url, dataSend)
-      .then(function (response) {
+      .then(function(response) {
         that.setState({ redirect: true });
         if (that.props.type === 'create') return response.json();
         else return response;
@@ -131,26 +125,26 @@ class CreateEvent extends BaseForm {
         return ress;
       })
       .then(handleErrors)
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }
 
-  componentDidMount () {
+  componentDidMount() {
+    let that = this;
     if (this.props.type === 'create') {
     } else {
-      let that = this;
       const id = this.props.match.params.id;
 
       fetch(`/api/v1/event/${id}`)
-        .then(handleErrors)
-        .then(function (response) {
+        .then(function(response) {
           return response.json();
         })
-        .then(function (responseJson) {
+        .then(handleErrors)
+        .then(function(responseJson) {
           return responseJson.data;
         })
-        .then(function (info) {
+        .then(function(info) {
           that.setState({
             title: info.title,
             location: info.location,
@@ -160,22 +154,94 @@ class CreateEvent extends BaseForm {
             image: info.image
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     }
+    let token = localStorage.getItem('accessToken');
+    fetch(`/api/v1/sponser/`, {
+      method: 'GET',
+      headers: {
+        authorization: token
+      }
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(handleErrors)
+      .then(function(responseJson) {
+        return responseJson.data;
+      })
+      .then(function(info) {
+        let names = info.map(sponser => {
+          let obj = {
+            value: sponser,
+            label: sponser.name
+          };
+          return obj;
+        });
+        that.setState({ sponsers: names });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    fetch(`/api/v1/user/`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(handleErrors)
+      .then(function(responseJson) {
+        return responseJson.data;
+      })
+      .then(function(info) {
+        let usernames = info.map(user => {
+          let obj = {
+            value: user,
+            label: user.username
+          };
+          return obj;
+        });
+        that.setState({ staffs: usernames });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
     this.setState({ loading: false });
   }
 
-  render () {
+  handleBeginTime(day, month, year) {
+    let formattedDay = day < 10 ? (day = '0' + day) : day;
+    let formattedMonth = month < 10 ? (month = '0' + month) : month;
+    let beginTime = year + '-' + formattedMonth + '-' + formattedDay;
+
+    this.setState({ beginTime: beginTime });
+  }
+
+  handleEndTime(day, month, year) {
+    let formattedDay = day < 10 ? (day = '0' + day) : day;
+    let formattedMonth = month < 10 ? (month = '0' + month) : month;
+    let endTime = year + '-' + formattedMonth + '-' + formattedDay;
+
+    this.setState({ endTime: endTime });
+  }
+
+  handleSelect = name => optionSelected => {
+    const value = optionSelected.map(option => option.value);
+    console.log(name, value);
+    this.setState({ [name]: value });
+  };
+
+  render() {
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
-    const staffOptions = [
-      { value: 'hadi.hojjat', label: 'Hadi Hojjat' },
-      { value: 'mahdi.jahed', label: 'Mahdi Jahed' },
-      { value: 'mojtaba.shahbazi', label: 'Mojtaba Shahbazi' }
-    ];
+    // const staffOptions = [
+    //   { value: 'hadi.hojjat', label: 'Hadi Hojjat' },
+    //   { value: 'mahdi.jahed', label: 'Mahdi Jahed' },
+    //   { value: 'mojtaba.shahbazi', label: 'Mojtaba Shahbazi' }
+    // ];
     return (
       <div>
         <ProgressBar
@@ -204,7 +270,12 @@ class CreateEvent extends BaseForm {
               </div>
               <div className="create_event_picture_content">
                 <div className="prof_pic">
-                  <img src={this.state.image} alt="پروفایل" />
+                  {this.state.image ===
+                  'http://localhost:8080/public/defaultEvent.svg' ? (
+                    <img src={defaultEventImage} alt="عکس رویداد" />
+                  ) : (
+                    <img src={this.state.image} alt="عکس رویداد" />
+                  )}
                 </div>
                 <label className="change_button" htmlFor="upload-photo">
                   {' '}
@@ -250,6 +321,10 @@ class CreateEvent extends BaseForm {
                       date={this.state.beginTime}
                       handleTime={this.handleBeginTime}
                     />
+                    {/* <DatePicker
+                      onChange={value => this.setState({ beginTime: value })}
+                      value={this.state.beginTime}
+                    /> */}
                   </div>
                   <div className="create_event_input">
                     <p className="create_event_subtittle_font">
@@ -282,9 +357,11 @@ class CreateEvent extends BaseForm {
                 </div>
                 <div className="create_event_search_content">
                   <Select
-                    options={staffOptions}
+                    options={this.state.staffs}
                     isMulti={true}
                     placeholder={'جستجو...'}
+                    name="staffs"
+                    onChange={this.handleSelect('staffSelected')}
                   />
                 </div>
               </div>
@@ -294,9 +371,11 @@ class CreateEvent extends BaseForm {
                 </div>
                 <div className="create_event_search_content">
                   <Select
-                    options={staffOptions}
+                    options={this.state.sponsers}
                     isMulti={true}
                     placeholder={'جستجو...'}
+                    name="sponsers"
+                    onChange={this.handleSelect('sponserSelected')}
                   />
                 </div>
               </div>

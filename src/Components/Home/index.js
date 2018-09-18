@@ -45,8 +45,7 @@ export default class Home extends React.Component {
       .then(handleErrors)
       .then(function (responseJson) {
         that.setState({
-          oldEvents: responseJson.data,
-          pageToken: responseJson.pageToken
+          oldEvents: responseJson.data
         });
       })
       .catch(function (error) {

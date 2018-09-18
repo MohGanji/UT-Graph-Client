@@ -21,10 +21,6 @@ function mapStateToProps (state) {
 
 class App extends Component {
   render () {
-    let token = localStorage.getItem('token');
-    if (!token) {
-      this.props.dispatch({ type: 'DEAUTHENTICATE_THE_USER' });
-    }
     return (
       <BrowserRouter>
         <Auth>
