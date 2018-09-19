@@ -31,7 +31,8 @@ export default class Event extends React.Component {
     this.state = {
       info: { event: {}, organizer: {}, participantsCount: 0, staff: [] },
       notFound: false,
-      loading: true
+      loading: true,
+      remainingCapacity: '۰'
     };
   }
 
@@ -51,11 +52,16 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
-        info.participantsCount = numberConverter.toPersian(
-          `${info.participantsCount}`
+        let participantsCount = info.participantsCount;
+        let capacity = info.event.capacity;
+        let remainingCapacity = capacity - participantsCount;
+        remainingCapacity = numberConverter.toPersian(
+          String(remainingCapacity)
         );
-        that.setState({ info: info });
+        that.setState({
+          info: info,
+          remainingCapacity: remainingCapacity
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -123,9 +129,7 @@ export default class Event extends React.Component {
               <TitleHolder
                 image={capacityImage}
                 title={
-                  'تعداد شرکت کنندگان: ' +
-                  this.state.info.participantsCount +
-                  ' نفر'
+                  'ظرفیت باقیمانده: ' + this.state.remainingCapacity + ' نفر '
                 }
                 customHeight="45px"
                 customWidth="90%"
@@ -147,6 +151,13 @@ export default class Event extends React.Component {
                 <span>
                   <i className="fa fa-exclamation-circle" />
                   {' مهلت ثبت نام در این رویداد به اتمام رسیده است. '}
+                </span>
+              </div>
+            ) : this.state.remainingCapacity === '۰' ? (
+              <div className="event_page_button_container">
+                <span>
+                  <i className="fa fa-exclamation-circle" />
+                  {' ظرفیت رویداد به اتمام رسیده است '}
                 </span>
               </div>
             ) : (

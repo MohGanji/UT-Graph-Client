@@ -49,7 +49,6 @@ class User extends React.Component {
       })
       .then(function (info) {
         that.setState({ info: info });
-        console.log(info);
       })
       .catch(function (error) {
         console.log(error);

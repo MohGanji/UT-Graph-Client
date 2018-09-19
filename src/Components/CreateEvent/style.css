@@ -168,7 +168,7 @@
 }
 
 .second_row {
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .third_row {
@@ -206,4 +206,16 @@
   padding-right: 5%;
   width: 90%;
   margin-top: 50px;
+}
+
+.capacity_container input {
+  width: 180px;
+  direction: ltr;
+  text-align: center;
+}
+
+.capacity_container span {
+  font-weight: 100;
+  margin-right: 10px;
+  font-size: 15pt;
 }
