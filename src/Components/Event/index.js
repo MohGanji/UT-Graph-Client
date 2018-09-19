@@ -116,7 +116,7 @@ export default class Event extends React.Component {
       <StaffBox key={i} user={user} />
     ));
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}

@@ -104,7 +104,7 @@ class EmailValidation extends React.Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <Header />
         {message}
         <Footer />

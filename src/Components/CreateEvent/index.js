@@ -240,7 +240,7 @@ class CreateEvent extends BaseForm {
     //   { value: 'mojtaba.shahbazi', label: 'Mojtaba Shahbazi' }
     // ];
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}

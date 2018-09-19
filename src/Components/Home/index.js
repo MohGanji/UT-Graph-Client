@@ -90,7 +90,7 @@ export default class Home extends React.Component {
       <OldEventBox key={i} event={oldEvent} />
     ));
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 95 : 100}
           spinner={false}
