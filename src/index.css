@@ -42,5 +42,5 @@ body {
 .container {
   min-height: 100%;
   position: relative;
-  padding-bottom: 330px; /* Height of the footer */
+  padding-bottom: 335px; /* Height of the footer */
 }
