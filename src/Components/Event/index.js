@@ -22,6 +22,7 @@ import numberConverter from '../../Utils/BaseForm/numberConverter';
 import getDateString from '../../Utils/functions/getDateString';
 import SignupPopup from './SignupPopup';
 import RequestPopup from './RequestPopup';
+import 'font-awesome/css/font-awesome.min.css';
 
 export default class Event extends React.Component {
   constructor (props) {
@@ -50,6 +51,7 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
+        console.log(info);
         info.participantsCount = numberConverter.toPersian(
           `${info.participantsCount}`
         );
@@ -140,10 +142,19 @@ export default class Event extends React.Component {
                 {ReactHtmlParser(this.state.info.event.description)}
               </div>
             </div>
-            <div className="event_page_button_container">
-              <SignupPopup event={this.state.info.event} />
-              <RequestPopup event={this.state.info.event} />
-            </div>
+            {this.state.info.event.isPassed ? (
+              <div className="event_page_button_container">
+                <span>
+                  <i className="fa fa-exclamation-circle" />
+                  {' مهلت ثبت نام در این رویداد به اتمام رسیده است. '}
+                </span>
+              </div>
+            ) : (
+              <div className="event_page_button_container">
+                <SignupPopup event={this.state.info.event} />
+                <RequestPopup event={this.state.info.event} />
+              </div>
+            )}
           </div>
           <div className="event_page_about_right">
             <div className="event_page_about_right_up">
@@ -188,12 +199,12 @@ export default class Event extends React.Component {
                   <p className="event_page_users_left_organizer_info_title">
                     مسئول برگزاری
                   </p>
-                  <p className="event_page_users_left_organizer_info_name">
+                  <span className="event_page_users_left_organizer_info_name">
                     {' '}
                     {this.state.info.organizer.firstName +
                       ' ' +
                       this.state.info.organizer.lastName}{' '}
-                  </p>
+                  </span>
                 </div>
               </div>
             </Link>
