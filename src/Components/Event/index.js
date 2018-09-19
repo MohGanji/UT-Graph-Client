@@ -20,6 +20,8 @@ import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
 import defaultProfileImage from '../../images/defaultProfile.svg';
 import { Link } from 'react-router-dom';
+import numberConverter from '../../Utils/BaseForm/numberConverter';
+import getDateString from '../../Utils/functions/getDateString';
 
 const contentStyle = {
   height: 'innerHeight',
@@ -42,7 +44,6 @@ export default class Event extends React.Component {
       notFound: false,
       loading: true
     };
-    this.getDateString = this.getDateString.bind(this);
     this.register = this.register.bind(this);
     this.requestStaff = this.requestStaff.bind(this);
   }
@@ -63,23 +64,15 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
+        info.participantsCount = numberConverter.toPersian(
+          `${info.participantsCount}`
+        );
         that.setState({ info: info });
       })
       .catch(function (error) {
         console.log(error);
       });
     this.setState({ loading: false });
-  }
-
-  getDateString (date) {
-    let dateString =
-      date.getFullYear() +
-      '/' +
-      (Number(date.getMonth()) + 1) +
-      '/' +
-      date.getDate();
-    return dateString;
   }
 
   register (close) {
@@ -114,12 +107,10 @@ export default class Event extends React.Component {
     if (this.state.notFound) {
       return <NotFound />;
     }
-    let beginTimeString = this.getDateString(
+    let beginTimeString = getDateString(
       new Date(this.state.info.event.beginTime)
     );
-    let endTimeString = this.getDateString(
-      new Date(this.state.info.event.endTime)
-    );
+    let endTimeString = getDateString(new Date(this.state.info.event.endTime));
 
     let staff = this.state.info.staff.map((user, i) => (
       <StaffBox key={i} user={user} />

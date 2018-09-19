@@ -1,9 +1,11 @@
+import numberConverter from '../BaseForm/numberConverter';
+
 export default function getDateString (date) {
   let dateString =
-    date.getFullYear() +
+    numberConverter.toPersian(String(date.getFullYear())) +
     '/' +
-    (Number(date.getMonth()) + 1) +
+    numberConverter.toPersian(String(Number(date.getMonth()) + 1)) +
     '/' +
-    date.getDate();
+    numberConverter.toPersian(String(date.getDate()));
   return dateString;
 }
