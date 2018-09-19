@@ -81,14 +81,16 @@
 
 .event_page_about_left_description_text {
   margin-top: 35px;
-  width: 95%;
+  width: 90%;
   height: 80%;
   margin-left: auto;
   margin-right: auto;
-  /* border-right: 2px solid #352649; */
   padding: 20px;
   font-size: 14pt;
   overflow: scroll;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 1.6px solid #cecdcd;
+  overflow: auto;
 }
 .info_showing {
   background-color: #352649;
