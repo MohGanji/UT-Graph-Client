@@ -109,7 +109,7 @@
   grid-template-rows: 50% 50%;
 }
 .event_page_about_right_up {
-  margin-top: 10px;
+  margin-bottom: 10px;
   display: grid;
   grid-template-rows: 77% 23%;
   border-radius: 0.4rem 0.4rem 0 0;
@@ -147,7 +147,6 @@
 }
 
 .event_page_about_right_bottom {
-  margin-bottom: 10px;
   display: grid;
   grid-template-rows: 15% 85%;
   border-radius: 0.4rem 0.4rem 0 0;

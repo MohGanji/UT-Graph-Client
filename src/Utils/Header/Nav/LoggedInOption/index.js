@@ -89,7 +89,7 @@ class LoggedInOption extends React.Component {
     newNotif.reverse();
     let notifElement = newNotif.map((notif, i) => {
       return (
-        <Link key={i} to={`/notificLinktion/${notif.index}`}>
+        <Link key={i} to={`/notification/${notif.index}`}>
           {notif.message}
         </Link>
       );
