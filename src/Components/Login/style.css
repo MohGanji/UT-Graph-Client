@@ -2,6 +2,7 @@
   background: white;
   background: linear-gradient(to top, white, gray);
   width: 80vh;
+  max-height: 90vh;
   position: relative;
 }
 .input_container {
@@ -16,7 +17,7 @@
   color: gray;
   /* left: 15px; */
   right: 15px;
-  top: 27%;
+  top: 4.3vh;
   /* z-index: 300; */
 }
 
@@ -45,25 +46,7 @@ div.login-title {
   z-index: -1;
   /* background: purple; */
 }
-.login-input {
-  width: 94%;
-  height: 6vh;
-  margin-bottom: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-right: 40px !important;
-  box-sizing: border-box;
-  margin-right: 3%;
-  font-size: 15px;
-  background: #fff;
-  /* background: red !important; */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.login-input:focus {
-  border-color: #6e8095;
-  outline: none;
-}
+
 .login-button {
   width: 100%;
   height: 50px;

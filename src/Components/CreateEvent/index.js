@@ -295,6 +295,7 @@ class CreateEvent extends BaseForm {
                       type="text"
                       onChange={this.handleChange}
                       value={this.state.title}
+                      maxLength="32"
                     />
                   </div>
                   <div className="create_event_input right_field">
@@ -308,6 +309,7 @@ class CreateEvent extends BaseForm {
                       type="text"
                       onChange={this.handleChange}
                       value={this.state.location}
+                      maxLength="32"
                     />
                   </div>
                 </div>

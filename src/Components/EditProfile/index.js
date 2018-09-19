@@ -29,7 +29,7 @@ class EditProfile extends BaseForm {
     this.state = {
       file: null,
       image: profilePicture,
-      visibility: 'visible',
+      rightPassword: true,
       new_password: '',
       new_password_repeat: '',
       firstName: '',
@@ -38,7 +38,8 @@ class EditProfile extends BaseForm {
       sid: '',
       p_sid: '',
       bio: '',
-      isEdited: false
+      isEdited: false,
+      warnings: []
     };
     this.onChange = this.onChange.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
@@ -60,6 +61,9 @@ class EditProfile extends BaseForm {
   }
 
   handleSubmit () {
+    if (!this.state.rightPassword) {
+      return;
+    }
     if (this.state.file != null) {
       this.fileUpload();
     }
@@ -160,17 +164,16 @@ class EditProfile extends BaseForm {
     else value2 = this.state.new_password;
     if (value === value2) {
       this.setState({
-        visibility: 'visible'
+        rightPassword: true
       });
     } else {
       this.setState({
-        visibility: 'hidden'
+        rightPassword: false
       });
     }
   }
 
   render () {
-    let checkPasswordEqualStyle = { visibility: this.state.visibility };
     return (
       <div>
         <ProgressBar
@@ -211,7 +214,6 @@ class EditProfile extends BaseForm {
                     id="upload-photo"
                     onChange={this.onChange}
                   />
-                  {/* <div onClick={this.fileUpload}> تغییر عکس </div> */}
                 </div>
               </div>
             </div>
@@ -221,11 +223,26 @@ class EditProfile extends BaseForm {
                   <p> نام : </p>
                   <input
                     name="firstName"
-                    className="create_event_rest_input"
+                    className={
+                      this.state.warnings['firstName']
+                        ? 'create_event_rest_input input_error'
+                        : 'create_event_rest_input'
+                    }
                     value={this.state.firstName}
                     type="text"
-                    onChange={this.handleChange}
+                    onChange={this.handleLanguageInput.bind(this, 'persian')}
                   />
+                  <p
+                    style={
+                      this.state.warnings['firstName']
+                        ? { display: 'block' }
+                        : { display: 'none' }
+                    }
+                    className="input_info"
+                  >
+                    <i className="fa fa-info-circle" /> لطفا نام خود را به فارسی
+                    وارد کنید
+                  </p>
                 </div>
               </div>
               <div className="create_event_rest">
@@ -233,11 +250,26 @@ class EditProfile extends BaseForm {
                   <p> نام خانوادگی : </p>
                   <input
                     name="lastName"
-                    className="create_event_rest_input"
+                    className={
+                      this.state.warnings['lastName']
+                        ? 'create_event_rest_input input_error'
+                        : 'create_event_rest_input'
+                    }
                     value={this.state.lastName}
                     type="text"
-                    onChange={this.handleChange}
+                    onChange={this.handleLanguageInput.bind(this, 'persian')}
                   />
+                  <p
+                    style={
+                      this.state.warnings['lastName']
+                        ? { display: 'block' }
+                        : { display: 'none' }
+                    }
+                    className="input_info"
+                  >
+                    <i className="fa fa-info-circle" /> لطفا نام خانوادگی خود را
+                    به فارسی وارد کنید
+                  </p>
                 </div>
               </div>
             </div>
@@ -259,12 +291,27 @@ class EditProfile extends BaseForm {
                   <p> شماره دانشجویی : </p>
                   <input
                     name="sid"
-                    className="create_event_rest_input"
+                    className={
+                      this.state.warnings['sid']
+                        ? 'create_event_rest_input input_error'
+                        : 'create_event_rest_input'
+                    }
                     value={this.state.p_sid}
                     type="text"
                     onChange={this.handleNumberInput}
                   />
                 </div>
+                <p
+                  style={
+                    this.state.warnings['sid']
+                      ? { display: 'block' }
+                      : { display: 'none' }
+                  }
+                  className="input_info"
+                >
+                  <i className="fa fa-info-circle" />
+                  {' لطفا ورودی عددی وارد کنید '}
+                </p>
               </div>
             </div>
 
@@ -273,27 +320,52 @@ class EditProfile extends BaseForm {
                 <div className="create_event_input">
                   <p> رمزعبور جدید : </p>
                   <input
-                    className="create_event_rest_input"
+                    className={
+                      this.state.rightPassword
+                        ? 'create_event_rest_input'
+                        : 'create_event_rest_input input_error'
+                    }
                     type="password"
                     name="new_password"
                     onChange={this.handlePasswordChange}
                   />
                 </div>
+                <p
+                  style={
+                    this.state.rightPassword
+                      ? { display: 'none' }
+                      : { display: 'block' }
+                  }
+                  className="input_info"
+                >
+                  <i className="fa fa-info-circle" />
+                  {' رمز عبور و تکرار رمز عبور باید یکسان باشند '}
+                </p>
               </div>
               <div className="create_event_rest tekrar">
                 <div className="create_event_input">
                   <p> تکرار : </p>
                   <input
-                    className="create_event_rest_input"
+                    className={
+                      this.state.rightPassword
+                        ? 'create_event_rest_input'
+                        : 'create_event_rest_input input_error'
+                    }
                     type="password"
                     name="new_password_repeat"
                     onChange={this.handlePasswordChange}
                   />
                 </div>
               </div>
-              <div className="ok_sign">
-                <i className="fa fa-check" style={checkPasswordEqualStyle} />
-              </div>
+              {this.state.rightPassword ? (
+                <div className="ok_sign">
+                  <i className="fa fa-check" />
+                </div>
+              ) : (
+                <div className="not_ok_sign">
+                  <i className="fa fa-times" />
+                </div>
+              )}
               <div className="create_event_input about_center">
                 <p className="input_date"> درباره من: </p>
                 <div className="create_event_textarea">

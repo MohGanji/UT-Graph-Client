@@ -179,7 +179,7 @@ export default class Event extends React.Component {
             <div className="event_page_about_left_description">
               <p className="info_showing">توضیحات:</p>
               <div className="event_page_about_left_description_text">
-                <p>{ReactHtmlParser(this.state.info.event.description)}</p>
+                {ReactHtmlParser(this.state.info.event.description)}
               </div>
             </div>
             <div className="event_page_button_container">
