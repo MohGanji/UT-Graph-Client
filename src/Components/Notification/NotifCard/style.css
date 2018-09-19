@@ -34,9 +34,13 @@
   margin-bottom: 10px;
 }
 
-.notification_message {
-  /* border: 1px solid red; */
+/* .notification_message a {
+  color: black;
 }
+
+.notification_message a:visited {
+  color: black;
+} */
 
 .notification_button {
   /* border: 1px solid red; */

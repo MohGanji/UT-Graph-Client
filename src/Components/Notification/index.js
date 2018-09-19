@@ -35,6 +35,7 @@ export default class Notification extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
+        console.log(responseJson);
         return responseJson.data;
       })
       .then(function (data) {

@@ -1,30 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function makeNotifMessage (notification) {
   switch (notification.type) {
     case 'REQUEST':
       notification.message = (
-        <p>
+        <p className="notification_message">
           <b> {notification.applicant} </b> درخواست همکاری در رویداد
-          <b> {notification.event} </b>
+          <Link to={`/event/${notification.event._id}`}>
+            <b> {notification.event.title} </b>
+          </Link>
           را دارد
         </p>
       );
       break;
     case 'ACCEPT':
       notification.message = (
-        <p>
+        <p className="notification_message">
           شما به عنوان کمک کننده به رویداد
-          <b> {notification.event} </b>
+          <Link to={`/event/${notification.event._id}`}>
+            <b> {notification.event.title} </b>
+          </Link>
           اضافه شده اید
         </p>
       );
       break;
     case 'REJECT':
       notification.message = (
-        <p>
+        <p className="notification_message">
           متاسفانه درخواست شما برای کمک به رویداد
-          <b> {notification.event} </b>
+          <Link to={`/event/${notification.event._id}`}>
+            <b> {notification.event.title} </b>
+          </Link>
           از طرف برگزار کننده رویداد
           <b> رد شده است </b>
         </p>
@@ -32,9 +39,11 @@ export default function makeNotifMessage (notification) {
       break;
     case 'INFORMATION':
       notification.message = (
-        <p>
+        <p className="notification_message">
           کمتر از یک روز تا رویداد
-          <b> {notification.event} </b>
+          <Link to={`/event/${notification.event._id}`}>
+            <b> {notification.event.title} </b>
+          </Link>
           مانده است
         </p>
       );
