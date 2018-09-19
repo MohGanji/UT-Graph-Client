@@ -193,10 +193,12 @@ class EditProfile extends BaseForm {
             </div>
           </div>
           <div className="create_event_container2">
-            <div className="change_image">
+            <div className="create_event_picture">
               <div className="create_event_input">
-                <p className="edit_header_font"> تصویر کاربر </p>
-                <div className="change_image_2">
+                <div className="create_event_tittle">
+                  <p className="create_event_header_font"> تصویر کاربر </p>
+                </div>
+                <div className="create_event_picture_content">
                   <div className="prof_pic">
                     {this.state.image ===
                     'http://localhost:8080/public/defaultProfile.svg' ? (
@@ -216,6 +218,9 @@ class EditProfile extends BaseForm {
                   />
                 </div>
               </div>
+            </div>
+            <div className="create_event_tittle">
+              <p className="create_event_header_font"> مشخصات کاربر </p>
             </div>
             <div className="two_info">
               <div className="create_event_rest">
