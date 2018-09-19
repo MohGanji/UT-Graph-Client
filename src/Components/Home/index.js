@@ -9,7 +9,7 @@ import WelcomeGraph from './WelcomeGraph';
 import ProgressBar from 'react-progress-bar-plus';
 
 export default class Home extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       newEvents: [],
@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     this.handlePaginationSubmit = this.handlePaginationSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let that = this;
     fetch(`/api/v1/event/get/new`, {
       method: 'GET'
@@ -56,7 +56,7 @@ export default class Home extends React.Component {
       });
   }
 
-  handlePaginationSubmit() {
+  handlePaginationSubmit () {
     let that = this;
     let pageToken = this.state.pageToken;
     fetch(`/api/v1/event/get/new?pageToken="${pageToken}"`, {
@@ -82,7 +82,7 @@ export default class Home extends React.Component {
       });
   }
 
-  render() {
+  render () {
     const newEvents = this.state.newEvents.map((event, i) => (
       <OldEventBox key={i} event={event} />
     ));
@@ -99,7 +99,13 @@ export default class Home extends React.Component {
         <Header type="home" />
         <div className="welcome_home">
           <WelcomeGraph />
-          <div className="centered">به <a className="utg_link" href="/AboutUs">UT Graph</a> خوش آمدید!</div>
+          <div className="centered">
+            به{' '}
+            <a className="utg_link" href="/AboutUs">
+              UT Graph
+            </a>{' '}
+            خوش آمدید!
+          </div>
         </div>
         <div className="home_page_events_container search_page_container">
           <div className="search_page_title">

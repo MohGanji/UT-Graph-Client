@@ -2,7 +2,7 @@
   overflow: hidden;
   margin-bottom: 30px;
   width: 900px;
-  height: 500px;
+  height: 480px;
   display: grid;
   grid-template-rows: 11% 89%;
   border: 1.6px solid #cecdcd;
@@ -37,10 +37,6 @@
   color: rgb(233, 229, 229);
 }
 
-.user_event_title p:hover {
-  color: #4183c4;
-}
-
 .user_event_rest {
   display: grid;
   grid-template-columns: 70% 30%;
@@ -48,7 +44,7 @@
 }
 
 .user_event_poster {
-  height: 100%;
+  height: 435px;
 }
 
 .user_event_poster img {
@@ -63,4 +59,5 @@
   justify-content: space-around;
   background-color: #ffffff;
   direction: rtl;
+  color: black;
 }
