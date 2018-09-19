@@ -4,6 +4,7 @@
   width: 80vh;
   max-height: 90vh;
   position: relative;
+  direction: ltr;
 }
 .input_container {
   position: relative;

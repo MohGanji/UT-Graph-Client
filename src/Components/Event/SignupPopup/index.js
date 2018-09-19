@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import Login from '../../Login';
+
+function mapStateToProps (state) {
+  return {
+    authenticated: state.authenticated
+  };
+}
 
 const contentStyle = {
   height: 'innerHeight',
@@ -15,7 +23,7 @@ const innerDiv = {
   'z-index': '0'
 };
 
-export default class SignupPopup extends React.Component {
+class SignupPopup extends React.Component {
   constructor (props) {
     super(props);
     this.register = this.register.bind(this);
@@ -34,41 +42,66 @@ export default class SignupPopup extends React.Component {
   }
 
   render () {
-    return (
-      <Popup
-        trigger={
-          <button className="event_page_signup_button"> ثبت نام </button>
-        }
-        modal
-        contentStyle={contentStyle}
-        overlayStyle={innerDiv}
-      >
-        {close => (
-          <form className="modal">
-            <div className="modal_message">
-              آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
-              <b> {this.props.event.title} </b>
-              شرکت کنید؟
+    if (this.props.authenticated) {
+      return (
+        <Popup
+          trigger={
+            <button className="event_page_signup_button"> ثبت نام </button>
+          }
+          modal
+          contentStyle={contentStyle}
+          overlayStyle={innerDiv}
+        >
+          {close => (
+            <form className="modal">
+              <div className="modal_message">
+                آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
+                <b> {this.props.event.title} </b>
+                شرکت کنید؟
+              </div>
+              <div className="accept_request">
+                <button
+                  onClick={() => {
+                    this.register();
+                    close();
+                  }}
+                >
+                  {' '}
+                  <b> تایید </b>{' '}
+                </button>
+              </div>
+            </form>
+          )}
+        </Popup>
+      );
+    } else {
+      return (
+        <Popup
+          trigger={
+            <button className="event_page_signup_button"> ثبت نام </button>
+          }
+          modal
+          contentStyle={contentStyle}
+          overlayStyle={innerDiv}
+        >
+          {close => (
+            <div>
+              <span className="close" onClick={close}>
+                &times;
+              </span>
+              <Login />
             </div>
-            <div className="accept_request">
-              <button
-                onClick={() => {
-                  this.register();
-                  close();
-                }}
-              >
-                {' '}
-                <b> تایید </b>{' '}
-              </button>
-            </div>
-          </form>
-        )}
-      </Popup>
-    );
+          )}
+        </Popup>
+      );
+    }
   }
 }
 
+export default connect(mapStateToProps)(SignupPopup);
+
 SignupPopup.propTypes = {
   register: PropTypes.function,
-  event: PropTypes.object
+  event: PropTypes.object,
+  authenticated: PropTypes.bool
 };
