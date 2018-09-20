@@ -15,6 +15,7 @@ import Select from 'react-select';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
 import NumberConverter from '../../Utils/BaseForm/numberConverter';
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -125,6 +126,11 @@ class CreateEvent extends BaseForm {
         if (this.state.file != null) this.fileUpload(id, token);
         if (!ress.hasOwnProperty('errors')) {
           that.setState({ redirect: true });
+          if (this.props.type === 'create') {
+            toast.success('رویداد شما با موفقیت ساخته شد!');
+          } else {
+            toast.success('رویداد شما با موفقیت ویرایش شد!');
+          }
         }
         return ress;
       })

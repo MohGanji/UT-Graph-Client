@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import Login from '../../Login';
+import { Redirect } from 'react-router-dom';
 
 function mapStateToProps (state) {
   return {
@@ -27,21 +28,32 @@ class SignupPopup extends React.Component {
   constructor (props) {
     super(props);
     this.register = this.register.bind(this);
+    this.state = {
+      redirect: false
+    };
   }
 
   register () {
     const id = this.props.event._id;
     const token = localStorage.getItem('accessToken');
+    let that = this;
     fetch(`/api/v1/event/${id}/signup_attendent`, {
       headers: {
         authorization: token
       },
       method: 'POST'
+    }).then(function (response) {
+      if (response.ok) {
+        that.setState({ redirect: true });
+        toast.success('ثبت نام شما در رویداد با موفقیت انجام شد');
+      }
     });
-    toast.success('ثبت نام شما در رویداد با موفقیت انجام شد');
   }
 
   render () {
+    if (this.state.redirect) {
+      return <Redirect to="/my-events" />;
+    }
     if (this.props.authenticated) {
       return (
         <Popup
