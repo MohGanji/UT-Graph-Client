@@ -51,6 +51,10 @@ class SignupPopup extends React.Component {
   }
 
   render () {
+    let signupButtonStyle;
+    if (this.props.isAdmin || this.props.isRegistered) {
+      signupButtonStyle = { display: 'none' };
+    }
     if (this.state.redirect) {
       return <Redirect to="/my-events" />;
     }
@@ -58,7 +62,13 @@ class SignupPopup extends React.Component {
       return (
         <Popup
           trigger={
-            <button className="event_page_signup_button"> ثبت نام </button>
+            <button
+              style={signupButtonStyle}
+              className="event_page_signup_button"
+            >
+              {' '}
+              ثبت نام{' '}
+            </button>
           }
           modal
           contentStyle={contentStyle}
@@ -113,7 +123,8 @@ class SignupPopup extends React.Component {
 export default connect(mapStateToProps)(SignupPopup);
 
 SignupPopup.propTypes = {
-  register: PropTypes.function,
   event: PropTypes.object,
-  authenticated: PropTypes.bool
+  authenticated: PropTypes.bool,
+  isRegistered: PropTypes.bool,
+  isAdmin: PropTypes.bool
 };

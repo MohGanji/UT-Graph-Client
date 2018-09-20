@@ -29,7 +29,15 @@ export default class Event extends React.Component {
     super(props);
 
     this.state = {
-      info: { event: {}, organizer: {}, participantsCount: 0, staff: [] },
+      info: {
+        event: {},
+        organizer: {},
+        participantsCount: 0,
+        staff: [],
+        isRegistered: false,
+        isAdmin: false,
+        userAsStaffJobs: []
+      },
       notFound: false,
       loading: true,
       remainingCapacity: '۰'
@@ -39,8 +47,13 @@ export default class Event extends React.Component {
   async componentDidMount () {
     let that = this;
     const id = this.props.match.params.id;
+    let token = localStorage.getItem('accessToken');
 
-    await fetch(`/api/v1/event/${id}`)
+    await fetch(`/api/v1/event/${id}`, {
+      headers: {
+        authorization: token
+      }
+    })
       .then(handleErrors)
       .then(function (response) {
         if (!response.ok) {
@@ -52,6 +65,7 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
+        console.log(info);
         let participantsCount = info.participantsCount;
         let capacity = info.event.capacity;
         let remainingCapacity = capacity - participantsCount;
@@ -162,8 +176,25 @@ export default class Event extends React.Component {
               </div>
             ) : (
               <div className="event_page_button_container">
-                <SignupPopup event={this.state.info.event} />
-                <RequestPopup event={this.state.info.event} />
+                <SignupPopup
+                  event={this.state.info.event}
+                  isAdmin={this.state.info.isAdmin}
+                  isRegistered={this.state.info.isRegistered}
+                />
+                <RequestPopup
+                  event={this.state.info.event}
+                  isAdmin={this.state.info.isAdmin}
+                />
+                <span
+                  style={
+                    this.state.info.isAdmin
+                      ? { display: 'block', color: ' #666666' }
+                      : { display: 'none' }
+                  }
+                >
+                  <i className="fa fa-exclamation-circle" />
+                  {' شما در این رویداد به عنوان برگزار کننده شرکت کرده اید '}
+                </span>
               </div>
             )}
           </div>

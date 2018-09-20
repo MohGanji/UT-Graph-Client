@@ -44,11 +44,18 @@ class RequestPopup extends React.Component {
   }
 
   render () {
+    let requestButtonStyle;
+    if (this.props.isAdmin) {
+      requestButtonStyle = { display: 'none' };
+    }
     if (this.props.authenticated) {
       return (
         <Popup
           trigger={
-            <button className="event_page_signup_button">
+            <button
+              style={requestButtonStyle}
+              className="event_page_signup_button"
+            >
               {' '}
               درخواست همکاری{' '}
             </button>
@@ -109,7 +116,8 @@ class RequestPopup extends React.Component {
 export default connect(mapStateToProps)(RequestPopup);
 
 RequestPopup.propTypes = {
-  requestStaff: PropTypes.function,
   event: PropTypes.object,
-  authenticated: PropTypes.bool
+  authenticated: PropTypes.bool,
+  isRegistered: PropTypes.bool,
+  isAdmin: PropTypes.bool
 };
