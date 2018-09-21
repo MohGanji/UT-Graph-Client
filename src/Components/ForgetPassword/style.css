@@ -1,0 +1,14 @@
+.forget_page {
+  background: white;
+  background: linear-gradient(to top, white, gray);
+  width: 80vh;
+  max-height: 90vh;
+  position: relative;
+  direction: ltr;
+}
+
+.forget_password_p {
+  text-align: right;
+  margin-top: 10px !important;
+  margin-bottom: 3px;
+}

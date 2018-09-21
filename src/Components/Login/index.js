@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import BaseForm from '../../Utils/BaseForm';
 import Register from '../Register';
+import ForgetPassword from '../ForgetPassword';
 
 function mapStateToProps (state) {
   return {
@@ -20,11 +21,13 @@ class Login extends BaseForm {
     this.state = {
       username: 'username',
       password: 'password',
-      noAccount: false
+      noAccount: false,
+      forgotPassword: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNoAccount = this.handleNoAccount.bind(this);
+    this.handleForgotPassword = this.handleForgotPassword.bind(this);
   }
 
   handleSubmit () {
@@ -63,11 +66,22 @@ class Login extends BaseForm {
     this.setState({ noAccount: true });
   }
 
+  handleForgotPassword () {
+    this.setState({ forgotPassword: true });
+  }
+
   render () {
     if (this.state.noAccount) {
       return (
         <div>
           <Register />
+        </div>
+      );
+    } else if (this.state.forgotPassword) {
+      console.log('done');
+      return (
+        <div>
+          <ForgetPassword />
         </div>
       );
     }
@@ -105,8 +119,11 @@ class Login extends BaseForm {
             onClick={this.handleSubmit}
           />
           <p className="login-lost">
-            <a> کلمه عبور خود را فراموش کرده اید؟ </a> /
-            <a onClick={this.handleNoAccount}> حساب کاربری ندارید؟ </a>
+            <a onClick={this.handleForgotPassword}>
+              {' '}
+              رمز عبور خود را فراموش کرده اید؟{' '}
+            </a>{' '}
+            /<a onClick={this.handleNoAccount}> حساب کاربری ندارید؟ </a>
           </p>
         </div>
       </div>
