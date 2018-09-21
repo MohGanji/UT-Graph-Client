@@ -4,6 +4,7 @@ import handleErrors from '../../Utils/functions/handleErrors';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import BaseForm from '../../Utils/BaseForm';
+import Register from '../Register';
 
 function mapStateToProps (state) {
   return {
@@ -18,10 +19,12 @@ class Login extends BaseForm {
 
     this.state = {
       username: 'username',
-      password: 'password'
+      password: 'password',
+      noAccount: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleNoAccount = this.handleNoAccount.bind(this);
   }
 
   handleSubmit () {
@@ -56,7 +59,18 @@ class Login extends BaseForm {
       });
   }
 
+  handleNoAccount () {
+    this.setState({ noAccount: true });
+  }
+
   render () {
+    if (this.state.noAccount) {
+      return (
+        <div>
+          <Register />
+        </div>
+      );
+    }
     return (
       <div className="login_page">
         <div className="login-title">ورود</div>
@@ -91,8 +105,8 @@ class Login extends BaseForm {
             onClick={this.handleSubmit}
           />
           <p className="login-lost">
-            <a href=""> کلمه عبور خود را فراموش کرده اید؟ </a> /
-            <a href=""> حساب کاربری ندارید؟ </a>
+            <a> کلمه عبور خود را فراموش کرده اید؟ </a> /
+            <a onClick={this.handleNoAccount}> حساب کاربری ندارید؟ </a>
           </p>
         </div>
       </div>
