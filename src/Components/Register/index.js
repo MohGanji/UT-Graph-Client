@@ -24,6 +24,7 @@ export default class Register extends BaseForm {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRegistered = this.handleRegistered.bind(this);
   }
 
   handleSubmit () {
@@ -39,6 +40,7 @@ export default class Register extends BaseForm {
           that.setState({
             is_registered: true
           });
+          toast.success('لینک فعال سازی به ایمیل شما فرستاده شد');
         }
         return res.json();
       })
@@ -48,9 +50,12 @@ export default class Register extends BaseForm {
       });
   }
 
+  handleRegistered () {
+    this.setState({ is_registered: true });
+  }
+
   render () {
     if (this.state.is_registered) {
-      toast.success('لینک فعال سازی به ایمیل شما فرستاده شد');
       return (
         <div>
           <Login />
@@ -201,7 +206,10 @@ export default class Register extends BaseForm {
               onClick={this.handleSubmit}
             />
             <p className="login-lost">
-              <a href=""> آیا حساب کاربری دارید؟ کلیک کنید</a>
+              <a onClick={this.handleRegistered}>
+                {' '}
+                حساب کاربری دارید؟ کلیک کنید{' '}
+              </a>
             </p>
           </div>
         </div>

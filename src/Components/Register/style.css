@@ -92,6 +92,7 @@ div.login-title {
 }
 
 .login-lost a {
+  cursor: pointer;
   color: #666;
   text-decoration: none;
   font-size: 13px;

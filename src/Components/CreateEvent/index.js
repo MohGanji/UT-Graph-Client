@@ -143,6 +143,7 @@ class CreateEvent extends BaseForm {
   componentDidMount() {
     let that = this;
     if (this.props.type === 'create') {
+      this.setState({ loading: false });
       return;
     } else {
       const id = this.props.match.params.id;
