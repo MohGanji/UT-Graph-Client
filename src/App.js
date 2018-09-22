@@ -12,7 +12,6 @@ import Notification from './Components/Notification';
 import { connect } from 'react-redux';
 import Auth from './Auth';
 import AboutUs from './Components/AboutUs';
-import EmailValidation from './Components/EmailValidation';
 
 function mapStateToProps (state) {
   return {
@@ -102,11 +101,6 @@ class App extends Component {
                   <Redirect to="/" />
                 )
               }
-            />
-            <Route
-              exact
-              path="/email-validation/:hash"
-              render={props => <EmailValidation {...props} />}
             />
             <Route component={NotFound} />
           </Switch>
