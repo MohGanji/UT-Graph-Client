@@ -19,14 +19,18 @@ class MyEvents extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      events: []
+      organizer: [],
+      staff: [],
+      attendent: [],
+      statePage: 'attendent'
     };
+    this.changeState = this.changeState.bind(this);
   }
   componentDidMount () {
     let user = this.props.user;
     let that = this;
 
-    fetch(`/api/v1/user/${user.username}/events`)
+    fetch(`/api/v1/user/${user.username}/events/ORGANIZER`)
       .then(handleErrors)
       .then(function (response) {
         return response.json();
@@ -35,17 +39,67 @@ class MyEvents extends React.Component {
         return responseJson.data;
       })
       .then(function (events) {
-        that.setState({ events: events });
+        that.setState({ organizer: events });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    fetch(`/api/v1/user/${user.username}/events/STAFF`)
+      .then(handleErrors)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      })
+      .then(function (events) {
+        that.setState({ staff: events });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    fetch(`/api/v1/user/${user.username}/events/ATTENDENT`)
+      .then(handleErrors)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      })
+      .then(function (events) {
+        that.setState({ attendent: events });
       })
       .catch(function (error) {
         console.log(error);
       });
     this.setState({ loading: false });
   }
+
+  changeState (e) {
+    console.log(e.target.id);
+    this.setState({ statePage: e.target.id });
+  }
+
   render () {
-    const myEvents = this.state.events.map((event, i) => (
-      <MyEventBox key={i} event={event} />
-    ));
+    let myEvents;
+    if (this.state.statePage === 'organizer') {
+      myEvents = this.state.organizer.map((event, i) => (
+        <MyEventBox key={i} event={event} />
+      ));
+    } else if (this.state.statePage === 'attendent') {
+      myEvents = this.state.staff.map((event, i) => (
+        <MyEventBox key={i} event={event} />
+      ));
+    } if (this.state.statePage === 'staff') {
+      myEvents = this.state.attendent.map((event, i) => (
+        <MyEventBox key={i} event={event} />
+      ));
+    }
+    let organizerClass =
+      this.state.statePage === 'organizer' ? 'my_events_active' : '';
+    let attendentClass =
+      this.state.statePage === 'attendent' ? 'my_events_active' : '';
+    let staffClass = this.state.statePage === 'staff' ? 'my_events_active' : '';
     return (
       <div>
         <ProgressBar
@@ -57,6 +111,29 @@ class MyEvents extends React.Component {
         <div className="my_events_container_all">
           <div className="my_events_container_all_title">
             <p>رویداد های من:</p>
+          </div>
+          <div className="my_events_topbar">
+            <button
+              id="organizer"
+              onClick={this.changeState}
+              className={organizerClass}
+            >
+              <p onClick={this.changeState}> به عنوان ایجاد کننده </p>
+            </button>
+            <button
+              id="attendent"
+              onClick={this.changeState}
+              className={attendentClass}
+            >
+              <p onClick={this.change}> به عنوان شرکت کننده </p>
+            </button>
+            <button
+              id="staff"
+              onClick={this.changeState}
+              className={staffClass}
+            >
+              <p> به عنوان کمک کننده </p>
+            </button>
           </div>
           <div className="my_events_container">{myEvents}</div>
         </div>

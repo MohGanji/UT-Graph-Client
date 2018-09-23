@@ -3,6 +3,7 @@ import './style.css';
 import getDateString from '../../../Utils/functions/getDateString';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import defaultEventImage from '../../../images/defaultEvent.svg';
 
@@ -51,7 +52,10 @@ class MyEventBox extends React.Component {
       return <Redirect to="/my-events" />;
     }
     return (
-      <div className="my_event_box_container">
+      <Link
+        className="my_event_box_container"
+        to={`/event/${this.props.event._id}`}
+      >
         <div className="my_event_box_image_container">
           <div className="my_event_box_image">
             <a href={`/event/${this.props.event._id}`}>
@@ -83,20 +87,19 @@ class MyEventBox extends React.Component {
         </div>
         <div className="my_event_box_buttons">
           <div className="my_event_box_buttons_container">
-            <a
-              href={`event/${this.props.event._id}/edit`}
-              style={
-                this.props.event.organizer === this.props.user.username
-                  ? { display: 'block' }
-                  : { display: 'none' }
-              }
-            >
-              ویرایش
-            </a>
-            <a onClick={this.handleDelete}>حذف رویداد</a>
+            <Link to={`event/${this.props.event._id}/edit`}>
+              <button
+                hidden={this.props.event.organizer !== this.props.user.username}
+              >
+                ویرایش
+              </button>
+            </Link>
+            <Link to={`/my-events`}>
+              <button onClick={this.handleDelete}>حذف رویداد</button>
+            </Link>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }

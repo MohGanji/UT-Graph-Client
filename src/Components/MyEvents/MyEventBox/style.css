@@ -79,7 +79,7 @@
   height: 50%;
 }
 
-.my_event_box_buttons a {
+.my_event_box_buttons button {
   background-color: #352649;
   color: rgb(233, 229, 229);
   font-size: 13pt;
@@ -87,5 +87,15 @@
   border-radius: 4px;
   box-shadow: 0 0.4rem 1.6rem 0 rgba(209, 78, 78, 0.11);
   height: 42px;
-  margin-top:10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.my_event_box_buttons a {
+  color: rgb(233, 229, 229);
+}
+
+.my_event_box_buttons button:hover {
+  font-size: 14pt;
+  box-shadow: 2px 3px #888888;
 }

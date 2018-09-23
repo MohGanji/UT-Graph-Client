@@ -40,3 +40,55 @@
   flex-wrap: wrap;
   padding-bottom: 20px;
 }
+
+.my_events_topbar {
+  margin-top: 20px;
+  margin-right: 5%;
+  width: 90%;
+  height: 80px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.my_events_topbar button {
+  width: 33%;
+  height: 100%;
+  background: rgb(211, 211, 211);
+  border-radius: 70px 70px 0px 0px;
+  border: none;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.my_events_topbar button:active:focus {
+  outline-style: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.my_events_active {
+  opacity: 1 !important;
+  border-top: 3px solid rgb(124, 124, 124) !important;
+  border-right: 3px solid rgb(124, 124, 124) !important;
+  border-left: 3px solid rgb(124, 124, 124) !important;
+  width: 50% !important;
+}
+
+.my_events_active p {
+  font-size: 18pt !important;
+  font-weight: bold;
+}
+
+.my_events_topbar button p {
+  font-size: 16pt;
+  font-family: sahel;
+}
+
+.my_events_topbar_organizer {
+  /* background: green; */
+  /* border-left: 1px solid black; */
+}
+
+.my_events_topbar_attendent {
+  /* border-left: 1px solid rgb(124, 124, 124); */
+}
