@@ -29,10 +29,6 @@ p:last-child {
   margin-bottom: 0;
 }
 
-<<<<<<< HEAD
-*:focus {
-  outline: none !important;
-=======
 html,
 body {
   margin: 0;
@@ -47,5 +43,4 @@ body {
   min-height: 100%;
   position: relative;
   padding-bottom: 335px; /* Height of the footer */
->>>>>>> d9c1f0a5732679796a02c6af9fd888c5d32fc92e
 }
