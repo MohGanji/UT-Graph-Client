@@ -49,7 +49,6 @@ class User extends React.Component {
       })
       .then(function (info) {
         that.setState({ info: info });
-        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
@@ -81,7 +80,7 @@ class User extends React.Component {
     ));
 
     return (
-      <div className="user">
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}

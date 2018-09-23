@@ -38,6 +38,7 @@
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid gray;
+  direction: rtl;
 }
 
 .old_event_info {

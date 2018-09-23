@@ -6,7 +6,7 @@ import Footer from '../../Utils/Footer';
 export default class NotFound extends React.Component {
   render () {
     return (
-      <div>
+      <div className="container">
         <Header />
         <div className="not_found_container">
           <p className="not_found_404">

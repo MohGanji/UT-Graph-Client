@@ -89,9 +89,9 @@ class LoggedInOption extends React.Component {
     newNotif.reverse();
     let notifElement = newNotif.map((notif, i) => {
       return (
-        <a key={i} href={`/notification/${notif.index}`}>
+        <Link key={i} to={`/notification/${notif.index}`}>
           {notif.message}
-        </a>
+        </Link>
       );
     });
     if (this.state.notifications.length === 0) {
@@ -125,11 +125,11 @@ class LoggedInOption extends React.Component {
             className="logged_in_option_notification_content"
           >
             {notifElement}
-            <a href={`/notification`}>
+            <Link to={`/notification`}>
               <div className="notification_box_footer">
                 <span>مشاهده تمام اطلاعیه ها</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="drop_down">

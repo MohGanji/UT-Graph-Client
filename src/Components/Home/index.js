@@ -90,7 +90,7 @@ export default class Home extends React.Component {
       <OldEventBox key={i} event={oldEvent} />
     ));
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 95 : 100}
           spinner={false}
@@ -99,7 +99,13 @@ export default class Home extends React.Component {
         <Header type="home" />
         <div className="welcome_home">
           <WelcomeGraph />
-          <div className="centered">به UT Graph خوش آمدید!</div>
+          <div className="centered">
+            به{' '}
+            <a className="utg_link" href="/AboutUs">
+              UT Graph
+            </a>{' '}
+            خوش آمدید!
+          </div>
         </div>
         <div className="home_page_events_container search_page_container">
           <div className="search_page_title">

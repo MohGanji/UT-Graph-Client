@@ -81,14 +81,16 @@
 
 .event_page_about_left_description_text {
   margin-top: 35px;
-  width: 95%;
+  width: 90%;
   height: 80%;
   margin-left: auto;
   margin-right: auto;
-  /* border-right: 2px solid #352649; */
   padding: 20px;
   font-size: 14pt;
   overflow: scroll;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 1.6px solid #cecdcd;
+  overflow: auto;
 }
 .info_showing {
   background-color: #352649;
@@ -107,7 +109,7 @@
   grid-template-rows: 50% 50%;
 }
 .event_page_about_right_up {
-  margin-top: 10px;
+  margin-bottom: 10px;
   display: grid;
   grid-template-rows: 77% 23%;
   border-radius: 0.4rem 0.4rem 0 0;
@@ -145,7 +147,6 @@
 }
 
 .event_page_about_right_bottom {
-  margin-bottom: 10px;
   display: grid;
   grid-template-rows: 15% 85%;
   border-radius: 0.4rem 0.4rem 0 0;
@@ -276,6 +277,11 @@
   height: 100px;
   display: flex;
   align-items: center;
+}
+
+.event_page_button_container span {
+  margin-right: 12px;
+  color: #f02917;
 }
 
 .event_page_signup_button {

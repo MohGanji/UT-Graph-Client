@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import Ignore from '../../../images/cancel(1).svg';
+import Confirm from '../../../images/checked.svg';
 
 export default class NotifCard extends React.Component {
   constructor (props) {
@@ -58,14 +60,14 @@ export default class NotifCard extends React.Component {
     if (this.state.hasButton) {
       buttons = (
         <div className="notification_button">
-          <button id="accept_button" onClick={this.acceptNotif}>
-            {' '}
-            تایید{' '}
-          </button>
-          <button id="reject_button" onClick={this.rejectNotif}>
-            {' '}
-            رد{' '}
-          </button>
+          <img id="accept_button" src={Confirm} onClick={this.acceptNotif}>
+            {/* {' '}
+            تایید{' '} */}
+          </img>
+          <img id="reject_button" src={Ignore} onClick={this.rejectNotif}>
+            {/* {' '}
+            رد{' '} */}
+          </img>
         </div>
       );
     }

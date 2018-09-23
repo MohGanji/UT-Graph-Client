@@ -21,18 +21,26 @@
   transition: all 0.3s ease-in-out;
 }
 
-.user_box img {
+.user_box_image {
   width: 250px;
   height: 250px;
+}
+.user_box_image img {
+  width: 100%;
+  height: 100%;
 }
 
 .user_box_info {
   width: 100%;
-  height: 100%;
+  height: 85px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.user_box_info p:first-child {
+  margin-bottom: 0;
 }
 
 .user_box_info p {

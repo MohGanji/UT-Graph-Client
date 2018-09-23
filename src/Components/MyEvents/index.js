@@ -101,7 +101,7 @@ class MyEvents extends React.Component {
       this.state.statePage === 'attendent' ? 'my_events_active' : '';
     let staffClass = this.state.statePage === 'staff' ? 'my_events_active' : '';
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}

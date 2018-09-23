@@ -1,13 +1,14 @@
 import React from 'react';
 import numberConverter from './numberConverter';
 import isPersianString from '../functions/isPersianString';
+import isEnglishString from '../functions/isEnglishString';
 
 export default class BaseForm extends React.Component {
   constructor (props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleNumberInput = this.handleNumberInput.bind(this);
-    this.handlePersianInput = this.handlePersianInput.bind(this);
+    this.handleLanguageInput = this.handleLanguageInput.bind(this);
   }
   handleChange (event) {
     const target = event.target;
@@ -24,24 +25,43 @@ export default class BaseForm extends React.Component {
     let value = target.value;
     const name = target.name;
     const persianName = 'p_' + name;
+    let warnings = this.state.warnings;
+    let numberInEnglish = numberConverter.toEnglish(value);
 
-    value = numberConverter.toEnglish(value);
-    let persianValue = numberConverter.toPersian(value);
-    this.setState({
-      [name]: value,
-      [persianName]: persianValue
-    });
+    if (value !== '' && numberInEnglish === '') {
+      warnings[name] = true;
+      this.setState({ warnings: warnings });
+    } else {
+      let persianValue = numberConverter.toPersian(numberInEnglish);
+      warnings[name] = false;
+      this.setState({
+        [name]: numberInEnglish,
+        [persianName]: persianValue,
+        warnings: warnings
+      });
+    }
   }
 
-  handlePersianInput (event) {
+  handleLanguageInput (language, event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    
-    if (isPersianString(value)) {
+    let warnings = this.state.warnings;
+    let isInLanguage;
+    if (language === 'persian') {
+      isInLanguage = isPersianString;
+    } else if (language === 'english') {
+      isInLanguage = isEnglishString;
+    }
+    if (isInLanguage(value)) {
+      warnings[name] = false;
       this.setState({
-        [name]: value
+        [name]: value,
+        warnings: warnings
       });
+    } else {
+      warnings[name] = true;
+      this.setState({ warnings: warnings });
     }
   }
 }

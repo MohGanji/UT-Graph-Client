@@ -1,7 +1,5 @@
 import React from 'react';
 import './style.css';
-import Popup from 'reactjs-popup';
-import { toast } from 'react-toastify';
 import handleErrors from '../../Utils/functions/handleErrors';
 import Header from '../../Utils/Header';
 import pencilImage from '../../images/tag.svg';
@@ -20,38 +18,42 @@ import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
 import defaultProfileImage from '../../images/defaultProfile.svg';
 import { Link } from 'react-router-dom';
-
-const contentStyle = {
-  height: 'innerHeight',
-  width: 'innerWidth',
-  'z-index': '1',
-  padding: '0px'
-};
-
-const innerDiv = {
-  background: '#000000cc',
-  'z-index': '0'
-};
+import numberConverter from '../../Utils/BaseForm/numberConverter';
+import getDateString from '../../Utils/functions/getDateString';
+import SignupPopup from './SignupPopup';
+import RequestPopup from './RequestPopup';
+import 'font-awesome/css/font-awesome.min.css';
 
 export default class Event extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      info: { event: {}, organizer: {}, participantsCount: 0, staff: [] },
+      info: {
+        event: {},
+        organizer: {},
+        participantsCount: 0,
+        staff: [],
+        isRegistered: false,
+        isAdmin: false,
+        userAsStaffJobs: []
+      },
       notFound: false,
-      loading: true
+      loading: true,
+      remainingCapacity: '۰'
     };
-    this.getDateString = this.getDateString.bind(this);
-    this.register = this.register.bind(this);
-    this.requestStaff = this.requestStaff.bind(this);
   }
 
   async componentDidMount () {
     let that = this;
     const id = this.props.match.params.id;
+    let token = localStorage.getItem('accessToken');
 
-    await fetch(`/api/v1/event/${id}`)
+    await fetch(`/api/v1/event/${id}`, {
+      headers: {
+        authorization: token
+      }
+    })
       .then(handleErrors)
       .then(function (response) {
         if (!response.ok) {
@@ -64,7 +66,16 @@ export default class Event extends React.Component {
       })
       .then(function (info) {
         console.log(info);
-        that.setState({ info: info });
+        let participantsCount = info.participantsCount;
+        let capacity = info.event.capacity;
+        let remainingCapacity = capacity - participantsCount;
+        remainingCapacity = numberConverter.toPersian(
+          String(remainingCapacity)
+        );
+        that.setState({
+          info: info,
+          remainingCapacity: remainingCapacity
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -72,60 +83,20 @@ export default class Event extends React.Component {
     this.setState({ loading: false });
   }
 
-  getDateString (date) {
-    let dateString =
-      date.getFullYear() +
-      '/' +
-      (Number(date.getMonth()) + 1) +
-      '/' +
-      date.getDate();
-    return dateString;
-  }
-
-  register (close) {
-    const id = this.props.match.params.id;
-    const token = localStorage.getItem('accessToken');
-
-    fetch(`/api/v1/event/${id}/signup_attendent`, {
-      headers: {
-        authorization: token
-      },
-      method: 'POST'
-    });
-
-    toast.success('ثبت نام شما در رویداد با موفقیت انجام شد');
-  }
-
-  requestStaff () {
-    const id = this.props.match.params.id;
-    const token = localStorage.getItem('accessToken');
-
-    fetch(`/api/v1/event/${id}/signup_staff`, {
-      headers: {
-        authorization: token
-      },
-      method: 'POST'
-    });
-
-    toast.info('درخواست شما برای ادمین رویداد ارسال شد');
-  }
-
   render () {
     if (this.state.notFound) {
       return <NotFound />;
     }
-    let beginTimeString = this.getDateString(
+    let beginTimeString = getDateString(
       new Date(this.state.info.event.beginTime)
     );
-    let endTimeString = this.getDateString(
-      new Date(this.state.info.event.endTime)
-    );
+    let endTimeString = getDateString(new Date(this.state.info.event.endTime));
 
     let staff = this.state.info.staff.map((user, i) => (
       <StaffBox key={i} user={user} />
     ));
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}
@@ -172,9 +143,7 @@ export default class Event extends React.Component {
               <TitleHolder
                 image={capacityImage}
                 title={
-                  'تعداد شرکت کنندگان: ' +
-                  this.state.info.participantsCount +
-                  ' نفر'
+                  'ظرفیت باقیمانده: ' + this.state.remainingCapacity + ' نفر '
                 }
                 customHeight="45px"
                 customWidth="90%"
@@ -188,99 +157,48 @@ export default class Event extends React.Component {
             <div className="event_page_about_left_description">
               <p className="info_showing">توضیحات:</p>
               <div className="event_page_about_left_description_text">
-                <p>{ReactHtmlParser(this.state.info.event.description)}</p>
+                {ReactHtmlParser(this.state.info.event.description)}
               </div>
             </div>
-            <div className="event_page_button_container">
-              {/* <button onClick={this.register} class="event_page_signup_button"> اضافه شدن به عنوان شرکت کننده </button> */}
-              <Popup
-                trigger={
-                  <button className="event_page_signup_button">
-                    {' '}
-                    ثبت نام{' '}
-                  </button>
-                }
-                modal
-                contentStyle={contentStyle}
-                overlayStyle={innerDiv}
-              >
-                {close => (
-                  <form className="modal">
-                    {/* <span class="modal_close" onClick={close}>
-                      &times;
-                    </span> */}
-                    <div className="modal_message">
-                      آیا تمایل دارید به عنوان <b> شرکت کننده </b> در رویداد
-                      <b> {this.state.info.event.title} </b>
-                      شرکت کنید؟
-                    </div>
-                    <div className="accept_request">
-                      <button
-                        onClick={() => {
-                          this.register();
-                          close();
-                        }}
-                      >
-                        {' '}
-                        <b> تایید </b>{' '}
-                      </button>
-                    </div>
-                  </form>
-                )}
-              </Popup>
-              {/* <button onClick="return reAssign({this.requestStaff},close)" class="event_page_signup_button"> اضافه شدن به عنوان کمک کننده </button> */}
-              <Popup
-                trigger={
-                  <button className="event_page_signup_button">
-                    {' '}
-                    درخواست همکاری{' '}
-                  </button>
-                }
-                modal
-                contentStyle={contentStyle}
-                overlayStyle={innerDiv}
-              >
-                {close => (
-                  <div className="modal">
-                    {/* <span class="modal_close" onClick={close}>
-                      &times;
-                    </span> */}
-                    <div className="modal_message">
-                      آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در
-                      رویداد
-                      <b> {this.state.info.event.title} </b>
-                      مشارکت کنید؟
-                    </div>
-                    <div className="accept_request">
-                      <button
-                        onClick={() => {
-                          this.requestStaff();
-                          close();
-                        }}
-                      >
-                        {' '}
-                        <b> تایید </b>{' '}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </Popup>
-            </div>
+            {this.state.info.event.isPassed ? (
+              <div className="event_page_button_container">
+                <span>
+                  <i className="fa fa-exclamation-circle" />
+                  {' مهلت ثبت نام در این رویداد به اتمام رسیده است. '}
+                </span>
+              </div>
+            ) : this.state.remainingCapacity === '۰' ? (
+              <div className="event_page_button_container">
+                <span>
+                  <i className="fa fa-exclamation-circle" />
+                  {' ظرفیت رویداد به اتمام رسیده است '}
+                </span>
+              </div>
+            ) : (
+              <div className="event_page_button_container">
+                <SignupPopup
+                  event={this.state.info.event}
+                  isAdmin={this.state.info.isAdmin}
+                  isRegistered={this.state.info.isRegistered}
+                />
+                <RequestPopup
+                  event={this.state.info.event}
+                  isAdmin={this.state.info.isAdmin}
+                />
+                <span
+                  style={
+                    this.state.info.isAdmin
+                      ? { display: 'block', color: ' #666666' }
+                      : { display: 'none' }
+                  }
+                >
+                  <i className="fa fa-exclamation-circle" />
+                  {' شما در این رویداد به عنوان برگزار کننده شرکت کرده اید '}
+                </span>
+              </div>
+            )}
           </div>
           <div className="event_page_about_right">
-            <div className="event_page_about_right_bottom">
-              <div className="event_page_about_right_bottom_title">
-                <p> حامیان </p>
-              </div>
-              <div className="event_page_about_right_bottom_description" />
-            </div>
-
-            {/* <div class="event_page_about_right_center">
-              <div class="event_page_about_right_center_description">
-                <p> سلام</p>
-              </div>
-            </div> */}
-
             <div className="event_page_about_right_up">
               <div className="event_page_about_right_up_map">
                 <img src={GoogleMapImage} alt="نقشه" />
@@ -294,6 +212,12 @@ export default class Event extends React.Component {
                   <b>تهران</b> ایران
                 </p>
               </div>
+            </div>
+            <div className="event_page_about_right_bottom">
+              <div className="event_page_about_right_bottom_title">
+                <p> حامیان </p>
+              </div>
+              {/* <div className="event_page_about_right_bottom_description" /> */}
             </div>
           </div>
         </div>
@@ -317,12 +241,12 @@ export default class Event extends React.Component {
                   <p className="event_page_users_left_organizer_info_title">
                     مسئول برگزاری
                   </p>
-                  <p className="event_page_users_left_organizer_info_name">
+                  <span className="event_page_users_left_organizer_info_name">
                     {' '}
                     {this.state.info.organizer.firstName +
                       ' ' +
                       this.state.info.organizer.lastName}{' '}
-                  </p>
+                  </span>
                 </div>
               </div>
             </Link>

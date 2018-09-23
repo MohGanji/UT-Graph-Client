@@ -9,15 +9,21 @@
   margin-right: auto;
 }
 
-.ok_sign {
+.ok_sign,
+.not_ok_sign {
   position: absolute;
   right: calc(50% - 12px);
-  top: 43%;
+  top: 17%;
 }
 
 .ok_sign > i {
   font-size: 25px;
   color: green;
+}
+
+.not_ok_sign > i {
+  font-size: 25px;
+  color: #f02917;
 }
 
 .create_event_title {

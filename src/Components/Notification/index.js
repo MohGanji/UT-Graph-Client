@@ -5,6 +5,7 @@ import NotifCard from './NotifCard/';
 import makeNotifMessage from '../../Utils/functions/makeNotifMessage';
 import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
+import ProgressBar from 'react-progress-bar-plus';
 
 export default class Notification extends React.Component {
   constructor (props) {
@@ -12,7 +13,8 @@ export default class Notification extends React.Component {
 
     this.state = {
       notifications: [],
-      type: String
+      type: String,
+      loading: true
     };
 
     this.closeInvisibleBox = this.closeInvisibleBox.bind(this);
@@ -33,6 +35,7 @@ export default class Notification extends React.Component {
         return response.json();
       })
       .then(function (responseJson) {
+        console.log(responseJson);
         return responseJson.data;
       })
       .then(function (data) {
@@ -40,6 +43,9 @@ export default class Notification extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+      })
+      .then(function () {
+        that.setState({ loading: false });
       });
   }
 
@@ -64,7 +70,12 @@ export default class Notification extends React.Component {
       }
     });
     return (
-      <div>
+      <div className="container">
+        <ProgressBar
+          percent={this.state.loading ? 0 : 100}
+          spinner={false}
+          autoIncrement={true}
+        />
         <Header />
         <div
           onClick={this.closeInvisibleBox}

@@ -13,7 +13,8 @@ export default class DatePicker extends BaseForm {
       year: '',
       p_day: '',
       p_month: '',
-      p_year: ''
+      p_year: '',
+      warnings: []
     };
     this.handleDayChange = this.handleDayChange.bind(this);
     this.handleMonthChange = this.handleMonthChange.bind(this);

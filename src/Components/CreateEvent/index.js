@@ -4,9 +4,6 @@ import Header from '../../Utils/Header';
 import pencilImage from '../../images/pencil1.svg';
 import TitleHolder from '../../Utils/TitleHolder';
 import DatePicker from '../../Utils/DatePicker';
-// import moment from 'moment-jalaali';
-// import DatePicker from 'react-datepicker2';
-// import 'react-datepicker2/dist/react-datepicker2.min.css';
 import handleErrors from '../../Utils/functions/handleErrors';
 import { connect } from 'react-redux';
 import TextArea from '../../Utils/TextArea';
@@ -17,6 +14,8 @@ import axios from 'axios';
 import Select from 'react-select';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
+import NumberConverter from '../../Utils/BaseForm/numberConverter';
+import { toast } from 'react-toastify';
 
 function mapStateToProps(state) {
   return {
@@ -34,6 +33,8 @@ class CreateEvent extends BaseForm {
       beginTime: '',
       endTime: '',
       description: '',
+      capacity: '',
+      p_capacity: '',
       organizer: this.props.user.username,
       redirect: false,
       image: defaultEventImage,
@@ -42,7 +43,8 @@ class CreateEvent extends BaseForm {
       sponsers: [],
       staffs: [],
       sponserSelected: [],
-      staffSelected: []
+      staffSelected: [],
+      warnings: []
     };
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
@@ -98,7 +100,8 @@ class CreateEvent extends BaseForm {
       description: that.state.description,
       organizer: that.state.organizer,
       sponsers: that.state.sponserSelected,
-      staffs: that.state.staffSelected
+      staffs: that.state.staffSelected,
+      capacity: that.state.capacity
     };
     const token = localStorage.getItem('accessToken');
     const method = this.props.type === 'create' ? 'POST' : 'PUT';
@@ -115,13 +118,20 @@ class CreateEvent extends BaseForm {
     // centralRequest(url, dataSend)
     fetch(url, dataSend)
       .then(function(response) {
-        that.setState({ redirect: true });
         if (that.props.type === 'create') return response.json();
         else return response;
       })
       .then(ress => {
         if (that.props.type === 'create') id = ress.data;
         if (this.state.file != null) this.fileUpload(id, token);
+        if (!ress.hasOwnProperty('errors')) {
+          that.setState({ redirect: true });
+          if (this.props.type === 'create') {
+            toast.success('رویداد شما با موفقیت ساخته شد!');
+          } else {
+            toast.success('رویداد شما با موفقیت ویرایش شد!');
+          }
+        }
         return ress;
       })
       .then(handleErrors)
@@ -133,6 +143,8 @@ class CreateEvent extends BaseForm {
   componentDidMount() {
     let that = this;
     if (this.props.type === 'create') {
+      this.setState({ loading: false });
+      return;
     } else {
       const id = this.props.match.params.id;
 
@@ -145,13 +157,16 @@ class CreateEvent extends BaseForm {
           return responseJson.data;
         })
         .then(function(info) {
+          console.log(info);
           that.setState({
-            title: info.title,
-            location: info.location,
-            description: info.description,
-            beginTime: info.beginTime,
-            endTime: info.endTime,
-            image: info.image
+            title: info.event.title,
+            location: info.event.location,
+            description: info.event.description,
+            beginTime: info.event.beginTime,
+            endTime: info.event.endTime,
+            image: info.event.image,
+            capacity: info.event.capacity,
+            p_capacity: NumberConverter.toPersian(String(info.event.capacity))
           });
         })
         .catch(function(error) {
@@ -235,15 +250,15 @@ class CreateEvent extends BaseForm {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" />;
+      if (this.props.type === 'create') {
+        return <Redirect to="/my-events" />;
+      } else {
+        const id = this.props.match.params.id;
+        return <Redirect to={`/event/${id}`} />;
+      }
     }
-    // const staffOptions = [
-    //   { value: 'hadi.hojjat', label: 'Hadi Hojjat' },
-    //   { value: 'mahdi.jahed', label: 'Mahdi Jahed' },
-    //   { value: 'mojtaba.shahbazi', label: 'Mojtaba Shahbazi' }
-    // ];
     return (
-      <div>
+      <div className="container">
         <ProgressBar
           percent={this.state.loading ? 0 : 100}
           spinner={false}
@@ -298,6 +313,7 @@ class CreateEvent extends BaseForm {
                       type="text"
                       onChange={this.handleChange}
                       value={this.state.title}
+                      maxLength="32"
                     />
                   </div>
                   <div className="create_event_input right_field">
@@ -311,6 +327,7 @@ class CreateEvent extends BaseForm {
                       type="text"
                       onChange={this.handleChange}
                       value={this.state.location}
+                      maxLength="32"
                     />
                   </div>
                 </div>
@@ -321,10 +338,6 @@ class CreateEvent extends BaseForm {
                       date={this.state.beginTime}
                       handleTime={this.handleBeginTime}
                     />
-                    {/* <DatePicker
-                      onChange={value => this.setState({ beginTime: value })}
-                      value={this.state.beginTime}
-                    /> */}
                   </div>
                   <div className="create_event_input">
                     <p className="create_event_subtittle_font">
@@ -336,16 +349,28 @@ class CreateEvent extends BaseForm {
                       handleTime={this.handleEndTime}
                     />
                   </div>
-                </div>
-                <div className="create_event_details_row third_row">
                   <div className="create_event_input">
-                    <p className="create_event_subtittle_font"> توضیحات: </p>
-                    <div className="create_event_textarea">
-                      <TextArea
-                        text={this.state.description}
-                        handleText={this.handleDescription}
+                    <p className="create_event_subtittle_font"> ظرفیت: </p>
+                    <div className="capacity_container">
+                      <input
+                        className="create_event_rest_input"
+                        name="capacity"
+                        type="text"
+                        onChange={this.handleNumberInput}
+                        value={this.state.p_capacity}
+                        maxLength="6"
                       />
+                      {/* <span>نفر</span> */}
                     </div>
+                  </div>
+                </div>
+                <div className="create_event_input about_center">
+                  <p className="input_date"> توضیحات: </p>
+                  <div className="create_event_textarea">
+                    <TextArea
+                      text={this.state.bio}
+                      handleText={this.handleDescription}
+                    />
                   </div>
                 </div>
               </div>
