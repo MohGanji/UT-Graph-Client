@@ -71,7 +71,7 @@
   border-top: 3px solid rgb(124, 124, 124) !important;
   border-right: 3px solid rgb(124, 124, 124) !important;
   border-left: 3px solid rgb(124, 124, 124) !important;
-  width: 50% !important;
+  width: 38% !important;
 }
 
 .my_events_active p {
@@ -79,7 +79,7 @@
   font-weight: bold;
 }
 
-.my_events_topbar button p {
+.my_events_topbar button {
   font-size: 16pt;
   font-family: sahel;
 }

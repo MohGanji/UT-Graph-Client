@@ -79,7 +79,7 @@
   height: 50%;
 }
 
-.my_event_box_buttons button {
+.my_event_box_buttons a {
   background-color: #352649;
   color: rgb(233, 229, 229);
   font-size: 13pt;

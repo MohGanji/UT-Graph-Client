@@ -90,7 +90,8 @@ class MyEvents extends React.Component {
       myEvents = this.state.staff.map((event, i) => (
         <MyEventBox key={i} event={event} />
       ));
-    } if (this.state.statePage === 'staff') {
+    }
+    if (this.state.statePage === 'staff') {
       myEvents = this.state.attendent.map((event, i) => (
         <MyEventBox key={i} event={event} />
       ));
@@ -118,21 +119,21 @@ class MyEvents extends React.Component {
               onClick={this.changeState}
               className={organizerClass}
             >
-              <p onClick={this.changeState}> به عنوان ایجاد کننده </p>
+              به عنوان ایجاد کننده
             </button>
             <button
               id="attendent"
               onClick={this.changeState}
               className={attendentClass}
             >
-              <p onClick={this.change}> به عنوان شرکت کننده </p>
+              به عنوان شرکت کننده
             </button>
             <button
               id="staff"
               onClick={this.changeState}
               className={staffClass}
             >
-              <p> به عنوان کمک کننده </p>
+              به عنوان کمک کننده
             </button>
           </div>
           <div className="my_events_container">{myEvents}</div>
