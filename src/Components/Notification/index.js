@@ -50,7 +50,6 @@ export default class Notification extends React.Component {
   }
 
   closeInvisibleBox () {
-    document.getElementById('selected_invisible').style.display = 'none';
     this.setState({ type: 'normal' });
   }
 
@@ -62,7 +61,7 @@ export default class Notification extends React.Component {
     const cards = newNotif.map((notif, index) => {
       if (
         this.state.type === 'selected' &&
-        this.props.match.params.index === notif.index
+        this.props.match.params.index == notif.index
       ) {
         return <NotifCard selected={true} notification={notif} key={index} />;
       } else {
@@ -82,7 +81,7 @@ export default class Notification extends React.Component {
           className="selected_invisible"
           id="selected_invisible"
           style={
-            this.props.type === 'selected'
+            this.state.type === 'selected'
               ? { display: 'inline' }
               : { display: 'none' }
           }
