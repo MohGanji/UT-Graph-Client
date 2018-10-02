@@ -285,8 +285,7 @@ class CreateEvent extends BaseForm {
               </div>
               <div className="create_event_picture_content">
                 <div className="prof_pic">
-                  {this.state.image ===
-                  'http://localhost:8080/public/defaultEvent.svg' ? (
+                  {this.state.image === '' ? (
                     <img src={defaultEventImage} alt="عکس رویداد" />
                   ) : (
                     <img src={this.state.image} alt="عکس رویداد" />

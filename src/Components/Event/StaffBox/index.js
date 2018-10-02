@@ -10,12 +10,11 @@ export default class StaffBox extends React.Component {
       <div className="staff_box">
         <Link to={`/user/${this.props.user.username}`}>
           <div className="staff_box_image">
-            {this.props.user.image ===
-            'http://localhost:8080/public/defaultProfile.svg' ? (
-                <img src={defaultProfileImage} alt="عکس کاربر" />
-              ) : (
-                <img src={this.props.user.image} alt="عکس همکار" />
-              )}
+            {this.props.user.image === '' ? (
+              <img src={defaultProfileImage} alt="عکس کاربر" />
+            ) : (
+              <img src={this.props.user.image} alt="عکس همکار" />
+            )}
           </div>
           <div className="staff_box_role">
             <p>همکار</p>

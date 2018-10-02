@@ -105,12 +105,11 @@ export default class Event extends React.Component {
         <Header />
         <div className="event_page_info_1">
           <div className="event_page_photo_container">
-            {this.state.info.event.image ===
-            'http://localhost:8080/public/defaultEvent.svg' ? (
-                <img src={defaultEventImage} alt="عکس رویداد" />
-              ) : (
-                <img src={this.state.info.event.image} alt="عکس رویداد" />
-              )}
+            {this.state.info.event.image === '' ? (
+              <img src={defaultEventImage} alt="عکس رویداد" />
+            ) : (
+              <img src={this.state.info.event.image} alt="عکس رویداد" />
+            )}
           </div>
           <div className="event_page_info_container">
             <div className="event_page_info_container_up">
@@ -227,15 +226,14 @@ export default class Event extends React.Component {
             <Link to={`/user/${this.state.info.organizer.username}`}>
               <div className="event_page_users_left_organizer">
                 <div className="event_page_users_left_organizer_image">
-                  {this.state.info.organizer.image ===
-                  'http://localhost:8080/public/defaultProfile.svg' ? (
-                      <img src={defaultProfileImage} alt="عکس کاربر" />
-                    ) : (
-                      <img
-                        src={this.state.info.organizer.image}
-                        alt="عکس کاربر"
-                      />
-                    )}
+                  {this.state.info.organizer.image === '' ? (
+                    <img src={defaultProfileImage} alt="عکس کاربر" />
+                  ) : (
+                    <img
+                      src={this.state.info.organizer.image}
+                      alt="عکس کاربر"
+                    />
+                  )}
                 </div>
                 <div className="event_page_users_left_organizer_info">
                   <p className="event_page_users_left_organizer_info_title">

@@ -18,20 +18,19 @@ export default class OldEventBox extends React.Component {
         <Link to={`/event/${this.props.event._id}`}>
           <div className="old_event_box">
             <div className="old_event_image">
-              {this.props.event.image ===
-              'http://localhost:8080/public/defaultEvent.svg' ? (
-                  <img
-                    className="img_fill_div"
-                    src={defaultEventImage}
-                    alt="عکس رویداد"
-                  />
-                ) : (
-                  <img
-                    className="img_fill_div"
-                    src={this.props.event.image}
-                    alt="عکس رویداد"
-                  />
-                )}
+              {this.props.event.image === '' ? (
+                <img
+                  className="img_fill_div"
+                  src={defaultEventImage}
+                  alt="عکس رویداد"
+                />
+              ) : (
+                <img
+                  className="img_fill_div"
+                  src={this.props.event.image}
+                  alt="عکس رویداد"
+                />
+              )}
               {/* <img class="img_fill_div" src={this.props.event.poster_path == null ? EventImage : this.props.event.poster_path} /> */}
             </div>
             <div className="old_event_title">{this.props.event.title}</div>

@@ -90,20 +90,19 @@ class User extends React.Component {
         <BackgroundCover />
         <div className="user_info">
           <div className="profile_photo_container">
-            {this.state.info.image ===
-            'http://localhost:8080/public/defaultProfile.svg' ? (
-                <img
-                  className="profile_photo"
-                  src={defaultProfileImage}
-                  alt="عکس کاربر"
-                />
-              ) : (
-                <img
-                  className="profile_photo"
-                  src={this.state.info.image}
-                  alt="عکس کاربر"
-                />
-              )}
+            {this.state.info.image === '' ? (
+              <img
+                className="profile_photo"
+                src={defaultProfileImage}
+                alt="عکس کاربر"
+              />
+            ) : (
+              <img
+                className="profile_photo"
+                src={this.state.info.image}
+                alt="عکس کاربر"
+              />
+            )}
           </div>
           <div className="user_about">
             <p id="user_name" className="user_about_text">

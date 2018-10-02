@@ -200,12 +200,11 @@ class EditProfile extends BaseForm {
                 </div>
                 <div className="create_event_picture_content">
                   <div className="prof_pic">
-                    {this.state.image ===
-                    'http://localhost:8080/public/defaultProfile.svg' ? (
-                        <img src={defaultProfileImage} alt="عکس پروفایل" />
-                      ) : (
-                        <img src={this.state.image} alt="عکس پروفایل" />
-                      )}
+                    {this.state.image === '' ? (
+                      <img src={defaultProfileImage} alt="عکس پروفایل" />
+                    ) : (
+                      <img src={this.state.image} alt="عکس پروفایل" />
+                    )}
                   </div>
                   <label className="change_button" htmlFor="upload-photo">
                     {' '}

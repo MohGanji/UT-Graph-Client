@@ -58,12 +58,11 @@ class MyEventBox extends React.Component {
         <div className="my_event_box_image_container">
           <div className="my_event_box_image">
             <a href={`/event/${this.props.event._id}`}>
-              {this.props.event.image ===
-              'http://localhost:8080/public/defaultEvent.svg' ? (
-                  <img src={defaultEventImage} alt="عکس رویداد" />
-                ) : (
-                  <img src={this.props.event.image} alt="عکس رویداد" />
-                )}
+              {this.props.event.image === '' ? (
+                <img src={defaultEventImage} alt="عکس رویداد" />
+              ) : (
+                <img src={this.props.event.image} alt="عکس رویداد" />
+              )}
             </a>
           </div>
         </div>
