@@ -100,7 +100,8 @@ class EditProfile extends BaseForm {
         return response.json();
       })
       .then(function (responseJson) {
-        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
+        console.log(responseJson);
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data.user });
       })
       .then(function () {
         toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
