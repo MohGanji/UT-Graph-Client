@@ -61,6 +61,7 @@
 .prof_pic > img {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .prof_pic {
   height: 150px;
