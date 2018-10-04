@@ -17,7 +17,7 @@ export default class StaffBox extends React.Component {
             )}
           </div>
           <div className="staff_box_role">
-            <p>همکار</p>
+            <p>{this.props.user.job}</p>
           </div>
           <div className="staff_box_name">
             <p>

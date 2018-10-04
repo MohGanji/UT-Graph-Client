@@ -322,9 +322,17 @@
 }
 
 .modal_message {
-  margin: 40px 30px 60px 100px;
+  margin: 40px 50px 5px 70px;
   text-align: center;
   font-size: 14pt;
+}
+
+.message_job {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .accept_request {

@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import Login from '../../Login';
+import BaseForm from '../../../Utils/BaseForm';
 
 function mapStateToProps (state) {
   return {
@@ -23,21 +24,27 @@ const innerDiv = {
   'z-index': '0'
 };
 
-class RequestPopup extends React.Component {
+class RequestPopup extends BaseForm {
   constructor (props) {
     super(props);
+
+    this.state = { job: '' };
+
     this.requestStaff = this.requestStaff.bind(this);
   }
 
   requestStaff () {
     const id = this.props.event._id;
     const token = localStorage.getItem('accessToken');
+    const data = this.state;
 
     fetch(`/api/v1/event/${id}/signup_staff`, {
       headers: {
+        'Content-Type': 'application/json',
         authorization: token
       },
-      method: 'POST'
+      method: 'POST',
+      body: JSON.stringify({ data: data })
     });
 
     toast.info('درخواست شما برای ادمین رویداد ارسال شد');
@@ -67,9 +74,24 @@ class RequestPopup extends React.Component {
           {close => (
             <div className="modal">
               <div className="modal_message">
-                آیا تمایل دارید به عنوان <b> کمک کننده (staff) </b> در رویداد
-                <b> {this.props.event.title} </b>
-                مشارکت کنید؟
+                اگر تمایل دارید در عنوان <b> {this.props.event.title} </b> به
+                عنوان همکار اضافه شوید لطفا نقش خود در رویداد را وارد کنید تا
+                درخواست شما برای ادمین رویداد ارسال گردد
+              </div>
+              <div className="message_job">
+                <div className="input_container">
+                  <input
+                    type="text"
+                    className="login-input"
+                    placeholder="نقش"
+                    name="job"
+                    value={this.state.job}
+                    onChange={this.handleChange}
+                    required
+                    autoFocus
+                  />
+                  <i className="fa fa-users" />
+                </div>
               </div>
               <div className="accept_request">
                 <button

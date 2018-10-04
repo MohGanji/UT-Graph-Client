@@ -35,14 +35,9 @@ export default class UserEventBox extends React.Component {
               )}
             </div>
             <div className="user_event_info">
-              {/* edit to event role */}
               <TitleHolder
                 image={RoleImage}
-                title={
-                  this.props.event.role === 'ORGANIZER'
-                    ? 'برگزار کننده'
-                    : 'شرکت کننده'
-                }
+                title={this.props.event.job}
                 customHeight="45px"
               />
               <TitleHolder

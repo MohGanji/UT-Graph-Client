@@ -71,15 +71,13 @@ class User extends React.Component {
       return <NotFound />;
     }
 
-    let userEvents = this.state.eventsAsStaff.map((event, i) => (
+    let userEventsAsStaff = this.state.eventsAsStaff.map((event, i) => (
       <UserEventBox key={i} event={event} />
     ));
 
     let userEventsAsAdmin = this.state.eventsAsAdmin.map((event, i) => (
       <UserEventBox key={i} event={event} />
     ));
-
-    userEvents.concat(userEventsAsAdmin);
 
     return (
       <div className="container">
@@ -164,7 +162,9 @@ class User extends React.Component {
           <div className="event_container_all_title">
             <p>رویداد های کاربر:</p>
           </div>
-          <div className="event_container">{userEvents}</div>
+          <div className="event_container">
+            {userEventsAsAdmin} {userEventsAsStaff}
+          </div>
         </div>
         <Footer />
       </div>
