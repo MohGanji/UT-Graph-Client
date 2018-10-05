@@ -16,6 +16,7 @@ import ProgressBar from 'react-progress-bar-plus';
 import defaultEventImage from '../../images/defaultEvent.svg';
 import NumberConverter from '../../Utils/BaseForm/numberConverter';
 import { toast } from 'react-toastify';
+import ReactLoading from 'react-loading';
 
 function mapStateToProps(state) {
   return {
@@ -44,8 +45,13 @@ class CreateEvent extends BaseForm {
       staffs: [],
       sponserSelected: [],
       staffSelected: [],
-      warnings: []
+      warnings: [],
+      isEditing: false,
+      isUploading: false,
+      isEdited: false,
+      isUploaded: false
     };
+
     this.handleBeginTime = this.handleBeginTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,6 +77,7 @@ class CreateEvent extends BaseForm {
     this.setState({ description: description });
   }
   async fileUpload(id, token) {
+    this.setState({ isUploading: true });
     const url = '/api/v1/event/upload/' + id;
     let data = await new FormData();
     data.append('event', this.state.file, this.state.file.name);
@@ -84,13 +91,17 @@ class CreateEvent extends BaseForm {
     };
     axios
       .post(url, data, config)
-      .then(result => {})
+      .then(() => {
+        this.setState({ isUploaded: false, isUploaded: true });
+      })
       .catch(function(error) {
         console.log(error);
       });
   }
 
   handleSubmit() {
+    this.setState({ isEditing: true });
+
     let that = this;
     let data = {
       title: that.state.title,
@@ -115,23 +126,26 @@ class CreateEvent extends BaseForm {
       },
       body: JSON.stringify({ data: data })
     };
-    // centralRequest(url, dataSend)
     fetch(url, dataSend)
       .then(function(response) {
         if (that.props.type === 'create') return response.json();
         else return response;
       })
       .then(ress => {
-        if (that.props.type === 'create') id = ress.data;
-        if (this.state.file != null) this.fileUpload(id, token);
+        if (that.props.type === 'create') {
+          id = ress.data;
+        }
+        if (this.state.file != null) {
+          this.fileUpload(id, token);
+        }
         if (!ress.hasOwnProperty('errors')) {
-          that.setState({ redirect: true });
           if (this.props.type === 'create') {
             toast.success('رویداد شما با موفقیت ساخته شد!');
           } else {
             toast.success('رویداد شما با موفقیت ویرایش شد!');
           }
         }
+        that.setState({ isEdited: true });
         return ress;
       })
       .then(handleErrors)
@@ -249,7 +263,7 @@ class CreateEvent extends BaseForm {
   };
 
   render() {
-    if (this.state.redirect) {
+    if (this.state.isUploaded && this.state.isEdited) {
       if (this.props.type === 'create') {
         return <Redirect to="/my-events" />;
       } else {
@@ -403,6 +417,21 @@ class CreateEvent extends BaseForm {
                   />
                 </div>
               </div>
+            </div>
+            <div
+              className="uploading"
+              style={
+                this.state.isEditing && this.state.isUploading
+                  ? {}
+                  : { display: 'none' }
+              }
+            >
+              <ReactLoading
+                type="spinningBubbles"
+                color="#352649"
+                height={30}
+                width={30}
+              />
             </div>
             <div className="create_event_submit">
               <input
