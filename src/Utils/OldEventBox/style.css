@@ -28,9 +28,16 @@
   transition: all 0.3s ease-in-out;
 }
 
+.old_event_image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .old_event_image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .old_event_title {

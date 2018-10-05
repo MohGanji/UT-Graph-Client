@@ -30,7 +30,7 @@ class MyEvents extends React.Component {
     let user = this.props.user;
     let that = this;
 
-    fetch(`/api/v1/user/${user.username}/events/ORGANIZER`)
+    fetch(`/api/v1/user/${user.username}/events`)
       .then(handleErrors)
       .then(function (response) {
         return response.json();
@@ -38,36 +38,12 @@ class MyEvents extends React.Component {
       .then(function (responseJson) {
         return responseJson.data;
       })
-      .then(function (events) {
-        that.setState({ organizer: events });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    fetch(`/api/v1/user/${user.username}/events/STAFF`)
-      .then(handleErrors)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (responseJson) {
-        return responseJson.data;
-      })
-      .then(function (events) {
-        that.setState({ staff: events });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    fetch(`/api/v1/user/${user.username}/events/ATTENDENT`)
-      .then(handleErrors)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (responseJson) {
-        return responseJson.data;
-      })
-      .then(function (events) {
-        that.setState({ attendent: events });
+      .then(function (data) {
+        that.setState({
+          organizer: data.eventsAsAdmin,
+          staff: data.eventsAsStaff,
+          attendent: data.eventsAsAttendent
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -76,7 +52,6 @@ class MyEvents extends React.Component {
   }
 
   changeState (e) {
-    console.log(e.target.id);
     this.setState({ statePage: e.target.id });
   }
 
@@ -84,7 +59,7 @@ class MyEvents extends React.Component {
     let myEvents;
     if (this.state.statePage === 'organizer') {
       myEvents = this.state.organizer.map((event, i) => (
-        <MyEventBox key={i} event={event} />
+        <MyEventBox key={i} event={event} isAdmin={true} />
       ));
     } else if (this.state.statePage === 'attendent') {
       myEvents = this.state.staff.map((event, i) => (

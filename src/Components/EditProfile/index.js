@@ -15,6 +15,7 @@ import numberConverter from '../../Utils/BaseForm/numberConverter';
 import TextArea from '../../Utils/TextArea';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultProfileImage from '../../images/defaultProfile.svg';
+import ReactLoading from 'react-loading';
 
 function mapStateToProps (state) {
   return {
@@ -38,7 +39,10 @@ class EditProfile extends BaseForm {
       sid: '',
       p_sid: '',
       bio: '',
+      isEditing: false,
+      isUploading: false,
       isEdited: false,
+      isUploaded: false,
       warnings: []
     };
     this.onChange = this.onChange.bind(this);
@@ -61,9 +65,12 @@ class EditProfile extends BaseForm {
   }
 
   handleSubmit () {
+    this.setState({ isEditing: true });
+
     if (!this.state.rightPassword) {
       return;
     }
+
     if (this.state.file != null) {
       this.fileUpload();
     }
@@ -100,13 +107,11 @@ class EditProfile extends BaseForm {
         return response.json();
       })
       .then(function (responseJson) {
-        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
+        console.log(responseJson);
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data.user });
       })
       .then(function () {
-        toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
-      })
-      .then(function () {
-        that.setState({ isEdited: true });
+        that.setState({ isEditing: false, isEdited: true });
       })
       .catch(function (error) {
         console.log(error);
@@ -131,6 +136,9 @@ class EditProfile extends BaseForm {
     reader.readAsDataURL(file);
   }
   async fileUpload () {
+    this.setState({ isUploading: true });
+
+    let that = this;
     let token = localStorage.getItem('accessToken');
     const url = '/api/v1/user/upload';
     let data = await new FormData();
@@ -139,15 +147,27 @@ class EditProfile extends BaseForm {
       method: 'post',
       headers: {
         authorization: token
-      },
-      params: {
-        // "a": "b"
       }
     };
     axios
       .post(url, data, config)
       .then(result => {
         console.log(result);
+      })
+      .then(() => {
+        axios(`/api/v1/user/${this.props.user.username}`)
+          .then(function (response) {
+            return response.data.data;
+          })
+          .then(function (responseData) {
+            that.props.dispatch({
+              type: 'SET_USER',
+              user: responseData.user
+            });
+          })
+          .then(function () {
+            that.setState({ isUploading: false, isUploaded: true });
+          });
       })
       .catch(function (error) {
         console.log(error);
@@ -174,6 +194,10 @@ class EditProfile extends BaseForm {
   }
 
   render () {
+    if (this.state.isEdited && this.state.isUploaded) {
+      toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
+      this.setState({ isEdited: false, isUploaded: false });
+    }
     return (
       <div className="container">
         <ProgressBar
@@ -200,12 +224,11 @@ class EditProfile extends BaseForm {
                 </div>
                 <div className="create_event_picture_content">
                   <div className="prof_pic">
-                    {this.state.image ===
-                    'http://localhost:8080/public/defaultProfile.svg' ? (
-                        <img src={defaultProfileImage} alt="عکس پروفایل" />
-                      ) : (
-                        <img src={this.state.image} alt="عکس پروفایل" />
-                      )}
+                    {this.state.image === '' ? (
+                      <img src={defaultProfileImage} alt="عکس پروفایل" />
+                    ) : (
+                      <img src={this.state.image} alt="عکس پروفایل" />
+                    )}
                   </div>
                   <label className="change_button" htmlFor="upload-photo">
                     {' '}
@@ -376,6 +399,21 @@ class EditProfile extends BaseForm {
                 <div className="create_event_textarea">
                   <TextArea text={this.state.bio} handleText={this.handleBio} />
                 </div>
+              </div>
+              <div
+                className="uploading"
+                style={
+                  this.state.isEditing && this.state.isUploading
+                    ? {}
+                    : { display: 'none' }
+                }
+              >
+                <ReactLoading
+                  type="spinningBubbles"
+                  color="#352649"
+                  height={30}
+                  width={30}
+                />
               </div>
               <div className="create_event_submit_container edit_profile_submit">
                 <input

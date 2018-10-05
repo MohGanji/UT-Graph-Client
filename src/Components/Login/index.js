@@ -52,7 +52,7 @@ class Login extends BaseForm {
         return response.json();
       })
       .then(function (responseJson) {
-        that.props.dispatch({ type: 'SET_USER', user: responseJson.data });
+        that.props.dispatch({ type: 'SET_USER', user: responseJson.data.user });
       })
       .then(function () {
         toast.info('شما با موفقیت وارد شدید');

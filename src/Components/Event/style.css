@@ -16,11 +16,9 @@
   box-shadow: 0 0.4rem 1.6rem 0 rgba(0, 0, 0, 0.11);
   overflow: hidden;
   border: 1.6px solid #cecdcd;
-}
-
-.event_page_photo_container img {
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .event_page_info_container {
@@ -121,6 +119,7 @@
 .event_page_about_right_up_map img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .event_page_about_right_up_title_container {
@@ -201,6 +200,7 @@
 .event_page_users_left_organizer_image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .event_page_users_left_organizer_info {
@@ -279,6 +279,10 @@
   align-items: center;
 }
 
+.event_page_button_container button {
+  margin-right: 10px;
+}
+
 .event_page_button_container span {
   margin-right: 12px;
   color: #f02917;
@@ -289,7 +293,6 @@
   border-radius: 5px;
   color: white;
   padding: 15px 25px;
-  margin-right: 10px;
   font-size: 14pt;
   cursor: pointer;
   background-color: #352649;
@@ -322,9 +325,17 @@
 }
 
 .modal_message {
-  margin: 40px 30px 60px 100px;
+  margin: 40px 50px 5px 70px;
   text-align: center;
   font-size: 14pt;
+}
+
+.message_job {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .accept_request {

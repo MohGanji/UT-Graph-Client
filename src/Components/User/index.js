@@ -9,9 +9,11 @@ import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultProfileImage from '../../images/defaultProfile.svg';
+import AboutMeImage from '../../images/resume.svg';
+import TitleHolder from '../../Utils/TitleHolder';
+import ReactHtmlParser from 'react-html-parser';
 
 function mapStateToProps (state) {
   return {
@@ -24,8 +26,10 @@ class User extends React.Component {
     super(props);
 
     this.state = {
-      info: {},
-      events: [],
+      user: {},
+      eventsAsAdmin: [],
+      eventsAsAttendant: [],
+      eventsAsStaff: [],
       notFound: false,
       image: '',
       loading: true
@@ -48,22 +52,13 @@ class User extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        that.setState({ info: info });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    fetch(`/api/v1/user/${id}/events`)
-      .then(handleErrors)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (responseJson) {
-        return responseJson.data;
-      })
-      .then(function (events) {
-        that.setState({ events: events });
+        console.log(info);
+        that.setState({
+          user: info.user,
+          eventsAsAdmin: info.eventsAsAdmin,
+          eventsAsAttendant: info.eventsAsAttendant,
+          eventsAsStaff: info.eventsAsStaff
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -75,7 +70,12 @@ class User extends React.Component {
     if (this.state.notFound === true) {
       return <NotFound />;
     }
-    let userEvents = this.state.events.map((event, i) => (
+
+    let userEventsAsStaff = this.state.eventsAsStaff.map((event, i) => (
+      <UserEventBox key={i} event={event} />
+    ));
+
+    let userEventsAsAdmin = this.state.eventsAsAdmin.map((event, i) => (
       <UserEventBox key={i} event={event} />
     ));
 
@@ -90,28 +90,48 @@ class User extends React.Component {
         <BackgroundCover />
         <div className="user_info">
           <div className="profile_photo_container">
-            {this.state.info.image ===
-            'http://localhost:8080/public/defaultProfile.svg' ? (
-                <img
-                  className="profile_photo"
-                  src={defaultProfileImage}
-                  alt="عکس کاربر"
-                />
-              ) : (
-                <img
-                  className="profile_photo"
-                  src={this.state.info.image}
-                  alt="عکس کاربر"
-                />
-              )}
+            {this.state.user.image === '' ? (
+              <img
+                className="profile_photo"
+                src={defaultProfileImage}
+                alt="عکس کاربر"
+              />
+            ) : (
+              <img
+                className="profile_photo"
+                src={this.state.user.image}
+                alt="عکس کاربر"
+              />
+            )}
           </div>
-          <div className="user_about">
+          <div className="user_name">
+            <p id="user_name" className="user_about_text">
+              {this.state.user.firstName} {this.state.user.lastName}
+            </p>
+            <Link to={`/user/${this.state.user.username}`}>
+              <p id="user_username">@{this.state.user.username}</p>
+            </Link>
+          </div>
+          <div className="user_about_container">
+            <div className="user_about_title">
+              <TitleHolder
+                image={AboutMeImage}
+                title=" درباره من: "
+                customHeight="45px"
+                customWidth="275px"
+              />
+            </div>
+            <div className="user_about_description">
+              <p>{ReactHtmlParser(this.state.user.bio)}</p>
+            </div>
+          </div>
+          {/* <div className="user_about">
             <p id="user_name" className="user_about_text">
               {' '}
-              {this.state.info.firstName} {this.state.info.lastName}
-            </p>
-            <div className="user_about_container">
-              <p> {ReactHtmlParser(this.state.info.bio)}</p>
+              {this.state.firstName} {this.state.lastName}
+            </p> */}
+          {/* <div className="user_about_container">
+              <p> {ReactHtmlParser(this.state.bio)}</p>
             </div>
             <div className="user_about_button_container">
               <Link to={`/edit-profile`}>
@@ -134,22 +154,17 @@ class User extends React.Component {
                   رویداد های من
                 </button>
               </Link>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
         <hr />
-        <div
-          style={
-            this.state.events.length === 0
-              ? { display: 'none' }
-              : { display: 'block' }
-          }
-          className="event_container_all"
-        >
+        <div className="event_container_all">
           <div className="event_container_all_title">
             <p>رویداد های کاربر:</p>
           </div>
-          <div className="event_container">{userEvents}</div>
+          <div className="event_container">
+            {userEventsAsAdmin} {userEventsAsStaff}
+          </div>
         </div>
         <Footer />
       </div>

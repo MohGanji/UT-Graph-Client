@@ -61,6 +61,7 @@
 .prof_pic > img {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .prof_pic {
   height: 150px;
@@ -150,4 +151,17 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+.uploading {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14pt;
+  margin-left: auto;
+  margin-right: auto;
 }

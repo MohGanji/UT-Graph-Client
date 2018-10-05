@@ -10,14 +10,15 @@ export default function makeNotifMessage (notification) {
           <Link to={`/event/${notification.event._id}`}>
             <b> {notification.event.title} </b>
           </Link>
-          را دارد
+          به عنوان <b>{notification.job}</b> را دارد
         </p>
       );
       break;
     case 'ACCEPT':
       notification.message = (
         <p className="notification_message">
-          شما به عنوان کمک کننده به رویداد
+          شما به عنوان <b> {notification.job} </b>
+          به رویداد
           <Link to={`/event/${notification.event._id}`}>
             <b> {notification.event.title} </b>
           </Link>

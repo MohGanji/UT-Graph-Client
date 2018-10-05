@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import Login from '../../Login';
 import { Redirect } from 'react-router-dom';
+import './style.css';
 
 function mapStateToProps (state) {
   return {
@@ -83,6 +84,7 @@ class SignupPopup extends React.Component {
               </div>
               <div className="accept_request">
                 <button
+                  id="signup_accept_button"
                   onClick={() => {
                     this.register();
                     close();
