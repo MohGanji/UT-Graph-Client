@@ -132,6 +132,7 @@ class EditProfile extends BaseForm {
     reader.readAsDataURL(file);
   }
   async fileUpload () {
+    let that = this;
     let token = localStorage.getItem('accessToken');
     const url = '/api/v1/user/upload';
     let data = await new FormData();
@@ -140,15 +141,24 @@ class EditProfile extends BaseForm {
       method: 'post',
       headers: {
         authorization: token
-      },
-      params: {
-        // "a": "b"
       }
     };
     axios
       .post(url, data, config)
       .then(result => {
         console.log(result);
+      })
+      .then(() => {
+        axios(`/api/v1/user/${this.props.user.username}`)
+          .then(function (response) {
+            return response.data.data;
+          })
+          .then(function (responseData) {
+            that.props.dispatch({
+              type: 'SET_USER',
+              user: responseData.user
+            });
+          });
       })
       .catch(function (error) {
         console.log(error);
