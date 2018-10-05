@@ -208,6 +208,16 @@
   margin-top: 50px;
 }
 
+.create_event_search_select {
+  position: relative;
+}
+
+.create_event_add_sponser {
+  font-size: 20pt;
+  color: black;
+  cursor: pointer;
+}
+
 .capacity_container input {
   width: 180px;
   direction: ltr;

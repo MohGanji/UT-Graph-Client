@@ -46,6 +46,8 @@ class CreateEvent extends BaseForm {
       staffs: [],
       sponserSelected: [],
       staffSelected: [],
+      sponserText: '',
+      staffText: '',
       warnings: [],
       isEditing: false,
       isUploading: false,
@@ -161,6 +163,7 @@ class CreateEvent extends BaseForm {
     let that = this;
     if (this.props.type === 'create') {
       this.setState({ loading: false });
+      this.setState({ isOwner: true });
       return;
     } else {
       const id = this.props.match.params.id;
@@ -274,6 +277,8 @@ class CreateEvent extends BaseForm {
     let that = this;
     let token = localStorage.getItem('accessToken');
     let stateName = name == 'user' ? 'staffs' : 'sponsers';
+    let textName = name == 'user' ? 'staffText' : 'sponserText';
+    this.setState({ [textName]: newText });
     fetch(`/api/v1/${name}/search/${newText}`, {
       headers: {
         authorization: token
@@ -302,6 +307,31 @@ class CreateEvent extends BaseForm {
       });
   };
 
+  handleAddSponser = () => {
+    let token = localStorage.getItem('accessToken');
+    let sponser = this.state.sponserText;
+    if (sponser.length === 0) {
+      toast.error('نام حامی خالی است!');
+      return;
+    }
+    let data = {
+      name: sponser
+    };
+    fetch('/api/v1/sponser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: token
+      },
+      body: JSON.stringify({
+        data: data
+      })
+    }).catch(function(error) {
+      console.log(error);
+    });
+    toast.success('حامی جدید با موفقیت ثبت شد');
+  };
+
   render() {
     if (!this.state.isOwner) {
       return <NotFound />;
@@ -314,6 +344,11 @@ class CreateEvent extends BaseForm {
         return <Redirect to={`/event/${id}`} />;
       }
     }
+    const addSponser = (
+      <p className="create_event_add_sponser" onClick={this.handleAddSponser}>
+        +
+      </p>
+    );
     return (
       <div className="container">
         <ProgressBar
@@ -452,14 +487,17 @@ class CreateEvent extends BaseForm {
                   <p className="create_event_header_font"> اضافه کردن حامی </p>
                 </div>
                 <div className="create_event_search_content">
-                  <Select
-                    options={this.state.sponsers}
-                    isMulti={true}
-                    placeholder={'جستجو...'}
-                    name="sponsers"
-                    onChange={this.handleSelect('sponserSelected')}
-                    onInputChange={this.onInputChange('sponser')}
-                  />
+                  <div className="create_event_search_select">
+                    <Select
+                      options={this.state.sponsers}
+                      isMulti={true}
+                      placeholder={'جستجو...'}
+                      name="sponsers"
+                      onChange={this.handleSelect('sponserSelected')}
+                      onInputChange={this.onInputChange('sponser')}
+                      noOptionsMessage={() => addSponser}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
