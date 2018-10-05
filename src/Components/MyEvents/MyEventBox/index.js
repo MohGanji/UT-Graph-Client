@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import defaultEventImage from '../../../images/defaultEvent.svg';
+import { toast } from 'react-toastify';
 
 function mapStateToProps (state) {
   return {
@@ -39,6 +40,7 @@ class MyEventBox extends React.Component {
           that.setState({
             deleted: true
           });
+          toast.success('رویداد شما با موفقیت حذف شد!');
         }
       })
       .catch(function (error) {
@@ -51,26 +53,26 @@ class MyEventBox extends React.Component {
       return <Redirect to="/my-events" />;
     }
     return (
-      <Link
+      <div
         className="my_event_box_container"
         to={`/event/${this.props.event._id}`}
       >
         <div className="my_event_box_image_container">
           <div className="my_event_box_image">
-            <a href={`/event/${this.props.event._id}`}>
+            <Link to={`/event/${this.props.event._id}`}>
               {this.props.event.image === '' ? (
                 <img src={defaultEventImage} alt="عکس رویداد" />
               ) : (
                 <img src={this.props.event.image} alt="عکس رویداد" />
               )}
-            </a>
+            </Link>
           </div>
         </div>
         <div className="my_event_box_info_container">
           <div className="my_event_box_info_container_title">
-            <a href={`/event/${this.props.event._id}`}>
+            <Link to={`/event/${this.props.event._id}`}>
               {this.props.event.title}
-            </a>
+            </Link>
           </div>
           <div className="my_event_box_info_container_rest">
             <p>
@@ -85,14 +87,14 @@ class MyEventBox extends React.Component {
         </div>
         <div className="my_event_box_buttons">
           <div className="my_event_box_buttons_container">
-            <a
-              href={`event/${this.props.event._id}/edit`}
+            <Link
+              to={`event/${this.props.event._id}/edit`}
               style={
                 this.props.isAdmin ? { display: 'block' } : { display: 'none' }
               }
             >
               ویرایش
-            </a>
+            </Link>
             <a
               style={
                 this.props.isAdmin ? { display: 'block' } : { display: 'none' }
@@ -101,25 +103,17 @@ class MyEventBox extends React.Component {
             >
               حذف رویداد
             </a>
-            <a
-              href={`event/${this.props.event._id}/edit`}
-              style={
-                this.props.isAdmin ? { display: 'block' } : { display: 'none' }
-              }
-            >
-              ویرایش
-            </a>
-            <a
-              href={`/event/${this.props.event._id}`}
+            <Link
+              to={`/event/${this.props.event._id}`}
               style={
                 !this.props.isAdmin ? { display: 'block' } : { display: 'none' }
               }
             >
               مشاهده رویداد
-            </a>
+            </Link>
           </div>
         </div>
-      </Link>
+      </div>
     );
   }
 }
