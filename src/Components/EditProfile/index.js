@@ -196,6 +196,7 @@ class EditProfile extends BaseForm {
   render () {
     if (this.state.isEdited && this.state.isUploaded) {
       toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
+      this.setState({ isEdited: false, isUploaded: false });
     }
     return (
       <div className="container">
