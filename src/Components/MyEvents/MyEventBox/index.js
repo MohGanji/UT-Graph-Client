@@ -88,14 +88,35 @@ class MyEventBox extends React.Component {
             <a
               href={`event/${this.props.event._id}/edit`}
               style={
-                this.props.event.organizer === this.props.user.username
-                  ? { display: 'block' }
-                  : { display: 'none' }
+                this.props.isAdmin ? { display: 'block' } : { display: 'none' }
               }
             >
               ویرایش
             </a>
-            <a onClick={this.handleDelete}>حذف رویداد</a>
+            <a
+              style={
+                this.props.isAdmin ? { display: 'block' } : { display: 'none' }
+              }
+              onClick={this.handleDelete}
+            >
+              حذف رویداد
+            </a>
+            <a
+              href={`event/${this.props.event._id}/edit`}
+              style={
+                this.props.isAdmin ? { display: 'block' } : { display: 'none' }
+              }
+            >
+              ویرایش
+            </a>
+            <a
+              href={`/event/${this.props.event._id}`}
+              style={
+                !this.props.isAdmin ? { display: 'block' } : { display: 'none' }
+              }
+            >
+              مشاهده رویداد
+            </a>
           </div>
         </div>
       </Link>
@@ -107,5 +128,6 @@ export default connect(mapStateToProps)(MyEventBox);
 
 MyEventBox.propTypes = {
   event: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  isAdmin: PropTypes.bool
 };

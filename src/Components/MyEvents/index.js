@@ -59,7 +59,7 @@ class MyEvents extends React.Component {
     let myEvents;
     if (this.state.statePage === 'organizer') {
       myEvents = this.state.organizer.map((event, i) => (
-        <MyEventBox key={i} event={event} />
+        <MyEventBox key={i} event={event} isAdmin={true} />
       ));
     } else if (this.state.statePage === 'attendent') {
       myEvents = this.state.staff.map((event, i) => (
