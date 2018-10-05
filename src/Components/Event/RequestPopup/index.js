@@ -74,7 +74,7 @@ class RequestPopup extends BaseForm {
           {close => (
             <div className="modal">
               <div className="modal_message">
-                اگر تمایل دارید در عنوان <b> {this.props.event.title} </b> به
+                اگر تمایل دارید در رویداد <b> {this.props.event.title} </b> به
                 عنوان همکار اضافه شوید لطفا نقش خود در رویداد را وارد کنید تا
                 درخواست شما برای ادمین رویداد ارسال گردد
               </div>
