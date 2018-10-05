@@ -17,6 +17,7 @@ import defaultEventImage from '../../images/defaultEvent.svg';
 import NumberConverter from '../../Utils/BaseForm/numberConverter';
 import { toast } from 'react-toastify';
 import ReactLoading from 'react-loading';
+import NotFound from '../NotFound';
 
 function mapStateToProps(state) {
   return {
@@ -49,7 +50,8 @@ class CreateEvent extends BaseForm {
       isEditing: false,
       isUploading: false,
       isEdited: false,
-      isUploaded: false
+      isUploaded: false,
+      isOwner: false
     };
 
     this.handleBeginTime = this.handleBeginTime.bind(this);
@@ -171,7 +173,11 @@ class CreateEvent extends BaseForm {
           return responseJson.data;
         })
         .then(function(info) {
-          console.log(info);
+          if (that.props.user.username === info.event.organizer) {
+            that.setState({ isOwner: true });
+          } else {
+            that.setState({ isOwner: false });
+          }
           that.setState({
             title: info.event.title,
             location: info.event.location,
@@ -263,6 +269,9 @@ class CreateEvent extends BaseForm {
   };
 
   render() {
+    if (!this.state.isOwner) {
+      return <NotFound />;
+    }
     if (this.state.isUploaded && this.state.isEdited) {
       if (this.props.type === 'create') {
         return <Redirect to="/my-events" />;

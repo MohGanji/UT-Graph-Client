@@ -279,6 +279,10 @@
   align-items: center;
 }
 
+.event_page_button_container button {
+  margin-right: 10px;
+}
+
 .event_page_button_container span {
   margin-right: 12px;
   color: #f02917;
