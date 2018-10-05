@@ -41,7 +41,7 @@ export default class Event extends React.Component {
       },
       notFound: false,
       loading: true,
-      remainingCapacity: '۰'
+      remainingCapacity: ''
     };
   }
 
@@ -71,6 +71,9 @@ export default class Event extends React.Component {
         let remainingCapacity = capacity - participantsCount;
         remainingCapacity = numberConverter.toPersian(
           String(remainingCapacity)
+        );
+        info.participantsCount = numberConverter.toPersian(
+          String(info.participantsCount)
         );
         that.setState({
           info: info,
@@ -145,7 +148,13 @@ export default class Event extends React.Component {
               <TitleHolder
                 image={capacityImage}
                 title={
-                  'ظرفیت باقیمانده: ' + this.state.remainingCapacity + ' نفر '
+                  this.state.info.isPassed
+                    ? 'تعداد شرکت کنندگان: ' +
+                      this.state.info.participantsCount +
+                      ' نفر '
+                    : 'ظرفیت باقیمانده: ' +
+                      this.state.remainingCapacity +
+                      ' نفر '
                 }
                 customHeight="45px"
                 customWidth="90%"
