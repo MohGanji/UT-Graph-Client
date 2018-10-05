@@ -22,6 +22,7 @@ import numberConverter from '../../Utils/BaseForm/numberConverter';
 import getDateString from '../../Utils/functions/getDateString';
 import SignupPopup from './SignupPopup';
 import RequestPopup from './RequestPopup';
+import ModalImage from 'react-modal-image';
 import 'font-awesome/css/font-awesome.min.css';
 
 export default class Event extends React.Component {
@@ -65,7 +66,6 @@ export default class Event extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
         let participantsCount = info.participantsCount;
         let capacity = info.event.capacity;
         let remainingCapacity = capacity - participantsCount;
@@ -106,9 +106,12 @@ export default class Event extends React.Component {
         <div className="event_page_info_1">
           <div className="event_page_photo_container">
             {this.state.info.event.image === '' ? (
-              <img src={defaultEventImage} alt="عکس رویداد" />
+              <ModalImage small={defaultEventImage} large={defaultEventImage} />
             ) : (
-              <img src={this.state.info.event.image} alt="عکس رویداد" />
+              <ModalImage
+                small={this.state.info.event.image}
+                large={this.state.info.event.image}
+              />
             )}
           </div>
           <div className="event_page_info_container">
