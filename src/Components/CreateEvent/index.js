@@ -141,6 +141,7 @@ class CreateEvent extends BaseForm {
   }
 
   componentDidMount() {
+    console.log('salam');
     let that = this;
     if (this.props.type === 'create') {
       this.setState({ loading: false });
@@ -173,55 +174,56 @@ class CreateEvent extends BaseForm {
           console.log(error);
         });
     }
-    let token = localStorage.getItem('accessToken');
-    fetch(`/api/v1/sponser/`, {
-      method: 'GET',
-      headers: {
-        authorization: token
-      }
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(handleErrors)
-      .then(function(responseJson) {
-        return responseJson.data;
-      })
-      .then(function(info) {
-        let names = info.map(sponser => {
-          let obj = {
-            value: sponser,
-            label: sponser.name
-          };
-          return obj;
-        });
-        that.setState({ sponsers: names });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // let token = localStorage.getItem('accessToken');
+    // fetch(`/api/v1/sponser/`, {
+    //   method: 'GET',
+    //   headers: {
+    //     authorization: token
+    //   }
+    // })
+    //   .then(function(response) {
+    //     return response.json();
+    //   })
+    //   .then(handleErrors)
+    //   .then(function(responseJson) {
+    //     return responseJson.data;
+    //   })
+    //   .then(function(info) {
+    //     let names = info.map(sponser => {
+    //       let obj = {
+    //         value: sponser,
+    //         label: sponser.name
+    //       };
+    //       return obj;
+    //     });
+    //     that.setState({ sponsers: names });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
 
-    fetch(`/api/v1/user/`)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(handleErrors)
-      .then(function(responseJson) {
-        return responseJson.data;
-      })
-      .then(function(info) {
-        let usernames = info.map(user => {
-          let obj = {
-            value: user,
-            label: user.username
-          };
-          return obj;
-        });
-        that.setState({ staffs: usernames });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // fetch(`/api/v1/user/`)
+    //   .then(function(response) {
+    //     return response.json();
+    //   })
+    //   .then(handleErrors)
+    //   .then(function(responseJson) {
+    //     return responseJson.data;
+    //   })
+    //   .then(function(info) {
+    //     console.log(info);
+    //     let usernames = info.map(user => {
+    //       let obj = {
+    //         value: user,
+    //         label: user.username
+    //       };
+    //       return obj;
+    //     });
+    //     that.setState({ staffs: usernames });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
 
     this.setState({ loading: false });
   }
@@ -246,6 +248,38 @@ class CreateEvent extends BaseForm {
     const value = optionSelected.map(option => option.value);
     console.log(name, value);
     this.setState({ [name]: value });
+  };
+
+  onInputChange = name => newText => {
+    let that = this;
+    let token = localStorage.getItem('accessToken');
+    let stateName = name == 'user' ? 'staffs' : 'sponsers';
+    fetch(`/api/v1/${name}/search/${newText}`, {
+      headers: {
+        authorization: token
+      }
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(handleErrors)
+      .then(function(responseJson) {
+        return responseJson.data;
+      })
+      .then(function(info) {
+        console.log(info);
+        let usernames = info.map(item => {
+          let obj = {
+            value: item,
+            label: name == 'user' ? item.username : item.name
+          };
+          return obj;
+        });
+        that.setState({ [stateName]: usernames });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {
@@ -387,6 +421,7 @@ class CreateEvent extends BaseForm {
                     placeholder={'جستجو...'}
                     name="staffs"
                     onChange={this.handleSelect('staffSelected')}
+                    onInputChange={this.onInputChange('user')}
                   />
                 </div>
               </div>
@@ -401,6 +436,7 @@ class CreateEvent extends BaseForm {
                     placeholder={'جستجو...'}
                     name="sponsers"
                     onChange={this.handleSelect('sponserSelected')}
+                    onInputChange={this.onInputChange('sponser')}
                   />
                 </div>
               </div>
