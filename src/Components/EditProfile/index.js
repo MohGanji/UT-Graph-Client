@@ -15,6 +15,7 @@ import numberConverter from '../../Utils/BaseForm/numberConverter';
 import TextArea from '../../Utils/TextArea';
 import ProgressBar from 'react-progress-bar-plus';
 import defaultProfileImage from '../../images/defaultProfile.svg';
+import ReactLoading from 'react-loading';
 
 function mapStateToProps (state) {
   return {
@@ -38,7 +39,10 @@ class EditProfile extends BaseForm {
       sid: '',
       p_sid: '',
       bio: '',
+      isEditing: false,
+      isUploading: false,
       isEdited: false,
+      isUploaded: false,
       warnings: []
     };
     this.onChange = this.onChange.bind(this);
@@ -61,9 +65,12 @@ class EditProfile extends BaseForm {
   }
 
   handleSubmit () {
+    this.setState({ isEditing: true });
+
     if (!this.state.rightPassword) {
       return;
     }
+
     if (this.state.file != null) {
       this.fileUpload();
     }
@@ -104,10 +111,7 @@ class EditProfile extends BaseForm {
         that.props.dispatch({ type: 'SET_USER', user: responseJson.data.user });
       })
       .then(function () {
-        toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
-      })
-      .then(function () {
-        that.setState({ isEdited: true });
+        that.setState({ isEditing: false, isEdited: true });
       })
       .catch(function (error) {
         console.log(error);
@@ -132,6 +136,8 @@ class EditProfile extends BaseForm {
     reader.readAsDataURL(file);
   }
   async fileUpload () {
+    this.setState({ isUploading: true });
+
     let that = this;
     let token = localStorage.getItem('accessToken');
     const url = '/api/v1/user/upload';
@@ -158,6 +164,9 @@ class EditProfile extends BaseForm {
               type: 'SET_USER',
               user: responseData.user
             });
+          })
+          .then(function () {
+            that.setState({ isUploading: false, isUploaded: true });
           });
       })
       .catch(function (error) {
@@ -185,6 +194,9 @@ class EditProfile extends BaseForm {
   }
 
   render () {
+    if (this.state.isEdited && this.state.isUploaded) {
+      toast.success('ویرایش پروفایل شما با موفقیت انجام شد');
+    }
     return (
       <div className="container">
         <ProgressBar
@@ -386,6 +398,21 @@ class EditProfile extends BaseForm {
                 <div className="create_event_textarea">
                   <TextArea text={this.state.bio} handleText={this.handleBio} />
                 </div>
+              </div>
+              <div
+                className="uploading"
+                style={
+                  this.state.isEditing && this.state.isUploading
+                    ? {}
+                    : { display: 'none' }
+                }
+              >
+                <ReactLoading
+                  type="spinningBubbles"
+                  color="#352649"
+                  height={30}
+                  width={30}
+                />
               </div>
               <div className="create_event_submit_container edit_profile_submit">
                 <input
