@@ -36,7 +36,7 @@ class User extends React.Component {
     };
   }
 
-  componentDidMount () {
+  componentWillReceiveProps () {
     let that = this;
     const id = this.props.match.params.id;
 
