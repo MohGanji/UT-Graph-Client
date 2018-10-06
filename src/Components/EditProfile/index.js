@@ -42,7 +42,7 @@ class EditProfile extends BaseForm {
       isEditing: false,
       isUploading: false,
       isEdited: false,
-      isUploaded: false,
+      isUploaded: true,
       warnings: []
     };
     this.onChange = this.onChange.bind(this);
@@ -136,7 +136,7 @@ class EditProfile extends BaseForm {
     reader.readAsDataURL(file);
   }
   async fileUpload () {
-    this.setState({ isUploading: true });
+    this.setState({ isUploaded: false, isUploading: true });
 
     let that = this;
     let token = localStorage.getItem('accessToken');
