@@ -19,8 +19,8 @@ class Login extends BaseForm {
     super(props);
 
     this.state = {
-      username: 'username',
-      password: 'password',
+      username: '',
+      password: '',
       noAccount: false,
       forgotPassword: false
     };
@@ -30,7 +30,8 @@ class Login extends BaseForm {
     this.handleForgotPassword = this.handleForgotPassword.bind(this);
   }
 
-  handleSubmit () {
+  handleSubmit (event) {
+    event.preventDefault();
     const data = this.state;
     let that = this;
 
@@ -88,44 +89,41 @@ class Login extends BaseForm {
     return (
       <div className="login_page">
         <div className="login-title">ورود</div>
-        <div className="login_form">
-          <div className="input_container">
-            <input
-              type="text"
-              className="login-input"
-              placeholder="نام کاربری"
-              name="username"
-              onChange={this.handleChange}
-              required
-              autoFocus
-            />
-            <i className="fa fa-user" />
+        <form onSubmit={this.handleSubmit}>
+          <div className="login_form">
+            <div className="input_container">
+              <input
+                type="text"
+                className="login-input"
+                placeholder="نام کاربری"
+                name="username"
+                onChange={this.handleChange}
+                required
+                autoFocus
+              />
+              <i className="fa fa-user" />
+            </div>
+            <div className="input_container">
+              <input
+                type="password"
+                className="login-input"
+                placeholder="رمز عبور"
+                name="password"
+                onChange={this.handleChange}
+                required
+              />
+              <i className="fa fa-unlock-alt" />
+            </div>
+            <input type="submit" value="ورود" className="login-button" />
+            <p className="login-lost">
+              <a onClick={this.handleForgotPassword}>
+                {' '}
+                رمز عبور خود را فراموش کرده اید؟{' '}
+              </a>{' '}
+              /<a onClick={this.handleNoAccount}> حساب کاربری ندارید؟ </a>
+            </p>
           </div>
-          <div className="input_container">
-            <input
-              type="password"
-              className="login-input"
-              placeholder="رمز عبور"
-              name="password"
-              onChange={this.handleChange}
-              required
-            />
-            <i className="fa fa-unlock-alt" />
-          </div>
-          <input
-            type="submit"
-            value="ورود"
-            className="login-button"
-            onClick={this.handleSubmit}
-          />
-          <p className="login-lost">
-            <a onClick={this.handleForgotPassword}>
-              {' '}
-              رمز عبور خود را فراموش کرده اید؟{' '}
-            </a>{' '}
-            /<a onClick={this.handleNoAccount}> حساب کاربری ندارید؟ </a>
-          </p>
-        </div>
+        </form>
       </div>
     );
   }
