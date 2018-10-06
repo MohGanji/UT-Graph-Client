@@ -94,7 +94,7 @@ class MyEvents extends React.Component {
               onClick={this.changeState}
               className={organizerClass}
             >
-              به عنوان ایجاد کننده
+              به عنوان برگزار کننده
             </button>
             <button
               id="attendent"
@@ -108,7 +108,7 @@ class MyEvents extends React.Component {
               onClick={this.changeState}
               className={staffClass}
             >
-              به عنوان کمک کننده
+              به عنوان همکار
             </button>
           </div>
           <div className="my_events_container">{myEvents}</div>
