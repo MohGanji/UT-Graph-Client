@@ -62,7 +62,7 @@ export default class Notification extends React.Component {
     const cards = newNotif.map((notif, index) => {
       if (
         this.state.type === 'selected' &&
-        this.props.match.params.index === notif.index
+        this.props.match.params.index == notif.index
       ) {
         return <NotifCard selected={true} notification={notif} key={index} />;
       } else {
