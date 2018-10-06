@@ -52,7 +52,7 @@ class CreateEvent extends BaseForm {
       isEditing: false,
       isUploading: false,
       isEdited: false,
-      isUploaded: false,
+      isUploaded: true,
       isOwner: false
     };
 
@@ -81,7 +81,7 @@ class CreateEvent extends BaseForm {
     this.setState({ description: description });
   }
   async fileUpload(id, token) {
-    this.setState({ isUploading: true });
+    this.setState({ isUploading: true, isUploaded: false });
     const url = '/api/v1/event/upload/' + id;
     let data = await new FormData();
     data.append('event', this.state.file, this.state.file.name);
@@ -96,7 +96,7 @@ class CreateEvent extends BaseForm {
     axios
       .post(url, data, config)
       .then(() => {
-        this.setState({ isUploaded: false, isUploaded: true });
+        this.setState({ isUploading: false, isUploaded: true });
       })
       .catch(function(error) {
         console.log(error);
@@ -159,7 +159,6 @@ class CreateEvent extends BaseForm {
   }
 
   componentDidMount() {
-    console.log('salam');
     let that = this;
     if (this.props.type === 'create') {
       this.setState({ loading: false });
@@ -343,6 +342,8 @@ class CreateEvent extends BaseForm {
         const id = this.props.match.params.id;
         return <Redirect to={`/event/${id}`} />;
       }
+    } else {
+      console.log(this.state.isUploaded, this.state.isEdited);
     }
     const addSponser = (
       <p className="create_event_add_sponser" onClick={this.handleAddSponser}>
