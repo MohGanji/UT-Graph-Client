@@ -15,7 +15,8 @@ export default class ForgetPassword extends BaseForm {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit () {
+  handleSubmit (event) {
+    event.preventDefault();
     const data = this.state;
 
     fetch('/api/v1/user/reset-password', {
@@ -37,30 +38,27 @@ export default class ForgetPassword extends BaseForm {
     return (
       <div className="forget_page">
         <div className="login-title">بازیابی رمز عبور</div>
-        <div className="login_form">
-          <p className="forget_password_p">
-            :برای دریافت ایمیل بازیابی رمز عبور ، لطفا آدرس ایمیل خود را وارد
-            کنید
-          </p>
-          <div className="input_container">
-            <input
-              type="email"
-              className="login-input"
-              placeholder="ایمیل"
-              name="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-              required
-            />
-            <i className="fa fa-envelope-open" />
+        <form onSubmit={this.handleSubmit}>
+          <div className="login_form">
+            <p className="forget_password_p">
+              :برای دریافت ایمیل بازیابی رمز عبور ، لطفا آدرس ایمیل خود را وارد
+              کنید
+            </p>
+            <div className="input_container">
+              <input
+                type="email"
+                className="login-input"
+                placeholder="ایمیل"
+                name="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+                required
+              />
+              <i className="fa fa-envelope-open" />
+            </div>
+            <input type="submit" value="ارسال" className="login-button" />
           </div>
-          <input
-            type="submit"
-            value="ارسال"
-            className="login-button"
-            onClick={this.handleSubmit}
-          />
-        </div>
+        </form>
       </div>
     );
   }
