@@ -8,7 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import defaultEventImage from '../../images/defaultEvent.svg';
+import defaultEventImage from '../../images/defaultEvent.png';
 
 export default class OldEventBox extends React.Component {
   render () {

@@ -13,7 +13,7 @@ import BaseForm from '../../Utils/BaseForm';
 import axios from 'axios';
 import Select from 'react-select';
 import ProgressBar from 'react-progress-bar-plus';
-import defaultEventImage from '../../images/defaultEvent.svg';
+import defaultEventImage from '../../images/defaultEvent.png';
 import NumberConverter from '../../Utils/BaseForm/numberConverter';
 import { toast } from 'react-toastify';
 import ReactLoading from 'react-loading';

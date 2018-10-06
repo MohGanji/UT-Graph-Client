@@ -15,7 +15,7 @@ import NotFound from '../NotFound';
 import Footer from '../../Utils/Footer';
 import PropTypes from 'prop-types';
 import ProgressBar from 'react-progress-bar-plus';
-import defaultEventImage from '../../images/defaultEvent.svg';
+import defaultEventImage from '../../images/defaultEvent.png';
 import defaultProfileImage from '../../images/defaultProfile.svg';
 import { Link } from 'react-router-dom';
 import numberConverter from '../../Utils/BaseForm/numberConverter';

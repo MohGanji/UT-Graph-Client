@@ -6,7 +6,7 @@ import RoleImage from '../../../images/group1.svg';
 import TitleHolder from '../../../Utils/TitleHolder';
 import getDateString from '../../../Utils/functions/getDateString';
 import PropTypes from 'prop-types';
-import defaultEventImage from '../../../images/defaultEvent.svg';
+import defaultEventImage from '../../../images/defaultEvent.png';
 import { Link } from 'react-router-dom';
 
 export default class UserEventBox extends React.Component {

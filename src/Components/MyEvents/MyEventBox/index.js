@@ -4,7 +4,7 @@ import getDateString from '../../../Utils/functions/getDateString';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import defaultEventImage from '../../../images/defaultEvent.svg';
+import defaultEventImage from '../../../images/defaultEvent.png';
 import { toast } from 'react-toastify';
 
 function mapStateToProps (state) {
