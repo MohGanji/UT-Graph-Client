@@ -28,7 +28,7 @@ export default class AboutUs extends React.Component {
         <Header />
         <div className="about_team">
           <div className="about_team_image">
-            <img id="utg-logo" src={utg} />
+            <img id="utg-logo" src={utg} alt="لوگو" />
           </div>
           <div className="about_team_text">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
@@ -54,7 +54,7 @@ export default class AboutUs extends React.Component {
         </div>
         <div className="contact_us">
           <div className="about_team_image">
-            <img id="email-logo" src={email} />
+            <img id="email-logo" src={email} alt="لوگوی ایمیل" />
           </div>
           <div className="inputs">
             <form>

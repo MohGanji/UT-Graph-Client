@@ -60,14 +60,18 @@ export default class NotifCard extends React.Component {
     if (this.state.hasButton) {
       buttons = (
         <div className="notification_button">
-          <img id="accept_button" src={Confirm} onClick={this.acceptNotif}>
-            {/* {' '}
-            تایید{' '} */}
-          </img>
-          <img id="reject_button" src={Ignore} onClick={this.rejectNotif}>
-            {/* {' '}
-            رد{' '} */}
-          </img>
+          <img
+            id="accept_button"
+            src={Confirm}
+            onClick={this.acceptNotif}
+            alt="تایید"
+          />
+          <img
+            id="reject_button"
+            src={Ignore}
+            onClick={this.rejectNotif}
+            alt="رد"
+          />
         </div>
       );
     }

@@ -275,8 +275,8 @@ class CreateEvent extends BaseForm {
   onInputChange = name => newText => {
     let that = this;
     let token = localStorage.getItem('accessToken');
-    let stateName = name == 'user' ? 'staffs' : 'sponsers';
-    let textName = name == 'user' ? 'staffText' : 'sponserText';
+    let stateName = name === 'user' ? 'staffs' : 'sponsers';
+    let textName = name === 'user' ? 'staffText' : 'sponserText';
     this.setState({ [textName]: newText });
     fetch(`/api/v1/${name}/search/${newText}`, {
       headers: {
@@ -295,7 +295,7 @@ class CreateEvent extends BaseForm {
         let usernames = info.map(item => {
           let obj = {
             value: item,
-            label: name == 'user' ? item.username : item.name
+            label: name === 'user' ? item.username : item.name
           };
           return obj;
         });
