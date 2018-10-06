@@ -25,7 +25,12 @@ export default class ForgetPassword extends BaseForm {
       body: JSON.stringify({ data: data })
     })
       .then(function (response) {
-        toast.success('ایمیل بازیابی به ایمیل شما فرستاده شد');
+        if (response.ok) {
+          toast.success('ایمیل بازیابی به ایمیل شما فرستاده شد');
+        } else {
+          toast.error('ایمیل مورد نظر یافت نشد!');
+        }
+
         return response.json();
       })
       .then(handleErrors)
