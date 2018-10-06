@@ -20,10 +20,7 @@ export default class StaffBox extends React.Component {
             <p>{this.props.user.job}</p>
           </div>
           <div className="staff_box_name">
-            <p>
-              {' '}
-              {this.props.user.firstName + ' ' + this.props.user.lastName}{' '}
-            </p>
+            <p>{this.props.user.firstName + ' ' + this.props.user.lastName}</p>
           </div>
         </Link>
       </div>

@@ -196,56 +196,6 @@ class CreateEvent extends BaseForm {
           console.log(error);
         });
     }
-    // let token = localStorage.getItem('accessToken');
-    // fetch(`/api/v1/sponser/`, {
-    //   method: 'GET',
-    //   headers: {
-    //     authorization: token
-    //   }
-    // })
-    //   .then(function(response) {
-    //     return response.json();
-    //   })
-    //   .then(handleErrors)
-    //   .then(function(responseJson) {
-    //     return responseJson.data;
-    //   })
-    //   .then(function(info) {
-    //     let names = info.map(sponser => {
-    //       let obj = {
-    //         value: sponser,
-    //         label: sponser.name
-    //       };
-    //       return obj;
-    //     });
-    //     that.setState({ sponsers: names });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-
-    // fetch(`/api/v1/user/`)
-    //   .then(function(response) {
-    //     return response.json();
-    //   })
-    //   .then(handleErrors)
-    //   .then(function(responseJson) {
-    //     return responseJson.data;
-    //   })
-    //   .then(function(info) {
-    //     console.log(info);
-    //     let usernames = info.map(user => {
-    //       let obj = {
-    //         value: user,
-    //         label: user.username
-    //       };
-    //       return obj;
-    //     });
-    //     that.setState({ staffs: usernames });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
 
     this.setState({ loading: false });
   }
@@ -452,7 +402,6 @@ class CreateEvent extends BaseForm {
                         value={this.state.p_capacity}
                         maxLength="6"
                       />
-                      {/* <span>نفر</span> */}
                     </div>
                   </div>
                 </div>

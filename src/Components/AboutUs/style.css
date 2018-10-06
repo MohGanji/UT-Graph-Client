@@ -1,4 +1,4 @@
-.about_team{
+.about_team {
   width: 100%;
   /* height: 500px; */
   height: auto;
@@ -8,28 +8,26 @@
   margin-top: 120px;
   margin-bottom: 50px;
   direction: rtl;
-
-  
 }
-.about_team_text{
+.about_team_text {
   width: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
 }
-.about_team_image{
+.about_team_image {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-#utg-logo{
+#utg-logo {
   width: 400px;
   height: 400px;
   margin-left: 25px;
   /* margin-bottom: 100px; */
 }
-.team_developer{
+.team_developer {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -40,47 +38,47 @@
   /* flex-direction: column; */
   /* flex-wrap: wrap; */
 }
-.contact_us{
+.contact_us {
   margin-top: 100px;
-  margin-bottom:100px;
+  margin-bottom: 100px;
   display: grid;
   grid-template-columns: 30% 60% 10%;
   /* direction: rtl; */
 }
-.fname{
+.fname {
   display: flex;
 }
-.email{
+.email {
   display: flex;
 }
-.phonenumber{
+.phonenumber {
   display: flex;
 }
-.message_input{
+.message_input {
   display: flex;
 }
-#input_frame{
+#input_frame {
   width: 700px;
   height: 30px;
   margin-bottom: 10px;
 }
-.message_input_text{
+.message_input_text {
   width: 700px;
   height: 90px;
   margin-bottom: 10px;
 }
-.inputs{
+.inputs {
   display: flex;
   direction: rtl;
   flex-direction: column;
 }
-.submit_buttom{
+.submit_buttom {
   display: flex;
   widows: 80px;
   height: 20px;
   background-color: #352649;
 }
-#submit_button{
+#submit_button {
   display: flex;
   background-color: #352649;
   color: white;
@@ -89,9 +87,9 @@
   height: 70px;
   font-size: 22px;
   margin-top: 50px;
-  margin-right:50px;
+  margin-right: 50px;
 }
-#email-logo{
+#email-logo {
   width: 400px;
   height: 400px;
   margin-left: 25px;

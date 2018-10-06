@@ -7,9 +7,6 @@
 }
 .input_container {
   position: relative;
-  /* height: 60px; */
-  /* background: red; */
-  /* width: 10px; */
 }
 
 .login_form {
@@ -30,13 +27,12 @@
   color: greenyellow;
   height: 10vh;
   direction: rtl;
-  /* background: #0095ff; */
 }
+
 .message > p {
   margin-top: -30px;
 }
 div.login-title {
-  /* margin: -28px -25px 25px; */
   padding: 2vh 3vw;
   box-sizing: border-box;
   width: calc(100% + 4px);
@@ -47,8 +43,6 @@ div.login-title {
   color: #adadad;
   text-align: center;
   background: #25084d;
-  /* z-index: -3; */
-  /* background: purple; */
 }
 
 .login-input {

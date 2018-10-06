@@ -228,7 +228,6 @@ export default class Event extends React.Component {
               <div className="event_page_about_right_bottom_title">
                 <p> حامیان </p>
               </div>
-              {/* <div className="event_page_about_right_bottom_description" /> */}
             </div>
           </div>
         </div>
@@ -252,10 +251,9 @@ export default class Event extends React.Component {
                     مسئول برگزاری
                   </p>
                   <span className="event_page_users_left_organizer_info_name">
-                    {' '}
                     {this.state.info.organizer.firstName +
                       ' ' +
-                      this.state.info.organizer.lastName}{' '}
+                      this.state.info.organizer.lastName}
                   </span>
                 </div>
               </div>

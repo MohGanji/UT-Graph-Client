@@ -67,26 +67,13 @@
   min-height: 100px;
   padding: 20px;
   font-size: 14pt;
-  /* overflow: scroll; */
-  /* overflow: auto; */
 }
 
 .user_about_button_container {
   width: 350px;
   height: 50px;
   margin-right: 10%;
-  /* border: red solid 1px; */
 }
-
-/* .user_about_button {
-  width: 150px;
-  height: 50px;
-  background: #352649;
-  color: white;
-  font-family: sahel;
-  font-size: 14pt;
-  cursor: pointer;
-} */
 
 .user_about_button_edit_profile {
   width: 150px;

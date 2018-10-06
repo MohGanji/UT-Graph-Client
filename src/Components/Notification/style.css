@@ -11,7 +11,6 @@
   background: #ffffff;
   margin-top: 170px;
   direction: rtl;
-  /* position: relative; */
 }
 
 .notification_title {
@@ -40,13 +39,10 @@
 }
 
 .selected_invisible {
-  /* display: none; */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: yellow; */
-  /* z-index: 100; */
   opacity: 0;
 }

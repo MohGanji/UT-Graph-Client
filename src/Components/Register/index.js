@@ -205,8 +205,7 @@ export default class Register extends BaseForm {
               <input type="submit" value="ثبت نام" className="login-button" />
               <p className="login-lost">
                 <a onClick={this.handleRegistered}>
-                  {' '}
-                  حساب کاربری دارید؟ کلیک کنید{' '}
+                  حساب کاربری دارید؟ کلیک کنید
                 </a>
               </p>
             </div>

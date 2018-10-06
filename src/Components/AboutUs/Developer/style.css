@@ -1,25 +1,24 @@
-.card{
-  width:33.33333333333333333%;
+.card {
+  width: 33.33333333333333333%;
   display: flex;
-  height:475px;
+  height: 475px;
   background-color: #352649;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  /* flex-direction: row; */
 }
-#developer_img{
+#developer_img {
   display: flex;
   width: 170px;
   height: 170px;
   border-radius: 85px;
   margin-top: 10px;
 }
-.developer_card_text{
+.developer_card_text {
   color: white;
   text-align: center;
   display: flex;
 }
-.name{
+.name {
   display: flex;
 }
