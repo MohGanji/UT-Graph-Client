@@ -79,7 +79,6 @@ class Login extends BaseForm {
         </div>
       );
     } else if (this.state.forgotPassword) {
-      console.log('done');
       return (
         <div>
           <ForgetPassword />

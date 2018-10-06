@@ -52,7 +52,6 @@ class User extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
         that.setState({
           user: info.user,
           eventsAsAdmin: info.eventsAsAdmin,
@@ -82,7 +81,6 @@ class User extends React.Component {
         return responseJson.data;
       })
       .then(function (info) {
-        console.log(info);
         that.setState({
           user: info.user,
           eventsAsAdmin: info.eventsAsAdmin,

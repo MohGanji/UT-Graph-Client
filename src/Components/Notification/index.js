@@ -32,11 +32,9 @@ export default class Notification extends React.Component {
       method: 'GET'
     })
       .then(function (response) {
-        console.log(response);
         return response.json();
       })
       .then(function (responseJson) {
-        console.log(responseJson);
         return responseJson.data;
       })
       .then(function (data) {

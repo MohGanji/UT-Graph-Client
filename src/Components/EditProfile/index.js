@@ -151,9 +151,6 @@ class EditProfile extends BaseForm {
     };
     axios
       .post(url, data, config)
-      .then(result => {
-        console.log(result);
-      })
       .then(() => {
         axios(`/api/v1/user/${this.props.user.username}`)
           .then(function (response) {

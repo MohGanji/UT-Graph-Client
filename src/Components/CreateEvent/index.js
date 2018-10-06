@@ -218,7 +218,6 @@ class CreateEvent extends BaseForm {
 
   handleSelect = name => optionSelected => {
     const value = optionSelected.map(option => option.value);
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
@@ -241,7 +240,6 @@ class CreateEvent extends BaseForm {
         return responseJson.data;
       })
       .then(function(info) {
-        console.log(info);
         let usernames = info.map(item => {
           let obj = {
             value: item,
@@ -292,9 +290,8 @@ class CreateEvent extends BaseForm {
         const id = this.props.match.params.id;
         return <Redirect to={`/event/${id}`} />;
       }
-    } else {
-      console.log(this.state.isUploaded, this.state.isEdited);
     }
+
     const addSponser = (
       <p className="create_event_add_sponser" onClick={this.handleAddSponser}>
         +
