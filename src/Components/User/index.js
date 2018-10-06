@@ -36,6 +36,36 @@ class User extends React.Component {
     };
   }
 
+  componentDidMount () {
+    let that = this;
+    const id = this.props.match.params.id;
+
+    fetch(`/api/v1/user/${id}`)
+      .then(handleErrors)
+      .then(function (response) {
+        if (response.status === 404) {
+          that.setState({ notFound: true });
+        }
+        return response.json();
+      })
+      .then(function (responseJson) {
+        return responseJson.data;
+      })
+      .then(function (info) {
+        console.log(info);
+        that.setState({
+          user: info.user,
+          eventsAsAdmin: info.eventsAsAdmin,
+          eventsAsAttendant: info.eventsAsAttendant,
+          eventsAsStaff: info.eventsAsStaff
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    this.setState({ loading: false });
+  }
+
   componentWillReceiveProps () {
     let that = this;
     const id = this.props.match.params.id;
@@ -125,37 +155,6 @@ class User extends React.Component {
               <p>{ReactHtmlParser(this.state.user.bio)}</p>
             </div>
           </div>
-          {/* <div className="user_about">
-            <p id="user_name" className="user_about_text">
-              {' '}
-              {this.state.firstName} {this.state.lastName}
-            </p> */}
-          {/* <div className="user_about_container">
-              <p> {ReactHtmlParser(this.state.bio)}</p>
-            </div>
-            <div className="user_about_button_container">
-              <Link to={`/edit-profile`}>
-                <button
-                  hidden={
-                    this.props.match.params.id !== this.props.user.username
-                  }
-                  className="user_about_button_edit_profile"
-                >
-                  ویرایش پروفایل
-                </button>
-              </Link>
-              <Link to={`/my-events`}>
-                <button
-                  hidden={
-                    this.props.match.params.id !== this.props.user.username
-                  }
-                  className="user_about_button_my_events"
-                >
-                  رویداد های من
-                </button>
-              </Link>
-            </div> */}
-          {/* </div> */}
         </div>
         <hr />
         <div className="event_container_all">
