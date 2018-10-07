@@ -1,8 +1,8 @@
 .login_page {
   background: white;
   background: linear-gradient(to top, white, gray);
-  width: 80vh;
-  max-height: 90vh;
+  width: 800px;
+  max-height: 900px;
   position: relative;
   direction: ltr;
 }
@@ -14,7 +14,7 @@
   position: absolute;
   color: gray;
   right: 15px;
-  top: 4.3vh;
+  top: 43px;
 }
 
 .login_form {
@@ -28,11 +28,11 @@
 }
 
 div.login-title {
-  padding: 2vh 3vw;
+  padding: 20px 30px;
   box-sizing: border-box;
   width: calc(100% + 4px);
   margin: -2px;
-  line-height: 5vh;
+  line-height: 50px;
   font-size: 150%;
   font-weight: 300;
   color: #adadad;

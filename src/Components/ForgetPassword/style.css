@@ -1,8 +1,8 @@
 .forget_page {
   background: white;
   background: linear-gradient(to top, white, gray);
-  width: 80vh;
-  max-height: 90vh;
+  width: 800px;
+  max-height: 900px;
   position: relative;
   direction: ltr;
 }

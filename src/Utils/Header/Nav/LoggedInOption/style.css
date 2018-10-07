@@ -118,8 +118,8 @@
 
 .logged_in_option_photo img {
   margin-top: 0;
-  width: 8vh;
-  height: 8vh;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
 }
