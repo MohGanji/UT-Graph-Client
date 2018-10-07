@@ -58,6 +58,7 @@
   border: none;
   opacity: 0.5;
   text-align: center;
+  color: black;
 }
 
 .my_events_topbar button:active:focus {

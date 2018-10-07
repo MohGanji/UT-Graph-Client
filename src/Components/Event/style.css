@@ -343,7 +343,8 @@
   margin-bottom: 20px;
 }
 
-.accept_request button {
+.accept_request input,
+button {
   background-color: #0095ff;
   border: 1px solid #07c;
   padding: 10px 20px;
@@ -354,7 +355,8 @@
   cursor: pointer;
 }
 
-.accept_request button:hover {
+.accept_request input:hover,
+button:hover {
   background: #0066af;
 }
 
