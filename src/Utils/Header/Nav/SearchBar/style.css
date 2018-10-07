@@ -101,7 +101,7 @@
 /* focus here */
 #search_form input[type='search'] {
   width: 700px;
-  max-width: 900px;
+  max-width: 47vw;
 
   padding-right: 20px;
   color: rgb(102, 102, 102);
