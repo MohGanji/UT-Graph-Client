@@ -33,7 +33,8 @@ class RequestPopup extends BaseForm {
     this.requestStaff = this.requestStaff.bind(this);
   }
 
-  requestStaff () {
+  requestStaff (event) {
+    event.preventDefault();
     const id = this.props.event._id;
     const token = localStorage.getItem('accessToken');
     const data = this.state;
@@ -78,32 +79,31 @@ class RequestPopup extends BaseForm {
                 عنوان همکار اضافه شوید لطفا نقش خود در رویداد را وارد کنید تا
                 درخواست شما برای ادمین رویداد ارسال گردد
               </div>
-              <div className="message_job">
-                <div className="input_container">
-                  <input
-                    type="text"
-                    className="login-input"
-                    placeholder="نقش"
-                    name="job"
-                    value={this.state.job}
-                    onChange={this.handleChange}
-                    required
-                    autoFocus
-                  />
-                  <i className="fa fa-users" />
+              <form
+                onSubmit={event => {
+                  this.requestStaff(event);
+                  close();
+                }}
+              >
+                <div className="message_job">
+                  <div className="input_container">
+                    <input
+                      type="text"
+                      className="login-input"
+                      placeholder="نقش"
+                      name="job"
+                      value={this.state.job}
+                      onChange={this.handleChange}
+                      required
+                      autoFocus
+                    />
+                    <i className="fa fa-users" />
+                  </div>
                 </div>
-              </div>
-              <div className="accept_request">
-                <button
-                  onClick={() => {
-                    this.requestStaff();
-                    close();
-                  }}
-                >
-                  {' '}
-                  <b> تایید </b>{' '}
-                </button>
-              </div>
+                <div className="accept_request">
+                  <input type="submit" value="تایید" />
+                </div>
+              </form>
             </div>
           )}
         </Popup>
