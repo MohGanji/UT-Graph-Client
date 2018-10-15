@@ -199,19 +199,126 @@
 }
 
 .create_event_search_content {
-  padding-right: 5%;
-  width: 90%;
+  width: 95%;
   margin-top: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.staff_search {
+  padding-right: 5%;
+  justify-content: flex-start;
+}
+
+.sponser_search {
+  padding-right: 3%;
+  justify-content: space-around;
 }
 
 .create_event_search_select {
   position: relative;
+  width: 90%;
 }
 
 .create_event_add_sponser {
   font-size: 20pt;
   color: black;
   cursor: pointer;
+}
+
+.create_event_sponser_modal {
+  width: 450px;
+  height: 230px;
+  z-index: 100;
+}
+
+.create_event_sponser_modal input {
+  width: 200px;
+  height: 30px;
+  z-index: 10;
+  font-size: 14pt;
+}
+
+.create_event_sponser_modal p {
+  margin-top: 20px;
+  margin-right: 10px;
+  color: black;
+  font-size: 18pt;
+}
+
+.create_event_sponser_modal div {
+  width: 400px;
+  margin-right: 20px;
+  height: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create_event_sponser_modal_name {
+  /* border: 1px red solid; */
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.create_event_sponser_modal_address {
+  /* border: 1px green solid; */
+  margin-bottom: 30px;
+}
+
+.create_event_sponser_modal_picture {
+  width: 300px !important;
+  height: 150px !important;
+  /* border: 1px blue solid; */
+  margin-right: 70px !important;
+  margin-bottom: 40px;
+}
+
+.create_event_sponser_modal_picture img {
+  width: 150px;
+  height: 150px;
+  /* border: 1px rgb(121, 120, 120) solid; */
+  box-shadow: 4px 4px 4px 4px #888888;
+}
+
+.modal_change_picture {
+  margin-right: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  width: 170px;
+  border-radius: 4px;
+  height: 50px;
+  line-height: 40px;
+
+  text-align: center;
+  background: rgb(198, 198, 198);
+  color: black;
+  cursor: pointer;
+}
+
+.modal_change_picture:hover {
+  background: #858585;
+  color: white;
+}
+
+.create_event_sponser_modal_submit {
+  background: #5e4481;
+  margin-right: 170px !important;
+  width: 100px !important;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create_event_sponser_modal_submit p {
+  margin-right: 30px;
+  margin-top: 0px;
+  color: white !important;
+}
+
+.create_event_sponser_modal_submit:hover {
+  background: #352649;
 }
 
 .capacity_container input {

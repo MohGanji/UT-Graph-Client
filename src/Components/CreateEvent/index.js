@@ -18,6 +18,7 @@ import NumberConverter from '../../Utils/BaseForm/numberConverter';
 import { toast } from 'react-toastify';
 import ReactLoading from 'react-loading';
 import NotFound from '../NotFound';
+import Popup from 'reactjs-popup';
 
 function mapStateToProps(state) {
   return {
@@ -47,6 +48,7 @@ class CreateEvent extends BaseForm {
       sponserSelected: [],
       staffSelected: [],
       sponserText: '',
+      sponserSite: '',
       staffText: '',
       warnings: [],
       isEditing: false,
@@ -256,14 +258,14 @@ class CreateEvent extends BaseForm {
 
   handleAddSponser = () => {
     let token = localStorage.getItem('accessToken');
-    let sponser = this.state.sponserText;
-    if (sponser.length === 0) {
+    let data = {
+      name: this.state.sponserText,
+      url: this.state.sponserSite
+    };
+    if (data.name.length === 0) {
       toast.error('نام حامی خالی است!');
       return;
     }
-    let data = {
-      name: sponser
-    };
     fetch('/api/v1/sponser', {
       method: 'POST',
       headers: {
@@ -276,7 +278,15 @@ class CreateEvent extends BaseForm {
     }).catch(function(error) {
       console.log(error);
     });
-    toast.success('حامی جدید با موفقیت ثبت شد');
+    toast.success('حامی جدید با موفقیت ساخته شد');
+  };
+
+  handleSponserName = e => {
+    this.setState({ sponserText: e.target.value });
+  };
+
+  handleSponserAddress = e => {
+    this.setState({ sponserSite: e.target.value });
   };
 
   render() {
@@ -292,10 +302,67 @@ class CreateEvent extends BaseForm {
       }
     }
 
+    const contentStyle = {
+      height: 'innerHeight',
+      width: 'innerWidth',
+      'z-index': '1',
+      padding: '0px'
+    };
+
+    const innerDiv = {
+      background: '#000000cc',
+      'z-index': '0'
+    };
+
     const addSponser = (
-      <p className="create_event_add_sponser" onClick={this.handleAddSponser}>
-        +
-      </p>
+      <Popup
+        trigger={<p className="create_event_add_sponser">+</p>}
+        modal
+        closeOnDocumentClick
+        contentStyle={contentStyle}
+        overlayStyle={innerDiv}
+      >
+        {close => (
+          <div className="create_event_sponser_modal">
+            <form>
+              <div className="create_event_sponser_modal_name">
+                <p> نام حامی: </p>
+                <input name="name" onChange={this.handleSponserName} required />
+              </div>
+              <div className="create_event_sponser_modal_address">
+                <p> آدرس سایت: </p>
+                <input
+                  name="address"
+                  onChange={this.handleSponserAddress}
+                  required
+                />
+              </div>
+              {/* <div className="create_event_sponser_modal_picture">
+                <img src={defaultEventImage} alt={'عکس حامی'} />
+                <label className="modal_change_picture" htmlFor="upload-photo">
+                  {' '}
+                  تغییر تصویر{' '}
+                </label>
+                <input
+                  type="file"
+                  name="modal-upload"
+                  id="upload-photo"
+                  onChange={this.onChange}
+                />
+              </div> */}
+              <div
+                className="create_event_sponser_modal_submit"
+                onClick={event => {
+                  this.handleAddSponser();
+                  close();
+                }}
+              >
+                <p> ثبت </p>
+              </div>
+            </form>
+          </div>
+        )}
+      </Popup>
     );
     return (
       <div className="container">
@@ -418,22 +485,24 @@ class CreateEvent extends BaseForm {
                 <div className="create_event_tittle">
                   <p className="create_event_header_font"> اضافه کردن همکار </p>
                 </div>
-                <div className="create_event_search_content">
-                  <Select
-                    options={this.state.staffs}
-                    isMulti={true}
-                    placeholder={'جستجو...'}
-                    name="staffs"
-                    onChange={this.handleSelect('staffSelected')}
-                    onInputChange={this.onInputChange('user')}
-                  />
+                <div className="create_event_search_content staff_search">
+                  <div className="create_event_search_select">
+                    <Select
+                      options={this.state.staffs}
+                      isMulti={true}
+                      placeholder={'جستجو...'}
+                      name="staffs"
+                      onChange={this.handleSelect('staffSelected')}
+                      onInputChange={this.onInputChange('user')}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="create_event_search_sponser">
                 <div className="create_event_tittle">
                   <p className="create_event_header_font"> اضافه کردن حامی </p>
                 </div>
-                <div className="create_event_search_content">
+                <div className="create_event_search_content sponser_search">
                   <div className="create_event_search_select">
                     <Select
                       options={this.state.sponsers}
@@ -442,9 +511,10 @@ class CreateEvent extends BaseForm {
                       name="sponsers"
                       onChange={this.handleSelect('sponserSelected')}
                       onInputChange={this.onInputChange('sponser')}
-                      noOptionsMessage={() => addSponser}
+                      // noOptionsMessage={() => addSponser}
                     />
                   </div>
+                  {addSponser}
                 </div>
               </div>
             </div>
