@@ -150,8 +150,8 @@ class CreateEvent extends BaseForm {
           } else {
             toast.success('رویداد شما با موفقیت ویرایش شد!');
           }
+          that.setState({ isEdited: true });
         }
-        that.setState({ isEdited: true });
         return ress;
       })
       .then(handleErrors)
