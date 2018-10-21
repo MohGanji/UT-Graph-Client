@@ -37,7 +37,8 @@ export default class Event extends React.Component {
         staff: [],
         isRegistered: false,
         isAdmin: false,
-        userAsStaffJobs: []
+        userAsStaffJobs: [],
+        sponsers: []
       },
       notFound: false,
       loading: true,
@@ -98,6 +99,13 @@ export default class Event extends React.Component {
     let staff = this.state.info.staff.map((user, i) => (
       <StaffBox key={i} user={user} />
     ));
+
+    let sponsers = this.state.info.sponsers.map((sponser, i) => (
+      <a key={i} href={`http://${sponser.url}`}>
+        {sponser.name}
+      </a>
+    ));
+
     return (
       <div className="container">
         <ProgressBar
@@ -228,6 +236,7 @@ export default class Event extends React.Component {
               <div className="event_page_about_right_bottom_title">
                 <p> حامیان </p>
               </div>
+              <div className="event_page_about_right_text">{sponsers}</div>
             </div>
           </div>
         </div>

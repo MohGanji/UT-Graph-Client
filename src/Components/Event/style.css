@@ -376,3 +376,16 @@ button:hover {
 .close:hover {
   background: #0095ff;
 }
+
+.event_page_about_right_text {
+  padding-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.event_page_about_right_text a {
+  font-size: 18pt;
+  color: #352649;
+}
